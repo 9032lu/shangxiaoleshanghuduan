@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="packageCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="packageCell" rowHeight="47" id="KGk-i7-Jjw" customClass="PackageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="475" height="56"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="475" height="56"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="de_icon_checkbox_n" translatesAutoresizingMaskIntoConstraints="NO" id="DOY-M0-Pmm">
+                        <rect key="frame" x="18" y="22" width="12" height="12"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="8UR-6h-e0j"/>
+                            <constraint firstAttribute="width" constant="12" id="Rk9-f4-2Bb"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头部按摩" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vs-ju-fPC">
+                        <rect key="frame" x="40" y="8" width="53.5" height="39.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="60" id="IbI-EZ-1qw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500元/次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36l-aQ-NHn">
+                        <rect key="frame" x="113.5" y="8" width="55.5" height="39.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="60" id="u1m-7L-dd3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="tYt-sN-WhY">
+                        <rect key="frame" x="409" y="5.5" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="7Z5-sm-eWb"/>
+                            <constraint firstAttribute="width" constant="44" id="dBs-Cz-A9O"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKk-oL-iWc">
+                        <rect key="frame" x="0.0" y="55" width="475" height="1"/>
+                        <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="VdI-ss-IN6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pKk-oL-iWc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AiL-XP-rj2"/>
+                    <constraint firstAttribute="bottom" secondItem="pKk-oL-iWc" secondAttribute="bottom" id="B4E-1g-Q3P"/>
+                    <constraint firstItem="1vs-ju-fPC" firstAttribute="leading" secondItem="DOY-M0-Pmm" secondAttribute="trailing" constant="10" id="Dbs-xI-QPj"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="1vs-ju-fPC" secondAttribute="bottom" id="Deg-hN-iFb"/>
+                    <constraint firstItem="DOY-M0-Pmm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="GD0-zW-iz0"/>
+                    <constraint firstItem="DOY-M0-Pmm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Gea-l6-ftG"/>
+                    <constraint firstItem="tYt-sN-WhY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Hlb-ow-JYN"/>
+                    <constraint firstItem="1vs-ju-fPC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="OM9-5P-cVS"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="tYt-sN-WhY" secondAttribute="trailing" constant="14" id="P72-ix-nsb"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="36l-aQ-NHn" secondAttribute="bottom" id="Wcv-7O-3aZ"/>
+                    <constraint firstItem="36l-aQ-NHn" firstAttribute="leading" secondItem="1vs-ju-fPC" secondAttribute="trailing" constant="20" id="gOb-Ep-uqB"/>
+                    <constraint firstItem="36l-aQ-NHn" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="pm6-p2-FYI"/>
+                    <constraint firstAttribute="trailing" secondItem="pKk-oL-iWc" secondAttribute="trailing" id="trN-WZ-N5U"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="chooseTip" destination="DOY-M0-Pmm" id="wbC-Ap-Pps"/>
+                <outlet property="productImage" destination="tYt-sN-WhY" id="OOp-gz-qqR"/>
+                <outlet property="productName" destination="1vs-ju-fPC" id="i7k-He-MzS"/>
+                <outlet property="productPrice" destination="36l-aQ-NHn" id="hg6-MS-ioO"/>
+            </connections>
+            <point key="canvasLocation" x="32.5" y="66"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="de_icon_checkbox_n" width="16" height="16"/>
+        <image name="icon3.png" width="227" height="152"/>
+    </resources>
+</document>

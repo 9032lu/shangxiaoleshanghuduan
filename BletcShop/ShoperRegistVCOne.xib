@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShoperRegistVCOne">
+            <connections>
+                <outlet property="phoneTF" destination="1XD-If-i96" id="EtF-C0-iej"/>
+                <outlet property="referralTF" destination="FpE-Kl-1hU" id="wXD-Ef-yJ3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5k-a7-kEg">
+                    <rect key="frame" x="15" y="130" width="345" height="40"/>
+                    <color key="backgroundColor" red="0.88627450980392153" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Oey-pi-cPV"/>
+                    </constraints>
+                    <state key="normal" title="发送验证码"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="ert:" destination="-1" eventType="touchUpInside" id="NPg-Mv-Faa"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入推荐人手机号(可不填)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FpE-Kl-1hU">
+                    <rect key="frame" x="15" y="60" width="345" height="40"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="a5o-Kp-kpr"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入注册手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1XD-If-i96">
+                    <rect key="frame" x="15" y="20" width="345" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="5Ps-Cf-shT"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="tjS-Sm-N3W"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="FpE-Kl-1hU" firstAttribute="width" secondItem="1XD-If-i96" secondAttribute="width" id="2Su-tR-ma2"/>
+                <constraint firstItem="1XD-If-i96" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="4wy-6C-w0a"/>
+                <constraint firstItem="1XD-If-i96" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="IfQ-kV-ySd"/>
+                <constraint firstItem="FpE-Kl-1hU" firstAttribute="top" secondItem="1XD-If-i96" secondAttribute="bottom" id="JG3-l1-DLN"/>
+                <constraint firstItem="FpE-Kl-1hU" firstAttribute="leading" secondItem="1XD-If-i96" secondAttribute="leading" id="VLm-NL-C5l"/>
+                <constraint firstAttribute="trailing" secondItem="f5k-a7-kEg" secondAttribute="trailing" constant="15" id="ZeW-CR-4Rk"/>
+                <constraint firstAttribute="trailing" secondItem="1XD-If-i96" secondAttribute="trailing" constant="15" id="d4a-Ip-ak3"/>
+                <constraint firstItem="FpE-Kl-1hU" firstAttribute="height" secondItem="1XD-If-i96" secondAttribute="height" id="dOs-G7-iWc"/>
+                <constraint firstItem="f5k-a7-kEg" firstAttribute="top" secondItem="FpE-Kl-1hU" secondAttribute="bottom" constant="30" id="nBl-hL-2Yb"/>
+                <constraint firstItem="f5k-a7-kEg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="vPF-VS-RDo"/>
+            </constraints>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="5"/>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="-363" y="-40"/>
+        </view>
+    </objects>
+</document>
