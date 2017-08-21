@@ -322,7 +322,7 @@
         if ([stateStr isEqualToString:@"incomplete"]) {
             //去完善信息界面
             
-            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"店铺上未认证!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
+            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"店铺尚未认证!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
             
             altView.tag =9998;
             [altView show];
@@ -377,7 +377,7 @@
         if ([stateStr isEqualToString:@"incomplete"]) {
             //去完善信息界面
             
-            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"店铺上未认证!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
+            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"店铺尚未认证!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
             
             altView.tag =9998;
             [altView show];
@@ -464,7 +464,7 @@
     if ([stateStr isEqualToString:@"incomplete"]) {
         //去完善信息界面
         
-        UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"店铺上未认证!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
+        UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"店铺尚未认证!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
         
         altView.tag =9998;
         [altView show];

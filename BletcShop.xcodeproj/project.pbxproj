@@ -84,6 +84,9 @@
 		189ED0421E8CD53600A762C7 /* getUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = 189ED03F1E8CD53600A762C7 /* getUUID.m */; };
 		189ED0431E8CD53600A762C7 /* KeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 189ED0411E8CD53600A762C7 /* KeyChainStore.m */; };
 		18A72C5B1ED563E9005FDF87 /* 线上角标.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A72C5A1ED563E8005FDF87 /* 线上角标.png */; };
+		18B9BEAC1F4AAAD100863CB1 /* XLAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B9BEAB1F4AAAD100863CB1 /* XLAlertView.m */; };
+		18B9BEAE1F4AABD500863CB1 /* 圆形logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */; };
+		18B9BEB01F4AABEC00863CB1 /* 主题背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */; };
 		18C0389B1E693C8B005F7AA9 /* HotNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0389A1E693C8B005F7AA9 /* HotNewsVC.m */; };
 		18CB32D61D6C2B2B005A9D64 /* HKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32C91D6C2B2B005A9D64 /* HKViewController.m */; };
 		18CB32D71D6C2B2B005A9D64 /* HKClipperVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32CB1D6C2B2B005A9D64 /* HKClipperVeiw.m */; };
@@ -813,6 +816,10 @@
 		189ED0401E8CD53600A762C7 /* KeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyChainStore.h; sourceTree = "<group>"; };
 		189ED0411E8CD53600A762C7 /* KeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyChainStore.m; sourceTree = "<group>"; };
 		18A72C5A1ED563E8005FDF87 /* 线上角标.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线上角标.png"; sourceTree = "<group>"; };
+		18B9BEAA1F4AAAD100863CB1 /* XLAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLAlertView.h; sourceTree = "<group>"; };
+		18B9BEAB1F4AAAD100863CB1 /* XLAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLAlertView.m; sourceTree = "<group>"; };
+		18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "圆形logo.png"; sourceTree = "<group>"; };
+		18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "主题背景.png"; sourceTree = "<group>"; };
 		18C038991E693C8B005F7AA9 /* HotNewsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotNewsVC.h; sourceTree = "<group>"; };
 		18C0389A1E693C8B005F7AA9 /* HotNewsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotNewsVC.m; sourceTree = "<group>"; };
 		18CB32C81D6C2B2B005A9D64 /* HKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewController.h; sourceTree = "<group>"; };
@@ -1946,6 +1953,10 @@
 			children = (
 				079386821C55B5CA0021B385 /* AppDelegate.h */,
 				D972270E1F32D26B009D0E2A /* AppDelegate.mm */,
+				18B9BEAA1F4AAAD100863CB1 /* XLAlertView.h */,
+				18B9BEAB1F4AAAD100863CB1 /* XLAlertView.m */,
+				18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */,
+				18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */,
 				1CDA9E081C5A113000DFE518 /* 商户端 */,
 				D97227101F32D271009D0E2A /* 其他类 */,
 				079386C01C55BBBF0021B385 /* 更多 */,
@@ -4501,6 +4512,7 @@
 				18D43E4E1ED6DC9C0077861A /* 帮助中心@2x.png in Resources */,
 				D9AB25361D88E4ED000E9288 /* VoiceSearchFeedback008@2x.png in Resources */,
 				D92ACDB61F0CD52100858727 /* PublishPackageCardTableViewCell.xib in Resources */,
+				18B9BEB01F4AABEC00863CB1 /* 主题背景.png in Resources */,
 				D9AB253D1D88E4ED000E9288 /* VoiceSearchFeedback015@2x.png in Resources */,
 				D9D50DBB1D87DE3200A5E469 /* lxh_beicui.png in Resources */,
 				D93C1A1A1EE9567C006DA624 /* ShoperRegistVCOne.xib in Resources */,
@@ -4619,6 +4631,7 @@
 				18543E3A1ECAD89F00E0A4DA /* quan4.png in Resources */,
 				D941CCF31CF698CE0012303C /* Images.xcassets in Resources */,
 				D92ACDAA1F0CD4FF00858727 /* PackageHomePageTableViewCell.xib in Resources */,
+				18B9BEAE1F4AABD500863CB1 /* 圆形logo.png in Resources */,
 				D9AB253B1D88E4ED000E9288 /* VoiceSearchFeedback013@2x.png in Resources */,
 				180DC3871EF26B0A00DF9474 /* abc_card@2x.png in Resources */,
 				D9AB25321D88E4ED000E9288 /* VoiceSearchFeedback004@2x.png in Resources */,
@@ -4797,6 +4810,7 @@
 				18D43E471ED6D4EC0077861A /* UIView+Frame.m in Sources */,
 				1CDA9E111C5A142900DFE518 /* ShopVipController.m in Sources */,
 				D94112E51CE968D8008E231F /* Product.m in Sources */,
+				18B9BEAC1F4AAAD100863CB1 /* XLAlertView.m in Sources */,
 				189CC5BB1EF9314400A73BB6 /* BindCustomView.m in Sources */,
 				D9C0E95B1DCC81DE00FD1199 /* ShaperView.m in Sources */,
 				D949EC2B1CE192970023B6D6 /* BCurrentCityCell.m in Sources */,
