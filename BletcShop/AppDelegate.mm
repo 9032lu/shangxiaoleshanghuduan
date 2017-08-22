@@ -1681,7 +1681,7 @@
     
     [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         NSLog(@"===--%@",result);
-        NSLog(@" app版本  %ld",(long)[app_Version compare:result[@"version"] options:NSNumericSearch]);
+        NSLog(@" app版本  %ld",(long)[app_Version compare:result[@"version_name"] options:NSNumericSearch]);
         
         if ([app_Version compare:result[@"version_name"] options:NSNumericSearch] < 0) {
             
