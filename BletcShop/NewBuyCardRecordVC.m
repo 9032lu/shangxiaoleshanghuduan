@@ -15,8 +15,17 @@
 
 @implementation NewBuyCardRecordVC
 
+-(void)chat{
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title=@"办卡明细";
+    
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"统计表" style:UIBarButtonItemStylePlain target:self action:@selector(chat)];
+    self.navigationItem.rightBarButtonItem=rightItem;
+    
     UILabel *totalMoney=[[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, 66)];
     totalMoney.text=@"办卡总金额：10′000元";
     totalMoney.textAlignment=NSTextAlignmentCenter;
