@@ -46,7 +46,6 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    LEFTBACK
    self.navigationItem.title = @"我的会员";
     self.view.backgroundColor=RGB(240, 240, 240);
     self.editArray = [[NSMutableArray alloc]init];
