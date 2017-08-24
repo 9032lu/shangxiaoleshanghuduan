@@ -112,11 +112,11 @@
                     <color key="textColor" red="0.22745098039215686" green="0.68235294117647061" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youjiantou" translatesAutoresizingMaskIntoConstraints="NO" id="PIe-cp-MxN">
-                    <rect key="frame" x="354" y="14" width="6" height="12"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="下一页" translatesAutoresizingMaskIntoConstraints="NO" id="PIe-cp-MxN">
+                    <rect key="frame" x="345" y="14" width="15" height="12"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="12" id="6GK-Qx-t50"/>
-                        <constraint firstAttribute="width" constant="6" id="b3S-6V-zVl"/>
+                        <constraint firstAttribute="width" constant="15" id="b3S-6V-zVl"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -210,6 +210,6 @@
     </objects>
     <resources>
         <image name="leftArrow.png" width="14" height="30"/>
-        <image name="youjiantou" width="7" height="13"/>
+        <image name="下一页" width="13" height="13"/>
     </resources>
 </document>
