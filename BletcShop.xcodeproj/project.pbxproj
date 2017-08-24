@@ -36,9 +36,13 @@
 		1829885E1E77D1CA00164F32 /* SingleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1829885D1E77D1CA00164F32 /* SingleModel.m */; };
 		182FAAA61D502FAD0018F872 /* custom3.png in Resources */ = {isa = PBXBuildFile; fileRef = 182FAAA51D502FAD0018F872 /* custom3.png */; };
 		18302A2A1DAC8AE200E6EF8C /* ShopRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18302A291DAC8AE200E6EF8C /* ShopRegisterController.m */; };
+		18390D641F4D8984008FFBDD /* NewBuyCardRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18390D621F4D8984008FFBDD /* NewBuyCardRecordVC.m */; };
+		18390D651F4D8984008FFBDD /* NewBuyCardRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18390D631F4D8984008FFBDD /* NewBuyCardRecordVC.xib */; };
 		1843104A1E6F9C39005521BF /* AddCouponDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 184310481E6F9C39005521BF /* AddCouponDetailsVC.m */; };
 		1843104B1E6F9C39005521BF /* AddCouponDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184310491E6F9C39005521BF /* AddCouponDetailsVC.xib */; };
 		184C72031EC2F9150065EE65 /* SYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184C72021EC2F9150065EE65 /* SYPasswordView.m */; };
+		184D2F411F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D2F3F1F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.m */; };
+		184D2F421F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184D2F401F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.xib */; };
 		18543E351ECACA3E00E0A4DA /* ChooseCardTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18543E331ECACA3E00E0A4DA /* ChooseCardTypeVC.m */; };
 		18543E361ECACA3E00E0A4DA /* ChooseCardTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18543E341ECACA3E00E0A4DA /* ChooseCardTypeVC.xib */; };
 		18543E381ECAD89200E0A4DA /* quan3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18543E371ECAD89100E0A4DA /* quan3.png */; };
@@ -743,11 +747,17 @@
 		182FAAA51D502FAD0018F872 /* custom3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = custom3.png; sourceTree = "<group>"; };
 		18302A281DAC8AE200E6EF8C /* ShopRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopRegisterController.h; sourceTree = "<group>"; };
 		18302A291DAC8AE200E6EF8C /* ShopRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopRegisterController.m; sourceTree = "<group>"; };
+		18390D611F4D8984008FFBDD /* NewBuyCardRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewBuyCardRecordVC.h; sourceTree = "<group>"; };
+		18390D621F4D8984008FFBDD /* NewBuyCardRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewBuyCardRecordVC.m; sourceTree = "<group>"; };
+		18390D631F4D8984008FFBDD /* NewBuyCardRecordVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewBuyCardRecordVC.xib; sourceTree = "<group>"; };
 		184310471E6F9C39005521BF /* AddCouponDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCouponDetailsVC.h; sourceTree = "<group>"; };
 		184310481E6F9C39005521BF /* AddCouponDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCouponDetailsVC.m; sourceTree = "<group>"; };
 		184310491E6F9C39005521BF /* AddCouponDetailsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCouponDetailsVC.xib; sourceTree = "<group>"; };
 		184C72011EC2F9150065EE65 /* SYPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPasswordView.h; sourceTree = "<group>"; };
 		184C72021EC2F9150065EE65 /* SYPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPasswordView.m; sourceTree = "<group>"; };
+		184D2F3E1F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewBuyCardRecordsTableViewCell.h; sourceTree = "<group>"; };
+		184D2F3F1F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewBuyCardRecordsTableViewCell.m; sourceTree = "<group>"; };
+		184D2F401F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewBuyCardRecordsTableViewCell.xib; sourceTree = "<group>"; };
 		18543E321ECACA3E00E0A4DA /* ChooseCardTypeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardTypeVC.h; sourceTree = "<group>"; };
 		18543E331ECACA3E00E0A4DA /* ChooseCardTypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardTypeVC.m; sourceTree = "<group>"; };
 		18543E341ECACA3E00E0A4DA /* ChooseCardTypeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCardTypeVC.xib; sourceTree = "<group>"; };
@@ -2274,6 +2284,19 @@
 			name = "提交广告申请页";
 			sourceTree = "<group>";
 		};
+		18390D601F4D87CA008FFBDD /* 新消费记录 */ = {
+			isa = PBXGroup;
+			children = (
+				18390D611F4D8984008FFBDD /* NewBuyCardRecordVC.h */,
+				18390D621F4D8984008FFBDD /* NewBuyCardRecordVC.m */,
+				18390D631F4D8984008FFBDD /* NewBuyCardRecordVC.xib */,
+				184D2F3E1F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.h */,
+				184D2F3F1F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.m */,
+				184D2F401F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.xib */,
+			);
+			name = "新消费记录";
+			sourceTree = "<group>";
+		};
 		184310441E6F9B83005521BF /* 优惠券列表 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2859,6 +2882,7 @@
 				1CDA9E0E1C5A11E800DFE518 /* 更多 */,
 				1CDA9E0D1C5A11C600DFE518 /* 业务中心 */,
 				1CDA9E0C1C5A11AD00DFE518 /* 我的商品 */,
+				18390D601F4D87CA008FFBDD /* 新消费记录 */,
 			);
 			name = "商户端";
 			sourceTree = "<group>";
@@ -4585,6 +4609,7 @@
 				1C8F702C1C75B0EA00F7D9B4 /* weigouxuan.png in Resources */,
 				D91395B11CF4589400509491 /* mapapi.bundle in Resources */,
 				18EDCF731D460659004C40B7 /* custom1.png in Resources */,
+				184D2F421F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.xib in Resources */,
 				D92ACDAC1F0CD4FF00858727 /* PackageServiceVC.xib in Resources */,
 				1C9E822F1C603B7A0007BF02 /* 我的界面灰色箭头.png in Resources */,
 				D92ACD891F0CD47D00858727 /* ChoseCardColorStyleViewVC.xib in Resources */,
@@ -4769,6 +4794,7 @@
 				D923D99A1D2B621B009422EB /* merchant_introduce.png in Resources */,
 				D92ACDFF1F0CD68600858727 /* UploadImageVC.xib in Resources */,
 				D9AB253C1D88E4ED000E9288 /* VoiceSearchFeedback014@2x.png in Resources */,
+				18390D651F4D8984008FFBDD /* NewBuyCardRecordVC.xib in Resources */,
 				182FAAA61D502FAD0018F872 /* custom3.png in Resources */,
 				180DC3881EF26B0A00DF9474 /* abc_card@3x.png in Resources */,
 				D98011CA1DF7AAE800CE09CA /* 5383.wav in Resources */,
@@ -4842,6 +4868,7 @@
 				D958AD651E654CF200B0776F /* JHColumnChart.m in Sources */,
 				184C72031EC2F9150065EE65 /* SYPasswordView.m in Sources */,
 				1CDCCD201C7594040094E70D /* KKRequestDataService.m in Sources */,
+				184D2F411F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.m in Sources */,
 				D97227271F32FC02009D0E2A /* ShoperRegistVCTwo.m in Sources */,
 				D9A06B621D8679C30037795B /* wav.mm in Sources */,
 				D98ECBDB1D9D1ECC00BEDD57 /* MJXAViewController.m in Sources */,
@@ -5037,6 +5064,7 @@
 				D92ACDFB1F0CD68600858727 /* PictureAndVeidoDetailVC.m in Sources */,
 				1CCD50161C85703000447AB8 /* MBProgressHUD.m in Sources */,
 				D9B3A5A71D74255700F3F27E /* MWTapDetectingImageView.m in Sources */,
+				18390D641F4D8984008FFBDD /* NewBuyCardRecordVC.m in Sources */,
 				D9A06B611D8679C30037795B /* amrFileCodec.mm in Sources */,
 				D92ACD951F0CD4A800858727 /* GeneralCardSeriseListVC.m in Sources */,
 				D92ACDD31F0CD5EE00858727 /* TimeLimitCardHomeVC.m in Sources */,
