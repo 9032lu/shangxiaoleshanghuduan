@@ -22,7 +22,7 @@
         self.title = @"安全保障";
     }else
         self.title = @"使用规则";
-    
+    LEFTBACK
     [self _initWebView];
 
 }

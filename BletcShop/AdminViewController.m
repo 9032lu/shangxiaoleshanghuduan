@@ -40,6 +40,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     self.ifOpenQX = NO;
     self.view.backgroundColor = RGB(240, 240, 240);
     

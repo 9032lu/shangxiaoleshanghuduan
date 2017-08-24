@@ -26,6 +26,7 @@
     model=[SingleModel sharedManager];
     NSLog(@"%@",model.baseOnCountsOrTime);
     self.navigationItem.title=@"发布广告";
+    LEFTBACK
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(goNextVC)];
     self.navigationItem.rightBarButtonItem=rightItem;
     

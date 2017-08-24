@@ -35,7 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    LEFTBACK
     _cardNameTF.superview.hidden = YES;
     _cardDiscountPrice.superview.hidden= YES;
     

@@ -77,6 +77,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"选择项目";
+    LEFTBACK
     allORSingle=NO;
     _recordChooseState=[NSMutableDictionary dictionaryWithCapacity:0];
     if (self.normalArray.count>0) {

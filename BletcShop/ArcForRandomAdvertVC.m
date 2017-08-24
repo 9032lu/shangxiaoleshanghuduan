@@ -37,6 +37,7 @@
      _stateStr=@"false";
     activatyPositionsArr=[NSArray array];
     self.navigationItem.title=self.advertTitle;
+    LEFTBACK
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(goNextVC)];
     self.navigationItem.rightBarButtonItem=rightItem;
     

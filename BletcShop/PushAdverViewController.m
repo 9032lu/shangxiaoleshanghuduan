@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"广告投放";
-
+LEFTBACK
 }
 - (IBAction)pushAdverBtn:(UITapGestureRecognizer *)sender {
     

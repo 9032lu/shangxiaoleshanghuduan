@@ -48,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"群发助手";
+    LEFTBACK
     self.view.backgroundColor = RGB(240, 238, 244);
 
     

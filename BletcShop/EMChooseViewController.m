@@ -41,7 +41,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    LEFTBACK
     // Uncomment the following line to preserve selection between presentations.
     _indexCollation = [UILocalizedIndexedCollation currentCollation];
     

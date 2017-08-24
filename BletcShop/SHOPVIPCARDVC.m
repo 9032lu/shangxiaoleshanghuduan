@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"会员卡管理";
+    LEFTBACK
     self.view.backgroundColor=[UIColor whiteColor];
     cardKindArray=@[@{@"imageName":@"money_1",@"cardName":@"储值卡"},@{@"imageName":@"count_1",@"cardName":@"计次卡"},@{@"imageName":@"parcel_1",@"cardName":@"套餐卡"},@{@"imageName":@"experience_1",@"cardName":@"体验卡"},@{@"imageName":@"timelimit_1",@"cardName":@"限时卡"}];
     UICollectionViewFlowLayout *layout=[[UICollectionViewFlowLayout alloc]init];

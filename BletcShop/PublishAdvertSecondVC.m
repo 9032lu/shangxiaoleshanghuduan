@@ -40,6 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     _stateStr=@"false";
     self.view.backgroundColor=RGB(240, 240, 240);
     AppDelegate *delegate=(AppDelegate *)[UIApplication sharedApplication].delegate;

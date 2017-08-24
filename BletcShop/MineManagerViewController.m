@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"我管理的店铺";
-    
+    LEFTBACK
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查看" style:UIBarButtonItemStylePlain target:self action:@selector(ScanClcik)];
 
     self.view.backgroundColor=[UIColor whiteColor];

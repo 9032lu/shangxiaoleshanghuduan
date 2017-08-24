@@ -38,6 +38,7 @@
      heights=0;
     self.view.backgroundColor=RGB(238, 238, 238);
     self.navigationItem.title=@"优惠券";
+    LEFTBACK
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addCoupon)];
     self.navigationItem.rightBarButtonItem=rightItem;
     

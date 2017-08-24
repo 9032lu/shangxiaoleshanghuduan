@@ -20,6 +20,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"所有产品";
+    LEFTBACK
     UIBarButtonItem *rightBtn=[[UIBarButtonItem alloc]initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(confirm)];
     self.navigationItem.rightBarButtonItem=rightBtn;
     [self postRequest];

@@ -41,6 +41,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"#eaeaea"];
     self.navigationItem.title=@"添加会员";
+    LEFTBACK
 //    LZDButton *rightBtn = [LZDButton creatLZDButton];
 //    rightBtn.frame = CGRectMake(kWeChatScreenWidth-50, 20, 50, 44);
 //    

@@ -24,6 +24,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"发布广告";
+    LEFTBACK
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(goNextVC)];
     self.navigationItem.rightBarButtonItem=rightItem;
     titleArray=@[@"选择次数",@"选择时间"];

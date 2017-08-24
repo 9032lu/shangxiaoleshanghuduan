@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"商户注册";
+    LEFTBACK
     [self setTextFieldLeftImageView:self.phoneTF leftImageName:@"手机"];
    
     [self setTextFieldLeftImageView:self.referralTF leftImageName:@"推荐人"];

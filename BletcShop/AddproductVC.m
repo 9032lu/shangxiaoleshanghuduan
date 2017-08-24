@@ -138,7 +138,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"发布商品";
-    
+    LEFTBACK
     if (self.editTag ==1) {
         self.navigationItem.title = @"编辑商品";
 

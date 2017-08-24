@@ -48,7 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = [NSString stringWithFormat:@"%@%@",self.whoPush,self.cardTypeName];
-   
+   LEFTBACK
 
     self.pickerView = [[ValuePickerView alloc]init];
     

@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"上传图片";
+    LEFTBACK
     NSLog(@"------%@",self.infoDic);
     if (!self.infoDic) {
         

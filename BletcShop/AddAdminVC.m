@@ -38,7 +38,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = RGB(240, 240, 240);
     self.navigationItem.title = @"添加管理员";
-
+LEFTBACK
     if (self.editTag==1) {
         self.navigationItem.title = @"编辑管理员";
 

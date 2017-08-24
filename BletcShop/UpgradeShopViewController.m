@@ -18,7 +18,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"会员升级";
-
+LEFTBACK
     // Do any additional setup after loading the view.
 }
 

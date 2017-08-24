@@ -29,7 +29,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"查看" style:UIBarButtonItemStylePlain target:self action:@selector(goToReport)];
     
     self.navigationItem.title=@"数据统计";
-    
+    LEFTBACK
      title_array=@[@"办卡",@"续卡",@"升级",@"消费",@"现金支付"];
      img_A = @[@"Ǯ",@"未消费",@"银行卡",@"续费",@"升级"];
     

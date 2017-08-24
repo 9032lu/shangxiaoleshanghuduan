@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"套餐卡详情";
+    LEFTBACK
     NSLog(@"%@",self.dic);
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStyleGrouped];
     _tableView.backgroundColor=[UIColor whiteColor];

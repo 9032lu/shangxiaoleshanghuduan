@@ -17,7 +17,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"数据报表";
-    
+    LEFTBACK
     self.view.backgroundColor = [UIColor whiteColor];
     if (self.data_A.count!=0) {
         

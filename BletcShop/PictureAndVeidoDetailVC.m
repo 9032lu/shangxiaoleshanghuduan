@@ -95,7 +95,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=RGB(240, 240, 240);
     self.navigationItem.title=@"图片视频详情";
-    
+    LEFTBACK
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(goclick)];
     
     self.headArray = @[@"图片",@"视频"];

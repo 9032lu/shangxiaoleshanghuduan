@@ -41,6 +41,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"群发";
+    LEFTBACK
     NSLog(@"%@",self.dic);
     
        NSArray *persons=[self.dic allValues];

@@ -52,6 +52,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     self.navigationItem.title = @"广告列表";
     NSLog(@"====>>>%@",self.infoDic);
     dataSourse_A = @[self.section1_A,self.section2_A];

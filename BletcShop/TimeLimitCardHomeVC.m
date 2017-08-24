@@ -29,6 +29,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     _tableView.rowHeight=50;
     
     old_btn= _wait;

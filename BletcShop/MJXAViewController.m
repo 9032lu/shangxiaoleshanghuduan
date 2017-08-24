@@ -36,6 +36,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor colorWithHexString:@"#eaeaea"];
     self.navigationItem.title=@"明细结算";
+    LEFTBACK
     UIBarButtonItem *rightButton=[[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addBtnClick)];
     self.navigationItem.rightBarButtonItem=rightButton;
 

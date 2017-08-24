@@ -21,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"积分抽奖";
+    LEFTBACK
     hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.userInteractionEnabled = YES;
     

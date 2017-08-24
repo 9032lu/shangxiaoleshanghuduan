@@ -36,6 +36,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     self.navigationItem.title = @"获取验证码";
     [self setTextFieldLeftImageView:self.codeTf leftImageName:@"钥匙"];
     //[self  getCodeNumber];

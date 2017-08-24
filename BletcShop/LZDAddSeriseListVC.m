@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"创建系列";
+    LEFTBACK
     _text_Field.borderStyle = UITextBorderStyleNone;
 
 }

@@ -20,7 +20,7 @@
     [super viewDidLoad];
 //    self.view.backgroundColor=RGB(240, 240, 240);
     self.navigationItem.title=@"店铺管理";
-    
+    LEFTBACK
     
     
 //    [self initSubViews];

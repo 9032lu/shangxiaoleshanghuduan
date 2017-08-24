@@ -87,7 +87,7 @@
     // Do any additional setup after loading the view.
     self.title = @"选择联系人";
     self.navigationItem.rightBarButtonItem = nil;
-
+LEFTBACK
     
     [self.view addSubview:self.searchBar];
     [self.view addSubview:self.footerView];

@@ -26,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"结算中心";
+    LEFTBACK
     UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
     button.frame=CGRectMake(0, 0, 30, 30);
     [button setImage:[UIImage imageNamed:@"扫描二维码"] forState:UIControlStateNormal];

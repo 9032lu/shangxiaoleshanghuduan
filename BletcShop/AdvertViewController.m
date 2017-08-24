@@ -50,6 +50,7 @@
     self.ifArea = NO;
     self.ifPlace = NO;
     self.title = @"广告推送";
+    LEFTBACK
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     self.areaArray = appdelegate.areaListArray;//@[@"高新区",@"雁塔区",@"碑林区",@"新城区"];
     self.placeArray = @[@"第一位",@"第二位",@"第三位",@"第四位"];

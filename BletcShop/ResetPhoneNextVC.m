@@ -30,6 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"更换手机号";
+    LEFTBACK
     self.topLab.text = [NSString stringWithFormat:@"请输入%@收到的短信验证码",self.phone];
     [self getCodeNumber];
     

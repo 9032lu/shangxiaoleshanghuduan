@@ -49,7 +49,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
+    LEFTBACK
     
     if (![self.navigationController.viewControllers[2] isKindOfClass:[PictureAndVeidoDetailVC class]]) {
         

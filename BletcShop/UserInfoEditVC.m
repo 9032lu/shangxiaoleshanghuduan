@@ -70,6 +70,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     [[self.contentTF.subviews firstObject] removeFromSuperview];
   
   

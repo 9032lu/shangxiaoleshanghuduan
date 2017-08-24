@@ -36,7 +36,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"#eaeaea"];
     
-    
+    LEFTBACK
     self.navigationItem.title=@"金额结算";
       LZDButton *rightBtn = [LZDButton creatLZDButton];
     rightBtn.frame = CGRectMake(kWeChatScreenWidth-50, 20, 50, 44);

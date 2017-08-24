@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"选择会员卡";
+    LEFTBACK
     [self postRequestGetCard];
     
 }

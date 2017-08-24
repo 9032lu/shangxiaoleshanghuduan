@@ -70,6 +70,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     _optionsum=0;
     _dataSourceArray=[[NSMutableArray alloc]initWithCapacity:0];
     

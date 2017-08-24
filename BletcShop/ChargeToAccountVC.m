@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"现金入账";
+    LEFTBACK
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self initSubViews];

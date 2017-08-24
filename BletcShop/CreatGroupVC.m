@@ -53,6 +53,7 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     self.title = @"创建群组";
+    LEFTBACK
     self.view.backgroundColor = [UIColor colorWithRed:0.88 green:0.88 blue:0.88 alpha:1.0];
     
     UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];

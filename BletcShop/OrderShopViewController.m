@@ -22,7 +22,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"预约处理";
-
+LEFTBACK
     self.waitArray = [[NSMutableArray alloc]init];
     self.overArray = [[NSMutableArray alloc]init];
     self.selectRow = 0;

@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"广告说明";
+    LEFTBACK
     self.view.backgroundColor = RGB(240,240 , 240);
 //    UIWebView *_webView=[[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64)];
 //    _webView.scalesPageToFit=YES;

@@ -20,6 +20,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=RGB(243, 243, 243);
     self.navigationItem.title = @"提现";
+    LEFTBACK
     UIView *bigBackView=[[UIView alloc]initWithFrame:CGRectMake(15, 20, SCREENWIDTH-30, 206)];
     bigBackView.layer.cornerRadius=16;
     bigBackView.clipsToBounds=YES;

@@ -38,6 +38,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     self.view.backgroundColor=[UIColor whiteColor];
     _dateArray=@[@"month",@"year"];
     record_type_A = @[@"buy",@"renew",@"upgrade",@"consum"];

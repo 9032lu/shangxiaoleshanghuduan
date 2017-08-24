@@ -21,6 +21,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"店铺详情";
+    LEFTBACK
     UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(SCREENWIDTH/2-40, 10, 80, 80)];
     imageView.layer.cornerRadius=40;
     imageView.clipsToBounds=YES;

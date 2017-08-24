@@ -27,7 +27,7 @@
     [super viewDidLoad];
    self.navigationItem.title=@"优惠券";
     
-    
+    LEFTBACK
     NSLog(@"%@",self.infoDic);
     _backgroundView.layer.cornerRadius=5.0f;
     _backgroundView.clipsToBounds=YES;

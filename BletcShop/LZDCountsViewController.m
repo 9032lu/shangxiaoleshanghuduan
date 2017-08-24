@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"#eaeaea"];
-    
+    LEFTBACK
     
     self.navigationItem.title=@"按次结算";
     LZDButton *rightBtn = [LZDButton creatLZDButton];

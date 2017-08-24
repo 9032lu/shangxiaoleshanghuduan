@@ -89,6 +89,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"商家介绍";
+    LEFTBACK
     oldoffset = 0.0f;
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(btnClick)];
     self.navigationItem.rightBarButtonItem=item;

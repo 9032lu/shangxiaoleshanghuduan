@@ -28,6 +28,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"个人信息";
+    LEFTBACK
     [self _initTable];
 }
 -(void)_initTable

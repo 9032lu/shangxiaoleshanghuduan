@@ -32,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"体验卡详情";
+    LEFTBACK
     self.tableView.backgroundColor=RGB(255, 255, 255);
 
 }

@@ -46,6 +46,7 @@
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
     self.navigationItem.title=@"预约处理";
+    LEFTBACK
     self.selectTag=0;
     [self initCatergray];
 }

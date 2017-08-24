@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"数据报表";
-    
+    LEFTBACK
     self.view.backgroundColor = [UIColor whiteColor];
     title_array=@[@"办卡",@"续卡",@"升级",@"现金支付"];
 

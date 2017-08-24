@@ -53,6 +53,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     _dataArray=[[NSArray alloc]init];
     _seletedState=0;
     UIButton *menuBt = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];

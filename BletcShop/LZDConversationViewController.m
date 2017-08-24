@@ -85,7 +85,7 @@
     [super viewDidLoad];
     
 
-
+LEFTBACK
    
     // 创建tableview
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,0 , kWeChatScreenWidth, kWeChatScreenHeight-64-44) style:UITableViewStylePlain];

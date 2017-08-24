@@ -59,7 +59,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    LEFTBACK
     self.title = @"会话列表";
     title_A = @[@"会话列表",@"通讯录"];
 

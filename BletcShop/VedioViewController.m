@@ -35,6 +35,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     self.view.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64-43);
 
     _webView.scrollView.bounces = NO;

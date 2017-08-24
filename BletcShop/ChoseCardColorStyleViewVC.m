@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"选卡";
-    
+    LEFTBACK
     UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc]init];
     flowlayout.itemSize = CGSizeMake((SCREENWIDTH-35)/2, (SCREENWIDTH-35)/2);
     flowlayout.minimumLineSpacing = 10;

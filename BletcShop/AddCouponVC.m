@@ -57,6 +57,7 @@
     index_=-1;
     self.view.backgroundColor=RGB(234,234,234);
     self.navigationItem.title=@"优惠券";
+    LEFTBACK
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64)];
     _scrollView.scrollEnabled=YES;
     _scrollView.keyboardDismissMode=UIScrollViewKeyboardDismissModeOnDrag;

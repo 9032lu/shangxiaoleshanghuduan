@@ -57,6 +57,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"会员延期";
     self.selectTag=0;

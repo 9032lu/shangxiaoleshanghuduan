@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"设置密码";
+    LEFTBACK
     [self setTextFieldLeftImageView:self.passWordTF leftImageName:@"锁"];
     [self setTextFieldLeftImageView:self.surePassWordTF leftImageName:@"锁"];
 

@@ -53,7 +53,7 @@
     old_btn = self.waitBtn;
     
     self.navigationItem.title = self.titleDic[@"cardName"];
-    
+    LEFTBACK
     UIButton *menuBt = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
     [menuBt addTarget:self action:@selector(addtBtnAction) forControlEvents:UIControlEventTouchUpInside];
     [menuBt setImage:[UIImage imageNamed:@"lzdAddSeriseImg"] forState:UIControlStateNormal];

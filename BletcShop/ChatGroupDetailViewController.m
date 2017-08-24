@@ -109,7 +109,7 @@
     [super viewDidLoad];
 
     
-
+LEFTBACK
     self.title = @"详情";
     self.tableView.tableFooterView = self.footerView;
     

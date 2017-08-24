@@ -41,6 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   self.navigationItem.title = @"发布广告";
+    LEFTBACK
     model=[SingleModel sharedManager];
     
     dataSourse_A = @[self.section1_A,self.section2_A];
