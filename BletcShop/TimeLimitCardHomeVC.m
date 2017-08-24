@@ -209,7 +209,7 @@
     if (sender !=old_btn) {
        
         
-        sender.backgroundColor = RGB(226,102,102);
+        sender.backgroundColor = NavBackGroundColor;
         [sender setTitleColor:[UIColor whiteColor] forState:0];
         
         old_btn.backgroundColor = [UIColor whiteColor];

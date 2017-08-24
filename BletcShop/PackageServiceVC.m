@@ -164,7 +164,7 @@
     [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_finish setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_offMarket setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    sender.backgroundColor=RGB(234, 125, 121);
+    sender.backgroundColor=NavBackGroundColor;
     _finish.backgroundColor=RGB(235, 235, 235);
     _offMarket.backgroundColor=RGB(235, 235, 235);
     _operationState.text=sender.titleLabel.text;
@@ -176,7 +176,7 @@
     [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_wait setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_offMarket setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    sender.backgroundColor=RGB(234, 125, 121);
+    sender.backgroundColor=NavBackGroundColor;
     _wait.backgroundColor=RGB(235, 235, 235);
     _offMarket.backgroundColor=RGB(235, 235, 235);
     _operationState.text=sender.titleLabel.text;
@@ -188,7 +188,7 @@
     [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_wait setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_finish setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    sender.backgroundColor=RGB(234, 125, 121);
+    sender.backgroundColor=NavBackGroundColor;
     _wait.backgroundColor=RGB(235, 235, 235);
     _finish.backgroundColor=RGB(235, 235, 235);
     _operationState.text=sender.titleLabel.text;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="listBtn" destination="X50-nD-1dZ" id="tqH-0O-Qj0"/>
                 <outlet property="pushBtn" destination="ZLM-58-iq4" id="3Wf-gQ-5Uf"/>
-                <outlet property="shuomingBtn" destination="l1t-11-s5Y" id="8Ho-B2-V9a"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -54,17 +53,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1t-11-s5Y">
-                    <rect key="frame" x="317" y="15" width="24" height="24"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="24" id="MEE-zN-SMb"/>
-                        <constraint firstAttribute="width" constant="24" id="XRz-cZ-R0f"/>
-                    </constraints>
-                    <state key="normal" image="AD_ad_qs" backgroundImage="AD_ad_qs"/>
-                    <connections>
-                        <action selector="adverconfuse:" destination="-1" eventType="touchUpInside" id="Xdc-ho-v8P"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLM-58-iq4">
                     <rect key="frame" x="62" y="280" width="250" height="150"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -103,13 +91,11 @@
                 <constraint firstItem="Rns-A2-cbP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="2kd-xJ-0jJ"/>
                 <constraint firstItem="Rns-A2-cbP" firstAttribute="top" secondItem="CfD-ao-7zs" secondAttribute="bottom" constant="131" id="9Hs-jj-uNI"/>
                 <constraint firstItem="X50-nD-1dZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="9ID-Pp-Dvr"/>
-                <constraint firstAttribute="trailing" secondItem="l1t-11-s5Y" secondAttribute="trailing" constant="34" id="Adf-yS-apc"/>
                 <constraint firstItem="ZLM-58-iq4" firstAttribute="top" secondItem="X50-nD-1dZ" secondAttribute="bottom" constant="20" id="EFe-TA-YSc"/>
                 <constraint firstItem="CfD-ao-7zs" firstAttribute="bottom" secondItem="X50-nD-1dZ" secondAttribute="bottom" id="FRI-hF-rXd"/>
                 <constraint firstItem="CfD-ao-7zs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KnZ-j3-HCC"/>
                 <constraint firstItem="ZLM-58-iq4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Q0K-eh-VHd"/>
                 <constraint firstItem="0cu-Ld-Ycq" firstAttribute="centerX" secondItem="X50-nD-1dZ" secondAttribute="centerX" id="bwk-A8-uc4"/>
-                <constraint firstItem="l1t-11-s5Y" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="15" id="g62-yK-su7"/>
                 <constraint firstItem="0cu-Ld-Ycq" firstAttribute="centerY" secondItem="X50-nD-1dZ" secondAttribute="centerY" constant="-10" id="gUu-We-obQ"/>
                 <constraint firstItem="y7P-3g-Ucf" firstAttribute="centerX" secondItem="ZLM-58-iq4" secondAttribute="centerX" id="jsG-hk-pAB"/>
                 <constraint firstItem="X50-nD-1dZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="110" id="ljk-tJ-mPJ"/>
@@ -131,8 +117,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="AD_ad_qs" width="24" height="24"/>
-        <image name="AD_icon_ad_list" width="105" height="105"/>
-        <image name="AD_icon_ad_publish" width="105" height="105"/>
+        <image name="AD_icon_ad_list" width="80" height="80"/>
+        <image name="AD_icon_ad_publish" width="80" height="80"/>
     </resources>
 </document>

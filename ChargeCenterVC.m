@@ -28,7 +28,7 @@
     self.navigationItem.title = @"结算中心";
     
     UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame=CGRectMake(0, 0, 20, 20);
+    button.frame=CGRectMake(0, 0, 18, 18);
     [button setImage:[UIImage imageNamed:@"扫描二维码"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(saoMa) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:button];

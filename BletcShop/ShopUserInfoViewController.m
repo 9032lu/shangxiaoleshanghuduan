@@ -165,9 +165,19 @@
     }
     else
     {
-        cell.textLabel.text = @"退出登录";
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
-       
+        
+        UILabel *nameLabel = [[UILabel alloc]init];
+        
+        nameLabel.frame = CGRectMake(0, 0, SCREENWIDTH, 60);
+        
+        nameLabel.backgroundColor = NavBackGroundColor;
+        nameLabel.textAlignment = NSTextAlignmentCenter;
+        nameLabel.font = [UIFont systemFontOfSize:16];
+        nameLabel.text = @"退出登录";
+        nameLabel.textColor = [UIColor whiteColor];
+        [cell addSubview:nameLabel];
+
+        
     }
     
     UIView *viewLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 1)];

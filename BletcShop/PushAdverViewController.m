@@ -13,7 +13,7 @@
 #import "AdverShowViewController.h"
 
 @interface PushAdverViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *shuomingBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *listBtn;
 @property (weak, nonatomic) IBOutlet UIButton *pushBtn;
 
@@ -24,7 +24,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"广告投放";
+    
+    
 LEFTBACK
+    
+    
+    LZDButton *button=[LZDButton creatLZDButton];
+    button.frame=CGRectMake(0, 0, 20, 20);
+    [button setTitle:@"说明" forState:0];
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:button];
+    
+    button.block = ^(LZDButton *sender) {
+      PUSH(AdverShowViewController)
+    };
+    
 }
 - (IBAction)pushAdverBtn:(UITapGestureRecognizer *)sender {
     
@@ -38,16 +52,8 @@ LEFTBACK
     [self.navigationController pushViewController:advertisementHomeVC animated:YES];
    
 }
-- (IBAction)adverconfuse:(UIButton *)sender {
-    
-    AdverShowViewController *advertisementHomeVC=[[AdverShowViewController alloc]init];
-    [self.navigationController pushViewController:advertisementHomeVC animated:YES];
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 
 
