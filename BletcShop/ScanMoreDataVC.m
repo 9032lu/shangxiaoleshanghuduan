@@ -9,6 +9,8 @@
 #import "ScanMoreDataVC.h"
 #import "Data_stastCell.h"
 #import "DOPDropDownMenu.h"
+#import "NewBuyCardRecordVC.h"
+
 @interface ScanMoreDataVC ()<UITableViewDelegate,UITableViewDataSource,DOPDropDownMenuDelegate,DOPDropDownMenuDataSource>
 {
     DOPDropDownMenu *_menu;
@@ -31,7 +33,18 @@
 }
 -(NSArray *)date_A{
     if (!_date_A) {
-        NSArray *year_A = @[@"2016",@"2017"];
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"yyyy"];
+        NSString *nowdate =  [formatter stringFromDate:date];
+        NSMutableArray *year_A = [NSMutableArray array];
+        
+        for (int i = [nowdate intValue]; i >= 2016; i --) {
+            
+            [year_A addObject:[NSString stringWithFormat:@"%d年",i]];
+        }
+        
+        
         NSArray *month_A = @[@"全年",@"1月",@"2月",@"3月",@"4月",@"5月",@"6月",@"7月",@"8月",@"9月",@"10月",@"11月",@"12月"];
         
         
@@ -46,10 +59,10 @@
     LEFTBACK
     self.view.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
     
-    
     self.table_View.estimatedRowHeight = 100;
     self.table_View.rowHeight = UITableViewAutomaticDimension;
-   
+  
+    
     _menu = [[DOPDropDownMenu alloc]initWithOrigin:CGPointMake(0, 0) andHeight:43 andSuperView:self.view];
     
     
@@ -103,6 +116,12 @@
     
 }
 
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    PUSH(NewBuyCardRecordVC)
+    vc.title = [self.content_A[indexPath.row][@"title"] stringByAppendingString:@"明细"];
+}
 
 
 @end

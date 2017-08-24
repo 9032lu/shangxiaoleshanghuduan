@@ -10,6 +10,7 @@
 #import "Data_stastCell.h"
 #import "DOPDropDownMenu.h"
 #import "ScanMoreDataVC.h"
+#import "NewBuyCardRecordVC.h"
 
 @interface Data_statisticsVC ()<UITableViewDelegate,UITableViewDataSource,DOPDropDownMenuDelegate,DOPDropDownMenuDataSource>
 {
@@ -43,7 +44,18 @@
 }
 -(NSArray *)date_A{
     if (!_date_A) {
-        NSArray *year_A = @[@"2016",@"2017"];
+        NSDate *date = [NSDate date];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"yyyy"];
+      NSString *nowdate =  [formatter stringFromDate:date];
+        NSMutableArray *year_A = [NSMutableArray array];
+        
+        for (int i = [nowdate intValue]; i >= 2016; i --) {
+            
+            [year_A addObject:[NSString stringWithFormat:@"%d年",i]];
+        }
+        
+
         NSArray *month_A = @[@"全年",@"1月",@"2月",@"3月",@"4月",@"5月",@"6月",@"7月",@"8月",@"9月",@"10月",@"11月",@"12月"];
 
         
@@ -150,6 +162,12 @@
     return cell;
     
     
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    PUSH(NewBuyCardRecordVC)
+    vc.title = [self.content_A[indexPath.row][@"title"] stringByAppendingString:@"明细"];
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
