@@ -197,6 +197,14 @@
 		1CF283641C5862A200F3952A /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF283621C5862A200F3952A /* UIViewExt.m */; };
 		1CF2839D1C58C48900F3952A /* more_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF283861C58C48900F3952A /* more_default.png */; };
 		1CF2839E1C58C48900F3952A /* more_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CF283871C58C48900F3952A /* more_selected.png */; };
+		D90071871F4D6B5E003BD522 /* Data_statisticsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D90071851F4D6B5E003BD522 /* Data_statisticsVC.m */; };
+		D90071881F4D6B5E003BD522 /* Data_statisticsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D90071861F4D6B5E003BD522 /* Data_statisticsVC.xib */; };
+		D900718D1F4D6C24003BD522 /* Data_stastCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D900718B1F4D6C24003BD522 /* Data_stastCell.m */; };
+		D900718E1F4D6C24003BD522 /* Data_stastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D900718C1F4D6C24003BD522 /* Data_stastCell.xib */; };
+		D90071951F4E5C93003BD522 /* DOPDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D90071911F4E5C93003BD522 /* DOPDropDownMenu.m */; };
+		D90071961F4E5C93003BD522 /* icon_chose_arrow_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90071921F4E5C93003BD522 /* icon_chose_arrow_nor@2x.png */; };
+		D90071971F4E5C93003BD522 /* icon_chose_arrow_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90071931F4E5C93003BD522 /* icon_chose_arrow_sel@2x.png */; };
+		D90071981F4E5C93003BD522 /* icon_chose_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90071941F4E5C93003BD522 /* icon_chose_bottom@2x.png */; };
 		D91395B11CF4589400509491 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D91395B01CF4589400509491 /* mapapi.bundle */; };
 		D9210BBC1CC732AC00010DF7 /* RjgmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */; };
 		D9222B041D13C8EC00C82683 /* CreditThanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9222B031D13C8EC00C82683 /* CreditThanViewController.m */; };
@@ -1027,6 +1035,17 @@
 		1CF283631C5862A200F3952A /* CGCommont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGCommont.h; sourceTree = "<group>"; };
 		1CF283861C58C48900F3952A /* more_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_default.png; sourceTree = "<group>"; };
 		1CF283871C58C48900F3952A /* more_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = more_selected.png; sourceTree = "<group>"; };
+		D90071841F4D6B5E003BD522 /* Data_statisticsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data_statisticsVC.h; sourceTree = "<group>"; };
+		D90071851F4D6B5E003BD522 /* Data_statisticsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data_statisticsVC.m; sourceTree = "<group>"; };
+		D90071861F4D6B5E003BD522 /* Data_statisticsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Data_statisticsVC.xib; sourceTree = "<group>"; };
+		D900718A1F4D6C24003BD522 /* Data_stastCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data_stastCell.h; sourceTree = "<group>"; };
+		D900718B1F4D6C24003BD522 /* Data_stastCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Data_stastCell.m; sourceTree = "<group>"; };
+		D900718C1F4D6C24003BD522 /* Data_stastCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Data_stastCell.xib; sourceTree = "<group>"; };
+		D90071901F4E5C93003BD522 /* DOPDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOPDropDownMenu.h; sourceTree = "<group>"; };
+		D90071911F4E5C93003BD522 /* DOPDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOPDropDownMenu.m; sourceTree = "<group>"; };
+		D90071921F4E5C93003BD522 /* icon_chose_arrow_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_arrow_nor@2x.png"; sourceTree = "<group>"; };
+		D90071931F4E5C93003BD522 /* icon_chose_arrow_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_arrow_sel@2x.png"; sourceTree = "<group>"; };
+		D90071941F4E5C93003BD522 /* icon_chose_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_bottom@2x.png"; sourceTree = "<group>"; };
 		D91395B01CF4589400509491 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		D9210BBA1CC732AC00010DF7 /* RjgmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RjgmViewController.h; sourceTree = "<group>"; };
 		D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RjgmViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
@@ -2015,6 +2034,7 @@
 		079386BD1C55BB670021B385 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				D900718F1F4E5C81003BD522 /* 下拉菜单 */,
 				189CC5BC1EFA011100A73BB6 /* Tools */,
 				D99760ED1E690575008E21FE /* SawtoothView.h */,
 				D99760EE1E690575008E21FE /* SawtoothView.m */,
@@ -2871,6 +2891,7 @@
 		1CDA9E0D1C5A11C600DFE518 /* 业务中心 */ = {
 			isa = PBXGroup;
 			children = (
+				D90071831F4D6B07003BD522 /* 新的数据统计页面 */,
 				D9CDFBB61CC4DB8C0054EBE3 /* ShopManagerViewController.h */,
 				D9CDFBB71CC4DB8C0054EBE3 /* ShopManagerViewController.m */,
 				D925E6421CC60EEC0020CEC7 /* 多种业务界面 */,
@@ -3047,6 +3068,39 @@
 			);
 			name = image;
 			path = "../主页图标";
+			sourceTree = "<group>";
+		};
+		D90071831F4D6B07003BD522 /* 新的数据统计页面 */ = {
+			isa = PBXGroup;
+			children = (
+				D90071891F4D6BE0003BD522 /* 数据统计cell */,
+				D90071841F4D6B5E003BD522 /* Data_statisticsVC.h */,
+				D90071851F4D6B5E003BD522 /* Data_statisticsVC.m */,
+				D90071861F4D6B5E003BD522 /* Data_statisticsVC.xib */,
+			);
+			name = "新的数据统计页面";
+			sourceTree = "<group>";
+		};
+		D90071891F4D6BE0003BD522 /* 数据统计cell */ = {
+			isa = PBXGroup;
+			children = (
+				D900718A1F4D6C24003BD522 /* Data_stastCell.h */,
+				D900718B1F4D6C24003BD522 /* Data_stastCell.m */,
+				D900718C1F4D6C24003BD522 /* Data_stastCell.xib */,
+			);
+			name = "数据统计cell";
+			sourceTree = "<group>";
+		};
+		D900718F1F4E5C81003BD522 /* 下拉菜单 */ = {
+			isa = PBXGroup;
+			children = (
+				D90071901F4E5C93003BD522 /* DOPDropDownMenu.h */,
+				D90071911F4E5C93003BD522 /* DOPDropDownMenu.m */,
+				D90071921F4E5C93003BD522 /* icon_chose_arrow_nor@2x.png */,
+				D90071931F4E5C93003BD522 /* icon_chose_arrow_sel@2x.png */,
+				D90071941F4E5C93003BD522 /* icon_chose_bottom@2x.png */,
+			);
+			name = "下拉菜单";
 			sourceTree = "<group>";
 		};
 		D925E6421CC60EEC0020CEC7 /* 多种业务界面 */ = {
@@ -4547,6 +4601,7 @@
 				D93027E11CFEB641007447D2 /* star_selected.png in Resources */,
 				D949EC241CE192750023B6D6 /* cities.plist in Resources */,
 				D9BA5F041D7564090067E7A2 /* FriendRequest.plist in Resources */,
+				D90071961F4E5C93003BD522 /* icon_chose_arrow_nor@2x.png in Resources */,
 				D92ACDD41F0CD5EE00858727 /* TimeLimitCardHomeVC.xib in Resources */,
 				1C9E822D1C603B7A0007BF02 /* arraw_right@2x.png in Resources */,
 				D92ACDA61F0CD4FF00858727 /* CardDetailShowProdictCell.xib in Resources */,
@@ -4566,6 +4621,7 @@
 				18D7C48C1D5B12BA00AEF545 /* mohu-08.png in Resources */,
 				18D8464C1ED591630048F010 /* 线下角标.png in Resources */,
 				180CC7C01E64110D002F5E35 /* 收费标准.png in Resources */,
+				D900718E1F4D6C24003BD522 /* Data_stastCell.xib in Resources */,
 				18D7C4911D5B12BA00AEF545 /* mohu-13.png in Resources */,
 				189757491E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt in Resources */,
 				18D7C48F1D5B12BA00AEF545 /* mohu-11.png in Resources */,
@@ -4618,6 +4674,7 @@
 				D9637DFF1D59BAF900C19D0B /* admin_p.png in Resources */,
 				18543E361ECACA3E00E0A4DA /* ChooseCardTypeVC.xib in Resources */,
 				1817FF591D405BE100AFC965 /* mhead_default.png in Resources */,
+				D90071881F4D6B5E003BD522 /* Data_statisticsVC.xib in Resources */,
 				0793868A1C55B5CA0021B385 /* Main.storyboard in Resources */,
 				1A4173B91D787B1400A70601 /* Localizable.strings in Resources */,
 				1CCD500F1C85281A00447AB8 /* 头像.png in Resources */,
@@ -4651,7 +4708,9 @@
 				D9AB25421D88E4ED000E9288 /* VoiceSearchFeedback020@2x.png in Resources */,
 				1C9E82311C603B7A0007BF02 /* 首页最上面@2x.png in Resources */,
 				D96981591ED57A3D00A44142 /* 引导页3.png in Resources */,
+				D90071971F4E5C93003BD522 /* icon_chose_arrow_sel@2x.png in Resources */,
 				D947E45D1D7D3AE700F9FEE8 /* 聊天键盘-icon-拍照@2x.png in Resources */,
+				D90071981F4E5C93003BD522 /* icon_chose_bottom@2x.png in Resources */,
 				D92ACDD21F0CD5EE00858727 /* EricForTimeLimitCell.xib in Resources */,
 				1843104B1E6F9C39005521BF /* AddCouponDetailsVC.xib in Resources */,
 				D9AB25351D88E4ED000E9288 /* VoiceSearchFeedback007@2x.png in Resources */,
@@ -4751,6 +4810,7 @@
 				180DC3841EF26ADB00DF9474 /* NoVipCardCustomView.m in Sources */,
 				1843104A1E6F9C39005521BF /* AddCouponDetailsVC.m in Sources */,
 				D98ECBD81D9D0A9C00BEDD57 /* LZDCountsViewController.m in Sources */,
+				D900718D1F4D6C24003BD522 /* Data_stastCell.m in Sources */,
 				D9BB4DDA1E04EA8200971BCC /* NewOrderShopViewController.m in Sources */,
 				D9DEED221CACED7C00ACDD00 /* SDWebImageManager.m in Sources */,
 				D9B3A5B61D74255700F3F27E /* UIImage+EMMultiFormat.m in Sources */,
@@ -5027,6 +5087,7 @@
 				1817FF5C1D40665900AFC965 /* MemberDetailViewController.m in Sources */,
 				1CDCCD1F1C7594040094E70D /* AFURLSessionManager.m in Sources */,
 				D9B3A5A41D74255700F3F27E /* MWGridViewController.m in Sources */,
+				D90071871F4D6B5E003BD522 /* Data_statisticsVC.m in Sources */,
 				D958AD6C1E654CF200B0776F /* JHScatterChart.m in Sources */,
 				D958AD6A1E654CF200B0776F /* JHRadarChart.m in Sources */,
 				D92ACDB31F0CD52100858727 /* CreatPackageCardVC.m in Sources */,
@@ -5095,6 +5156,7 @@
 				D97EE7F21D94D966009BFD77 /* NewMiddleViewController.m in Sources */,
 				D958AD641E654CF200B0776F /* JHChart.m in Sources */,
 				D93A3AA51CDC3DD60010F72B /* DelayShopViewController.m in Sources */,
+				D90071951F4E5C93003BD522 /* DOPDropDownMenu.m in Sources */,
 				1CDCCD191C7594040094E70D /* AFHTTPSessionManager.m in Sources */,
 				D92ACDF61F0CD68600858727 /* CustomeAlertView.m in Sources */,
 				D92ACDF91F0CD68600858727 /* LZDProgressView.m in Sources */,

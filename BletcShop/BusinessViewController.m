@@ -31,6 +31,9 @@
 #import "AddCouponHomeVC.h"
 //#import "AdvertisementHomeVC.h"
 
+#import "Data_statisticsVC.h"
+
+
 #import "AuthFailShopVC.h"
 
 #import "PushAdverViewController.h"
@@ -288,8 +291,10 @@
 }
 //数据报表
 -(void)gotoDataTable{
-    CheckDataViewController *checkVC=[[CheckDataViewController alloc]init];
-    [self.navigationController pushViewController:checkVC animated:YES];
+    
+    PUSH(Data_statisticsVC)
+//    CheckDataViewController *checkVC=[[CheckDataViewController alloc]init];
+//    [self.navigationController pushViewController:checkVC animated:YES];
 }
 
 
