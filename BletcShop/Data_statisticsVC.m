@@ -9,6 +9,8 @@
 #import "Data_statisticsVC.h"
 #import "Data_stastCell.h"
 #import "DOPDropDownMenu.h"
+#import "ScanMoreDataVC.h"
+
 @interface Data_statisticsVC ()<UITableViewDelegate,UITableViewDataSource,DOPDropDownMenuDelegate,DOPDropDownMenuDataSource>
 {
     DOPDropDownMenu *_menu;
@@ -178,6 +180,8 @@
 }
 
 - (IBAction)lookOtherTap:(UITapGestureRecognizer *)sender {
+    
+    PUSH(ScanMoreDataVC)
 }
 
 

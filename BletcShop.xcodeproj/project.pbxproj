@@ -209,6 +209,8 @@
 		D90071961F4E5C93003BD522 /* icon_chose_arrow_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90071921F4E5C93003BD522 /* icon_chose_arrow_nor@2x.png */; };
 		D90071971F4E5C93003BD522 /* icon_chose_arrow_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90071931F4E5C93003BD522 /* icon_chose_arrow_sel@2x.png */; };
 		D90071981F4E5C93003BD522 /* icon_chose_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90071941F4E5C93003BD522 /* icon_chose_bottom@2x.png */; };
+		D900719D1F4E761E003BD522 /* ScanMoreDataVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D900719B1F4E761E003BD522 /* ScanMoreDataVC.m */; };
+		D900719E1F4E761E003BD522 /* ScanMoreDataVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D900719C1F4E761E003BD522 /* ScanMoreDataVC.xib */; };
 		D91395B11CF4589400509491 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D91395B01CF4589400509491 /* mapapi.bundle */; };
 		D9210BBC1CC732AC00010DF7 /* RjgmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */; };
 		D9222B041D13C8EC00C82683 /* CreditThanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9222B031D13C8EC00C82683 /* CreditThanViewController.m */; };
@@ -1056,6 +1058,9 @@
 		D90071921F4E5C93003BD522 /* icon_chose_arrow_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_arrow_nor@2x.png"; sourceTree = "<group>"; };
 		D90071931F4E5C93003BD522 /* icon_chose_arrow_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_arrow_sel@2x.png"; sourceTree = "<group>"; };
 		D90071941F4E5C93003BD522 /* icon_chose_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_chose_bottom@2x.png"; sourceTree = "<group>"; };
+		D900719A1F4E761E003BD522 /* ScanMoreDataVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanMoreDataVC.h; sourceTree = "<group>"; };
+		D900719B1F4E761E003BD522 /* ScanMoreDataVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanMoreDataVC.m; sourceTree = "<group>"; };
+		D900719C1F4E761E003BD522 /* ScanMoreDataVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanMoreDataVC.xib; sourceTree = "<group>"; };
 		D91395B01CF4589400509491 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		D9210BBA1CC732AC00010DF7 /* RjgmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RjgmViewController.h; sourceTree = "<group>"; };
 		D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RjgmViewController.m; sourceTree = "<group>"; wrapsLines = 1; };
@@ -3097,6 +3102,7 @@
 		D90071831F4D6B07003BD522 /* 新的数据统计页面 */ = {
 			isa = PBXGroup;
 			children = (
+				D90071991F4E75C7003BD522 /* 查看更多 */,
 				D90071891F4D6BE0003BD522 /* 数据统计cell */,
 				D90071841F4D6B5E003BD522 /* Data_statisticsVC.h */,
 				D90071851F4D6B5E003BD522 /* Data_statisticsVC.m */,
@@ -3125,6 +3131,16 @@
 				D90071941F4E5C93003BD522 /* icon_chose_bottom@2x.png */,
 			);
 			name = "下拉菜单";
+			sourceTree = "<group>";
+		};
+		D90071991F4E75C7003BD522 /* 查看更多 */ = {
+			isa = PBXGroup;
+			children = (
+				D900719A1F4E761E003BD522 /* ScanMoreDataVC.h */,
+				D900719B1F4E761E003BD522 /* ScanMoreDataVC.m */,
+				D900719C1F4E761E003BD522 /* ScanMoreDataVC.xib */,
+			);
+			name = "查看更多";
 			sourceTree = "<group>";
 		};
 		D925E6421CC60EEC0020CEC7 /* 多种业务界面 */ = {
@@ -4747,6 +4763,7 @@
 				181F9C991ECBFF82003A62AE /* xilietishi.png in Resources */,
 				D92ACDCA1F0CD5B000858727 /* AddPakageServiceVC.xib in Resources */,
 				D9D315DB1E07C9E5009FB465 /* QQ20161219-0.png in Resources */,
+				D900719E1F4E761E003BD522 /* ScanMoreDataVC.xib in Resources */,
 				D94DF23C1CAE08F7000D5B69 /* share.png in Resources */,
 				D949C15B1CBF7E4D0091D8FC /* bankcard.png in Resources */,
 				D9D50D881D879B9900A5E469 /* emotion@2x.png in Resources */,
@@ -5017,6 +5034,7 @@
 				D972271D1F32F8CB009D0E2A /* ChangePasswordViewController.m in Sources */,
 				1C54234D1C9803E60028DC30 /* ShopLandController.m in Sources */,
 				D958AD6E1E654CF200B0776F /* JHTableChart.m in Sources */,
+				D900719D1F4E761E003BD522 /* ScanMoreDataVC.m in Sources */,
 				18E9E1451D88E8EF007981B6 /* PersonDetailViewController.m in Sources */,
 				D9CF3FA71D76730300D9D0EC /* GroupViewController.m in Sources */,
 				D9B3A5C51D74255700F3F27E /* PSTGridLayoutItem.m in Sources */,

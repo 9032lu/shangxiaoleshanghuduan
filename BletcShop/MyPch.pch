@@ -18,7 +18,7 @@
 #define LZDScale ([UIScreen mainScreen].bounds.size.width/375)
 
 #define SOCKETHOST @"101.201.100.191"//@"192.168.0.117"
-#define LEFTBACK  LZDButton *back =[LZDButton creatLZDButton];back.frame = CGRectMake(13, 31, 10, 20);[back setImage:[UIImage imageNamed:@"返回箭头"] forState:0];back.block = ^(LZDButton *sender) {POP};self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
+#define LEFTBACK  LZDButton *back =[LZDButton creatLZDButton];back.frame = CGRectMake(13, 31, 10, 20);[back setImage:[UIImage imageNamed:@"leftArrow"] forState:0];back.block = ^(LZDButton *sender) {POP};self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
 
 
 
