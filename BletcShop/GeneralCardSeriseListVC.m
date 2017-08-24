@@ -54,10 +54,10 @@
     
     self.navigationItem.title = self.titleDic[@"cardName"];
     LEFTBACK
-    UIButton *menuBt = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
+    UIButton *menuBt = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20,20)];
     [menuBt addTarget:self action:@selector(addtBtnAction) forControlEvents:UIControlEventTouchUpInside];
-    [menuBt setImage:[UIImage imageNamed:@"lzdAddSeriseImg"] forState:UIControlStateNormal];
-    [menuBt setImage:[UIImage imageNamed:@"lzdAddSeriseImg"] forState:UIControlStateHighlighted];
+    [menuBt setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateNormal];
+    [menuBt setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateHighlighted];
     UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithCustomView:menuBt];
     self.navigationItem.rightBarButtonItem = item;
     

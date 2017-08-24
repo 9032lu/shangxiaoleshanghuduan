@@ -34,7 +34,7 @@
     
     old_btn= _wait;
     
-    UIButton *menuBt = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 25, 25)];
+    UIButton *menuBt = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
     [menuBt addTarget:self action:@selector(addtBtnAction:) forControlEvents:UIControlEventTouchUpInside];
     [menuBt setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateNormal];
     [menuBt setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateHighlighted];
