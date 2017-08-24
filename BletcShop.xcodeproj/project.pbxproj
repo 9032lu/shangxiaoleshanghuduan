@@ -3101,11 +3101,10 @@
 		D90071831F4D6B07003BD522 /* 新的数据统计页面 */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
+
 				D90071991F4E75C7003BD522 /* 查看更多 */,
-=======
+
 				18390D601F4D87CA008FFBDD /* 新消费记录 */,
->>>>>>> c1fb79ed11e266d23a74738e6d79295ab946d0ca
 				D90071891F4D6BE0003BD522 /* 数据统计cell */,
 				D90071841F4D6B5E003BD522 /* Data_statisticsVC.h */,
 				D90071851F4D6B5E003BD522 /* Data_statisticsVC.m */,
