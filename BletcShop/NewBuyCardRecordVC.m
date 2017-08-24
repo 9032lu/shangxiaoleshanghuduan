@@ -8,13 +8,26 @@
 
 #import "NewBuyCardRecordVC.h"
 #import "NewBuyCardRecordsTableViewCell.h"
-//#import "DOPDropDownMenu.h"
-@interface NewBuyCardRecordVC ()<UITableViewDelegate,UITableViewDataSource>
+#import "DOPDropDownMenu.h"
+@interface NewBuyCardRecordVC ()<UITableViewDelegate,UITableViewDataSource,DOPDropDownMenuDelegate,DOPDropDownMenuDataSource>
+{
+    DOPDropDownMenu *_menu;;
+}
 @property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)NSArray *date_A;
 @end
 
 @implementation NewBuyCardRecordVC
-
+-(NSArray *)date_A{
+    if (!_date_A) {
+        NSArray *year_A = @[@"2016",@"2017"];
+        NSArray *month_A = @[@"1月",@"2月",@"3月",@"4月",@"5月",@"6月",@"7月",@"8月",@"9月",@"10月",@"11月",@"12月"];
+        NSArray *dayArray=@[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",@"31"];
+        
+        _date_A = @[year_A,month_A,dayArray];
+    }
+    return _date_A;
+}
 -(void)chat{
     
 }
@@ -25,6 +38,12 @@
     
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"统计表" style:UIBarButtonItemStylePlain target:self action:@selector(chat)];
     self.navigationItem.rightBarButtonItem=rightItem;
+    
+    _menu = [[DOPDropDownMenu alloc]initWithOrigin:CGPointMake(0, 0) andHeight:40 andSuperView:self.view];
+    
+    _menu.delegate = self;
+    _menu.dataSource = self;
+    [self.view addSubview:_menu];
     
     UILabel *totalMoney=[[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, 66)];
     totalMoney.text=@"办卡总金额：10′000元";
@@ -77,6 +96,27 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
 }
+
+#pragma mark ---DOPDropDownMenu---DELEGATE
+-(NSString *)menu:(DOPDropDownMenu *)menu titleForRowAtIndexPath:(DOPIndexPath *)indexPath{
+    
+    return self.date_A[indexPath.column][indexPath.row];
+}
+
+-(NSInteger)menu:(DOPDropDownMenu *)menu numberOfRowsInColumn:(NSInteger)column{
+    
+    return [self.date_A[column] count];
+}
+-(NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu{
+    return self.date_A.count;
+}
+-(void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath{
+    
+    NSLog(@"------%ld",indexPath.row);
+}
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -2882,7 +2882,6 @@
 				1CDA9E0E1C5A11E800DFE518 /* 更多 */,
 				1CDA9E0D1C5A11C600DFE518 /* 业务中心 */,
 				1CDA9E0C1C5A11AD00DFE518 /* 我的商品 */,
-				18390D601F4D87CA008FFBDD /* 新消费记录 */,
 			);
 			name = "商户端";
 			sourceTree = "<group>";
@@ -3097,6 +3096,7 @@
 		D90071831F4D6B07003BD522 /* 新的数据统计页面 */ = {
 			isa = PBXGroup;
 			children = (
+				18390D601F4D87CA008FFBDD /* 新消费记录 */,
 				D90071891F4D6BE0003BD522 /* 数据统计cell */,
 				D90071841F4D6B5E003BD522 /* Data_statisticsVC.h */,
 				D90071851F4D6B5E003BD522 /* Data_statisticsVC.m */,
