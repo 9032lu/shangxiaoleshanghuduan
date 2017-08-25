@@ -26,7 +26,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = tableViewBackgroundColor;
     self.navigationItem.title = @"个人信息";
     LEFTBACK
     [self _initTable];
@@ -34,7 +34,6 @@
 -(void)_initTable
 {
     UITableView *mytable = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStyleGrouped];
-    mytable.backgroundColor = [UIColor clearColor];
     mytable.dataSource = self;
     mytable.delegate = self;
     mytable.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -47,42 +46,27 @@
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     
-    return 2;
+    return 1;
     
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section==0) {
-        
-            return 70;
-    }
-    else
-        return 60;
+    return (SCREENHEIGHT-64-80-10)/7;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    if (section == 0) {
         return 7;
-    }
-    else
-        return 1;
 }
 
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    
-    return 20;
+   
+        return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section==0) {
-        return 0.01;
-    }
-    else
-        return SCREENHEIGHT-40-80-60-70*7;
-    
+        return 80;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -92,9 +76,24 @@
 }
 - (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 100)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
     view.backgroundColor = tableViewBackgroundColor;
+    
+    UIButton *nameButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nameButton.frame = CGRectMake(0, 10, SCREENWIDTH, 60);
+    nameButton.backgroundColor = NavBackGroundColor;
+    nameButton.titleLabel.font= [UIFont systemFontOfSize:16];
+    [nameButton setTitle:@"退出登录" forState:UIControlStateNormal];
+    [nameButton addTarget:self action:@selector(quitLoginClick) forControlEvents:UIControlEventTouchUpInside];
+    [nameButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [view addSubview:nameButton];
+
     return view;
+}
+-(void)quitLoginClick{
+    //进入选择界面
+    UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"是否确认退出登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+    [alertView show];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
@@ -103,12 +102,12 @@
     // 判断为空进行初始化  --（当拉动页面显示超过主页面内容的时候就会重用之前的cell，而不会再次初始化）
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-        cell.backgroundColor = [UIColor clearColor];
+        cell.backgroundColor = [UIColor whiteColor];
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    if (indexPath.section==0) {
+    
         NSArray *labelStringArray =@[@"昵称",@"店铺名",@"手机号",@"修改密码",@"地址",@"保证金",@"入驻协议"];
         UILabel *nameLabel = [[UILabel alloc]init];
         
@@ -161,24 +160,7 @@
             
             
             [cell addSubview:descripLabel];
-        
-    }
-    else
-    {
-        
-        UILabel *nameLabel = [[UILabel alloc]init];
-        
-        nameLabel.frame = CGRectMake(0, 0, SCREENWIDTH, 60);
-        
-        nameLabel.backgroundColor = NavBackGroundColor;
-        nameLabel.textAlignment = NSTextAlignmentCenter;
-        nameLabel.font = [UIFont systemFontOfSize:16];
-        nameLabel.text = @"退出登录";
-        nameLabel.textColor = [UIColor whiteColor];
-        [cell addSubview:nameLabel];
-
-        
-    }
+    
     
     UIView *viewLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 1)];
     viewLine.backgroundColor = [UIColor grayColor];
@@ -252,12 +234,6 @@
 
             
         }
-        
-    }else {
-
-        //进入选择界面
-        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"是否确认退出登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
-        [alertView show];
         
     }
     

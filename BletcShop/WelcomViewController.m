@@ -38,7 +38,8 @@
     [appdelegate _initChose];
 }
 -(void)makeBannerView{
-     imageArray = @[@"引导页1",@"引导页2",@"引导页3"];
+    // imageArray = @[@"引导页1",@"引导页2",@"引导页3"];
+    imageArray=@[@"引导页one",@"引导页two",@"引导页three"];
 //    imageArray = @[@"引导页-01",@"引导页-02",@"引导页-03-01"];
 
     _scrollView.contentSize = CGSizeMake(SCREENWIDTH*imageArray.count,_scrollView.frame.size.height);
@@ -55,14 +56,14 @@
         
         if (i==imageArray.count-1) {
             imageView.userInteractionEnabled = YES;
-            _loginBt = [[UIButton alloc]initWithFrame:CGRectMake((SCREENWIDTH-105)/2, SCREENHEIGHT-103, 105, 30)];
-            _loginBt.layer.borderColor = RGB(238, 179, 152).CGColor;
+            _loginBt = [[UIButton alloc]initWithFrame:CGRectMake((SCREENWIDTH-140)/2, SCREENHEIGHT-110, 140, 35)];
+            _loginBt.layer.borderColor = NavBackGroundColor.CGColor;
             _loginBt.layer.borderWidth = 1;
 
-            _loginBt.layer.cornerRadius = 15;
-            [_loginBt setTitle:@"GO" forState:0];
-            [_loginBt setTitleColor:RGB(238, 179, 152) forState:0];
-            _loginBt.titleLabel.font = [UIFont systemFontOfSize:18];
+            _loginBt.layer.cornerRadius = 17.5;
+            [_loginBt setTitle:@"立即体验" forState:0];
+            [_loginBt setTitleColor:NavBackGroundColor forState:0];
+            _loginBt.titleLabel.font = [UIFont systemFontOfSize:15];
             
             [_loginBt addTarget:self action:@selector(firstView) forControlEvents:UIControlEventTouchUpInside];
             [imageView addSubview:_loginBt];

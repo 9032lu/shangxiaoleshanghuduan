@@ -48,6 +48,9 @@
 		184D2F491F4E8520008F8C55 /* 下A.png in Resources */ = {isa = PBXBuildFile; fileRef = 184D2F471F4E8520008F8C55 /* 下A.png */; };
 		184D2F4C1F4E8648008F8C55 /* 线上shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 184D2F4A1F4E8648008F8C55 /* 线上shop.png */; };
 		184D2F4D1F4E8648008F8C55 /* 线下shop.png in Resources */ = {isa = PBXBuildFile; fileRef = 184D2F4B1F4E8648008F8C55 /* 线下shop.png */; };
+		184D2F571F5007F0008F8C55 /* 引导页three.png in Resources */ = {isa = PBXBuildFile; fileRef = 184D2F541F5007F0008F8C55 /* 引导页three.png */; };
+		184D2F581F5007F0008F8C55 /* 引导页one.png in Resources */ = {isa = PBXBuildFile; fileRef = 184D2F551F5007F0008F8C55 /* 引导页one.png */; };
+		184D2F591F5007F0008F8C55 /* 引导页two.png in Resources */ = {isa = PBXBuildFile; fileRef = 184D2F561F5007F0008F8C55 /* 引导页two.png */; };
 		18543E351ECACA3E00E0A4DA /* ChooseCardTypeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18543E331ECACA3E00E0A4DA /* ChooseCardTypeVC.m */; };
 		18543E361ECACA3E00E0A4DA /* ChooseCardTypeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18543E341ECACA3E00E0A4DA /* ChooseCardTypeVC.xib */; };
 		18543E381ECAD89200E0A4DA /* quan3.png in Resources */ = {isa = PBXBuildFile; fileRef = 18543E371ECAD89100E0A4DA /* quan3.png */; };
@@ -770,6 +773,9 @@
 		184D2F471F4E8520008F8C55 /* 下A.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下A.png"; sourceTree = "<group>"; };
 		184D2F4A1F4E8648008F8C55 /* 线上shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线上shop.png"; sourceTree = "<group>"; };
 		184D2F4B1F4E8648008F8C55 /* 线下shop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线下shop.png"; sourceTree = "<group>"; };
+		184D2F541F5007F0008F8C55 /* 引导页three.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页three.png"; sourceTree = "<group>"; };
+		184D2F551F5007F0008F8C55 /* 引导页one.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页one.png"; sourceTree = "<group>"; };
+		184D2F561F5007F0008F8C55 /* 引导页two.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "引导页two.png"; sourceTree = "<group>"; };
 		18543E321ECACA3E00E0A4DA /* ChooseCardTypeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCardTypeVC.h; sourceTree = "<group>"; };
 		18543E331ECACA3E00E0A4DA /* ChooseCardTypeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCardTypeVC.m; sourceTree = "<group>"; };
 		18543E341ECACA3E00E0A4DA /* ChooseCardTypeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseCardTypeVC.xib; sourceTree = "<group>"; };
@@ -1999,6 +2005,9 @@
 				18B9BEAB1F4AAAD100863CB1 /* XLAlertView.m */,
 				18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */,
 				18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */,
+				184D2F541F5007F0008F8C55 /* 引导页three.png */,
+				184D2F551F5007F0008F8C55 /* 引导页one.png */,
+				184D2F561F5007F0008F8C55 /* 引导页two.png */,
 				1CDA9E081C5A113000DFE518 /* 商户端 */,
 				D97227101F32D271009D0E2A /* 其他类 */,
 				079386C01C55BBBF0021B385 /* 更多 */,
@@ -4664,11 +4673,13 @@
 				D97227351F346651009D0E2A /* EricTradeTableViewCell.xib in Resources */,
 				D947E4531D7D164100F9FEE8 /* chatListCellHead.png in Resources */,
 				189CC5AE1EF9307000A73BB6 /* ResetPhoneViewController.xib in Resources */,
+				184D2F571F5007F0008F8C55 /* 引导页three.png in Resources */,
 				D96555461E33306B0096D815 /* 登陆-05(2).png in Resources */,
 				189CC5E51EFA3E4200A73BB6 /* 红色动效.gif in Resources */,
 				D92ACDB41F0CD52100858727 /* CreatPackageCardVC.xib in Resources */,
 				D98FDF8A1E601C660057C206 /* AD_ad_qs@2x.png in Resources */,
 				D92ACDC11F0CD59500858727 /* ChooseProductVC.xib in Resources */,
+				184D2F591F5007F0008F8C55 /* 引导页two.png in Resources */,
 				D9698FAE1EEFC12500D76F3F /* AddMoneyOrCountCell.xib in Resources */,
 				D9AB25391D88E4ED000E9288 /* VoiceSearchFeedback011@2x.png in Resources */,
 				D9E28FC61D2F75A9004514DF /* icon1.png in Resources */,
@@ -4677,6 +4688,7 @@
 				18D7C48C1D5B12BA00AEF545 /* mohu-08.png in Resources */,
 				18D8464C1ED591630048F010 /* 线下角标.png in Resources */,
 				180CC7C01E64110D002F5E35 /* 收费标准.png in Resources */,
+				184D2F581F5007F0008F8C55 /* 引导页one.png in Resources */,
 				D900718E1F4D6C24003BD522 /* Data_stastCell.xib in Resources */,
 				18D7C4911D5B12BA00AEF545 /* mohu-13.png in Resources */,
 				189757491E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt in Resources */,
