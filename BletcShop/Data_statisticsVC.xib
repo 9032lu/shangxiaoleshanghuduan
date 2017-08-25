@@ -15,6 +15,7 @@
                 <outlet property="headerView" destination="Qv5-WD-pwP" id="UFa-Q8-s7c"/>
                 <outlet property="menu_backView" destination="Bnk-uM-r2l" id="kHD-Dd-A9C"/>
                 <outlet property="table_View" destination="uc9-tS-gQs" id="NgQ-Bu-eVj"/>
+                <outlet property="total_money" destination="yDA-Jp-gxq" id="pba-9b-hlf"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

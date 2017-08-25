@@ -18,13 +18,19 @@
     CGFloat contentOffset_y;
     
     CGFloat origin_Y;
+    
+    NSString *year_s;
+    NSString *month_s;
+    
 }
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (strong, nonatomic) IBOutlet UIView *footView;
 @property (weak, nonatomic) IBOutlet UITableView *table_View;
 @property (strong, nonatomic) IBOutlet UIView *menu_backView;
+@property (strong, nonatomic) IBOutlet UILabel *total_money;
 
 @property(nonatomic,strong) NSArray *content_A;
+@property(nonatomic,strong) NSDictionary *data_dic;
 
 @property(nonatomic,strong)NSArray *date_A;
 @property BOOL show;
@@ -32,6 +38,12 @@
 
 @implementation Data_statisticsVC
 
+-(NSDictionary *)data_dic{
+    if (!_data_dic) {
+        _data_dic = [NSDictionary dictionary];
+    }
+    return _data_dic;
+}
 
 -(NSArray *)content_A{
     if (!_content_A) {
@@ -56,7 +68,7 @@
         }
         
 
-        NSArray *month_A = @[@"全年",@"1月",@"2月",@"3月",@"4月",@"5月",@"6月",@"7月",@"8月",@"9月",@"10月",@"11月",@"12月"];
+        NSArray *month_A = @[@"全年",@"01月",@"02月",@"03月",@"04月",@"05月",@"06月",@"07月",@"08月",@"09月",@"10月",@"11月",@"12月"];
 
         
         _date_A = @[year_A,month_A];
@@ -112,10 +124,13 @@
     _menu.delegate = self;
     _menu.dataSource = self;
     [self.view addSubview:_menu];
-   
+
+    [_menu selectDefalutIndexPath];
     
     [self.view bringSubviewToFront: [self.view viewWithTag:999]];
 
+    
+    
 }
 
 
@@ -136,6 +151,21 @@
 
 
 -(void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath{
+    
+    if (indexPath.column ==0) {
+        year_s = [[menu titleForRowAtIndexPath:indexPath] stringByReplacingOccurrencesOfString:@"年" withString:@""];
+    }
+    if (indexPath.column ==1) {
+        month_s = [[menu titleForRowAtIndexPath:indexPath] stringByReplacingOccurrencesOfString:@"月" withString:@""];
+        
+    }
+
+    
+   
+    NSString *string = (![month_s isEqualToString:@"全年"] &&  month_s.length !=0) ? [NSString stringWithFormat:@"%@-%@",year_s,month_s] : year_s;
+    
+    
+    [self getdataWithDate:string];
     
     NSLog(@"------%ld",indexPath.row);
 }
@@ -159,6 +189,35 @@
     cell.mon_lab.text = dic[@"allMoney"];
     cell.num_lab.text = dic[@"allCount"];
     
+    
+    if (indexPath.row == 0) {
+        cell.moneylab.text = [NSString stringWithFormat:@"%.2f",[[NSString getTheNoNullStr:self.data_dic[@"card_buy"][@"sum"] andRepalceStr:@"0"] floatValue]];
+        
+        cell.peopleLab.text = [NSString getTheNoNullStr:self.data_dic[@"card_buy"][@"mem"] andRepalceStr:@"0"];
+        cell.numberlab.text = [NSString getTheNoNullStr:self.data_dic[@"card_buy"][@"num"] andRepalceStr:@"0"];
+
+    }
+    
+   
+    if (indexPath.row == 1) {
+        cell.moneylab.text = [NSString stringWithFormat:@"%.2f",[[NSString getTheNoNullStr:self.data_dic[@"card_renew"][@"sum"] andRepalceStr:@"0"] floatValue]];
+        cell.peopleLab.text = [NSString getTheNoNullStr:self.data_dic[@"card_renew"][@"mem"] andRepalceStr:@"0"];
+        cell.numberlab.text = [NSString getTheNoNullStr:self.data_dic[@"card_renew"][@"num"] andRepalceStr:@"0"];
+        
+    }
+
+    if (indexPath.row == 2) {
+        cell.moneylab.text = [NSString stringWithFormat:@"%.2f",[[NSString getTheNoNullStr:self.data_dic[@"card_upgrade"][@"sum"] andRepalceStr:@"0"] floatValue]];
+        cell.peopleLab.text = [NSString getTheNoNullStr:self.data_dic[@"card_upgrade"][@"mem"] andRepalceStr:@"0"];
+        cell.numberlab.text = [NSString getTheNoNullStr:self.data_dic[@"card_upgrade"][@"num"] andRepalceStr:@"0"];
+        
+    }
+
+    cell.moneylab.textColor = ([cell.moneylab.text intValue]==0) ?RGB(242,55,36): RGB(19,162,49);
+    cell.peopleLab.textColor = ([cell.peopleLab.text intValue]==0) ?RGB(242,55,36): RGB(19,162,49);
+    cell.numberlab.textColor = ([cell.numberlab.text intValue]==0) ?RGB(242,55,36): RGB(19,162,49);
+
+   
     return cell;
     
     
@@ -202,5 +261,34 @@
     PUSH(ScanMoreDataVC)
 }
 
+
+-(void)getdataWithDate:(NSString*)date{
+    
+    NSString *url = [NSString stringWithFormat:@"%@MerchantType/DataCount/getTotalData",BASEURL];
+    
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    NSMutableDictionary*paramer = [NSMutableDictionary dictionary];
+
+    [paramer setValue:date forKey:@"date"];
+    [paramer setValue:app.shopInfoDic[@"muid"] forKey:@"muid"];
+
+    NSLog(@"---%@",paramer);
+    
+    [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        
+        self.data_dic = result;
+        
+        self.total_money.text = [NSString stringWithFormat:@"%.2f元",[self.data_dic[@"total_sum"] doubleValue]];
+        
+        [self.table_View reloadData];
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
+    
+}
 
 @end

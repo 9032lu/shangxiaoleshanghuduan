@@ -9,6 +9,7 @@
 #import "NewBuyCardRecordVC.h"
 #import "NewBuyCardRecordsTableViewCell.h"
 #import "DOPDropDownMenu.h"
+#import "UIImageView+WebCache.h"
 @interface NewBuyCardRecordVC ()<UITableViewDelegate,UITableViewDataSource,DOPDropDownMenuDelegate,DOPDropDownMenuDataSource>
 {
     DOPDropDownMenu *_menu;
@@ -16,12 +17,29 @@
     NSString *year_s;
     NSString *month_s;
     NSString *day_s;
+    SDRefreshHeaderView *_refreshheader;
+    SDRefreshFooterView *_refreshFooter;
+    UILabel *totalMoney;
+   
+    
+    
 }
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSArray *date_A;
+@property(nonatomic,copy) NSString *date_string;;
+@property(nonatomic,assign)NSInteger index;
+@property(nonatomic,strong)NSMutableArray *dataSourse_A;
+
 @end
 
 @implementation NewBuyCardRecordVC
+-(NSMutableArray *)dataSourse_A{
+    if (!_dataSourse_A) {
+        _dataSourse_A = [NSMutableArray array];
+    }
+    return _dataSourse_A;
+}
+
 -(NSArray *)date_A{
     if (!_date_A) {
         
@@ -39,7 +57,7 @@
         }
         
         
-        NSArray *month_A = @[@"1月",@"2月",@"3月",@"4月",@"5月",@"6月",@"7月",@"8月",@"9月",@"10月",@"11月",@"12月"];
+        NSArray *month_A = @[@"01月",@"02月",@"03月",@"04月",@"05月",@"06月",@"07月",@"08月",@"09月",@"10月",@"11月",@"12月"];
         
         
         NSMutableArray *dayArray = [NSMutableArray array];
@@ -47,12 +65,16 @@
         [month_format setDateFormat:@"MM"];
         NSString *now_month = [month_format stringFromDate:date];
         
-        month_s = now_month;
-        
        NSInteger days = [self howManyDaysInThisYear:[now_year integerValue] withMonth:[now_month integerValue]];
         
         for (int i =1; i <=days; i++) {
-            [dayArray addObject:[NSString stringWithFormat:@"%d日",i]];
+            if (i<10) {
+                [dayArray addObject:[NSString stringWithFormat:@"0%d日",i]];
+
+            }else{
+                [dayArray addObject:[NSString stringWithFormat:@"%d日",i]];
+
+            }
 
         }
         
@@ -67,6 +89,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     LEFTBACK
+    self.index = 0;
+    
     self.view.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
 
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"统计表" style:UIBarButtonItemStylePlain target:self action:@selector(chat)];
@@ -87,7 +111,6 @@
     [day_format setDateFormat:@"dd"];
     NSString *now_day = [day_format stringFromDate:date];
 
-    day_s = now_day;
     
     DOPIndexPath *indexPath = [DOPIndexPath indexPathWithCol:1 row:[now_month intValue]-1];
     DOPIndexPath *indexPath1 = [DOPIndexPath indexPathWithCol:2 row:[now_day intValue]-1];
@@ -96,7 +119,7 @@
     [_menu selectIndexPath:indexPath1];
     
     
-    UILabel *totalMoney=[[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, 66)];
+   totalMoney=[[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, 66)];
     totalMoney.text=@"办卡总金额：10′000元";
     totalMoney.textAlignment=NSTextAlignmentCenter;
     totalMoney.font=[UIFont systemFontOfSize:16];
@@ -109,9 +132,35 @@
     _tableView.dataSource=self;
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
+    
+    
+    
+    _refreshheader = [SDRefreshHeaderView refreshView];
+    [_refreshheader addToScrollView:_tableView];
+    _refreshheader.isEffectedByNavigationController = NO;
+    
+    __block typeof(self)tempSelf =self;
+    _refreshheader.beginRefreshingOperation = ^{
+        tempSelf.index=0;
+        //请求数据
+        [tempSelf getdataWithDate:tempSelf.date_string];
+    };
+    
+    
+    _refreshFooter = [SDRefreshFooterView refreshView];
+    [_refreshFooter addToScrollView:_tableView];
+    _refreshFooter.beginRefreshingOperation =^{
+        tempSelf.index++;
+        //数据请求
+        [tempSelf getdataWithDate:tempSelf.date_string];
+        
+    };
+
+    
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    
+    return self.dataSourse_A.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NewBuyCardRecordsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewBuyCardRecordsCell"];
@@ -119,6 +168,115 @@
         cell = [[[NSBundle mainBundle]loadNibNamed:@"NewBuyCardRecordsTableViewCell" owner:self options:nil] lastObject];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }
+    
+    if (self.dataSourse_A.count!=0) {
+        NSDictionary *dic = _dataSourse_A[indexPath.row];
+       
+        [cell.userHeadImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HEADIMAGE,dic[@"headimage"]]] placeholderImage:[UIImage imageNamed:@"userHeader"]];
+        
+        
+        cell.orderCode.text =@"";
+
+        
+        if ([self.navigationItem.title containsString:@"办卡"]) {
+            
+        
+        
+        cell.userName.text =[NSString stringWithFormat:@"姓名：%@",[NSString getTheNoNullStr:dic[@"name"] andRepalceStr:@"-"]] ;
+            
+         if (!dic[@"name"]) {
+                cell.userName.text =[NSString stringWithFormat:@"昵称：%@",[NSString getTheNoNullStr:dic[@"nickname"] andRepalceStr:@"-"]] ;
+
+            }
+        
+        cell.orderTime.text =[NSString getTheNoNullStr:dic[@"datetime"] andRepalceStr:@"-"] ;
+        
+        cell.cardType.text = [NSString stringWithFormat:@"办卡类型：%@", [NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"-"]];
+        cell.orderMoney.text = [NSString stringWithFormat:@"办卡金额：%@",[[NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"-"] stringByAppendingString:@"元"]];
+        }
+        
+        
+        if ([self.navigationItem.title containsString:@"续卡"]) {
+            
+            
+            
+            cell.userName.text =[NSString stringWithFormat:@"姓名：%@",[NSString getTheNoNullStr:dic[@"name"] andRepalceStr:@"-"]] ;
+            
+            if (!dic[@"name"]) {
+                cell.userName.text =[NSString stringWithFormat:@"昵称：%@",[NSString getTheNoNullStr:dic[@"nickname"] andRepalceStr:@"-"]] ;
+                
+            }
+            
+            cell.orderTime.text =[NSString getTheNoNullStr:dic[@"datetime"] andRepalceStr:@"-"] ;
+            
+            cell.cardType.text = [NSString stringWithFormat:@"续卡类型：%@", [NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"-"]];
+            cell.orderMoney.text = [NSString stringWithFormat:@"续卡金额：%@",[[NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"-"] stringByAppendingString:@"元"]];
+        }
+        
+        
+        
+        if ([self.navigationItem.title containsString:@"升级"]) {
+            
+            
+            
+            cell.userName.text =[NSString stringWithFormat:@"姓名：%@",[NSString getTheNoNullStr:dic[@"name"] andRepalceStr:@"-"]] ;
+            
+            if (!dic[@"name"]) {
+                cell.userName.text =[NSString stringWithFormat:@"昵称：%@",[NSString getTheNoNullStr:dic[@"nickname"] andRepalceStr:@"-"]] ;
+                
+            }
+            
+            cell.orderTime.text =[NSString getTheNoNullStr:dic[@"datetime"] andRepalceStr:@"-"] ;
+            
+            cell.cardType.text = [NSString stringWithFormat:@"办卡类型：%@", [NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"-"]];
+            cell.orderMoney.text = [NSString stringWithFormat:@"办卡金额：%@",[[NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"-"] stringByAppendingString:@"元"]];
+        }
+        
+
+        
+        if ([self.navigationItem.title containsString:@"消费"]) {
+            
+            
+            
+            cell.userName.text =[NSString stringWithFormat:@"姓名：%@",[NSString getTheNoNullStr:dic[@"name"] andRepalceStr:@"-"]] ;
+            
+            if (!dic[@"name"]) {
+                cell.userName.text =[NSString stringWithFormat:@"昵称：%@",[NSString getTheNoNullStr:dic[@"nickname"] andRepalceStr:@"-"]] ;
+                
+            }
+            
+            cell.orderTime.text =[[NSString getTheNoNullStr:dic[@"datetime"] andRepalceStr:@"-"] substringToIndex:10];
+            
+            cell.cardType.text = [NSString stringWithFormat:@"消费类型：%@", [NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"-"]];
+            cell.orderMoney.text = [NSString stringWithFormat:@"消费金额：%@",[[NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"-"] stringByAppendingString:@"元"]];
+        }
+        
+
+        
+        if ([self.navigationItem.title containsString:@"现金支付"]) {
+            
+            
+            
+            cell.userName.text =[NSString stringWithFormat:@"名称：%@",[NSString getTheNoNullStr:dic[@"name"] andRepalceStr:@"-"]] ;
+            
+            if (!dic[@"name"]) {
+                cell.userName.text =[NSString stringWithFormat:@"昵称：%@",[NSString getTheNoNullStr:dic[@"nickname"] andRepalceStr:@"-"]] ;
+                
+            }
+            
+            cell.orderTime.text =[[NSString getTheNoNullStr:dic[@"datetime"] andRepalceStr:@"-"] substringToIndex:10];
+            
+            cell.cardType.text = [NSString stringWithFormat:@"办卡类型：%@", [NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"-"]];
+            cell.orderMoney.text = [NSString stringWithFormat:@"办卡金额：%@",[[NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"-"] stringByAppendingString:@"元"]];
+        }
+        
+
+        
+               
+
+    }
+    
+    
     return cell;
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -166,14 +324,16 @@
 -(void)menu:(DOPDropDownMenu *)menu didSelectRowAtIndexPath:(DOPIndexPath *)indexPath{
     
     if (indexPath.column ==0) {
-        year_s = [menu titleForRowAtIndexPath:indexPath];
+        year_s = [[menu titleForRowAtIndexPath:indexPath] stringByReplacingOccurrencesOfString:@"年" withString:@""];
     }
     if (indexPath.column ==1) {
-        month_s = [menu titleForRowAtIndexPath:indexPath];
+        month_s = [[menu titleForRowAtIndexPath:indexPath] stringByReplacingOccurrencesOfString:@"月" withString:@""];
         
     }
-    if (indexPath.column ==3) {
-        day_s = [menu titleForRowAtIndexPath:indexPath];
+    if (indexPath.column ==2) {
+        day_s = [[menu titleForRowAtIndexPath:indexPath] stringByReplacingOccurrencesOfString:@"日" withString:@""];
+        
+        
         
     }
     if (indexPath.column ==0 || indexPath.column ==1) {
@@ -184,24 +344,120 @@
         NSMutableArray *dayArray = d_a[2];
         [dayArray removeAllObjects];
         for (int i =1; i <=days; i++) {
-            [dayArray addObject:[NSString stringWithFormat:@"%d日",i]];
+            if (i<10) {
+                [dayArray addObject:[NSString stringWithFormat:@"0%d日",i]];
+                
+            }else{
+                [dayArray addObject:[NSString stringWithFormat:@"%d日",i]];
+                
+            }
             
         }
         [d_a replaceObjectAtIndex:2 withObject:dayArray];
         
         _date_A = d_a;
 
-        DOPIndexPath *indexPath1 = [DOPIndexPath indexPathWithCol:2 row:0];
         
-        [_menu selectIndexPath:indexPath1];
+        if ([[day_s stringByReplacingOccurrencesOfString:@"日" withString:@""] integerValue]> days) {
+            DOPIndexPath *indexPath1 = [DOPIndexPath indexPathWithCol:2 row:0];
+            
+            [_menu selectIndexPath:indexPath1];
 
+        }
+        
+      
     }
     
+    
+    if (year_s.length !=0 && month_s.length !=0 &&day_s.length !=0) {
+        
+        self.date_string = [NSString stringWithFormat:@"%@-%@-%@",year_s,month_s,day_s];
+        
+        
+        [self getdataWithDate:self.date_string];
+    }
+
     
     
     NSLog(@"------%@",[menu titleForRowAtIndexPath:indexPath]);
 }
 
+
+
+-(void)getdataWithDate:(NSString*)date{
+    
+    NSString *url;
+    if ([self.navigationItem.title containsString:@"办卡"]) {
+        url = [NSString stringWithFormat:@"%@MerchantType/DataCount/getCardBuyData",BASEURL];
+ 
+    }
+    if ([self.navigationItem.title containsString:@"续卡"]) {
+        url = [NSString stringWithFormat:@"%@MerchantType/DataCount/getCardRenewData",BASEURL];
+        
+    }
+
+    if ([self.navigationItem.title containsString:@"升级"]) {
+        url = [NSString stringWithFormat:@"%@MerchantType/DataCount/getCardUpgradeData",BASEURL];
+        
+    }
+
+    if ([self.navigationItem.title containsString:@"消费"]) {
+        url = [NSString stringWithFormat:@"%@MerchantType/DataCount/getCardUpgradeData",BASEURL];
+        
+    }
+
+    if ([self.navigationItem.title containsString:@"现金支付"]) {
+        url = [NSString stringWithFormat:@"%@MerchantType/DataCount/getCardBuyData",BASEURL];
+        
+    }
+
+    
+    
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    NSMutableDictionary*paramer = [NSMutableDictionary dictionary];
+    
+    [paramer setValue:[NSString stringWithFormat:@"%ld",self.index] forKey:@"index"];
+
+    [paramer setValue:date forKey:@"date"];
+    [paramer setValue:app.shopInfoDic[@"muid"] forKey:@"muid"];
+    
+    NSLog(@"---%@",paramer);
+    
+    [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        [_refreshFooter endRefreshing];
+        [_refreshheader endRefreshing];
+       
+        NSLog(@"---%@",result);
+        
+        if (_index ==0) {
+            if ([result[@"list"] count]!=0) {
+                [self.dataSourse_A removeAllObjects];
+
+                self.dataSourse_A = [result[@"list"] mutableCopy];
+
+            }
+            totalMoney.text = [NSString stringWithFormat:@"总金额：%@元",[NSString getTheNoNullStr:result[@"sum"] andRepalceStr:@"0"]];
+            
+        }else{
+            if ([result[@"list"] count]!=0) {
+                [self.dataSourse_A addObjectsFromArray:result[@"list"]];
+                
+            }
+        }
+        
+        
+        [self.tableView reloadData];
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [_refreshFooter endRefreshing];
+        [_refreshheader endRefreshing];
+
+    }];
+    
+    
+}
 
 
 
