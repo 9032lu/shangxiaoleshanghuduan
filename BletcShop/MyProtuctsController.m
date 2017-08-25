@@ -97,7 +97,7 @@
     
     //新增按钮
     UIButton *NewAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-    NewAdd.frame = CGRectMake(SCREENWIDTH-40, 20+(topView.height-20-25)/2, 25, 25);
+    NewAdd.frame = CGRectMake(SCREENWIDTH-40, 20+(topView.height-20-25)/2, 20, 20);
     //    [NewAdd setTitle:@"新增产品" forState:UIControlStateNormal];
     [NewAdd setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateNormal];
     [NewAdd setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateHighlighted];
