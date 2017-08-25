@@ -104,7 +104,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="查看其它" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sun-Lf-W4o">
-                    <rect key="frame" x="13" y="13.5" width="61.5" height="14"/>
+                    <rect key="frame" x="13" y="13.5" width="262" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="ZJE-UI-UCQ"/>
                     </constraints>
@@ -123,7 +123,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
-                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="sun-Lf-W4o" secondAttribute="trailing" constant="300.5" id="Bbz-5S-jee"/>
+                <constraint firstAttribute="trailing" secondItem="sun-Lf-W4o" secondAttribute="trailing" constant="100" id="Bbz-5S-jee"/>
                 <constraint firstItem="sun-Lf-W4o" firstAttribute="centerY" secondItem="eUK-IN-28B" secondAttribute="centerY" id="QjO-rr-bLS"/>
                 <constraint firstItem="PIe-cp-MxN" firstAttribute="centerY" secondItem="eUK-IN-28B" secondAttribute="centerY" id="g5P-U9-Tv9"/>
                 <constraint firstAttribute="trailing" secondItem="PIe-cp-MxN" secondAttribute="trailing" constant="15" id="u0r-pe-sIo"/>
