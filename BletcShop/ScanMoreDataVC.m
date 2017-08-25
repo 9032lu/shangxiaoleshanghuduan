@@ -139,17 +139,17 @@
     cell.num_lab.text = dic[@"allCount"];
     
     if (indexPath.row == 0) {
-        cell.moneylab.text = [NSString stringWithFormat:@"%.2f",[[NSString getTheNoNullStr:self.data_dic[@"card_buy"][@"sum"] andRepalceStr:@"0"] floatValue]];
-        cell.peopleLab.text = [NSString getTheNoNullStr:self.data_dic[@"card_buy"][@"mem"] andRepalceStr:@"0"];
-        cell.numberlab.text = [NSString getTheNoNullStr:self.data_dic[@"card_buy"][@"num"] andRepalceStr:@"0"];
+        cell.moneylab.text = [NSString stringWithFormat:@"%.2f",[[NSString getTheNoNullStr:self.data_dic[@"consum"][@"sum"] andRepalceStr:@"0"] floatValue]];
+        cell.peopleLab.text = [NSString getTheNoNullStr:self.data_dic[@"consum"][@"mem"] andRepalceStr:@"0"];
+        cell.numberlab.text = [NSString getTheNoNullStr:self.data_dic[@"consum"][@"num"] andRepalceStr:@"0"];
         
     }
     
     
     if (indexPath.row == 1) {
-        cell.moneylab.text = [NSString stringWithFormat:@"%.2f",[[NSString getTheNoNullStr:self.data_dic[@"card_renew"][@"sum"] andRepalceStr:@"0"] floatValue]];
-        cell.peopleLab.text = [NSString getTheNoNullStr:self.data_dic[@"card_renew"][@"mem"] andRepalceStr:@"0"];
-        cell.numberlab.text = [NSString getTheNoNullStr:self.data_dic[@"card_renew"][@"num"] andRepalceStr:@"0"];
+        cell.moneylab.text = [NSString stringWithFormat:@"%.2f",[[NSString getTheNoNullStr:self.data_dic[@"tally"][@"sum"] andRepalceStr:@"0"] floatValue]];
+        cell.peopleLab.text = [NSString getTheNoNullStr:self.data_dic[@"tally"][@"mem"] andRepalceStr:@"0"];
+        cell.numberlab.text = [NSString getTheNoNullStr:self.data_dic[@"tally"][@"num"] andRepalceStr:@"0"];
         
     }
 
@@ -174,7 +174,7 @@
 
 -(void)getdataWithDate:(NSString*)date{
     
-    NSString *url = [NSString stringWithFormat:@"%@MerchantType/DataCount/getTotalData",BASEURL];
+    NSString *url = [NSString stringWithFormat:@"%@MerchantType/DataCount/getExtraData",BASEURL];
     
     AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
@@ -187,7 +187,8 @@
     
     [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
-        
+        NSLog(@"---%@",result);
+
         self.data_dic = result;
         
         
