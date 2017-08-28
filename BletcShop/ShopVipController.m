@@ -126,8 +126,7 @@
             imageView.contentMode = UIViewContentModeScaleAspectFill;
             
             [cell addSubview:imageView];
-            unsigned long hangshu = (cell.subviews.count+4-1)/4;
-            totolHeight=(60+(SCREENWIDTH-240)/5)*hangshu+(SCREENWIDTH-240)/5;
+          
             cell.backgroundColor=[UIColor clearColor];
             UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake((SCREENWIDTH-240)/5+i%4*(60+(SCREENWIDTH-240)/5), (SCREENWIDTH-240)/5+i/4*(60+(SCREENWIDTH-240)/5+10)+60+8, 60, 12)];
             label.font=[UIFont systemFontOfSize:15.0f];
@@ -152,6 +151,8 @@
         UILabel *lab=(UILabel *)[cell viewWithTag:i+100000];
         lab.text=[[self.data objectAtIndex:i] objectForKey:@"user"];
     }
+    unsigned long hangshu = (self.data.count+4-1)/4;
+    totolHeight=(60+(SCREENWIDTH-240)/5)*hangshu+(SCREENWIDTH-240)/5+20;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
