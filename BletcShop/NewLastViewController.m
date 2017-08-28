@@ -10,7 +10,7 @@
 #import "XieYiViewController.h"
 #import "ShopLandController.h"
 #import "ToolManager.h"
-
+#import "BaseNavigationController.h"
 @interface NewLastViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIAlertViewDelegate>
 {
     UIButton *tipButton;
@@ -171,7 +171,7 @@
         [cell addSubview:goNextBtn];
         goNextBtn.layer.cornerRadius=8.0f;
         //goNextBtn.layer.borderColor=[[UIColor redColor]CGColor];
-        goNextBtn.backgroundColor=[UIColor redColor];
+        goNextBtn.backgroundColor=NavBackGroundColor;
         //goNextBtn.layer.borderWidth=0.6;
         [goNextBtn setTitle:@"立即认证" forState:UIControlStateNormal];
         [goNextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -446,9 +446,11 @@
         }
          ShopLandController *shopvc = [[ShopLandController alloc]init];
         
+        BaseNavigationController *baseNav = [[BaseNavigationController alloc]initWithRootViewController:shopvc];
+        
         AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
         [appdelegate loginOutBletcShop];
-        appdelegate.window.rootViewController = shopvc;
+        appdelegate.window.rootViewController = baseNav;
 
     }
 }

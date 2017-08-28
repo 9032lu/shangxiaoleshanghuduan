@@ -16,7 +16,7 @@
 #import "ValuePickerView.h"
 
 #import "ShopLandController.h"
-
+#import "BaseNavigationController.h"
 #import "ChooseTradeVC.h"
 @interface AuthFailShopVC ()<UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 {
@@ -644,9 +644,15 @@
             
             [app loginOutBletcShop];
             
+            
             ShopLandController *shopvc = [[ShopLandController alloc]init];
             
-            app.window.rootViewController = shopvc;
+            BaseNavigationController *NAVVC = [[BaseNavigationController alloc]initWithRootViewController:shopvc];
+            
+//            self.window.rootViewController = NAVVC;
+//            ShopLandController *shopvc = [[ShopLandController alloc]init];
+            
+            app.window.rootViewController = NAVVC;
             
             
             

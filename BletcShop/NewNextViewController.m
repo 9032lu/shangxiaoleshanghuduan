@@ -381,7 +381,7 @@
     }else if (indexPath.row==9){
 
         UIButton *nextButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        nextButton.backgroundColor=[UIColor redColor];
+        nextButton.backgroundColor=NavBackGroundColor;
         nextButton.frame=CGRectMake(SCREENWIDTH/2-50, 5, 100, 40);
         [nextButton setTintColor:[UIColor whiteColor]];
         nextButton.tag=300;

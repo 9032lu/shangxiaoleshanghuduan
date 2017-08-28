@@ -849,7 +849,7 @@
     [from setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [from setTitle:@"上一步" forState:UIControlStateNormal];
     from.layer.cornerRadius=8.0f;
-    from.layer.borderColor=[[UIColor redColor]CGColor];
+    from.layer.borderColor=NavBackGroundColor.CGColor;
     from.layer.borderWidth=0.6;
     from.tag=1100;
     [from addTarget:self action:@selector(missSelf:) forControlEvents:UIControlEventTouchUpInside];
@@ -857,11 +857,11 @@
     
     UIButton *goNext=[UIButton buttonWithType:UIButtonTypeCustom];
     goNext.frame=CGRectMake(SCREENWIDTH/2+5, from.top, 100, 40);
-    goNext.backgroundColor=[UIColor redColor];
+    goNext.backgroundColor=NavBackGroundColor;
     [goNext setTitle:@"下一步" forState:UIControlStateNormal];
     [goNext setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     goNext.layer.cornerRadius=8.0f;
-    goNext.layer.borderColor=[[UIColor redColor]CGColor];
+    goNext.layer.borderColor=[NavBackGroundColor CGColor];
     goNext.layer.borderWidth=0.6;
     goNext.tag=1200;
     [goNext addTarget:self action:@selector(goNext:) forControlEvents:UIControlEventTouchUpInside];
