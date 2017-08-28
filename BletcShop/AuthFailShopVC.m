@@ -30,6 +30,8 @@
     NSMutableDictionary *shopInfoDic;
     
     NSMutableArray *array;//保存所有图片
+    UIButton *sureBtn;
+    UIView *add_more_view;
     
     
     NSMutableArray *eare_data;
@@ -39,10 +41,17 @@
 @property(nonatomic,strong)NSArray *streetArray;
 @property (nonatomic,strong)UITextField *idenCardText;//身份证
 @property(nonatomic,retain)UITextField *realNameTF;//姓名
-
+@property(nonatomic,strong)NSMutableArray *add_more_img_A;
 @end
 
 @implementation AuthFailShopVC
+-(NSMutableArray *)add_more_img_A{
+
+    if (!_add_more_img_A) {
+        _add_more_img_A = [NSMutableArray array];
+    }
+    return _add_more_img_A;
+}
 
 -(NSMutableArray *)tradeArray{
     if (!_tradeArray) {
@@ -468,10 +477,38 @@
     [_scrollView addSubview: lineView8];
     
     
+    //补充材料
+    UILabel *xingLab9=[[UILabel alloc]initWithFrame:CGRectMake(10, 15+lineView8.bottom, 20, 20)];
+    xingLab9.font=[UIFont systemFontOfSize:20.0f];
+    xingLab9.textColor=[UIColor redColor];
+    xingLab9.textAlignment=1;
+    xingLab9.text=@"*";
+    [_scrollView addSubview:xingLab9];
+    
+    UILabel *label9=[[UILabel alloc]initWithFrame:CGRectMake(30, 5+lineView8.bottom, 110, 40)];
+    label9.font=[UIFont systemFontOfSize:14.0f];
+    label9.text=@"补充材料";
+    [_scrollView addSubview:label9];
+
+     add_more_view = [[UIView alloc]initWithFrame:CGRectMake(0, label9.bottom, SCREENWIDTH, ((SCREENWIDTH-150)/2)*116/176)];
+    
+    add_more_view.backgroundColor = [UIColor lightGrayColor];
+    
+    [_scrollView addSubview:add_more_view];
+    
+    
+    
+    
+    
+    
+    
+    _scrollView.contentSize=CGSizeMake(SCREENWIDTH, add_more_view.bottom+100);
+
+    
     //完成
     
-    UIButton *sureBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    sureBtn.frame=CGRectMake(SCREENWIDTH/2-50, 10+lineView8.bottom, 100, 40);
+     sureBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    sureBtn.frame=CGRectMake(SCREENWIDTH/2-50, _scrollView.contentSize.height-60, 100, 40);
     sureBtn.backgroundColor=NavBackGroundColor;
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [sureBtn setTitle:@"完成" forState:UIControlStateNormal];
@@ -485,8 +522,7 @@
       [NSThread detachNewThreadSelector:@selector(downLoadImageAndSeeIfExists) toTarget:self withObject:nil];
     
     
-    _scrollView.contentSize=CGSizeMake(SCREENWIDTH, sureBtn.bottom+20);
-    
+    [self refreshAddMoreView];
     
    
     
@@ -986,7 +1022,13 @@
     NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/upload",BASEURL];
     
     
-    
+    if (_indexTag ==333) {
+        [self.add_more_img_A addObject:savedImage];
+        
+        
+        [self refreshAddMoreView];
+ 
+    }
     
     
     
@@ -1313,6 +1355,95 @@
     }];
     
 
+}
+
+-(void)refreshAddMoreView{
+    
+    [add_more_view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    
+    for (int i = 0; i <=self.add_more_img_A.count; i++) {
+        
+        LZDButton *img_btn = [LZDButton creatLZDButton];
+        int X  = i%3;
+        int Y = i/3;
+        int w =(SCREENWIDTH-26-20)/3;
+        int h =(SCREENWIDTH-26-20)/3*116/176;
+
+        
+        img_btn.frame = CGRectMake(13+X*(w+10), Y*(h+10), w, h);
+        [add_more_view addSubview:img_btn];
+        
+        if (i==_add_more_img_A.count) {
+            
+            [img_btn setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateNormal];
+            [img_btn setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateHighlighted];
+
+            
+            
+            
+            img_btn.block = ^(LZDButton *sender) {
+                
+                self.indexTag=333;
+
+                [self.view endEditing:YES];
+                UIActionSheet *sheet;
+                // 判断是否支持相机
+                if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+                    
+                {
+                    sheet  = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
+                    
+                }
+                
+                else {
+                    
+                    sheet = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
+                    
+                }
+                
+                sheet.tag = 255;
+                
+                [sheet showInView:self.view];
+                
+
+                
+                
+            };
+            
+
+        }else{
+            [img_btn setImage:_add_more_img_A[i] forState:UIControlStateNormal];
+            [img_btn setImage:_add_more_img_A[i] forState:UIControlStateHighlighted];
+
+            LZDButton *deletBtn = [LZDButton creatLZDButton];
+            deletBtn.frame = CGRectMake(img_btn.width-40, 0, 40, 40);
+            deletBtn.backgroundColor = [UIColor blackColor];
+            deletBtn.block = ^(LZDButton *sender) {
+              
+                [self.add_more_img_A removeObjectAtIndex:i];
+                [self refreshAddMoreView];
+            };
+            [img_btn addSubview:deletBtn];
+            
+            
+
+        }
+        
+
+        CGRect frame =  add_more_view.frame;
+        frame.size.height = img_btn.bottom;
+        add_more_view.frame = frame;
+        
+    }
+   
+    
+    _scrollView.contentSize=CGSizeMake(SCREENWIDTH, add_more_view.bottom+100);
+    sureBtn.frame=CGRectMake(SCREENWIDTH/2-50, _scrollView.contentSize.height-60, 100, 40);
+
+    
+    
+    
 }
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
