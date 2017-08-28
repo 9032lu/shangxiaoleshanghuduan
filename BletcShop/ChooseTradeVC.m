@@ -55,15 +55,9 @@
         }
         
     }else{
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.label.text = NSLocalizedString(@"请选择您的行业", @"HUD message title");
-        hud.label.font = [UIFont systemFontOfSize:13];
-        //    [hud setColor:[UIColor blackColor]];
-        hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-        hud.userInteractionEnabled = YES;
+        [self showHint:@"请选择您的行业"];
+       
         
-        [hud hideAnimated:YES afterDelay:2.f];
     }
 }
 
