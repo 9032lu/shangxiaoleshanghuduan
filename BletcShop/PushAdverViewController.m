@@ -30,7 +30,7 @@ LEFTBACK
     
     
     LZDButton *button=[LZDButton creatLZDButton];
-    button.frame=CGRectMake(0, 0, 20, 20);
+    button.frame=CGRectMake(0, 0, 40, 20);
     [button setTitle:@"说明" forState:0];
     button.titleLabel.font = [UIFont systemFontOfSize:15];
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:button];

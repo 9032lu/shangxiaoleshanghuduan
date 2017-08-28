@@ -24,6 +24,7 @@
 
 #define  pgy_OR_AppStore @"2"  //1:蒲公英,2:App Store
 
+#define APPScheme @"blectShoper"
 
 /************************最新定义*********************************/
 

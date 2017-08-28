@@ -43,10 +43,10 @@
 			<key>CFBundleURLIconFile</key>
 			<string></string>
 			<key>CFBundleURLName</key>
-			<string>bletc</string>
+			<string>bletcShoper</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>blectShopss</string>
+				<string>blectShoper</string>
 			</array>
 		</dict>
 	</array>

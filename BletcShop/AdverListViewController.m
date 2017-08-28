@@ -70,16 +70,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"广告列表";
-    LEFTBACK
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+    
+    LZDButton *back =[LZDButton creatLZDButton];
+    back.frame = CGRectMake(13, 31, 10, 20);
+    [back setImage:[UIImage imageNamed:@"leftArrow"] forState:0];
+    back.block = ^(LZDButton *sender) {
+        [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
+    };
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:back];
+    
+    
     self.selectTag=0;
     self.selectSection=-1;
     [self initTopView];
     
 }
--(void)back{
-    [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
-}
+
+
 -(void)initTopView{
     
     kindArray=@[@"已申请",@"审核中",@"未通过",@"待支付",@"已上线"];
