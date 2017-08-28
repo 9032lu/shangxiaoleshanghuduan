@@ -145,6 +145,12 @@
             cell.xiaojiantou.hidden = YES;
         }
 
+        if (indexPath.row ==2) {
+            cell.textTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        }else{
+            cell.textTF.keyboardType = UIKeyboardTypeNumberPad;
+
+        }
        
         cell.unitLab.hidden= indexPath.row==3?NO:YES;
         

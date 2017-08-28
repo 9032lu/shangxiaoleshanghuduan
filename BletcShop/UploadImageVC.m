@@ -14,6 +14,8 @@
 @interface UploadImageVC ()<CustomeAlertViewDelegate,UITextViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 {
     NSString *stateNum;
+    
+    NSString *nameValue;
 
 }
 @property (weak, nonatomic) IBOutlet UIImageView *upImagView;
@@ -36,6 +38,7 @@
     self.navigationItem.title = @"上传图片";
     LEFTBACK
     NSLog(@"------%@",self.infoDic);
+    
     if (!self.infoDic) {
         
         
@@ -181,7 +184,7 @@
             NSLog(@"%@",url);
             NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
             self.date = (long long int)time;
-            NSString *nameValue = [[NSString alloc]initWithFormat:@"%@_%@_%lld",[appdelegate.shopInfoDic objectForKey:@"name"],[appdelegate.shopInfoDic objectForKey:@"phone"],self.date ];
+            nameValue = [[NSString alloc]initWithFormat:@"%@_%@_%lld",[appdelegate.shopInfoDic objectForKey:@"name"],[appdelegate.shopInfoDic objectForKey:@"phone"],self.date ];
             NSData *img_Data = [NSData dataWithContentsOfFile:fullPath];
             NSMutableDictionary *parmer = [NSMutableDictionary dictionary];
             [parmer setValue:nameValue forKey:@"name"];
@@ -286,7 +289,7 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
         [params setObject:[appdelegate.shopInfoDic objectForKey:@"muid"] forKey:@"muid"];
-        NSString *nameValue = [[NSString alloc]initWithFormat:@"%@_%@_%lld.png",[appdelegate.shopInfoDic objectForKey:@"name"],[appdelegate.shopInfoDic objectForKey:@"phone"],self.date ];
+//        NSString *nameValue = [[NSString alloc]initWithFormat:@"%@_%@_%lld.png",[appdelegate.shopInfoDic objectForKey:@"name"],[appdelegate.shopInfoDic objectForKey:@"phone"],self.date ];
         [params setObject:nameValue forKey:@"image_url"];
         [params setObject:self.textView.text forKey:@"content"];
         [params setObject:stateNum forKey:@"type"];
@@ -299,6 +302,10 @@
             
             if ([[NSString stringWithFormat:@"%@",[dic objectForKey:@"result_code"]] isEqualToString:@"1"]) {
                 [self tishi:@"信息上传成功,等待审核"];
+                self.reloadData();
+
+                [self performSelector:@selector(popView) withObject:nil afterDelay:1.5];
+                
             }else{
                 
                 [self tishi:@"信息上传失败!"];
@@ -319,11 +326,12 @@
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
         [params setObject:[appdelegate.shopInfoDic objectForKey:@"muid"] forKey:@"muid"];
-//        NSString *nameValue = [[NSString alloc]initWithFormat:@"%@_%@_%lld.png",[appdelegate.shopInfoDic objectForKey:@"name"],[appdelegate.shopInfoDic objectForKey:@"phone"],self.date ];
-        [params setObject:self.infoDic[@"image_url"] forKey:@"image_url"];
+
+        
+        [params setObject:[nameValue stringByAppendingString:@".png"] forKey:@"image_url"];
         [params setObject:self.textView.text forKey:@"content"];
         [params setObject:self.infoDic[@"datetime"] forKey:@"datetime"];
-        NSLog(@"=====%@",params);
+        NSLog(@"=====%@==%@",params,url);
 
         [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
             
@@ -331,6 +339,9 @@
             NSDictionary *dic = result;
             if ([[NSString stringWithFormat:@"%@",[dic objectForKey:@"result_code"]] isEqualToString:@"1"]) {
                 [self tishi:@"信息上传成功,等待审核"];
+                self.reloadData();
+                
+                [self performSelector:@selector(popView) withObject:nil afterDelay:1.5];
             }else{
                 
                 [self tishi:@"信息上传失败!"];
@@ -370,6 +381,10 @@
         
     }];
 
+}
+
+-(void)popView{
+    POP;
 }
 
 -(void)tishi:(NSString*)tishi{

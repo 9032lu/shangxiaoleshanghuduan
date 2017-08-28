@@ -41,6 +41,16 @@
         case 0:
         {
             UploadImageVC *VC = [[UploadImageVC alloc]init];
+            VC.reloadData = ^{
+
+                NSLog(@"------%@",self.childViewControllers[0]);
+                PictureDetailViewController *pic_vc = self.childViewControllers[0];
+                
+                
+                [pic_vc postRequestGetInfo];
+            
+            };
+            
             [self.navigationController pushViewController:VC animated:YES];
             
         }

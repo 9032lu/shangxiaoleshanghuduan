@@ -712,11 +712,16 @@
         kind=88;
         
         UploadImageVC *VC = [[UploadImageVC alloc]init];
+    VC.reloadData = ^{
+      
+        [self postRequestGetInfo];
+    };
         NSDictionary *dic;
         
         if (dataArr.count!=0) {
             dic =  dataArr[indexNum];
             VC.infoDic = dic;
+            
         }
         
         [self.navigationController pushViewController:VC animated:YES];

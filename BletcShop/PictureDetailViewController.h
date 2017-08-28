@@ -30,4 +30,7 @@
 @property int deleteTag;
 @property(nonatomic,strong)NSMutableDictionary *nowArray;
 
+
+-(void)postRequestGetInfo;
+
 @end

@@ -11,4 +11,6 @@
 @interface UploadImageVC : UIViewController
 @property (nonatomic , strong) NSDictionary *infoDic;// <#Description#>
 
+@property (nonatomic,copy)void (^reloadData)();// 刷新数据
+
 @end
