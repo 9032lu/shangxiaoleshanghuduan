@@ -95,14 +95,16 @@ LEFTBACK
 
         cell.textFileld.text = [NSString getTheNoNullStr:self.edit_dic[@"account"] andRepalceStr:@""];
         self.nameText = cell.textFileld;
-        
+        self.nameText.keyboardType=UIKeyboardTypeNumbersAndPunctuation;
+        self.nameText.returnKeyType=UIReturnKeyDone;
     }
     
     if (indexPath.row ==1) {
         cell.textFileld.text = [NSString getTheNoNullStr:self.edit_dic[@"passwd"] andRepalceStr:@""];
         cell.textFileld.placeholder = @"请输入密码";
         self.passText = cell.textFileld;
-
+        self.passText.keyboardType=UIKeyboardTypeNumbersAndPunctuation;
+        self.passText.returnKeyType=UIReturnKeyDone;
     }
     if (indexPath.row ==2) {
         cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
@@ -129,7 +131,7 @@ LEFTBACK
         cell.textFileld.text = [NSString getTheNoNullStr:self.edit_dic[@"phone"] andRepalceStr:@""];
 
         self.phoneText = cell.textFileld;
-
+        self.phoneText.keyboardType=UIKeyboardTypeNumberPad;
         cell.textFileld.placeholder = @"请输入手机号";
     }
 

@@ -170,7 +170,7 @@
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
     nameArray=@[@"姓名",@"",@"开户人",@"住宅地址",@"身份证号",@"上传图片",@"开户行",@"银行账号  ",@"手机查询授权",@""];
-    placeHolderArray=@[@"长度不超过16位",@"",@"请输入您的真实姓名",@"请输入您现在具体住宅地址",@"请输入真实有效的18位身份证号",@"您的照片仅用于审核，我们将严格保密",@"请输入开户行",@"法人本人,目前仅支持建行储蓄卡",@"",@""];
+    placeHolderArray=@[@"长度不超过16位",@"",@"请输入您的真实姓名",@"请输入您现在具体住宅地址",@"请输入真实有效的18位身份证号",@"您的照片仅用于审核，我们将严格保密",@"请输入开户行",@"法人本人，建设银行卡无转账手续费",@"",@""];
     UITapGestureRecognizer *tapClick=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAndHidden)];
     [_tableView addGestureRecognizer:tapClick];
 }

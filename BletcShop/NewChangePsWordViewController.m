@@ -37,7 +37,7 @@
     [self.view addSubview:view1];
     
     self.oldPswText=[[UITextField alloc]initWithFrame:CGRectMake(12, 0, SCREENWIDTH-24, 44)];
-    self.oldPswText.placeholder=@"6-16位字符，字母区分大小写";
+    self.oldPswText.placeholder=@"请输入您的旧密码";
     self.oldPswText.font=[UIFont systemFontOfSize:15.0f];
     [view1 addSubview:self.oldPswText];
     
@@ -52,7 +52,7 @@
     [self.view addSubview:view2];
     
     self.pswdText=[[UITextField alloc]initWithFrame:CGRectMake(12, 0, SCREENWIDTH-24, 44)];
-    self.pswdText.placeholder=@"6-16位字符，字母区分大小写";
+    self.pswdText.placeholder=@"请输入您新密码(6-16位字符，字母区分大小写)";
     self.pswdText.secureTextEntry=YES;
     self.pswdText.font=[UIFont systemFontOfSize:15.0f];
     [view2 addSubview:self.pswdText];
