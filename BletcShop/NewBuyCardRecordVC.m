@@ -114,7 +114,7 @@
 
     
     DOPIndexPath *indexPath = [DOPIndexPath indexPathWithCol:1 row:[now_month intValue]-1];
-    DOPIndexPath *indexPath1 = [DOPIndexPath indexPathWithCol:2 row:[now_day intValue]-1];
+    DOPIndexPath *indexPath1 = [DOPIndexPath indexPathWithCol:2 row:[now_day intValue]];
 
     [_menu selectIndexPath:indexPath];
     [_menu selectIndexPath:indexPath1];
@@ -142,7 +142,7 @@
     
     __block typeof(self)tempSelf =self;
     _refreshheader.beginRefreshingOperation = ^{
-        tempSelf.index=0;
+        tempSelf.index=1;
         //请求数据
         [tempSelf getdataWithDate:tempSelf.date_string];
     };
@@ -229,8 +229,8 @@
             
             cell.orderTime.text =[NSString getTheNoNullStr:dic[@"datetime"] andRepalceStr:@"-"] ;
             
-            cell.cardType.text = [NSString stringWithFormat:@"办卡类型：%@", [NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"-"]];
-            cell.orderMoney.text = [NSString stringWithFormat:@"办卡金额：%@",[[NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"-"] stringByAppendingString:@"元"]];
+            cell.cardType.text = [NSString stringWithFormat:@"升级类型：%@", [NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"-"]];
+            cell.orderMoney.text = [NSString stringWithFormat:@"升级金额：%@",[[NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"-"] stringByAppendingString:@"元"]];
         }
         
 
@@ -436,7 +436,7 @@
        
         NSLog(@"---%@",result);
         
-        if (_index ==0) {
+        if (_index ==1) {
                 [self.dataSourse_A removeAllObjects];
 
                 self.dataSourse_A = [result[@"list"] mutableCopy];
