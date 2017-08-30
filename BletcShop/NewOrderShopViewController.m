@@ -9,6 +9,7 @@
 #import "NewOrderShopViewController.h"
 #import "LZDButton.h"
 #import "PickReasonView.h"
+#import "NewOrderCell.h"
 
 @interface NewOrderShopViewController ()<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
@@ -164,11 +165,11 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 1;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
+    return 120;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 41+10;
@@ -306,75 +307,35 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIndentifier = @"cellIndentifier";
-    // 定义唯一标识
-    // 通过indexPath创建cell实例 每一个cell都是单独的
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
     
+    NewOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewOrderCellID"];
+    
+   
     
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIndentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        UILabel *huiyuanLabel = [[UILabel alloc]initWithFrame:CGRectMake(13, 0, 75, 30)];
-        huiyuanLabel.text = @"卡片编号:";
-        huiyuanLabel.font = [UIFont systemFontOfSize:15];
-        huiyuanLabel.textColor = RGB(153,153,153);
-        huiyuanLabel.tag = 900;
-        huiyuanLabel.textAlignment = NSTextAlignmentLeft;
-        [cell addSubview:huiyuanLabel];
-        
-        UILabel *huiyuanText = [[UILabel alloc]initWithFrame:CGRectMake(102, 0, SCREENWIDTH-100, 30)];
-        huiyuanText.text = @"洛天依";
-        huiyuanText.textAlignment = NSTextAlignmentLeft;
-        huiyuanText.font = [UIFont systemFontOfSize:15];
-        huiyuanText.textColor = RGB(51,51,51);
-        huiyuanText.tag = 901;
-        [cell addSubview:huiyuanText];
-        
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"NewOrderCell" owner:self options:nil] firstObject];
+      
+    }
+    
+    if (self.selectTag==2) {
+        cell.rightView.hidden = NO;
+    }else{
+        cell.rightView.hidden = YES;
+
     }
     
     if (self.data_A.count!=0) {
         NSDictionary *dic = self.data_A[indexPath.section];
-        UILabel *huiyuanLabel = [cell viewWithTag:900];
-        UILabel *huiyuanText = [cell viewWithTag:901];
-        switch (indexPath.row) {
-            case 0:
-            {
-                huiyuanLabel.text = @"手机号码:";
-                huiyuanText.text = dic[@"phone"];
-                
-                
-            }
-                break;
-            case 1:
-            {
-                huiyuanLabel.text = @"预约时间:";
-                huiyuanText.text = dic[@"time"];
-                
-                
-            }
-                break;
-            case 2:
-            {
-                huiyuanLabel.text = @"预约内容:";
-                huiyuanText.text = dic[@"content"];
-                
-                
-            }
-                break;
-            case 3:
-            {
-                huiyuanLabel.text = @"申请日期:";
-                huiyuanText.text = [NSString stringWithFormat:@"%@",dic[@"date"]];
-                
-            }
-                break;
-                
-                
-            default:
-                break;
-        }
+       
+        
+        
+        cell.phoneLab.text = dic[@"phone"];
+        
+        cell.timeLab.text = dic[@"time"];
+        
+        cell.contentLab.text = dic[@"content"];
+        cell.dateLab.text = [NSString stringWithFormat:@"%@",dic[@"date"]];
+        
         
     }
 
