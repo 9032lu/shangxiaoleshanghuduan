@@ -100,6 +100,7 @@
 		18B9BEAE1F4AABD500863CB1 /* 圆形logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */; };
 		18B9BEB01F4AABEC00863CB1 /* 主题背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */; };
 		18C0389B1E693C8B005F7AA9 /* HotNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0389A1E693C8B005F7AA9 /* HotNewsVC.m */; };
+		18CA8AEF1F565C7200E1D84A /* AlertViewWithTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */; };
 		18CB32D61D6C2B2B005A9D64 /* HKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32C91D6C2B2B005A9D64 /* HKViewController.m */; };
 		18CB32D71D6C2B2B005A9D64 /* HKClipperVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32CB1D6C2B2B005A9D64 /* HKClipperVeiw.m */; };
 		18CB32D81D6C2B2B005A9D64 /* HKImageClipperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32CD1D6C2B2B005A9D64 /* HKImageClipperViewController.m */; };
@@ -858,6 +859,8 @@
 		18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "主题背景.png"; sourceTree = "<group>"; };
 		18C038991E693C8B005F7AA9 /* HotNewsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotNewsVC.h; sourceTree = "<group>"; };
 		18C0389A1E693C8B005F7AA9 /* HotNewsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotNewsVC.m; sourceTree = "<group>"; };
+		18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewWithTableView.h; sourceTree = "<group>"; };
+		18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewWithTableView.m; sourceTree = "<group>"; };
 		18CB32C81D6C2B2B005A9D64 /* HKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewController.h; sourceTree = "<group>"; };
 		18CB32C91D6C2B2B005A9D64 /* HKViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKViewController.m; sourceTree = "<group>"; };
 		18CB32CA1D6C2B2B005A9D64 /* HKClipperVeiw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKClipperVeiw.h; sourceTree = "<group>"; };
@@ -2003,6 +2006,8 @@
 				D972270E1F32D26B009D0E2A /* AppDelegate.mm */,
 				18B9BEAA1F4AAAD100863CB1 /* XLAlertView.h */,
 				18B9BEAB1F4AAAD100863CB1 /* XLAlertView.m */,
+				18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */,
+				18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */,
 				18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */,
 				18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */,
 				184D2F541F5007F0008F8C55 /* 引导页three.png */,
@@ -4979,6 +4984,7 @@
 				18CB32D61D6C2B2B005A9D64 /* HKViewController.m in Sources */,
 				D9B3A5A51D74255700F3F27E /* MWPhoto.m in Sources */,
 				18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */,
+				18CA8AEF1F565C7200E1D84A /* AlertViewWithTableView.m in Sources */,
 				D92C632B1CC8C8D4006768C6 /* AdminViewController.m in Sources */,
 				D958AD691E654CF200B0776F /* JHPieItemsView.m in Sources */,
 				D98E5C001E515210009D56BF /* MASLayoutConstraint.m in Sources */,
