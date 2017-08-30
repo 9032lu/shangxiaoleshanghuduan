@@ -287,7 +287,6 @@
 		D939D6C91E9B1DE100D0569E /* AllSenderMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D939D6C71E9B1DE100D0569E /* AllSenderMessageCell.m */; };
 		D939D6CA1E9B1DE100D0569E /* AllSenderMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D939D6C81E9B1DE100D0569E /* AllSenderMessageCell.xib */; };
 		D93A3AA51CDC3DD60010F72B /* DelayShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A3AA41CDC3DD60010F72B /* DelayShopViewController.m */; };
-		D93A3AA81CDC3DEC0010F72B /* UpgradeShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A3AA71CDC3DEC0010F72B /* UpgradeShopViewController.m */; };
 		D93A3AAB1CDC3E090010F72B /* OrderShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D93A3AAA1CDC3E090010F72B /* OrderShopViewController.m */; };
 		D93C1A191EE9567C006DA624 /* ShoperRegistVCOne.m in Sources */ = {isa = PBXBuildFile; fileRef = D93C1A171EE9567C006DA624 /* ShoperRegistVCOne.m */; };
 		D93C1A1A1EE9567C006DA624 /* ShoperRegistVCOne.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93C1A181EE9567C006DA624 /* ShoperRegistVCOne.xib */; };
@@ -618,6 +617,10 @@
 		D9C3A3001E9642890062B17D /* ChouJiangVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C3A2FE1E9642890062B17D /* ChouJiangVC.m */; };
 		D9C3A3011E9642890062B17D /* ChouJiangVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C3A2FF1E9642890062B17D /* ChouJiangVC.xib */; };
 		D9C4CDED1DE44587009C76C1 /* ValuePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C4CDEC1DE44587009C76C1 /* ValuePickerView.m */; };
+		D9C7B2C81F5561F600406BC9 /* PickReasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7B2C71F5561F600406BC9 /* PickReasonView.m */; };
+		D9C7B2CB1F566C7E00406BC9 /* PickDateTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7B2CA1F566C7E00406BC9 /* PickDateTimeView.m */; };
+		D9C7B2CF1F5696DD00406BC9 /* NewOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7B2CD1F5696DD00406BC9 /* NewOrderCell.m */; };
+		D9C7B2D01F5696DD00406BC9 /* NewOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C7B2CE1F5696DD00406BC9 /* NewOrderCell.xib */; };
 		D9CDFB691CC47F7C0054EBE3 /* BDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFB681CC47F7C0054EBE3 /* BDMapViewController.m */; };
 		D9CDFBB51CC4CE5B0054EBE3 /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFBB41CC4CE5B0054EBE3 /* CustomIOSAlertView.m */; };
 		D9CDFBB81CC4DB8C0054EBE3 /* ShopManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFBB71CC4DB8C0054EBE3 /* ShopManagerViewController.m */; };
@@ -1181,8 +1184,6 @@
 		D939D6C81E9B1DE100D0569E /* AllSenderMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AllSenderMessageCell.xib; sourceTree = "<group>"; };
 		D93A3AA31CDC3DD60010F72B /* DelayShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayShopViewController.h; sourceTree = "<group>"; };
 		D93A3AA41CDC3DD60010F72B /* DelayShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelayShopViewController.m; sourceTree = "<group>"; };
-		D93A3AA61CDC3DEC0010F72B /* UpgradeShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpgradeShopViewController.h; sourceTree = "<group>"; };
-		D93A3AA71CDC3DEC0010F72B /* UpgradeShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpgradeShopViewController.m; sourceTree = "<group>"; };
 		D93A3AA91CDC3E090010F72B /* OrderShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderShopViewController.h; sourceTree = "<group>"; };
 		D93A3AAA1CDC3E090010F72B /* OrderShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderShopViewController.m; sourceTree = "<group>"; };
 		D93C1A161EE9567C006DA624 /* ShoperRegistVCOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoperRegistVCOne.h; sourceTree = "<group>"; };
@@ -1792,6 +1793,13 @@
 		D9C3A2FF1E9642890062B17D /* ChouJiangVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChouJiangVC.xib; sourceTree = "<group>"; };
 		D9C4CDEB1DE44587009C76C1 /* ValuePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValuePickerView.h; sourceTree = "<group>"; };
 		D9C4CDEC1DE44587009C76C1 /* ValuePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValuePickerView.m; sourceTree = "<group>"; };
+		D9C7B2C61F5561F600406BC9 /* PickReasonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickReasonView.h; sourceTree = "<group>"; };
+		D9C7B2C71F5561F600406BC9 /* PickReasonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickReasonView.m; sourceTree = "<group>"; };
+		D9C7B2C91F566C7E00406BC9 /* PickDateTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickDateTimeView.h; sourceTree = "<group>"; };
+		D9C7B2CA1F566C7E00406BC9 /* PickDateTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickDateTimeView.m; sourceTree = "<group>"; };
+		D9C7B2CC1F5696DD00406BC9 /* NewOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderCell.h; sourceTree = "<group>"; };
+		D9C7B2CD1F5696DD00406BC9 /* NewOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderCell.m; sourceTree = "<group>"; };
+		D9C7B2CE1F5696DD00406BC9 /* NewOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrderCell.xib; sourceTree = "<group>"; };
 		D9CDFB671CC47F7C0054EBE3 /* BDMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMapViewController.h; sourceTree = "<group>"; };
 		D9CDFB681CC47F7C0054EBE3 /* BDMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMapViewController.m; sourceTree = "<group>"; };
 		D9CDFBB31CC4CE5B0054EBE3 /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomIOSAlertView.h; path = ../../CustomIOSAlertView.h; sourceTree = "<group>"; };
@@ -2109,6 +2117,10 @@
 				D94C5F3C1D912DC10063EB27 /* UIColor+Hex.m */,
 				D9853F791DD463FA0028BF94 /* UILabel+extension.h */,
 				D9853F7A1DD463FA0028BF94 /* UILabel+extension.m */,
+				D9C7B2C61F5561F600406BC9 /* PickReasonView.h */,
+				D9C7B2C71F5561F600406BC9 /* PickReasonView.m */,
+				D9C7B2C91F566C7E00406BC9 /* PickDateTimeView.h */,
+				D9C7B2CA1F566C7E00406BC9 /* PickDateTimeView.m */,
 			);
 			name = other;
 			sourceTree = "<group>";
@@ -3186,12 +3198,8 @@
 				18EE1FA81E6EB59E000F27AE /* 管理员设置首页 */,
 				D9F135831DEE66E100D2703D /* AddAdminVC.h */,
 				D9F135841DEE66E100D2703D /* AddAdminVC.m */,
-				D93A3AA91CDC3E090010F72B /* OrderShopViewController.h */,
-				D93A3AAA1CDC3E090010F72B /* OrderShopViewController.m */,
 				D93A3AA31CDC3DD60010F72B /* DelayShopViewController.h */,
 				D93A3AA41CDC3DD60010F72B /* DelayShopViewController.m */,
-				D93A3AA61CDC3DEC0010F72B /* UpgradeShopViewController.h */,
-				D93A3AA71CDC3DEC0010F72B /* UpgradeShopViewController.m */,
 				18EDCF651D460358004C40B7 /* ShopAllInfoViewController.h */,
 				18EDCF661D460358004C40B7 /* ShopAllInfoViewController.m */,
 				18CB32C71D6C2B01005A9D64 /* 定义剪裁框 */,
@@ -3994,6 +4002,8 @@
 		D9A6E4691D4F3B65008A3C29 /* 旧的会员卡管理 */ = {
 			isa = PBXGroup;
 			children = (
+				D93A3AA91CDC3E090010F72B /* OrderShopViewController.h */,
+				D93A3AAA1CDC3E090010F72B /* OrderShopViewController.m */,
 				18543E2C1ECAC3C700E0A4DA /* 会员卡首页 */,
 				D9A8ABE81E02954200D4597F /* CardShowViewController.h */,
 				D9A8ABE91E02954200D4597F /* CardShowViewController.m */,
@@ -4252,6 +4262,9 @@
 			children = (
 				D9BB4DD81E04EA8200971BCC /* NewOrderShopViewController.h */,
 				D9BB4DD91E04EA8200971BCC /* NewOrderShopViewController.m */,
+				D9C7B2CC1F5696DD00406BC9 /* NewOrderCell.h */,
+				D9C7B2CD1F5696DD00406BC9 /* NewOrderCell.m */,
+				D9C7B2CE1F5696DD00406BC9 /* NewOrderCell.xib */,
 			);
 			name = "新的预约";
 			sourceTree = "<group>";
@@ -4783,6 +4796,7 @@
 				D92ACDD21F0CD5EE00858727 /* EricForTimeLimitCell.xib in Resources */,
 				1843104B1E6F9C39005521BF /* AddCouponDetailsVC.xib in Resources */,
 				D9AB25351D88E4ED000E9288 /* VoiceSearchFeedback007@2x.png in Resources */,
+				D9C7B2D01F5696DD00406BC9 /* NewOrderCell.xib in Resources */,
 				D9F80ED61DE6EF0900DB42D8 /* CC588055F2B4764AA006CD2B6ACDD25C.jpg in Resources */,
 				D9C0B1B71E83ACF000217195 /* NewShopManagerViewController.xib in Resources */,
 				D947E4721D7D4CB000F9FEE8 /* sdRefeshView_arrow@2x.png in Resources */,
@@ -4990,7 +5004,6 @@
 				D9A6E46C1D4F3BB8008A3C29 /* AddVipCardViewController.m in Sources */,
 				D9EC40C71EE69564004BEDB8 /* GeneralSectionHeader.m in Sources */,
 				D9B3BB9E1DE7FFEB00CC8B0D /* NewProductTableViewCell.m in Sources */,
-				D93A3AA81CDC3DEC0010F72B /* UpgradeShopViewController.m in Sources */,
 				D98E5C061E515210009D56BF /* NSArray+MASAdditions.m in Sources */,
 				D94113571CE9A3D7008E231F /* Order.m in Sources */,
 				D958AD701E654CF200B0776F /* JHWaveChart.m in Sources */,
@@ -5007,6 +5020,7 @@
 				18C0389B1E693C8B005F7AA9 /* HotNewsVC.m in Sources */,
 				1CF283641C5862A200F3952A /* UIViewExt.m in Sources */,
 				D9A06B5C1D8679C30037795B /* EMCDDeviceManager+Media.m in Sources */,
+				D9C7B2C81F5561F600406BC9 /* PickReasonView.m in Sources */,
 				D92ACDDE1F0CD65900858727 /* TimeLimitVipCardVC.m in Sources */,
 				1CDA9E071C5A0E1000DFE518 /* ShopTabBarController.m in Sources */,
 				D9B3A5B41D74255700F3F27E /* UIButton+EMWebCache.m in Sources */,
@@ -5098,6 +5112,7 @@
 				D9210BBC1CC732AC00010DF7 /* RjgmViewController.m in Sources */,
 				D9A06B5F1D8679C30037795B /* EMCDDeviceManager+Remind.m in Sources */,
 				1CDCCD1D1C7594040094E70D /* AFURLRequestSerialization.m in Sources */,
+				D9C7B2CB1F566C7E00406BC9 /* PickDateTimeView.m in Sources */,
 				189CC5D41EFA113900A73BB6 /* JFCityViewController.m in Sources */,
 				D96846561CC9F4E400146956 /* ShopManagerTableViewCell.m in Sources */,
 				D94113591CE9A3D7008E231F /* DataSigner.m in Sources */,
@@ -5236,6 +5251,7 @@
 				189ED0421E8CD53600A762C7 /* getUUID.m in Sources */,
 				D92ACDA91F0CD4FF00858727 /* PackageHomePageTableViewCell.m in Sources */,
 				D98E5C021E515210009D56BF /* MASViewAttribute.m in Sources */,
+				D9C7B2CF1F5696DD00406BC9 /* NewOrderCell.m in Sources */,
 				1A4173C01D787C1500A70601 /* EMChooseViewController.m in Sources */,
 				D939D6C91E9B1DE100D0569E /* AllSenderMessageCell.m in Sources */,
 				D9B3A5BA1D74255700F3F27E /* UIView+EMWebCacheOperation.m in Sources */,

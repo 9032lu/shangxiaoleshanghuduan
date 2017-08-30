@@ -13,7 +13,6 @@
 #import "AdminViewController.h"
 #import "VipManagerViewController.h"
 #import "DelayShopViewController.h"
-#import "UpgradeShopViewController.h"
 #import "NewNextViewController.h"
 #import "OrderShopViewController.h"
 #import "ShopAllInfoViewController.h"
@@ -273,17 +272,9 @@
     NewOrderShopViewController *orderView = [[NewOrderShopViewController alloc]init];
     [self.navigationController pushViewController:orderView animated:YES];
 }
--(void)delayView
-{
-    DelayShopViewController *delayView = [[DelayShopViewController alloc]init];
 
-    [self.navigationController pushViewController:delayView animated:YES];
-}
--(void)upgradeView
-{
-    UpgradeShopViewController *upgradeView = [[UpgradeShopViewController alloc]init];
-    [self.navigationController pushViewController:upgradeView animated:YES];
-}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -10,10 +10,11 @@
 #import "PictureDetailViewController.h"
 #import "UIImageView+WebCache.h"
 #import "PictureAndVeidoDetailVC.h"
-
-
-@interface NewShopIntroduceViewController ()<UITextViewDelegate>
-
+#import "PickReasonView.h"
+#import "PickDateTimeView.h"
+@interface NewShopIntroduceViewController ()<UITextFieldDelegate,UITextViewDelegate>
+@property(nonatomic,strong)NSArray *data;
+@property(nonatomic,strong)NSArray *imageArray;
 @end
 
 @implementation NewShopIntroduceViewController
@@ -32,6 +33,8 @@
     CGFloat oldoffset;
     
 }
+
+
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -89,6 +92,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"商家介绍";
+    
+  
+
+    
     LEFTBACK
     oldoffset = 0.0f;
     UIBarButtonItem *item=[[UIBarButtonItem alloc]initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(btnClick)];
@@ -128,6 +135,7 @@
     timeTF=[[UITextField alloc]initWithFrame:CGRectMake(11, 30, SCREENWIDTH-22, 45)];
     timeTF.placeholder=@"  09:00-22:00(周末法定节假日通用)";
     timeTF.font=[UIFont systemFontOfSize:15.0f];
+    timeTF.delegate = self;
     timeTF.backgroundColor=RGB(240, 240, 240);
     [businessTimeAndServiceView addSubview:timeTF];
     
@@ -263,21 +271,41 @@
     [KKRequestDataService requestWithURL:urlStr params:userInfos httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
         NSLog(@"postRequestGetInfo%@", result);
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.frame = CGRectMake(0, 64, 375, 667);
-        // Set the annular determinate mode to show task progress.
-        hud.mode = MBProgressHUDModeText;
+        NSString *title, *act_title;
+        
+        
+        
+        if ([result[@"result_code"] intValue]==1) {
 
-        hud.label.font = [UIFont systemFontOfSize:13];
-        // Move to bottm center.
-        //    hud.offset = CGPointMake(0.f, );
-
-        [hud hideAnimated:YES afterDelay:2.f];
-        if ([[NSString stringWithFormat:@"%@",result[@"result_code"]] isEqualToString:@"1"]) {
-            hud.label.text = NSLocalizedString(@"上传成功", @"HUD message title");
+            title = @"恭喜你!";
+            act_title = @"提交成功";
         }else{
-            hud.label.text = NSLocalizedString(@"上传失败", @"HUD message title");
+
+            title = @"您并未进行任何修改";
+            act_title = @"提交失败";
+
         }
+        
+        UIAlertController *alertControl = [UIAlertController alertControllerWithTitle:title message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        
+        NSMutableAttributedString *titleAtt = [[NSMutableAttributedString alloc] initWithString:title];
+        [titleAtt addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16] range:NSMakeRange(0, title.length)];
+
+        [alertControl setValue:titleAtt forKey:@"attributedTitle"];
+        
+        UIAlertAction *action = [UIAlertAction actionWithTitle:act_title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+
+        }];
+        
+        
+        //修改按钮
+            [action setValue:[UIColor blackColor] forKey:@"titleTextColor"];
+        
+               [alertControl addAction:action];
+        
+        [self presentViewController:alertControl animated:YES completion:nil];
+
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -366,10 +394,99 @@
     
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    if (textField ==timeTF) {
+        
+        PickDateTimeView *pickTimeView = [[PickDateTimeView alloc]init];
+        pickTimeView.dataSource = @[@[@"00:00",@"1:00",@"2:00",@"3:00",@"4:00",@"5:00",@"6:00",@"7:00",@"8:00",@"9:00",@"10:00",@"11:00",@"12:00",@"13:00",@"14:00",@"15:00",@"16:00",@"17:00",@"18:00",@"19:00",@"20:00",@"21:00",@"22:00",@"23:00",],@[@"00:00",@"1:00",@"2:00",@"3:00",@"4:00",@"5:00",@"6:00",@"7:00",@"8:00",@"9:00",@"10:00",@"11:00",@"12:00",@"13:00",@"14:00",@"15:00",@"16:00",@"17:00",@"18:00",@"19:00",@"20:00",@"21:00",@"22:00",@"23:00",]];
+
+        [self.view addSubview:pickTimeView];
+        
+        [pickTimeView show];
+        
+        pickTimeView.sureBtnClick = ^(NSString *value) {
+            
+            
+            timeTF.text = value;
+            NSLog(@"0-----0=%@",value);
+        };
+
+        
+        return NO;
+    }else
+        return YES;
+    
+}
 
 -(BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    mytextView = textView;
-    return YES;
+    
+    if (textView ==serviceText) {
+    
+        [self.view endEditing:YES];
+
+        PickReasonView *pickReasonView = [[PickReasonView alloc]init];
+        pickReasonView.title = @"请选择门店服务";
+        pickReasonView.dataSource = @[@"支持WIFI",@"提供车位",@"提供包间",@"提供纸巾",@"提供打包服务",@"其它(详情请咨询商家)"];
+        pickReasonView.mutab_select = YES;
+        [self.view addSubview:pickReasonView];
+        
+        [pickReasonView show];
+        
+        pickReasonView.sureBtnClick = ^(NSArray *value) {
+            
+            for (NSInteger i = 0; i <value.count; i ++) {
+                
+                if (i==0) {
+                    serviceText.text =value[0];
+                }else{
+                    serviceText.text = [NSString stringWithFormat:@"%@,%@",serviceText.text,value[i]];
+                }
+            }
+            
+            
+            NSLog(@"0-----0=%@",value);
+        };
+
+        
+        
+        return NO;
+    }else if (textView == noticeTextView)
+    {
+        [self.view endEditing:YES];
+
+        PickReasonView *pickReasonView = [[PickReasonView alloc]init];
+        pickReasonView.title = @"请选择购买须知";
+        pickReasonView.dataSource = @[@"需要至少提前两小时预约",@"需要提前一天预约",@"无需预约",@"不在与其他优惠同享",@"本店每张会员卡仅限一人使用",@"消费时需出示本人证件",@"会员可使用/体验店内所有产品",@"其它(详情请咨询商家)"];
+        pickReasonView.mutab_select = YES;
+        [self.view addSubview:pickReasonView];
+        
+        [pickReasonView show];
+        
+        pickReasonView.sureBtnClick = ^(NSArray *value) {
+
+            
+            for (NSInteger i = 0; i <value.count; i ++) {
+                
+                if (i==0) {
+                    noticeTextView.text =value[0];
+                }else{
+                    noticeTextView.text = [NSString stringWithFormat:@"%@\r%@",noticeTextView.text,value[i]];
+                }
+            }
+            NSLog(@"0-----0=%@",value);
+        };
+        
+        
+        
+        return NO;
+
+    }else
+    {
+        mytextView = textView;
+        return YES;
+
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

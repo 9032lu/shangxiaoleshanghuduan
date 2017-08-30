@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NewShopIntroduceViewController : UIViewController
-@property(nonatomic,strong)NSArray *data;
-@property(nonatomic,strong)NSArray *imageArray;
+
 @end

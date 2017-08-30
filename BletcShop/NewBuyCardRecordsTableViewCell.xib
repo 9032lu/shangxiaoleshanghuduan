@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="391" height="171"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="391" height="171"/>
+                <rect key="frame" x="0.0" y="0.0" width="391" height="170.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="zHD-1o-YeU">
@@ -56,17 +56,18 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办卡类型：储值卡" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deq-p8-OmU">
-                        <rect key="frame" x="266.5" y="58.5" width="106.5" height="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办卡类型：储值卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deq-p8-OmU">
+                        <rect key="frame" x="265" y="58.5" width="108" height="13"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="108" id="YU4-Lj-8it"/>
                             <constraint firstAttribute="height" constant="13" id="ybW-pz-T8d"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办卡金额：500元" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXH-uP-Ro5">
-                        <rect key="frame" x="269" y="80.5" width="104" height="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办卡金额：500元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXH-uP-Ro5">
+                        <rect key="frame" x="265" y="80.5" width="108" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="EhI-Ct-2nh"/>
                         </constraints>
@@ -83,7 +84,6 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="deq-p8-OmU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wze-xX-zMf" secondAttribute="trailing" id="2kB-Fn-isI"/>
                     <constraint firstItem="9qC-sw-D59" firstAttribute="leading" secondItem="zHD-1o-YeU" secondAttribute="trailing" constant="13" id="8xh-kh-ztW"/>
                     <constraint firstItem="9qC-sw-D59" firstAttribute="top" secondItem="wze-xX-zMf" secondAttribute="bottom" constant="9" id="A3t-Fg-2kc"/>
                     <constraint firstAttribute="trailingMargin" secondItem="UbJ-cF-R8Z" secondAttribute="trailing" constant="13" id="D8O-lD-ork"/>
@@ -99,7 +99,7 @@
                     <constraint firstItem="NXH-uP-Ro5" firstAttribute="top" secondItem="9qC-sw-D59" secondAttribute="top" id="iwp-ef-PUC"/>
                     <constraint firstItem="ZrP-Jd-IfS" firstAttribute="bottom" secondItem="zHD-1o-YeU" secondAttribute="bottom" id="nBV-ce-zrs"/>
                     <constraint firstItem="zHD-1o-YeU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sZp-ea-ou6"/>
-                    <constraint firstItem="NXH-uP-Ro5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9qC-sw-D59" secondAttribute="trailing" id="wcq-AB-NzW"/>
+                    <constraint firstItem="NXH-uP-Ro5" firstAttribute="leading" secondItem="deq-p8-OmU" secondAttribute="leading" id="tQ4-fP-vNV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
