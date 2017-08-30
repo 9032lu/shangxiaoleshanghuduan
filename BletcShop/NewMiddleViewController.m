@@ -15,7 +15,7 @@
 #import "JFAreaDataManager.h"
 #import "ValuePickerView.h"
 #import "ChooseTradeVC.h"
-
+#import "UIButton+WebCache.h"
 @interface NewMiddleViewController ()<UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 {
     NSArray *nameArray;
@@ -177,6 +177,7 @@
     [self initTopView];
     [self initScrollView];
     self.indexTag=0;
+     [self postRequestGetAddPictures];
 }
 -(void)initTopView{
     UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
@@ -1409,20 +1410,19 @@
     [self saveImage:image withName:@"currentImage.png"];
     
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
-    
+     NSData *img_Data = [NSData dataWithContentsOfFile:fullPath];
     UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
-    NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/upload",BASEURL];
+    
     
     if (_indexTag ==333) {
-        [self.add_more_img_A addObject:savedImage];
         
+        [self postRequestAddPicturesToServer:img_Data];
         
-        [self refreshAddMoreView];
-        
+        return;
     }
 
     
-    
+    NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/upload",BASEURL];
     
     
     
@@ -1505,7 +1505,7 @@
         [parmer setValue:@"wep" forKey:@"type"];
     }
     
-    NSData *img_Data = [NSData dataWithContentsOfFile:fullPath];
+   
     
     [parmer setObject:img_Data forKey:@"file1"];
     
@@ -1735,16 +1735,17 @@
             
             
         }else{
-            [img_btn setImage:_add_more_img_A[i] forState:UIControlStateNormal];
-            [img_btn setImage:_add_more_img_A[i] forState:UIControlStateHighlighted];
+            [img_btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ADDFILEIMAGES,self.add_more_img_A[i][@"image_url"]]] forState: UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon3.png"]];
+            
+            [img_btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ADDFILEIMAGES,self.add_more_img_A[i][@"image_url"]]] forState: UIControlStateHighlighted placeholderImage:[UIImage imageNamed:@"icon3.png"]];
             
             LZDButton *deletBtn = [LZDButton creatLZDButton];
             deletBtn.frame = CGRectMake(img_btn.width-40, 0, 40, 40);
             deletBtn.backgroundColor = [UIColor blackColor];
             deletBtn.block = ^(LZDButton *sender) {
                 
-                [self.add_more_img_A removeObjectAtIndex:i];
-                [self refreshAddMoreView];
+                [self postRequestDeleteAddPictures:self.add_more_img_A[i]];
+                
             };
             [img_btn addSubview:deletBtn];
             
@@ -1780,4 +1781,73 @@
     
     [hud hideAnimated:YES afterDelay:3.f];
 }
+//获取补充材料
+-(void)postRequestGetAddPictures{
+    
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/register/getExtra",BASEURL];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [params setObject:shopInfoDic[@"muid"] forKey:@"muid"];
+    
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        if (result) {
+            self.add_more_img_A=[NSMutableArray arrayWithArray:result[@"extra_list"]];
+            [self refreshAddMoreView];
+        }
+        NSLog(@" KKRequestDataService ==%@", result);
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        
+        NSLog(@"%@", error);
+    }];
+    
+}
+-(void)postRequestAddPicturesToServer:(NSData *)file{
+    
+    NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/upload_extra",BASEURL];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:shopInfoDic[@"muid"] forKey:@"muid"];//file1
+    [params setObject:file forKey:@"file1"];
+    NSLog(@"%@",shopInfoDic[@"muid"]);
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        NSLog(@" KKRequestDataService ==%@", result);
+        if (result) {
+            if ([[NSString getTheNoNullStr:result[@"result_code"] andRepalceStr:@"123"] isEqualToString:@"access"]) {
+                [self postRequestGetAddPictures];
+            }
+        }
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        
+        NSLog(@"%@", error);
+    }];
+    
+}
+-(void)postRequestDeleteAddPictures:(NSDictionary *)dic{
+    NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/delete_extra",BASEURL];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:dic[@"muid"] forKey:@"muid"];//file1
+    [params setObject:dic[@"image_url"] forKey:@"image_url"];
+    NSLog(@"%@",shopInfoDic[@"muid"]);
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        NSLog(@" KKRequestDataService ==%@", result);
+        if (result) {
+            if ([result[@"result_code"] integerValue]==1) {
+                [self postRequestGetAddPictures];
+            }
+        }
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@", error);
+    }];
+    
+}
+
 @end

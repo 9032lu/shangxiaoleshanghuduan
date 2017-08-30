@@ -18,6 +18,7 @@
 #import "ShopLandController.h"
 #import "BaseNavigationController.h"
 #import "ChooseTradeVC.h"
+#import "UIButton+WebCache.h"
 @interface AuthFailShopVC ()<UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 {
     NSArray *nameArray;
@@ -103,6 +104,7 @@
     [self initTopView];
     [self initScrollView];
     self.indexTag=0;
+    [self postRequestGetAddPictures];
 }
 -(void)initTopView{
     UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
@@ -432,7 +434,7 @@
     underLab.tag=900;
     underLab.text=@"营业执照照片";
     underLab.font=[UIFont systemFontOfSize:15.0f];
-    underLab.textColor=[UIColor redColor];
+    underLab.textColor=NavBackGroundColor;
     underLab.textAlignment=1;
     [_scrollView addSubview:underLab];
     
@@ -469,7 +471,7 @@
     under_red2.text=@"经营场地照片";
     under_red2.font=[UIFont systemFontOfSize:14.0f];
     under_red2.textAlignment=1;
-    under_red2.textColor=[UIColor redColor];
+    under_red2.textColor=NavBackGroundColor;
     [_scrollView addSubview:under_red2];
     
     UIView *lineView8=[[UIView alloc]initWithFrame:CGRectMake(10, under_red2.bottom, SCREENWIDTH-20, 0.6)];
@@ -612,7 +614,7 @@
         
         NSLog(@" KKRequestDataService ==%@", result);
         if ([result[@"result_code"] intValue]==1 ||[result[@"result_code"] intValue]==0) {
-            UIAlertView *altView =[[UIAlertView alloc]initWithTitle:@"提示" message:@"您已提交成功是否重新登录?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            UIAlertView *altView =[[UIAlertView alloc]initWithTitle:@"提示" message:@"您已提交成功,请重新登录!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
             [altView show];
         }else if([result[@"result_code"] intValue]==-1){
             
@@ -1017,21 +1019,20 @@
     [self saveImage:image withName:@"currentImage.png"];
     
     NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:@"currentImage.png"];
-    
+    NSData *img_Data = [NSData dataWithContentsOfFile:fullPath];
     UIImage *savedImage = [[UIImage alloc] initWithContentsOfFile:fullPath];
-    NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/upload",BASEURL];
+   
     
     
     if (_indexTag ==333) {
-        [self.add_more_img_A addObject:savedImage];
+       
+        [self postRequestAddPicturesToServer:img_Data];
         
-        
-        [self refreshAddMoreView];
- 
+        return;
     }
     
     
-    
+     NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/upload",BASEURL];
     
     NSString *name = [[NSString alloc]initWithFormat:@"%@",shopInfoDic[@"muid"]];
     
@@ -1111,7 +1112,7 @@
         [parmer setValue:@"wep" forKey:@"type"];
     }
     
-    NSData *img_Data = [NSData dataWithContentsOfFile:fullPath];
+    
     
     [parmer setObject:img_Data forKey:@"file1"];
     
@@ -1413,16 +1414,18 @@
             
 
         }else{
-            [img_btn setImage:_add_more_img_A[i] forState:UIControlStateNormal];
-            [img_btn setImage:_add_more_img_A[i] forState:UIControlStateHighlighted];
-
+            
+            [img_btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ADDFILEIMAGES,self.add_more_img_A[i][@"image_url"]]] forState: UIControlStateNormal placeholderImage:[UIImage imageNamed:@"icon3.png"]];
+            
+            [img_btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ADDFILEIMAGES,self.add_more_img_A[i][@"image_url"]]] forState: UIControlStateHighlighted placeholderImage:[UIImage imageNamed:@"icon3.png"]];
+            
             LZDButton *deletBtn = [LZDButton creatLZDButton];
             deletBtn.frame = CGRectMake(img_btn.width-40, 0, 40, 40);
             deletBtn.backgroundColor = [UIColor blackColor];
             deletBtn.block = ^(LZDButton *sender) {
               
-                [self.add_more_img_A removeObjectAtIndex:i];
-                [self refreshAddMoreView];
+                [self postRequestDeleteAddPictures:self.add_more_img_A[i]];
+                
             };
             [img_btn addSubview:deletBtn];
             
@@ -1451,5 +1454,72 @@
     
     return YES;
 }
+//获取补充材料
+-(void)postRequestGetAddPictures{
+    
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/register/getExtra",BASEURL];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    
+    [params setObject:shopInfoDic[@"muid"] forKey:@"muid"];
+    
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        if (result) {
+            self.add_more_img_A=[NSMutableArray arrayWithArray:result[@"extra_list"]];
+            [self refreshAddMoreView];
+        }
+        NSLog(@" KKRequestDataService ==%@", result);
+ 
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        
+        NSLog(@"%@", error);
+    }];
 
+}
+-(void)postRequestAddPicturesToServer:(NSData *)file{
+    
+    NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/upload_extra",BASEURL];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:shopInfoDic[@"muid"] forKey:@"muid"];//file1
+    [params setObject:file forKey:@"file1"];
+    NSLog(@"%@",shopInfoDic[@"muid"]);
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        NSLog(@" KKRequestDataService ==%@", result);
+        if (result) {
+            if ([[NSString getTheNoNullStr:result[@"result_code"] andRepalceStr:@"123"] isEqualToString:@"access"]) {
+                 [self postRequestGetAddPictures];
+            }
+        }
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        
+        NSLog(@"%@", error);
+    }];
+
+}
+-(void)postRequestDeleteAddPictures:(NSDictionary *)dic{
+    NSString *url =[[NSString alloc]initWithFormat:@"%@Extra/RegisterUpload/delete_extra",BASEURL];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setObject:dic[@"muid"] forKey:@"muid"];//file1
+    [params setObject:dic[@"image_url"] forKey:@"image_url"];
+    NSLog(@"%@",shopInfoDic[@"muid"]);
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        NSLog(@" KKRequestDataService ==%@", result);
+        if (result) {
+            if ([result[@"result_code"] integerValue]==1) {
+                 [self postRequestGetAddPictures];
+            }
+        }
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+    
+        NSLog(@"%@", error);
+    }];
+
+}
 @end
