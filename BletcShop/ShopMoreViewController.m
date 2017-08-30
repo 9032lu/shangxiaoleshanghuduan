@@ -12,11 +12,15 @@
 #import "FeedBackViewController.h"
 #import "ShopUserInfoViewController.h"
 #import "NewNextViewController.h"
-
+//#import "AlertViewWithTableView.h"
 #import "HotNewsVC.h"
 @interface ShopMoreViewController ()<UITableViewDelegate,UITableViewDataSource>
+//{
+//    AlertViewWithTableView *view;
+//}
 @property(nonatomic,strong)NSArray *data;
 @property(nonatomic,weak)UITableView *setTable;
+
 @end
 
 @implementation ShopMoreViewController
@@ -25,9 +29,17 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.title = @"更多";
+//    view=[[AlertViewWithTableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64) withArray:@[@"1.身份证号输入有误",@"2.店铺地址有误",@"3.营业执照图片不清晰",@"4.经营场地照片不清晰",@"5.水电票照片不清晰"]];
+//    [self.view addSubview:view];
+//    
+//    [view.checkButton addTarget:self action:@selector(goRegisterVC) forControlEvents:UIControlEventTouchUpInside];
     [self _initTable];
     
 }
+//-(void)goRegisterVC{
+//    [view removeFromSuperview];
+//    NSLog(@"点击事件被触发了");
+//}
 -(NSArray *)data
 {
     if (_data == nil) {
