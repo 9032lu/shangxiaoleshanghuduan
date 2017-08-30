@@ -8,6 +8,8 @@
 
 #import "DelayShopViewController.h"
 #import "LZDButton.h"
+#import "NewOrderCell.h"
+
 @interface DelayShopViewController ()
 {
     UIView *topBackView;
@@ -216,11 +218,11 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 1;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30;
+    return 120;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 41+10;
@@ -342,77 +344,37 @@
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIndentifier = @"cellIndentifier";
-    // 定义唯一标识
-    // 通过indexPath创建cell实例 每一个cell都是单独的
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
-    
+    NewOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NewOrderCellID"];
     
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIndentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"NewOrderCell" owner:self options:nil] firstObject];
         
-        UILabel *huiyuanLabel = [[UILabel alloc]initWithFrame:CGRectMake(13, 0, 75, 30)];
-        huiyuanLabel.text = @"卡片编号:";
-        huiyuanLabel.font = [UIFont systemFontOfSize:15];
-        huiyuanLabel.textColor = RGB(153,153,153);
-        huiyuanLabel.tag = 900;
-        huiyuanLabel.textAlignment = NSTextAlignmentLeft;
-        [cell addSubview:huiyuanLabel];
-        
-        UILabel *huiyuanText = [[UILabel alloc]initWithFrame:CGRectMake(102, 0, SCREENWIDTH-100, 30)];
-        huiyuanText.text = @"洛天依";
-        huiyuanText.textAlignment = NSTextAlignmentLeft;
-        huiyuanText.font = [UIFont systemFontOfSize:15];
-        huiyuanText.textColor = RGB(51,51,51);
-        huiyuanText.tag = 901;
-        [cell addSubview:huiyuanText];
+    }
+    
+    if (self.selectTag==2) {
+        cell.rightView.hidden = NO;
+    }else{
+        cell.rightView.hidden = YES;
         
     }
     
     if (self.data_A.count!=0) {
         NSDictionary *dic = self.data_A[indexPath.section];
-        UILabel *huiyuanLabel = [cell viewWithTag:900];
-        UILabel *huiyuanText = [cell viewWithTag:901];
-        switch (indexPath.row) {
-            case 0:
-            {
-                huiyuanLabel.text = @"会员名称:";
-                huiyuanText.text = dic[@"nickname"];
+        
+        
+        
+        cell.phoneLab.text = dic[@"nickname"];
+        
+        cell.timeLab.text = dic[@"card_type"];
+        
+        cell.contentLab.text = dic[@"card_level"];
+        cell.dateLab.text = [self.deadLine_dic objectForKey:dic[@"postpone"]];
+        
+        cell.pho.text =@"会员名称:";
+        cell.time_l.text = @"卡片类型:";
+        cell.conten_l.text = @"卡片级别:";
+        cell.date_l.text = @"延长期限:";
 
-                
-            }
-                break;
-            case 1:
-            {
-                huiyuanLabel.text = @"卡片类型:";
-                huiyuanText.text = dic[@"card_type"];
-
- 
-            }
-                break;
-            case 2:
-            {
-                huiyuanLabel.text = @"卡片级别:";
-                huiyuanText.text = dic[@"card_level"];
-
-
-            }
-                break;
-            case 3:
-            {
-                huiyuanLabel.text = @"延长期限:";
-                huiyuanText.text = [self.deadLine_dic objectForKey:dic[@"postpone"]];
-
-
-                
-            }
-                break;
-
-                
-            default:
-                break;
-        }
         
     }
     
