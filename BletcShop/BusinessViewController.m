@@ -39,10 +39,12 @@
 
 
 #import "SHOPVIPCARDVC.h"
-
+#import "AlertViewWithTableView.h"
 @interface BusinessViewController ()<UIAlertViewDelegate>
 {
     NSArray *arr_imgS;
+    AlertViewWithTableView *failView;
+    NSString *intrueOrFast;
 }
 @end
 
@@ -65,6 +67,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    intrueOrFast=@"";
     self.view.backgroundColor=[UIColor whiteColor];
     arr_imgS = @[@"广告推送",@"店铺管理",@"资金提现",@"管理员设置",@"商家介绍",@"会员延期",@"授信额度",@"预约处理",@"优惠券"];
     
@@ -341,15 +344,30 @@
                 //            [self use_examine];
             }else if ([stateStr isEqualToString:@"false"]){
                 
-                
-                
-                UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"审核未通过，请重新修改" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
-                
-                altView.tag =9998;
-                [altView show];
-                
-                
-                
+//                UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"审核未通过，请重新修改" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
+//                
+//                altView.tag =9998;
+//                [altView show];
+                NSLog(@"%@",app.comPleteInfoDic[@"fail_reason"]);
+                if (app.comPleteInfoDic[@"fail_reason"]) {
+                    NSString *reasonStr=app.comPleteInfoDic[@"fail_reason"];
+                    NSArray *array=[reasonStr componentsSeparatedByString:@","];
+                    if (array.count>0) {
+                        NSString *confirmType=array[0];
+                        intrueOrFast=confirmType;
+                        NSMutableArray *mutArray=[[NSMutableArray alloc]initWithCapacity:0];
+                        for (int i=1; i<array.count; i++) {
+                            [mutArray addObject:array[i]];
+                        }
+                        failView=[[AlertViewWithTableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) withArray:mutArray];
+                        [self.view addSubview:failView];
+                        
+                        [failView.checkButton addTarget:self action:@selector(goRegisterVC) forControlEvents:UIControlEventTouchUpInside];
+                        
+                    }
+                    
+                }
+
             }else if ([stateStr isEqualToString:@"auditing"]){
                 UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"正在审核中" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
                 
@@ -401,12 +419,29 @@
                 
                 
                 
-               UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"审核未通过，请重新修改" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
-                
-                altView.tag =9998;
-                [altView show];
-                
-                
+//               UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"审核未通过，请重新修改" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
+//                
+//                altView.tag =9998;
+//                [altView show];
+                if (app.comPleteInfoDic[@"fail_reason"]) {
+                    NSString *reasonStr=app.comPleteInfoDic[@"fail_reason"];
+                    NSArray *array=[reasonStr componentsSeparatedByString:@","];
+                    if (array.count>0) {
+                        NSString *confirmType=array[0];
+                        intrueOrFast=confirmType;
+                        NSMutableArray *mutArray=[[NSMutableArray alloc]initWithCapacity:0];
+                        for (int i=1; i<array.count; i++) {
+                            [mutArray addObject:array[i]];
+                        }
+                        failView=[[AlertViewWithTableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) withArray:mutArray];
+                        [self.view addSubview:failView];
+                        
+                        [failView.checkButton addTarget:self action:@selector(goRegisterVC) forControlEvents:UIControlEventTouchUpInside];
+                        
+                    }
+                    
+                }
+
                 
             }else if ([stateStr isEqualToString:@"auditing"]){
                 UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"正在审核中" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
@@ -442,7 +477,7 @@
     
     
 //        NSString *stateStr = [[NSUserDefaults standardUserDefaults] objectForKey:@"wangyongle"];
-    
+    //fail_reason = insure,店主姓名输入有误,营业执照图片不清楚,经营场地照片不清楚,租赁合同不符合规定,
     
 
     
@@ -478,12 +513,29 @@
             
         }else if ([stateStr isEqualToString:@"false"]){
             
+            if (app.comPleteInfoDic[@"fail_reason"]) {
+                NSString *reasonStr=app.comPleteInfoDic[@"fail_reason"];
+                NSArray *array=[reasonStr componentsSeparatedByString:@","];
+                if (array.count>0) {
+                    NSString *confirmType=array[0];
+                    intrueOrFast=confirmType;
+                    NSMutableArray *mutArray=[[NSMutableArray alloc]initWithCapacity:0];
+                    for (int i=1; i<array.count; i++) {
+                        [mutArray addObject:array[i]];
+                    }
+                    failView=[[AlertViewWithTableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) withArray:mutArray];
+                    [self.view addSubview:failView];
+                    
+                    [failView.checkButton addTarget:self action:@selector(goRegisterVC) forControlEvents:UIControlEventTouchUpInside];
+                    
+                }
+                
+            }
             
-            
-            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"审核未通过，请重新修改" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
-            
-            altView.tag =9998;
-            [altView show];
+//            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"审核未通过，请重新修改" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"预付保险认证",@"快速认证", nil];
+//            
+//            altView.tag =9998;
+//            [altView show];
 
            
 
@@ -626,5 +678,17 @@
        
     
 }
-    
+-(void)goRegisterVC{
+    [failView removeFromSuperview];
+    if ( [intrueOrFast isEqualToString:@"insure"]) {
+        NewNextViewController *firstVC=[[NewNextViewController alloc]init];
+        
+        [self presentViewController:firstVC animated:YES completion:nil];
+    }else{
+        AuthFailShopVC *firstVC=[[AuthFailShopVC alloc]init];
+        
+        [self presentViewController:firstVC animated:YES completion:nil];
+    }
+    NSLog(@"点击事件被触发了");
+}
 @end

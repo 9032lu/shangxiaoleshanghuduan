@@ -67,7 +67,7 @@
  商户信息
  */
 @property (nonatomic , strong) NSMutableDictionary *shopInfoDic;
-
+@property(nonatomic,strong)NSDictionary * comPleteInfoDic;
 /**
  卡的信息
  */
@@ -137,7 +137,7 @@
 @property(nonnull,retain)NSString *city;
 
 @property int paymentType;
-@property(nonatomic,strong)NSArray *  superAccoutArray;
+@property(nonatomic,strong)NSArray * superAccoutArray;
 
 /**
  *  退出登录

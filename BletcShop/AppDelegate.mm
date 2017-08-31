@@ -83,6 +83,12 @@
     }
     return _shopInfoDic;
 }
+-(NSDictionary *)comPleteInfoDic{
+    if (!_comPleteInfoDic) {
+        _comPleteInfoDic = [NSMutableDictionary dictionary];
+    }
+    return _comPleteInfoDic;
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     if ([self exist]) {
         NSLog(@"数据库存在");
@@ -1278,6 +1284,7 @@
      {
          
          NSLog(@"postRequestSeller-result%@", result);
+         self.comPleteInfoDic=result;
          if ([result[@"result_code"]  isEqualToString: @"access"]) {
              NSLog(@"成功");
              

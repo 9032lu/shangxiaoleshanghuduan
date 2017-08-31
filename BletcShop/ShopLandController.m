@@ -408,7 +408,7 @@
      {
          
          NSDictionary *result_dic = (NSDictionary*)result;
-         
+        
          NSDictionary *userInfo = result_dic[@"info"];
          
          NSLog(@"商户登录请求result==%@", result);
@@ -435,6 +435,8 @@
                          
                          app.shopIsLogin = YES;
                          app.shopInfoDic =(NSMutableDictionary*)userInfo;
+                         app.comPleteInfoDic=(NSDictionary *)result_dic;
+                         NSLog(@"%@",app.comPleteInfoDic);
                          NSUserDefaults *use_name = [NSUserDefaults standardUserDefaults];
                          
                          if (self.ifRemeber) {

@@ -37,7 +37,7 @@
         height=70+56+45*4;
         
     }
-    whiteView.frame=CGRectMake(50, 170-64, self.width-100, height);
+    whiteView.frame=CGRectMake(50, 170, self.width-100, height);
     whiteView.backgroundColor=[UIColor whiteColor];
     whiteView.layer.cornerRadius=12;
     whiteView.clipsToBounds=YES;
