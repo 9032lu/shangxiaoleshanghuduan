@@ -305,7 +305,7 @@
             noticeLab.tag=i+10;
             noticeLab.textAlignment=1;
             noticeLab.font=[UIFont systemFontOfSize:13.0f];
-            noticeLab.textColor=[UIColor redColor];
+            noticeLab.textColor=NavBackGroundColor;//[UIColor redColor];
             [cell addSubview:noticeLab];
             totalHeight=kuandu+30+10;
             if (i==0) {

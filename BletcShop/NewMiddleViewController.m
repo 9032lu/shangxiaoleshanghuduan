@@ -685,7 +685,7 @@
     underLab.tag=900;
     underLab.text=@"营业执照照片";
     underLab.font=[UIFont systemFontOfSize:15.0f];
-    underLab.textColor=[UIColor redColor];
+    underLab.textColor=NavBackGroundColor;//[UIColor redColor];
     underLab.textAlignment=1;
     [_scrollView addSubview:underLab];
     
@@ -732,7 +732,7 @@
     _houseProvide1=[[UILabel alloc]initWithFrame:CGRectMake(120, _imageView2.bottom, (SCREENWIDTH-150)/2+20, 40)];
     
     _houseProvide1.font=[UIFont systemFontOfSize:14.0f];
-    _houseProvide1.textColor=[UIColor redColor];
+    _houseProvide1.textColor=NavBackGroundColor;//[UIColor redColor];
     _houseProvide1.textAlignment=1;
     [_scrollView addSubview:_houseProvide1];
     
@@ -748,7 +748,7 @@
     
     _houseProvide2.font=[UIFont systemFontOfSize:14.0f];
     _houseProvide2.textAlignment=1;
-    _houseProvide2.textColor=[UIColor redColor];
+    _houseProvide2.textColor=NavBackGroundColor;//[UIColor redColor];
     [_scrollView addSubview:_houseProvide2];
     
     UIView *lineView6=[[UIView alloc]initWithFrame:CGRectMake(10, _houseProvide2.bottom+5, SCREENWIDTH-20, 1)];
@@ -811,7 +811,7 @@
     under_red2.text=@"经营场地照片";
     under_red2.font=[UIFont systemFontOfSize:14.0f];
     under_red2.textAlignment=1;
-    under_red2.textColor=[UIColor redColor];
+    under_red2.textColor=NavBackGroundColor;//[UIColor redColor];
     [_scrollView addSubview:under_red2];
     
     UIView *lineView8=[[UIView alloc]initWithFrame:CGRectMake(10, under_red2.bottom+5, SCREENWIDTH-20, 1)];
@@ -845,7 +845,7 @@
     under_red3.text=@"水电票据照片";
     under_red3.font=[UIFont systemFontOfSize:14.0f];
     under_red3.textAlignment=1;
-    under_red3.textColor=[UIColor redColor];
+    under_red3.textColor=NavBackGroundColor;//[UIColor redColor];
     [_scrollView addSubview:under_red3];
     
     UIView *lineView9=[[UIView alloc]initWithFrame:CGRectMake(10, under_red3.bottom+5, SCREENWIDTH-20, 1)];
