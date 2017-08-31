@@ -40,6 +40,8 @@
 		18390D651F4D8984008FFBDD /* NewBuyCardRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18390D631F4D8984008FFBDD /* NewBuyCardRecordVC.xib */; };
 		1843104A1E6F9C39005521BF /* AddCouponDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 184310481E6F9C39005521BF /* AddCouponDetailsVC.m */; };
 		1843104B1E6F9C39005521BF /* AddCouponDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184310491E6F9C39005521BF /* AddCouponDetailsVC.xib */; };
+		184437291F57E554001D5046 /* ChatForAllDatasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 184437271F57E554001D5046 /* ChatForAllDatasVC.m */; };
+		1844372A1F57E554001D5046 /* ChatForAllDatasVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184437281F57E554001D5046 /* ChatForAllDatasVC.xib */; };
 		184C72031EC2F9150065EE65 /* SYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184C72021EC2F9150065EE65 /* SYPasswordView.m */; };
 		184D2F411F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 184D2F3F1F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.m */; };
 		184D2F421F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184D2F401F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.xib */; };
@@ -766,6 +768,9 @@
 		184310471E6F9C39005521BF /* AddCouponDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCouponDetailsVC.h; sourceTree = "<group>"; };
 		184310481E6F9C39005521BF /* AddCouponDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCouponDetailsVC.m; sourceTree = "<group>"; };
 		184310491E6F9C39005521BF /* AddCouponDetailsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCouponDetailsVC.xib; sourceTree = "<group>"; };
+		184437261F57E554001D5046 /* ChatForAllDatasVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatForAllDatasVC.h; sourceTree = "<group>"; };
+		184437271F57E554001D5046 /* ChatForAllDatasVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatForAllDatasVC.m; sourceTree = "<group>"; };
+		184437281F57E554001D5046 /* ChatForAllDatasVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatForAllDatasVC.xib; sourceTree = "<group>"; };
 		184C72011EC2F9150065EE65 /* SYPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYPasswordView.h; sourceTree = "<group>"; };
 		184C72021EC2F9150065EE65 /* SYPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYPasswordView.m; sourceTree = "<group>"; };
 		184D2F3E1F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewBuyCardRecordsTableViewCell.h; sourceTree = "<group>"; };
@@ -2016,6 +2021,9 @@
 				18B9BEAB1F4AAAD100863CB1 /* XLAlertView.m */,
 				18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */,
 				18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */,
+				184437261F57E554001D5046 /* ChatForAllDatasVC.h */,
+				184437271F57E554001D5046 /* ChatForAllDatasVC.m */,
+				184437281F57E554001D5046 /* ChatForAllDatasVC.xib */,
 				18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */,
 				18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */,
 				184D2F541F5007F0008F8C55 /* 引导页three.png */,
@@ -4815,6 +4823,7 @@
 				D949C15B1CBF7E4D0091D8FC /* bankcard.png in Resources */,
 				D9D50D881D879B9900A5E469 /* emotion@2x.png in Resources */,
 				D9ED52061D2A467700267729 /* grey_add.png in Resources */,
+				1844372A1F57E554001D5046 /* ChatForAllDatasVC.xib in Resources */,
 				18D846491ED570510048F010 /* 下角标.png in Resources */,
 				D9AB253E1D88E4ED000E9288 /* VoiceSearchFeedback016@2x.png in Resources */,
 				D980B6651D77FB0F00CC6637 /* user@2x.png in Resources */,
@@ -4997,6 +5006,7 @@
 				D98E5C081E515210009D56BF /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				18CB32D61D6C2B2B005A9D64 /* HKViewController.m in Sources */,
 				D9B3A5A51D74255700F3F27E /* MWPhoto.m in Sources */,
+				184437291F57E554001D5046 /* ChatForAllDatasVC.m in Sources */,
 				18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */,
 				18CA8AEF1F565C7200E1D84A /* AlertViewWithTableView.m in Sources */,
 				D92C632B1CC8C8D4006768C6 /* AdminViewController.m in Sources */,

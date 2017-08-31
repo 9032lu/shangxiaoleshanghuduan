@@ -10,6 +10,7 @@
 #import "NewBuyCardRecordsTableViewCell.h"
 #import "DOPDropDownMenu.h"
 #import "UIImageView+WebCache.h"
+#import "ChatForAllDatasVC.h"
 @interface NewBuyCardRecordVC ()<UITableViewDelegate,UITableViewDataSource,DOPDropDownMenuDelegate,DOPDropDownMenuDataSource>
 {
     DOPDropDownMenu *_menu;
@@ -85,7 +86,22 @@
     return _date_A;
 }
 -(void)chat{
-    
+    AppDelegate *dele=(AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSLog(@"====%@",dele.shopInfoDic[@"muid"]);
+    ChatForAllDatasVC *chatForAllDatasVC=[[ChatForAllDatasVC alloc]init];
+    if ([self.navigationItem.title containsString:@"办卡"]){
+         chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getCardBuyChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
+    }else if ([self.navigationItem.title containsString:@"续卡"]){
+         chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getCardRenewChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
+    }else if ([self.navigationItem.title containsString:@"升级"]){
+         chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getCardUpgradeChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
+    }else if ([self.navigationItem.title containsString:@"消费"]){////////////////////////
+         chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getTallyChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
+    }else if ([self.navigationItem.title containsString:@"现金支付"]){
+         chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getTallyChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
+    }
+   
+    [self.navigationController pushViewController:chatForAllDatasVC animated:YES];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

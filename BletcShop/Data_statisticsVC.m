@@ -11,7 +11,7 @@
 #import "DOPDropDownMenu.h"
 #import "ScanMoreDataVC.h"
 #import "NewBuyCardRecordVC.h"
-
+#import "ChatForAllDatasVC.h"
 @interface Data_statisticsVC ()<UITableViewDelegate,UITableViewDataSource,DOPDropDownMenuDelegate,DOPDropDownMenuDataSource>
 {
     DOPDropDownMenu *_menu;
@@ -251,6 +251,11 @@
 }
 - (IBAction)rightBtnClick:(id)sender {
     
+    AppDelegate *dele=(AppDelegate *)[UIApplication sharedApplication].delegate;
+    ChatForAllDatasVC *chatForAllDatasVC=[[ChatForAllDatasVC alloc]init];
+    NSString *string = (![month_s isEqualToString:@"全年"] &&  month_s.length !=0) ? [NSString stringWithFormat:@"%@-%@",year_s,month_s] : year_s;
+    chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getTotalChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],string];
+    [self.navigationController pushViewController:chatForAllDatasVC animated:YES];
 }
 - (IBAction)leftBtnclick:(id)sender {
     POP
