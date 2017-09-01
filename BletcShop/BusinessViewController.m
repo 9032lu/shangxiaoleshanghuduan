@@ -349,8 +349,8 @@
 //                altView.tag =9998;
 //                [altView show];
                 NSLog(@"%@",app.comPleteInfoDic[@"fail_reason"]);
-                if (app.comPleteInfoDic[@"fail_reason"]) {
-                    NSString *reasonStr=app.comPleteInfoDic[@"fail_reason"];
+                if (app.comPleteInfoDic[@"fail_reason"]&&![app.comPleteInfoDic[@"fail_reason"] isKindOfClass:NULL ]) {
+                     NSString *reasonStr=[NSString getTheNoNullStr:app.comPleteInfoDic[@"fail_reason"] andRepalceStr:@"insure"];
                     NSArray *array=[reasonStr componentsSeparatedByString:@","];
                     if (array.count>0) {
                         NSString *confirmType=array[0];
@@ -424,7 +424,7 @@
 //                altView.tag =9998;
 //                [altView show];
                 if (app.comPleteInfoDic[@"fail_reason"]) {
-                    NSString *reasonStr=app.comPleteInfoDic[@"fail_reason"];
+                    NSString *reasonStr=[NSString getTheNoNullStr:app.comPleteInfoDic[@"fail_reason"] andRepalceStr:@"insure"];
                     NSArray *array=[reasonStr componentsSeparatedByString:@","];
                     if (array.count>0) {
                         NSString *confirmType=array[0];
@@ -513,8 +513,8 @@
             
         }else if ([stateStr isEqualToString:@"false"]){
             
-            if (app.comPleteInfoDic[@"fail_reason"]) {
-                NSString *reasonStr=app.comPleteInfoDic[@"fail_reason"];
+            if (app.comPleteInfoDic[@"fail_reason"]&&![app.comPleteInfoDic[@"fail_reason"] isKindOfClass:NULL ]) {
+                 NSString *reasonStr=[NSString getTheNoNullStr:app.comPleteInfoDic[@"fail_reason"] andRepalceStr:@"insure"];
                 NSArray *array=[reasonStr componentsSeparatedByString:@","];
                 if (array.count>0) {
                     NSString *confirmType=array[0];

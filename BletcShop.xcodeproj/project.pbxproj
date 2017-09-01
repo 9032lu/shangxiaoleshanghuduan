@@ -2479,6 +2479,15 @@
 			name = "线下广告提示页";
 			sourceTree = "<group>";
 		};
+		1887C70C1F58EA670030C290 /* 业务center--home */ = {
+			isa = PBXGroup;
+			children = (
+				1CDA9E181C5A15F800DFE518 /* BusinessViewController.h */,
+				1CDA9E191C5A15F800DFE518 /* BusinessViewController.m */,
+			);
+			name = "业务center--home";
+			sourceTree = "<group>";
+		};
 		1894115F1D816CE600314E11 /* 密码 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2969,8 +2978,7 @@
 				D9CDFBB61CC4DB8C0054EBE3 /* ShopManagerViewController.h */,
 				D9CDFBB71CC4DB8C0054EBE3 /* ShopManagerViewController.m */,
 				D925E6421CC60EEC0020CEC7 /* 多种业务界面 */,
-				1CDA9E181C5A15F800DFE518 /* BusinessViewController.h */,
-				1CDA9E191C5A15F800DFE518 /* BusinessViewController.m */,
+				1887C70C1F58EA670030C290 /* 业务center--home */,
 				D9E5C3D61E5EBED6006BA2B1 /* PushAdverViewController.h */,
 				D9E5C3D71E5EBED6006BA2B1 /* PushAdverViewController.m */,
 				D9E5C3D81E5EBED6006BA2B1 /* PushAdverViewController.xib */,
