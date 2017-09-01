@@ -95,8 +95,8 @@
          chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getCardRenewChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
     }else if ([self.navigationItem.title containsString:@"升级"]){
          chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getCardUpgradeChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
-    }else if ([self.navigationItem.title containsString:@"消费"]){////////////////////////
-         chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getTallyChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
+    }else if ([self.navigationItem.title containsString:@"消费"]){
+         chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getConsumChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
     }else if ([self.navigationItem.title containsString:@"现金支付"]){
          chatForAllDatasVC.url=[NSString stringWithFormat:@"http://www.cnconsum.com/cnconsum/App/Extra/chart/getTallyChart?muid=%@&date=%@",dele.shopInfoDic[@"muid"],self.date_string];
     }
