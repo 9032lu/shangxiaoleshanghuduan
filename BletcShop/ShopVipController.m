@@ -47,7 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
    self.navigationItem.title = @"我的会员";
-    self.view.backgroundColor=RGB(240, 240, 240);
+    self.view.backgroundColor=RGB(255, 255, 255);
     self.editArray = [[NSMutableArray alloc]init];
     self.editTag = 0;
     self.typeArray= @[@"普卡",@"银卡",@"金卡",@"白金卡",@"钻卡",@"黑金卡"];;
@@ -107,7 +107,7 @@
     newTableView.delegate=self;
     newTableView.dataSource=self;
     newTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    newTableView.backgroundColor=RGB(240, 240, 240);
+    newTableView.backgroundColor=RGB(255, 255, 255);
     [self.view addSubview:newTableView];
     self.tabView=newTableView;
 }
@@ -127,7 +127,7 @@
             
             [cell addSubview:imageView];
           
-            cell.backgroundColor=[UIColor clearColor];
+            cell.backgroundColor=[UIColor whiteColor];
             UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake((SCREENWIDTH-240)/5+i%4*(60+(SCREENWIDTH-240)/5), (SCREENWIDTH-240)/5+i/4*(60+(SCREENWIDTH-240)/5+10)+60+8, 60, 12)];
             label.font=[UIFont systemFontOfSize:15.0f];
             label.textAlignment=1;
