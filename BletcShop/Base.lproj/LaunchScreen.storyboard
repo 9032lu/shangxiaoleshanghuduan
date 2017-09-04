@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,20 +21,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="商消乐002.png" translatesAutoresizingMaskIntoConstraints="NO" id="mCF-LN-2xd">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="商户启动页.png" translatesAutoresizingMaskIntoConstraints="NO" id="mCF-LN-2xd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="mCF-LN-2xd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="1lY-od-FBz"/>
-                            <constraint firstItem="mCF-LN-2xd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="3X8-Lp-wdV"/>
-                            <constraint firstAttribute="trailing" secondItem="mCF-LN-2xd" secondAttribute="trailing" id="5s3-31-csj"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="mCF-LN-2xd" secondAttribute="bottom" id="Wet-P8-exS"/>
-                            <constraint firstItem="mCF-LN-2xd" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="bCX-cx-ViG"/>
-                            <constraint firstItem="mCF-LN-2xd" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="koM-RD-fn5"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="mCF-LN-2xd" secondAttribute="bottom" id="v1n-q3-ZUh"/>
-                            <constraint firstAttribute="trailing" secondItem="mCF-LN-2xd" secondAttribute="trailing" id="z9N-70-4MR"/>
+                            <constraint firstItem="mCF-LN-2xd" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="52u-m0-afJ"/>
+                            <constraint firstAttribute="trailing" secondItem="mCF-LN-2xd" secondAttribute="trailing" id="eb0-C8-UQr"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="mCF-LN-2xd" secondAttribute="bottom" id="ebs-nZ-I43"/>
+                            <constraint firstItem="mCF-LN-2xd" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="kzh-k8-unv"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -44,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="商消乐002.png" width="750" height="1334"/>
+        <image name="商户启动页.png" width="750" height="1334"/>
     </resources>
 </document>

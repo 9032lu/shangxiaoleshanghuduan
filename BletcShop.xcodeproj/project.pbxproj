@@ -624,6 +624,7 @@
 		D9C7B2CB1F566C7E00406BC9 /* PickDateTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7B2CA1F566C7E00406BC9 /* PickDateTimeView.m */; };
 		D9C7B2CF1F5696DD00406BC9 /* NewOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7B2CD1F5696DD00406BC9 /* NewOrderCell.m */; };
 		D9C7B2D01F5696DD00406BC9 /* NewOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C7B2CE1F5696DD00406BC9 /* NewOrderCell.xib */; };
+		D9C7B2D21F5940EF00406BC9 /* 商户启动页.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C7B2D11F5940EF00406BC9 /* 商户启动页.png */; };
 		D9CDFB691CC47F7C0054EBE3 /* BDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFB681CC47F7C0054EBE3 /* BDMapViewController.m */; };
 		D9CDFBB51CC4CE5B0054EBE3 /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFBB41CC4CE5B0054EBE3 /* CustomIOSAlertView.m */; };
 		D9CDFBB81CC4DB8C0054EBE3 /* ShopManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFBB71CC4DB8C0054EBE3 /* ShopManagerViewController.m */; };
@@ -1808,6 +1809,7 @@
 		D9C7B2CC1F5696DD00406BC9 /* NewOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderCell.h; sourceTree = "<group>"; };
 		D9C7B2CD1F5696DD00406BC9 /* NewOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderCell.m; sourceTree = "<group>"; };
 		D9C7B2CE1F5696DD00406BC9 /* NewOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrderCell.xib; sourceTree = "<group>"; };
+		D9C7B2D11F5940EF00406BC9 /* 商户启动页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "商户启动页.png"; sourceTree = "<group>"; };
 		D9CDFB671CC47F7C0054EBE3 /* BDMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMapViewController.h; sourceTree = "<group>"; };
 		D9CDFB681CC47F7C0054EBE3 /* BDMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMapViewController.m; sourceTree = "<group>"; };
 		D9CDFBB31CC4CE5B0054EBE3 /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomIOSAlertView.h; path = ../../CustomIOSAlertView.h; sourceTree = "<group>"; };
@@ -2123,6 +2125,7 @@
 				0793868D1C55B5CA0021B385 /* LaunchScreen.storyboard */,
 				079386901C55B5CA0021B385 /* Info.plist */,
 				D9541EA51E1FA994003022E5 /* 商消乐002.png */,
+				D9C7B2D11F5940EF00406BC9 /* 商户启动页.png */,
 				D9BA5F031D7564090067E7A2 /* FriendRequest.plist */,
 				D9A06B661D86A73B0037795B /* ToolManager.h */,
 				D9A06B671D86A73B0037795B /* ToolManager.m */,
@@ -4713,6 +4716,7 @@
 				D92ACDB41F0CD52100858727 /* CreatPackageCardVC.xib in Resources */,
 				D98FDF8A1E601C660057C206 /* AD_ad_qs@2x.png in Resources */,
 				D92ACDC11F0CD59500858727 /* ChooseProductVC.xib in Resources */,
+				D9C7B2D21F5940EF00406BC9 /* 商户启动页.png in Resources */,
 				184D2F591F5007F0008F8C55 /* 引导页two.png in Resources */,
 				D9698FAE1EEFC12500D76F3F /* AddMoneyOrCountCell.xib in Resources */,
 				D9AB25391D88E4ED000E9288 /* VoiceSearchFeedback011@2x.png in Resources */,

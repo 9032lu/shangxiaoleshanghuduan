@@ -90,6 +90,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
     self.view.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
  
     
