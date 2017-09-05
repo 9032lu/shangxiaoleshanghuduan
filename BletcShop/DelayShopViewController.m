@@ -9,6 +9,7 @@
 #import "DelayShopViewController.h"
 #import "LZDButton.h"
 #import "NewOrderCell.h"
+#import "PickReasonView.h"
 
 @interface DelayShopViewController ()
 {
@@ -146,11 +147,11 @@
     [params setObject:@"null" forKey:@"state"];
    
     
-//    NSLog(@"----%@===url==%@",params,url);
+    NSLog(@"----%@===url==%@",params,url);
     
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
-//        NSLog(@"%@", result);
+        NSLog(@"%@", result);
         NSArray *resuArr = result;
 
             [self.wait_A removeAllObjects];
@@ -173,6 +174,7 @@
     
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         
+        NSLog(@"====%@",error);
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.frame = CGRectMake(0, 64, 375, 667);
         // Set the annular determinate mode to show task progress.
@@ -317,18 +319,40 @@
             btn.section = section;
             btn.row = i;
 
-            [btn addTarget:self action:@selector(disposeClick:) forControlEvents:UIControlEventTouchUpInside];
             if (i==0) {
                 btn.backgroundColor = [UIColor whiteColor];
                 [btn setTitle:@"拒绝" forState:0];
                 [btn setTitleColor:RGB(102,102,102) forState:0];
                 btn.titleLabel.font = [UIFont systemFontOfSize:15];
+                btn.block = ^(LZDButton *sender) {
+                    
+                    PickReasonView *pickReasonView = [[PickReasonView alloc]init];
+                    pickReasonView.title = @"拒绝原因";
+                    
+                    pickReasonView.dataSource = @[@"直接拒绝",@"该卡不可延期",@"其它(详情请咨询商家)"];
+                    [self.view addSubview:pickReasonView];
+                    
+                    [pickReasonView show];
+                    
+                    pickReasonView.sureBtnClick = ^(NSArray *value) {
+                        
+                        NSLog(@"0-----0=%@",value);
+                        
+                        [self setStateBtn:sender andReason:value[0]];
+                    };
+                    
+                };
+
+                
             }
             if (i==1) {
                 btn.backgroundColor = RGB(241,122,18);
                 [btn setTitle:@"通过" forState:0];
                 [btn setTitleColor:RGB(255,255,255) forState:0];
                 btn.titleLabel.font = [UIFont systemFontOfSize:15];
+                
+                [btn addTarget:self action:@selector(disposeClick:) forControlEvents:UIControlEventTouchUpInside];
+
             }
             
             
@@ -364,7 +388,8 @@
         
         
         cell.phoneLab.text = dic[@"nickname"];
-        
+        cell.reasonLab.text = [NSString getTheNoNullStr:dic[@"reason"] andRepalceStr:@""];
+
         cell.timeLab.text = dic[@"card_type"];
         
         cell.contentLab.text = dic[@"card_level"];
@@ -388,7 +413,15 @@
 
 //处理延期业务
 
+
+
 -(void)disposeClick:(LZDButton*)sender{
+    [self setStateBtn:sender andReason:@""];
+}
+
+-(void)setStateBtn:(LZDButton*)sender andReason:(NSString*)reason
+
+{
     
     NSString *url =[[NSString alloc]initWithFormat:@"%@UserType/postpone/stateSet",BASEURL];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -407,6 +440,8 @@
         [params setObject:@"access" forKey:@"state"];
     }else if (sender.row == 0) {
         [params setObject:@"fail" forKey:@"state"];
+        [params setObject:reason forKey:@"reason"];
+
     }
     
     NSLog(@"----%@",params);
@@ -473,11 +508,11 @@
         [params setObject:@"access" forKey:@"state"];
         
     
-//    NSLog(@"----%@===url==%@",params,url);
+    NSLog(@"----%@===url==%@",params,url);
     
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
-//        NSLog(@"%@", result);
+        NSLog(@"%@", result);
         NSArray *resuArr = result;
         
        

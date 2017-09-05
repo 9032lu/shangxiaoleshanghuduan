@@ -263,35 +263,41 @@
             btn.section = section;
             btn.row = i;
             
-            btn.block = ^(LZDButton *sender) {
-              
-                PickReasonView *pickReasonView = [[PickReasonView alloc]init];
-                pickReasonView.title = @"拒绝原因";
-
-                pickReasonView.dataSource = @[@"商家休息中",@"商家暂停歇业",@"预约已满",@"店铺装修/硬件维修中",@"消费时需出示本人证件",@"需要至少提前两小时预约",@"其它(详情请咨询商家)"];
-                [self.view addSubview:pickReasonView];
-                
-                [pickReasonView show];
-                
-                pickReasonView.sureBtnClick = ^(NSArray *value) {
-                  
-                    NSLog(@"0-----0=%@",value);
-                };
-                
-            };
             
-//            [btn addTarget:self action:@selector(disposeClick:) forControlEvents:UIControlEventTouchUpInside];
             if (i==0) {
                 btn.backgroundColor = [UIColor whiteColor];
                 [btn setTitle:@"拒绝" forState:0];
                 [btn setTitleColor:RGB(102,102,102) forState:0];
                 btn.titleLabel.font = [UIFont systemFontOfSize:15];
+                
+                btn.block = ^(LZDButton *sender) {
+                    
+                    PickReasonView *pickReasonView = [[PickReasonView alloc]init];
+                    pickReasonView.title = @"拒绝原因";
+                    
+                    pickReasonView.dataSource = @[@"商家休息中",@"商家暂停歇业",@"预约已满",@"店铺装修/硬件维修中",@"消费时需出示本人证件",@"需要至少提前两小时预约",@"其它(详情请咨询商家)"];
+                    [self.view addSubview:pickReasonView];
+                    
+                    [pickReasonView show];
+                    
+                    pickReasonView.sureBtnClick = ^(NSArray *value) {
+                        
+                        NSLog(@"0-----0=%@",value);
+                        
+                        [self setStateBtn:sender andReason:value[0]];
+                    };
+                    
+                };
+
             }
             if (i==1) {
                 btn.backgroundColor = RGB(241,122,18);
                 [btn setTitle:@"通过" forState:0];
                 [btn setTitleColor:RGB(255,255,255) forState:0];
                 btn.titleLabel.font = [UIFont systemFontOfSize:15];
+                
+                 [btn addTarget:self action:@selector(disposeClick:) forControlEvents:UIControlEventTouchUpInside];
+
             }
             
             
@@ -335,7 +341,7 @@
         
         cell.contentLab.text = dic[@"content"];
         cell.dateLab.text = [NSString stringWithFormat:@"%@",dic[@"date"]];
-        
+        cell.reasonLab.text = [NSString getTheNoNullStr:dic[@"reason"] andRepalceStr:@""];
         
     }
 
@@ -442,70 +448,81 @@
 
 -(void)disposeClick:(LZDButton*)sender{
     
-    NSString *url =[[NSString alloc]initWithFormat:@"%@UserType/appoint/stateSet",BASEURL];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-    [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
-    
-    [params setObject:[[self.data_A objectAtIndex:sender.section] objectForKey:@"user"] forKey:@"uuid"];
-    [params setObject:[[self.data_A objectAtIndex:sender.section] objectForKey:@"date"] forKey:@"date"];
-    [params setObject:[[self.data_A objectAtIndex:sender.section] objectForKey:@"time"] forKey:@"time"];
-    if (sender.row == 1) {
-        [params setObject:@"access" forKey:@"state"];
-    }else if (sender.row == 0) {
-        [params setObject:@"fail" forKey:@"state"];
-    }
+    [self setStateBtn:sender andReason:@""];
+}
 
-    NSLog(@"----%@",params);
-    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+
+-(void)setStateBtn:(LZDButton*)sender andReason:(NSString*)reason{
+    
         
-        if ([result[@"result_code"] intValue]==1)
-        {
-            
-            
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.frame = CGRectMake(0, 64, 375, 667);
-            hud.mode = MBProgressHUDModeText;
-            
-            hud.label.text = NSLocalizedString(@"设置成功", @"HUD message title");
-            hud.label.font = [UIFont systemFontOfSize:13];
-            hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-            [hud hideAnimated:YES afterDelay:1.f];
-            [self postRequestDelay];
-            
+        NSString *url =[[NSString alloc]initWithFormat:@"%@UserType/appoint/stateSet",BASEURL];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+        [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
+        
+        [params setObject:[[self.data_A objectAtIndex:sender.section] objectForKey:@"user"] forKey:@"uuid"];
+        [params setObject:[[self.data_A objectAtIndex:sender.section] objectForKey:@"date"] forKey:@"date"];
+        [params setObject:[[self.data_A objectAtIndex:sender.section] objectForKey:@"time"] forKey:@"time"];
+
+    
+        if (sender.row == 1) {
+            [params setObject:@"access" forKey:@"state"];
+        }else if (sender.row == 0) {
+            [params setObject:@"fail" forKey:@"state"];
+            [params setObject:reason forKey:@"reason"];
+
         }
-        else
-        {
+    
+        NSLog(@"----%@",params);
+        [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+            
+            if ([result[@"result_code"] intValue]==1)
+            {
+                
+                
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.frame = CGRectMake(0, 64, 375, 667);
+                hud.mode = MBProgressHUDModeText;
+                
+                hud.label.text = NSLocalizedString(@"设置成功", @"HUD message title");
+                hud.label.font = [UIFont systemFontOfSize:13];
+                hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
+                [hud hideAnimated:YES afterDelay:1.f];
+                [self postRequestDelay];
+                
+            }
+            else
+            {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.frame = CGRectMake(0, 64, 375, 667);
+                // Set the annular determinate mode to show task progress.
+                hud.mode = MBProgressHUDModeText;
+                
+                hud.label.text = NSLocalizedString(@"设置失败,请重试", @"HUD message title");
+                hud.label.font = [UIFont systemFontOfSize:13];
+                // Move to bottm center.
+                //    hud.offset = CGPointMake(0.f, );
+                hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
+                [hud hideAnimated:YES afterDelay:1.f];
+            }
+        } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            NSLog(@"%@", error);
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.frame = CGRectMake(0, 64, 375, 667);
-            // Set the annular determinate mode to show task progress.
             hud.mode = MBProgressHUDModeText;
             
-            hud.label.text = NSLocalizedString(@"设置失败,请重试", @"HUD message title");
+            hud.label.text = NSLocalizedString(@"请求出错,请重新请求", @"HUD message title");
             hud.label.font = [UIFont systemFontOfSize:13];
             // Move to bottm center.
             //    hud.offset = CGPointMake(0.f, );
             hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
             [hud hideAnimated:YES afterDelay:1.f];
-        }
-    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
         
-        NSLog(@"%@", error);
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.frame = CGRectMake(0, 64, 375, 667);
-        hud.mode = MBProgressHUDModeText;
-        
-        hud.label.text = NSLocalizedString(@"请求出错,请重新请求", @"HUD message title");
-        hud.label.font = [UIFont systemFontOfSize:13];
-        // Move to bottm center.
-        //    hud.offset = CGPointMake(0.f, );
-        hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-        [hud hideAnimated:YES afterDelay:1.f];
-        
-    }];
     
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -713,7 +713,8 @@
     NSMutableDictionary *paramer = [NSMutableDictionary dictionary];
     
     [paramer setValue:@"西安市雁塔区" forKey:@"eare"];
-    
+    [paramer setValue:@"merchant" forKey:@"type"];
+
     
     //    imageV.image = [UIImage imageNamed:@"启动页(1)"];
     
