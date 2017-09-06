@@ -264,7 +264,7 @@
             
             cell.orderTime.text =[NSString getTheNoNullStr:dic[@"datetime"] andRepalceStr:@"-"];
             
-            cell.cardType.text = [NSString stringWithFormat:@"消费类型：%@", [NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"-"]];
+            cell.cardType.text = @"";
             cell.orderMoney.text = [NSString stringWithFormat:@"消费金额：%@",[[NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"-"] stringByAppendingString:@"元"]];
         }
         
@@ -457,7 +457,7 @@
 
                 self.dataSourse_A = [result[@"list"] mutableCopy];
 
-            totalMoney.text = [NSString stringWithFormat:@"总金额：%@元",[NSString getTheNoNullStr:result[@"sum"] andRepalceStr:@"0"]];
+            totalMoney.text = [NSString stringWithFormat:@"总金额：%.2f元",[[NSString getTheNoNullStr:result[@"sum"] andRepalceStr:@"0"] floatValue]];
             
         }else{
                 [self.dataSourse_A addObjectsFromArray:result[@"list"]];

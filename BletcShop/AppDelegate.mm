@@ -22,7 +22,7 @@
 #import "BaseNavigationController.h"
 #import "UIViewController+HUD.h"
 #import "EMSDK.h"
-#import "CommenDataViewController.h"
+#import "Data_statisticsVC.h"
 #import "LZDRootViewController.h"
 #import "Database.h"
 #import "UIImageView+WebCache.h"
@@ -33,6 +33,7 @@
     BMKMapManager* _mapManager;
     CustomIOSAlertView *LZDAleterView;
     UIView *advise_back;
+    UIAlertView *alertViewShown;
     
     UILabel *shopName_lab;//商户名
     
@@ -1637,13 +1638,14 @@
             
             
             
-            if ([topVC isKindOfClass:[CommenDataViewController class]]) {
-                CommenDataViewController *VC = (CommenDataViewController*)topVC;
-                [VC totalDataRequest:@"consum" dateType:@"day" page:@"0"];
+            if ([topVC isKindOfClass:[Data_statisticsVC class]]) {
+                Data_statisticsVC *VC = (Data_statisticsVC*)topVC;
+                [VC getdataWithDate:VC.date_string];
+
                 
             }else{
-                CommenDataViewController *commenDataVC=[[CommenDataViewController alloc]init];
-                commenDataVC.tag = 4;
+                Data_statisticsVC *commenDataVC=[[Data_statisticsVC alloc]init];
+
                 
                 [topVC.navigationController pushViewController:commenDataVC animated:YES];
             }
@@ -1876,14 +1878,14 @@
         NSLog(@"点击通知进入程序");
         //     获取通知所带的数据
         
-        if ([topVC isKindOfClass:[CommenDataViewController class]]) {
-            CommenDataViewController *VC = (CommenDataViewController*)topVC;
-            [VC totalDataRequest:@"consum" dateType:@"day" page:@"0"];
+        if ([topVC isKindOfClass:[Data_statisticsVC class]]) {
+            Data_statisticsVC *VC = (Data_statisticsVC*)topVC;
+
+            [VC getdataWithDate:VC.date_string];
             
         }else{
             
-            CommenDataViewController *commenDataVC=[[CommenDataViewController alloc]init];
-            commenDataVC.tag = 4;
+            Data_statisticsVC *commenDataVC=[[Data_statisticsVC alloc]init];
             
             [topVC.navigationController pushViewController:commenDataVC animated:YES];
         }
@@ -1892,13 +1894,20 @@
     }
     if (application.applicationState==UIApplicationStateActive) {
         NSLog(@"程序在前台");
-        if ([topVC isKindOfClass:[CommenDataViewController class]]) {
-            CommenDataViewController *VC = (CommenDataViewController*)topVC;
-            [VC totalDataRequest:@"consum" dateType:@"day" page:@"0"];
-            
+        if ([topVC isKindOfClass:[Data_statisticsVC class]]) {
+            Data_statisticsVC *VC = (Data_statisticsVC*)topVC;
+            [VC getdataWithDate:VC.date_string];
+
         }else{
+            
             NSString *notMess = [notification.userInfo objectForKey:@"mykey"];
             NSString *stirng = [NSString stringWithFormat:@"您当前有%@笔订单!",notMess];
+            
+            
+            
+            [alertViewShown dismissWithClickedButtonIndex:0 animated:NO];
+                
+            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
                                                             message:stirng
                                                            delegate:self
@@ -1906,6 +1915,8 @@
                                                   otherButtonTitles:@"查看",nil];
             alert.tag = 3333;
             [alert show];
+            alertViewShown = alert;
+            
             
         }
         
@@ -1931,7 +1942,7 @@
     self.repateTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
     dispatch_source_set_timer(self.repateTimer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0); //每秒执行
     
-    NSString *url = [NSString stringWithFormat:@"%@MerchantType/record/getNewRecord",BASEURL];
+    NSString *url = [NSString stringWithFormat:@"%@MerchantType/DataCount/checkNewRecord",BASEURL];
     NSMutableDictionary *paramer = [NSMutableDictionary dictionary];
     
     [paramer setValue:self.shopInfoDic[@"muid"] forKey:@"muid"];
@@ -1940,12 +1951,21 @@
         
         
         [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
-            [self cancelLocalNotificationWithKey:@"key"];
+            [self cancelLocalNotificationWithKey:@"mykey"];
             
-//                    NSLog(@"重复调用接口,查询数据===%@===paramer==%@",result,paramer);
+                    NSLog(@"重复调用接口,查询数据===%@===paramer==%@",result,paramer);
+
+          
+            NSInteger num = 0;
             
-            if ([result[@"flag"] intValue]==1) {
-                [self registerLocalNotification:result[@"num"]];//
+            for (NSDictionary *dic in [result allValues]) {
+                
+                num = num + [dic[@"num"] integerValue];
+        
+            }
+            
+            if (num >=1 ) {
+                [self registerLocalNotification:[NSString stringWithFormat:@"%ld",num]];//
                 
             }
             

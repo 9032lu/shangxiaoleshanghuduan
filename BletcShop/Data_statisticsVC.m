@@ -164,10 +164,10 @@
 
     
    
-    NSString *string = (![month_s isEqualToString:@"全年"] &&  month_s.length !=0) ? [NSString stringWithFormat:@"%@-%@",year_s,month_s] : year_s;
+    self.date_string = (![month_s isEqualToString:@"全年"] &&  month_s.length !=0) ? [NSString stringWithFormat:@"%@-%@",year_s,month_s] : year_s;
     
     
-    [self getdataWithDate:string];
+    [self getdataWithDate:_date_string];
     
     NSLog(@"------%ld",indexPath.row);
 }

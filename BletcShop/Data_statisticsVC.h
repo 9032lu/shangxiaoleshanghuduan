@@ -10,4 +10,8 @@
 
 @interface Data_statisticsVC : UIViewController
 
+
+@property (nonatomic,copy)NSString *date_string;// 日期
+
+-(void)getdataWithDate:(NSString*)data_s;
 @end

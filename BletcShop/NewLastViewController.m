@@ -86,10 +86,10 @@
         label2.font=[UIFont systemFontOfSize:12.0f];
         [backView addSubview:label2];
         if (i==2) {
-            label2.textColor=[UIColor redColor];
-            label1.backgroundColor=[UIColor redColor];
+            label2.textColor=RGB(241,122,18);
+            label1.backgroundColor=RGB(241,122,18);
             UIView *slidView=[[UIView alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH/3, 4)];
-            slidView.backgroundColor=[UIColor redColor];
+            slidView.backgroundColor=RGB(241,122,18);
             [backView addSubview:slidView];
         }else{
             label2.textColor=[UIColor grayColor];

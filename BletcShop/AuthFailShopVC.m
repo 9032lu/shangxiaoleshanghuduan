@@ -484,7 +484,7 @@
     xingLab9.font=[UIFont systemFontOfSize:20.0f];
     xingLab9.textColor=[UIColor redColor];
     xingLab9.textAlignment=1;
-    xingLab9.text=@"*";
+    xingLab9.text=@"";
     [_scrollView addSubview:xingLab9];
     
     UILabel *label9=[[UILabel alloc]initWithFrame:CGRectMake(30, 5+lineView8.bottom, 110, 40)];
@@ -492,9 +492,25 @@
     label9.text=@"补充材料";
     [_scrollView addSubview:label9];
 
-     add_more_view = [[UIView alloc]initWithFrame:CGRectMake(0, label9.bottom, SCREENWIDTH, ((SCREENWIDTH-150)/2)*116/176)];
+    UILabel *introduce_lab = [[ UILabel alloc]init];
     
-    add_more_view.backgroundColor = [UIColor lightGrayColor];
+    introduce_lab.text = @"(请以下行业和情况在此提交补充材料：餐饮业需卫生许可证和2张健康证，教育培训业需办学许可证；另外，申请过程中遇到所需资料无上传入口的情况，都可在此处上传。)";
+    
+    introduce_lab.textColor = RGB(119,119,119);
+    introduce_lab.font = [UIFont systemFontOfSize:12];
+    introduce_lab.numberOfLines = 0;
+    
+    
+    CGFloat  hh_lab = [introduce_lab.text getTextHeightWithShowWidth:SCREENWIDTH-91-13 AndTextFont:introduce_lab.font AndInsets:12];
+    
+    
+    introduce_lab.frame  = CGRectMake(91, label9.top, SCREENWIDTH-91-13, hh_lab);
+    [_scrollView addSubview:introduce_lab];
+    
+
+    
+     add_more_view = [[UIView alloc]initWithFrame:CGRectMake(0, introduce_lab.bottom, SCREENWIDTH, ((SCREENWIDTH-150)/2)*116/176)];
+    
     
     [_scrollView addSubview:add_more_view];
     
@@ -1377,8 +1393,8 @@
         
         if (i==_add_more_img_A.count) {
             
-            [img_btn setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateNormal];
-            [img_btn setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateHighlighted];
+            [img_btn setImage:[UIImage imageNamed:@"补充+"] forState:UIControlStateNormal];
+            [img_btn setImage:[UIImage imageNamed:@"补充+"] forState:UIControlStateHighlighted];
 
             
             
