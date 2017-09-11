@@ -1756,7 +1756,11 @@
             
             LZDButton *deletBtn = [LZDButton creatLZDButton];
             deletBtn.frame = CGRectMake(img_btn.width-40, 0, 40, 40);
-            deletBtn.backgroundColor = [UIColor blackColor];
+            deletBtn.backgroundColor = [UIColor clearColor];
+            [deletBtn setImage:[UIImage imageNamed:@"shanchu.jpg"] forState:UIControlStateNormal];
+            [deletBtn setImage:[UIImage imageNamed:@"shanchu.jpg"] forState:UIControlStateHighlighted];
+            
+            deletBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 30, 30, 0);
             deletBtn.block = ^(LZDButton *sender) {
                 
                 [self postRequestDeleteAddPictures:self.add_more_img_A[i]];

@@ -611,6 +611,7 @@
 		D9B3BB9E1DE7FFEB00CC8B0D /* NewProductTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B3BB9D1DE7FFEB00CC8B0D /* NewProductTableViewCell.m */; };
 		D9B57F181D337DD700E9654A /* areaAll.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9B57F171D337DD700E9654A /* areaAll.plist */; };
 		D9B650071E9724A0007DF5DC /* ShopManagerDataReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B650061E9724A0007DF5DC /* ShopManagerDataReportVC.m */; };
+		D9B894171F66682D00278B74 /* shanchu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B894161F66682D00278B74 /* shanchu.jpg */; };
 		D9BA5F041D7564090067E7A2 /* FriendRequest.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9BA5F031D7564090067E7A2 /* FriendRequest.plist */; };
 		D9BB4DDA1E04EA8200971BCC /* NewOrderShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BB4DD91E04EA8200971BCC /* NewOrderShopViewController.m */; };
 		D9BB4DE41E051DB800971BCC /* 关闭.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BB4DE31E051DB800971BCC /* 关闭.png */; };
@@ -1788,6 +1789,7 @@
 		D9B57F171D337DD700E9654A /* areaAll.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = areaAll.plist; sourceTree = "<group>"; };
 		D9B650051E9724A0007DF5DC /* ShopManagerDataReportVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopManagerDataReportVC.h; sourceTree = "<group>"; };
 		D9B650061E9724A0007DF5DC /* ShopManagerDataReportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopManagerDataReportVC.m; sourceTree = "<group>"; };
+		D9B894161F66682D00278B74 /* shanchu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shanchu.jpg; sourceTree = "<group>"; };
 		D9BA5F031D7564090067E7A2 /* FriendRequest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FriendRequest.plist; sourceTree = "<group>"; };
 		D9BB4DD81E04EA8200971BCC /* NewOrderShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderShopViewController.h; sourceTree = "<group>"; };
 		D9BB4DD91E04EA8200971BCC /* NewOrderShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderShopViewController.m; sourceTree = "<group>"; };
@@ -3098,6 +3100,7 @@
 		1CF283721C58C48900F3952A /* image */ = {
 			isa = PBXGroup;
 			children = (
+				D9B894161F66682D00278B74 /* shanchu.jpg */,
 				1CB53BE21C570714002B6CC1 /* 角标等图片 */,
 				D965552E1E332DF90096D815 /* 首页登录 */,
 				D9541E981E1F6593003022E5 /* 用户和商户 */,
@@ -4777,6 +4780,7 @@
 				D9AB25371D88E4ED000E9288 /* VoiceSearchFeedback009@2x.png in Resources */,
 				D977C1461EC97BE800CA5AF5 /* WechatIMG16.png in Resources */,
 				D939D6C51E9B17CD00D0569E /* AllSenderMessageViewControlleVC.xib in Resources */,
+				D9B894171F66682D00278B74 /* shanchu.jpg in Resources */,
 				D9637DFF1D59BAF900C19D0B /* admin_p.png in Resources */,
 				18543E361ECACA3E00E0A4DA /* ChooseCardTypeVC.xib in Resources */,
 				1817FF591D405BE100AFC965 /* mhead_default.png in Resources */,
