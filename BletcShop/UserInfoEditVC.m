@@ -178,7 +178,12 @@
 }
 
 -(void)popVC{
-    [self.navigationController popViewControllerAnimated:YES];
+//    if ([self.leibie isEqualToString:@"银行卡号"]) {
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+//    }
+    
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     

@@ -19,7 +19,7 @@
     AppDelegate *delegate=(AppDelegate *)[UIApplication sharedApplication].delegate;
     
     if (_phoneTF.text.length==18) {
-        if ([_phoneTF.text isEqualToString:[NSString getTheNoNullStr:delegate.shopInfoDic[@"id"] andRepalceStr:@""]]) {
+        if ([_phoneTF.text isEqualToString:[NSString getTheNoNullStr:delegate.shopInfoDic[@"id"] andRepalceStr:@"111111111111111111"]]) {
             UserInfoEditVC *VC = [[UserInfoEditVC alloc]init];
             VC.whoPush = @"商户";
             VC.leibie = @"银行卡号";
