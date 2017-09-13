@@ -15,7 +15,9 @@
 #import "JFAreaDataManager.h"
 #import "ValuePickerView.h"
 #import "ChooseTradeVC.h"
+#import "BaiduMapManager.h"
 #import "UIButton+WebCache.h"
+#import "SingleModel.h"
 @interface NewMiddleViewController ()<UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 {
     NSArray *nameArray;
@@ -89,6 +91,61 @@
     
     
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if (kCLAuthorizationStatusDenied == status || kCLAuthorizationStatusRestricted == status)
+    {
+        //读取本地数据
+        NSString * isPositioning = [[NSUserDefaults standardUserDefaults] valueForKey:@"isPositioning"];
+        if (isPositioning == nil)//提示
+        {
+            UIAlertView * positioningAlertivew = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"为了更好的体验,请到设置->隐私->定位服务中开启!【商消乐】定位服务,已便获取附近信息!" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            positioningAlertivew.tag = 999;
+            [positioningAlertivew show];
+        }
+    }else//开启的
+    {
+        //需要删除本地字符
+        NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults removeObjectForKey:@"isPositioning"];
+        [userDefaults synchronize];
+        
+        AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+        
+        if (!app.city || app.city.length ==0) {
+            
+            BaiduMapManager *manager = [BaiduMapManager shareBaiduMapManager];
+            
+            [manager startUserLocationService];
+            
+            manager.userAddressBlock = ^(BMKReverseGeoCodeResult *result) {
+                app.addressInfo = result.address;
+                app.addressDistrite = result.addressDetail.district;
+                app.province =result.addressDetail.province;
+                app.city =result.addressDetail.city;
+                app.districtString =result.addressDetail.district;
+                
+                [self setaddressInfo];
+                
+                
+            };
+            
+        }
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
@@ -96,80 +153,9 @@
     pickView= [[ValuePickerView alloc]init];
 
     [self getIndustryArray];
-    AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    NSDictionary *dic =[[NSUserDefaults standardUserDefaults]objectForKey:app.shopInfoDic[@"muid"]];
-    
-    shopInfoDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
-
-    DebugLog(@"shopInfoDic==%@",shopInfoDic);
-    
-    
-    __block typeof(self)  bloskSelf = self;
-    
-    NSLog(@"-app.city-----%@",app.city);
-
-    [[JFAreaDataManager shareManager] currentCityDic:app.city currentCityDic:^(NSDictionary *dic) {
-        
-        
-        NSLog(@"-dic-----%@",dic);
-        [[JFAreaDataManager shareManager]areaData:dic[@"code"] areaData:^(NSMutableArray *areaData) {
-            
-            
-            NSLog(@"-areaData-----%@",areaData);
-            
-            for (NSDictionary *dic in areaData) {
-                NSString *name = dic[@"name"];
-                
-                
-                if ([name isEqualToString:app.addressDistrite] || [name containsString:app.addressDistrite] || [app.addressDistrite containsString:name]) {
-                    
-                    
-                    NSString *url = [NSString stringWithFormat:@"%@Extra/address/getStreet",BASEURL];;
-                    
-                    NSMutableDictionary *parame = [NSMutableDictionary dictionary];
-                    [parame setValue:dic[@"code"] forKey:@"district_id"];
-                    
-                    NSLog(@"url====+%@=====%@",url,parame);
-                    [KKRequestDataService requestWithURL:url params:parame httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
-                        
-                        NSLog(@"-areaData-----%@",areaData);
-                        
-                        eare_data = [NSMutableArray arrayWithArray:result];
-                        
-                        NSMutableArray *arr = [NSMutableArray array];
-                        for (NSDictionary *dic_eare in result) {
-                            [arr addObject:dic_eare[@"name"]];
-                            
-                        }
-                        self.streetArray=[[NSArray alloc]initWithArray:arr];
-                        
-                        NSLog(@"--------------%@",arr);
-                        pickView.dataSource = arr;
-                        pickView.valueDidSelect = ^(NSString *value) {
-                            
-                            
-                            bloskSelf.detailAddressTF.text =  [[value componentsSeparatedByString:@"/"] firstObject];
-                            
-                        };
-                        
-                    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-                        
-                    }];
-                    
-                    
-                    
-                    
-                    
-                    
-                    break;
-                    
-                    
-                }
-            }
-            
-        }];
-    }];
+    [self getStreest];
+   
     
     
     
@@ -178,6 +164,68 @@
     [self initScrollView];
     self.indexTag=0;
      [self postRequestGetAddPictures];
+    SingleModel *s_model = [SingleModel sharedManager];
+    
+    [s_model addObserver:self forKeyPath:@"advertArea" options:
+     NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    
+    
+    
+    
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                       change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    NSLog(@"change+++++%@",change);
+    
+    // 判断是否为self.myKVO的属性“num”:
+    if([keyPath isEqualToString:@"advertArea"]) {
+        // 响应变化处理：UI更新（label文本改变）
+        NSString *string=  [NSString stringWithFormat:@"当前的advertArea值为：%@",
+                            [change valueForKey:@"new"]];
+        NSLog(@"+++++%@",string);
+        //change的使用：上文注册时，枚举为2个，因此可以提取change字典中的新、旧值的这两个方法
+        NSLog(@"\\noldnum:%@ newadvertArea:%@",[change valueForKey:@"old"],
+              [change valueForKey:@"new"]);
+        
+        
+        
+        [self setaddressInfo];
+        
+        
+        
+        
+    }
+}
+
+-(void)setaddressInfo{
+    AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    if (app.province==nil||[app.province isEqualToString:@"(null)"]) {
+        app.province = @"";
+    }if (app.city==nil||[app.city isEqualToString:@"(null)"]) {
+        app.city = @"";
+    }if (app.addressDistrite==nil||[app.addressDistrite isEqualToString:@"(null)"]) {
+        app.addressDistrite = @"";
+    }
+    _locationLab.text=[[NSString alloc] initWithFormat:@"%@%@%@",app.province,app.city,app.addressDistrite];
+    
+    NSString *detail_s =shopInfoDic[@"address"];
+    
+    if (detail_s.length>_locationLab.text.length) {
+        _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
+        
+    }else{
+        _detailAddressTF.text=detail_s;
+        
+    }
+    
+    
+    
+    
+    [self getStreest];
+    
+    
 }
 -(void)initTopView{
     UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
@@ -1370,6 +1418,25 @@
         
 //     }
 }
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag ==999) {
+        
+        if (buttonIndex == 0)//确认跳转设置
+        {
+            NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+            
+            
+            
+        }
+        
+        
+    }
+}
+
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (actionSheet.tag == 255) {
@@ -1450,7 +1517,6 @@
 
     
     if (_indexTag==1) {
-        [self.imageView1 setImage:savedImage];
         [parmer setValue:@"license" forKey:@"type"];
         
         
@@ -1470,14 +1536,12 @@
             
             [array[2] insertObject:savedImage atIndex:0];
             
-             [self.imageView2 setImage:array[2][0]];
             
         }else{
             [parmer setValue:@"house_01" forKey:@"type"];
             
             [array[1] insertObject:savedImage atIndex:0];
             
-            [self.imageView2 setImage:array[1][0]];
 
             
         }
@@ -1493,15 +1557,15 @@
             
             [array[2] insertObject:savedImage atIndex:1];
 
-            [self.imageView3 setImage:array[2][1]];
 
+            
             
         }else{
             [parmer setValue:@"house_02" forKey:@"type"];
             [array[1] insertObject:savedImage atIndex:1];
 
-            [self.imageView3 setImage:array[1][1]];
 
+            
         }
 
         
@@ -1513,10 +1577,8 @@
     }else if (_indexTag==5){
         AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
         [appdelegate.locService startUserLocationService];
-        [self.imageView5 setImage:savedImage];
         [parmer setValue:@"address" forKey:@"type"];
     }else if (_indexTag==6){
-        [self.imageView6 setImage:savedImage];
         [parmer setValue:@"wep" forKey:@"type"];
     }
     
@@ -1531,18 +1593,49 @@
             
             if (self.indexTag==1)
             {
+                [self.imageView1 setImage:savedImage];
+
                 self.ifImageView1=YES;
             }else if (self.indexTag==2)
             {
+
+                if (self.agreeBtn1.selected==YES) {
+                    
+                    
+                    [self.imageView2 setImage:array[2][0]];
+                    
+                }else{
+                    
+                    [self.imageView2 setImage:array[1][0]];
+                    
+                    
+                }
+
+                
                 self.ifImageView2=YES;
             }else if (self.indexTag==3)
             {
+                if (self.agreeBtn1.selected==YES) {
+                    
+                    [self.imageView3 setImage:array[2][1]];
+                    
+                    
+                }else{
+                  [self.imageView3 setImage:array[1][1]];
+                    
+                }
+
+                
                 self.ifImageView3=YES;
             }else if (self.indexTag==4){
                 self.ifImageView4=YES;
             }else if (self.indexTag==5){
+                [self.imageView5 setImage:savedImage];
+
                 self.ifImageView5=YES;
             }else if (self.indexTag==6){
+                [self.imageView6 setImage:savedImage];
+
                 self.ifImageView6=YES;
             }
             
@@ -1868,5 +1961,86 @@
     }];
     
 }
+
+-(void)getStreest{
+    AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    NSDictionary *dic =[[NSUserDefaults standardUserDefaults]objectForKey:app.shopInfoDic[@"muid"]];
+    
+    shopInfoDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
+    
+    DebugLog(@"shopInfoDic==%@",shopInfoDic);
+    
+    
+    __block typeof(self)  bloskSelf = self;
+    
+    NSLog(@"-app.city-----%@",app.city);
+    
+    [[JFAreaDataManager shareManager] currentCityDic:app.city currentCityDic:^(NSDictionary *dic) {
+        
+        
+        NSLog(@"-dic-----%@",dic);
+        [[JFAreaDataManager shareManager]areaData:dic[@"code"] areaData:^(NSMutableArray *areaData) {
+            
+            
+            NSLog(@"-areaData-----%@",areaData);
+            
+            for (NSDictionary *dic in areaData) {
+                NSString *name = dic[@"name"];
+                
+                
+                if ([name isEqualToString:app.addressDistrite] || [name containsString:app.addressDistrite] || [app.addressDistrite containsString:name]) {
+                    
+                    
+                    NSString *url = [NSString stringWithFormat:@"%@Extra/address/getStreet",BASEURL];;
+                    
+                    NSMutableDictionary *parame = [NSMutableDictionary dictionary];
+                    [parame setValue:dic[@"code"] forKey:@"district_id"];
+                    
+                    NSLog(@"url====+%@=====%@",url,parame);
+                    [KKRequestDataService requestWithURL:url params:parame httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+                        
+                        NSLog(@"-areaData-----%@",areaData);
+                        
+                        eare_data = [NSMutableArray arrayWithArray:result];
+                        
+                        NSMutableArray *arr = [NSMutableArray array];
+                        for (NSDictionary *dic_eare in result) {
+                            [arr addObject:dic_eare[@"name"]];
+                            
+                        }
+                        self.streetArray=[[NSArray alloc]initWithArray:arr];
+                        pickView= [[ValuePickerView alloc]init];
+                        
+                        NSLog(@"--------------%@",arr);
+                        pickView.dataSource = arr;
+                        pickView.valueDidSelect = ^(NSString *value) {
+                            
+                            
+                            bloskSelf.detailAddressTF.text =  [[value componentsSeparatedByString:@"/"] firstObject];
+                            
+                        };
+                        
+                    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+                        
+                    }];
+                    
+                    
+                    
+                    
+                    
+                    
+                    break;
+                    
+                    
+                }
+            }
+            
+        }];
+    }];
+    
+    
+}
+
 
 @end

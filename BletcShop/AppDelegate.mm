@@ -27,6 +27,8 @@
 #import "Database.h"
 #import "UIImageView+WebCache.h"
 #import "XLAlertView.h"
+#import "BaiduMapManager.h"
+#import "SingleModel.h"
 @interface AppDelegate ()<EMClientDelegate,EMContactManagerDelegate,EMGroupManagerDelegate>
 {
     BMKGeoCodeSearch *_geocodesearch;
@@ -213,15 +215,44 @@
     if (!ret) {
         NSLog(@"manager start failed!");
     }
-    _geocodesearch = [[BMKGeoCodeSearch alloc] init];
-    _geocodesearch.delegate = self;
-    _locService = [[BMKLocationService alloc]init];
+    
+  SingleModel *s_model = [SingleModel sharedManager];
+
+    
+    BaiduMapManager *baiduMapManager = [BaiduMapManager shareBaiduMapManager];
+    [baiduMapManager startUserLocationService];
     
     
-    _locService.delegate = self;
-    //启动LocationService
-    [_locService startUserLocationService];
-    //_locationDelegate = nil;
+  
+    baiduMapManager.userAddressBlock = ^(BMKReverseGeoCodeResult *result) {
+        
+        NSLog(@"appdelegate!");
+
+        self.addressInfo = result.address;
+        self.addressDistrite = result.addressDetail.district;
+        self.province =result.addressDetail.province;
+        self.city =result.addressDetail.city;
+        self.districtString =result.addressDetail.district;
+        
+        s_model.advertArea =result.addressDetail.city;
+        
+        
+        
+    };
+    baiduMapManager.userLocationBlock = ^(BMKUserLocation *location) {
+        self.userLocation = location;
+        
+    };
+
+//    _geocodesearch = [[BMKGeoCodeSearch alloc] init];
+//    _geocodesearch.delegate = self;
+//    _locService = [[BMKLocationService alloc]init];
+//    
+//    
+//    _locService.delegate = self;
+//    //启动LocationService
+//    [_locService startUserLocationService];
+//    //_locationDelegate = nil;
     //按比例适配屏幕
     AppDelegate *myDelegate =(AppDelegate*)[[UIApplication sharedApplication] delegate];
     if(SCREENHEIGHT == 667){
@@ -561,6 +592,8 @@
     NSLog(@"%f - %f", option.reverseGeoPoint.latitude, option.reverseGeoPoint.longitude);
     // 调用反地址编码方法，让其在代理方法中输出
     [_geocodesearch reverseGeoCode:option];
+    NSLog(@"[_geocodesearch reverseGeoCode:option]-------%d",[_geocodesearch reverseGeoCode:option]);
+    
     // 获取当前所在的城市名
     [_locService stopUserLocationService];
 }
@@ -1953,7 +1986,7 @@
         [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
             [self cancelLocalNotificationWithKey:@"mykey"];
             
-                    NSLog(@"重复调用接口,查询数据===%@===paramer==%@",result,paramer);
+//                    NSLog(@"重复调用接口,查询数据===%@===paramer==%@",result,paramer);
 
           
             NSInteger num = 0;

@@ -69,7 +69,9 @@
     [super viewDidLoad];
     intrueOrFast=@"";
     self.view.backgroundColor=[UIColor whiteColor];
-    arr_imgS = @[@"广告推送",@"店铺管理",@"资金提现",@"管理员设置",@"商家介绍",@"会员延期",@"授信额度",@"预约处理",@"优惠券"];
+//    arr_imgS = @[@"广告推送",@"店铺管理",@"资金提现",@"管理员设置",@"商家介绍",@"会员延期",@"授信额度",@"预约处理",@"优惠券"];
+    arr_imgS = @[@"广告推送",@"店铺管理",@"资金提现",@"管理员设置",@"商家介绍",@"会员延期",@"预约处理",@"优惠券"];
+
     
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
     topView.backgroundColor =NavBackGroundColor;
@@ -137,7 +139,9 @@
     [bottomView addSubview:huixin];
 
     
-    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_card_icon",@"bu_time_icon",@"bu_discant_icon"];
+//    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_card_icon",@"bu_time_icon",@"bu_discant_icon"];
+    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_time_icon",@"bu_discant_icon"];
+
     for (int i = 0; i <arr_imgS.count; i ++) {
         int X = i %4;
         int Y = i /4;
@@ -551,9 +555,13 @@
     switch (sender.tag) {
         case 0:
         {
-//            [self advertView];
-            PushAdverViewController *advertisementHomeVC=[[PushAdverViewController alloc]init];
-            [self.navigationController pushViewController:advertisementHomeVC animated:YES];
+            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"暂未开放!" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles: nil];
+            
+                        [altView show];
+
+            
+//            PushAdverViewController *advertisementHomeVC=[[PushAdverViewController alloc]init];
+//            [self.navigationController pushViewController:advertisementHomeVC animated:YES];
             
         }
             break;
@@ -596,20 +604,20 @@
         }
             break;
 
+//        case 6:
+//        {
+//            
+//            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"暂未开放!" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles: nil];
+//            
+//            [altView show];
+//            
+//            
+////            CreditThanViewController *creditView = [[CreditThanViewController alloc]init];
+////             [self.navigationController pushViewController:creditView animated:YES];
+//
+//        }
+//            break;
         case 6:
-        {
-            
-            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"暂未开放!" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles: nil];
-            
-            [altView show];
-            
-            
-//            CreditThanViewController *creditView = [[CreditThanViewController alloc]init];
-//             [self.navigationController pushViewController:creditView animated:YES];
-
-        }
-            break;
-        case 7:
         {
             
             [self orderView];
@@ -618,7 +626,7 @@
             
         }
             break;
-        case 8:
+        case 7:
         {
 
 //            ChargeToAccountVC *VC = [[ChargeToAccountVC alloc]init];

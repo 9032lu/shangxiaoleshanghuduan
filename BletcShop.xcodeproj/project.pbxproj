@@ -612,6 +612,8 @@
 		D9B57F181D337DD700E9654A /* areaAll.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9B57F171D337DD700E9654A /* areaAll.plist */; };
 		D9B650071E9724A0007DF5DC /* ShopManagerDataReportVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B650061E9724A0007DF5DC /* ShopManagerDataReportVC.m */; };
 		D9B894171F66682D00278B74 /* shanchu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B894161F66682D00278B74 /* shanchu.jpg */; };
+		D9B8941A1F67772000278B74 /* BaiduMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B894191F67772000278B74 /* BaiduMapManager.m */; };
+		D9B8941E1F67C63000278B74 /* 未标题-1 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B8941D1F67C63000278B74 /* 未标题-1 2.jpg */; };
 		D9BA5F041D7564090067E7A2 /* FriendRequest.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9BA5F031D7564090067E7A2 /* FriendRequest.plist */; };
 		D9BB4DDA1E04EA8200971BCC /* NewOrderShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BB4DD91E04EA8200971BCC /* NewOrderShopViewController.m */; };
 		D9BB4DE41E051DB800971BCC /* 关闭.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BB4DE31E051DB800971BCC /* 关闭.png */; };
@@ -1790,6 +1792,9 @@
 		D9B650051E9724A0007DF5DC /* ShopManagerDataReportVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopManagerDataReportVC.h; sourceTree = "<group>"; };
 		D9B650061E9724A0007DF5DC /* ShopManagerDataReportVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopManagerDataReportVC.m; sourceTree = "<group>"; };
 		D9B894161F66682D00278B74 /* shanchu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shanchu.jpg; sourceTree = "<group>"; };
+		D9B894181F67772000278B74 /* BaiduMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMapManager.h; sourceTree = "<group>"; };
+		D9B894191F67772000278B74 /* BaiduMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapManager.m; sourceTree = "<group>"; };
+		D9B8941D1F67C63000278B74 /* 未标题-1 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "未标题-1 2.jpg"; sourceTree = "<group>"; };
 		D9BA5F031D7564090067E7A2 /* FriendRequest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FriendRequest.plist; sourceTree = "<group>"; };
 		D9BB4DD81E04EA8200971BCC /* NewOrderShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderShopViewController.h; sourceTree = "<group>"; };
 		D9BB4DD91E04EA8200971BCC /* NewOrderShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderShopViewController.m; sourceTree = "<group>"; };
@@ -2095,6 +2100,8 @@
 				189CC5BC1EFA011100A73BB6 /* Tools */,
 				D99760ED1E690575008E21FE /* SawtoothView.h */,
 				D99760EE1E690575008E21FE /* SawtoothView.m */,
+				D9B894181F67772000278B74 /* BaiduMapManager.h */,
+				D9B894191F67772000278B74 /* BaiduMapManager.m */,
 				D9C4CDEB1DE44587009C76C1 /* ValuePickerView.h */,
 				D9C4CDEC1DE44587009C76C1 /* ValuePickerView.m */,
 				18F065121EA0983000D62B5F /* ValuePickerViewEric.h */,
@@ -2113,6 +2120,7 @@
 				D9442ADC1D1E330A00956AB4 /* Singleton.m */,
 				D973D58B1D9E4588003F82FB /* tanhao.png */,
 				D9E1D4251D642DCB0078EF02 /* custom4.jpg */,
+				D9B8941D1F67C63000278B74 /* 未标题-1 2.jpg */,
 				1A83127D1D88544D001BC3B6 /* chat_sender_audio_playing_000@2x.png */,
 				1A83127E1D88544D001BC3B6 /* chat_sender_audio_playing_001@2x.png */,
 				1A83127F1D88544D001BC3B6 /* chat_sender_audio_playing_002@2x.png */,
@@ -4691,6 +4699,7 @@
 				D92ACDAC1F0CD4FF00858727 /* PackageServiceVC.xib in Resources */,
 				1C9E822F1C603B7A0007BF02 /* 我的界面灰色箭头.png in Resources */,
 				D92ACD891F0CD47D00858727 /* ChoseCardColorStyleViewVC.xib in Resources */,
+				D9B8941E1F67C63000278B74 /* 未标题-1 2.jpg in Resources */,
 				D92ACDC31F0CD59500858727 /* PackageOtherTableViewCell.xib in Resources */,
 				1CEFFA751C7ED6DF00671471 /* xuan1.png in Resources */,
 				184D2F4C1F4E8648008F8C55 /* 线上shop.png in Resources */,
@@ -5292,6 +5301,7 @@
 				184D2F451F4E832D008F8C55 /* CouponCell.m in Sources */,
 				D9B3A5AD1D74255700F3F27E /* EMSDWebImageDecoder.m in Sources */,
 				D9937D841DE056DF0001B575 /* NewChangePsWordViewController.m in Sources */,
+				D9B8941A1F67772000278B74 /* BaiduMapManager.m in Sources */,
 				D947E4841D7D710200F9FEE8 /* FMDatabaseAdditions.m in Sources */,
 				D947E4751D7D4CB000F9FEE8 /* SDRefreshView.m in Sources */,
 				D96E1B7C1ECAD9EF00084453 /* ChoseSeriesCellT.m in Sources */,
@@ -5526,7 +5536,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bletc.shangxiaoleforshop.BletcShops;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bletc.shangxiaole.BletcShops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				REZ_SEARCH_PATHS = "";
@@ -5578,7 +5588,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				OTHER_LIBTOOLFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.bletc.shangxiaoleforshop.BletcShops;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bletc.shangxiaole.BletcShops;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				REZ_SEARCH_PATHS = "";

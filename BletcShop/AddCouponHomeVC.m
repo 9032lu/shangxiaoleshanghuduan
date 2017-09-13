@@ -14,12 +14,17 @@
 #import "AddCouponDetailsVC.h"
 @interface AddCouponHomeVC ()<UITableViewDelegate,UITableViewDataSource>
 {
-    UITableView *_tableView;
+    
     NSArray *_dataArray;
     UIImageView *imageView;
     UILabel *noticeLabel;
      CGFloat heights;
 }
+@property(nonatomic, strong) NSMutableArray *deleteArr;//删除数据的数组
+@property(nonatomic,strong)LZDButton *leftPopBtn;
+@property(nonatomic,strong)LZDButton *leftCancleBtn;
+@property(nonatomic,strong)LZDButton *rightBtn;
+@property(nonatomic,strong)UITableView *tableView;
 @end
 
 @implementation AddCouponHomeVC
@@ -29,6 +34,47 @@
     }
     return _delete_dic;
 }
+
+-(LZDButton *)leftPopBtn{
+    if (!_leftPopBtn) {
+        
+        __weak typeof(self) weakSelf = self;
+        
+        _leftPopBtn =[LZDButton creatLZDButton];
+        _leftPopBtn.frame = CGRectMake(13, 31, 10, 20);
+        [_leftPopBtn setImage:[UIImage imageNamed:@"leftArrow"] forState:0];
+        _leftPopBtn.block = ^(LZDButton *sender) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        };
+    }
+    return _leftPopBtn;
+}
+-(LZDButton *)leftCancleBtn{
+    if (!_leftCancleBtn) {
+        __weak typeof(self) weakSelf = self;
+
+        _leftCancleBtn = [LZDButton creatLZDButton];
+        _leftCancleBtn.frame = CGRectMake(13, 0, 40, 30);
+        
+        [_leftCancleBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [_leftCancleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _leftCancleBtn.titleLabel.font = [UIFont systemFontOfSize:17];
+        
+        self.leftCancleBtn.block = ^(LZDButton *btn){
+            
+            weakSelf.tableView.editing = NO;
+            
+            weakSelf.rightBtn.selected = NO;
+            
+            [weakSelf.rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+            weakSelf.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:weakSelf.leftPopBtn];
+        };
+
+    }
+    
+    return _leftCancleBtn;
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self postGetCouponRequest];
@@ -36,25 +82,121 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      heights=0;
+    self.deleteArr = [NSMutableArray array];
+
     self.view.backgroundColor=RGB(238, 238, 238);
     self.navigationItem.title=@"优惠券";
-    LEFTBACK
-    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"添加" style:UIBarButtonItemStylePlain target:self action:@selector(addCoupon)];
-    self.navigationItem.rightBarButtonItem=rightItem;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftPopBtn];
     
+    
+    
+    LZDButton *rightBtn = [LZDButton creatLZDButton];
+    rightBtn.frame = CGRectMake(kWeChatScreenWidth-50, 0, 40, 30);
+    
+    [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:17];
+    
+    self.rightBtn = rightBtn;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+    
+
+  
+    
+    rightBtn.block = ^(LZDButton *btn){
+        __weak typeof(self) weakSelf = self;
+
+        
+        if (btn.selected) {
+            
+            weakSelf.tableView.editing = NO;
+            btn.selected = NO;
+
+            [btn setTitle:@"编辑" forState:UIControlStateNormal];
+
+            [weakSelf showHint:[NSString stringWithFormat:@"删除选中的-%lu-项",(unsigned long)weakSelf.deleteArr.count]];
+            weakSelf.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:weakSelf.leftPopBtn];
+            
+            [weakSelf.deleteArr removeAllObjects];
+            
+        }else{
+           
+            
+            
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"编辑" preferredStyle:UIAlertControllerStyleActionSheet];
+            
+            NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:@"编辑"];
+            [hogan addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, [[hogan string] length])];
+//            [hogan addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, [[hogan string] length])];
+            [alertController setValue:hogan forKey:@"attributedMessage"];
+            
+            UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"添加" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                AddCouponVC *couponVC=[[AddCouponVC alloc]init];
+                [weakSelf.navigationController pushViewController:couponVC animated:YES];
+                
+            }];
+            
+            UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+                
+                [btn setTitle:@"删除" forState:UIControlStateNormal];
+                
+                btn.selected = YES;
+                
+                weakSelf.tableView.editing = YES;
+                
+                
+                
+                weakSelf.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:weakSelf.leftCancleBtn];
+                
+                
+                
+            }];
+            UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                
+                
+                
+                
+            }];
+            
+            [alertController addAction:addAction];
+            [alertController addAction:deleteAction];
+            [alertController addAction:cancleAction];
+            
+            [weakSelf presentViewController:alertController animated:YES completion:^{
+                
+            }];
+
+            
+        }
+       
+        
+    };
     
     _dataArray=[[NSArray alloc]init];//@[dic1,dic2,dic3];
     
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStyleGrouped];
+   self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStyleGrouped];
     _tableView.delegate=self;
     _tableView.dataSource=self;
+    _tableView.editing = NO;
+    _tableView.allowsMultipleSelectionDuringEditing = YES;
+
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
     
+    
+    
+   
+    
 }
+
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return _dataArray.count;
 }
+
+
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     CouponCell *cell = [CouponCell couponCellWithTableView:tableView];
@@ -97,9 +239,26 @@
     return 126;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    AddCouponDetailsVC *vc=[[AddCouponDetailsVC alloc]init];
-    vc.infoDic=_dataArray[indexPath.row];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (tableView.editing) {
+        [self.deleteArr addObject:[_dataArray objectAtIndex:indexPath.row]];
+
+    }else{
+        AddCouponDetailsVC *vc=[[AddCouponDetailsVC alloc]init];
+        vc.infoDic=_dataArray[indexPath.row];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        
+
+    }
+    
+}
+
+//取消选中时 将存放在self.deleteArr中的数据移除
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath  {
+    if (tableView.editing) {
+        [self.deleteArr removeObject:[_dataArray objectAtIndex:indexPath.row]];
+
+    }
 }
 
 -(void)postGetCouponRequest{
@@ -221,23 +380,14 @@
     
 }
 
--(void)addCoupon{
-    AddCouponVC *couponVC=[[AddCouponVC alloc]init];
-    [self.navigationController pushViewController:couponVC animated:YES];
-}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

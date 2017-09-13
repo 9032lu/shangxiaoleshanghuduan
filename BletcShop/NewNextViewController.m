@@ -724,18 +724,15 @@
     [parmer setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
 
     if (_indexTag==1) {
-        [self.imageView setImage:savedImage];
         [parmer setValue:@"id_front" forKey:@"type"];
         
         
     }else if(_indexTag==2)
     {
-        [self.imageView1 setImage:savedImage];
         [parmer setValue:@"id_back" forKey:@"type"];
         
     }else if(_indexTag==3)
     {
-        [self.imageView3 setImage:savedImage];
         [parmer setValue:@"id_hand" forKey:@"type"];
         
     }
@@ -758,12 +755,18 @@
             
             if (self.indexTag==1)
             {
+                [self.imageView setImage:savedImage];
+
                 self.ifImageView=YES;
             }else if (self.indexTag==2)
             {
+                [self.imageView1 setImage:savedImage];
+
                 self.ifImageView1=YES;
             }else if (self.indexTag==3)
             {
+                [self.imageView3 setImage:savedImage];
+
                 self.ifImageView2=YES;
             }
             

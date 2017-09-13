@@ -12,6 +12,11 @@
 #import "SawtoothView.h"
 
 
+@interface CouponCell ()
+@property(nonatomic,weak) UIView *line;
+@property(nonatomic,weak)UIView *leftCircle;
+@property(nonatomic,weak)UIView *view;
+@end
 @implementation CouponCell
 
 
@@ -21,8 +26,13 @@
     CouponCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[CouponCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        cell.selectionStyle =UITableViewCellSelectionStyleNone;
+//        cell.selectionStyle =UITableViewCellSelectionStyleNone;
         cell.backgroundColor = RGB(240, 240, 240);
+        UIView *view = [[UIView alloc]initWithFrame:cell.frame];
+        view.backgroundColor =RGB(240, 240, 240);
+
+        cell.selectedBackgroundView = view;
+        cell.tintColor = RGB(243, 73, 78);
     }
     
     return cell;
@@ -38,13 +48,32 @@
     return self;
 }
 
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    self.leftCircle.backgroundColor=RGB(240, 240, 240);
+
+    self.topView.backgroundColor=RGB(243, 73, 78);
+    self.line.backgroundColor=RGB(231, 231, 231);
+    self.bgView.backgroundColor=[UIColor whiteColor];
+
+
+}
+
+-(void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    self.line.backgroundColor=RGB(231, 231, 231);
+    self.bgView.backgroundColor=[UIColor whiteColor];
+    self.leftCircle.backgroundColor=RGB(240, 240, 240);
+
+    self.topView.backgroundColor=RGB(243, 73, 78);
+}
 -(void)initSubViews{
     UIView *view=[[UIView alloc]initWithFrame:CGRectMake(12, 10, SCREENWIDTH-24, 116)];
     view.backgroundColor=[UIColor whiteColor];
     view.layer.cornerRadius=5;
     view.clipsToBounds = YES;
-    [self addSubview:view];
-    
+    [self.contentView addSubview:view];
+ 
     self.bgView=view;
     
     UIView *topRedView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, view.width, 6)];
@@ -96,11 +125,15 @@
     line.backgroundColor=RGB(231, 231, 231);
     [view addSubview:line];
     
+    self.line = line;
+    
     UIView *leftCircle=[[UIView alloc]initWithFrame:CGRectMake(-9, 84-9, 18, 18)];
     leftCircle.backgroundColor=RGB(240, 240, 240);
     leftCircle.layer.cornerRadius=9.0f;
     leftCircle.clipsToBounds=YES;
     [view addSubview:leftCircle];
+    
+    self.leftCircle = leftCircle;
     
     UIView *rightCircle=[[UIView alloc]initWithFrame:CGRectMake(line.right+9, 84-9, 16, 16)];
     rightCircle.backgroundColor=RGB(240, 240, 240);
