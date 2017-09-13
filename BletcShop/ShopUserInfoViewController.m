@@ -13,6 +13,7 @@
 
 #import "ResetPhoneViewController.h"
 #import "UserInfoEditVC.h"
+#import "AccessCodeVC.h"
 @interface ShopUserInfoViewController ()
 
 @end
@@ -224,7 +225,7 @@
                 UserInfoEditVC *VC = [[UserInfoEditVC alloc]init];
                 VC.whoPush = @"商户";
                 VC.leibie = @"地址";
-                [self.navigationController pushViewController:VC animated:YES];
+                 [self.navigationController pushViewController:VC animated:YES];
             }
            
         }
@@ -237,10 +238,17 @@
                 NSLog(@"tgtgtgtgtg");
             }else
             {
-                UserInfoEditVC *VC = [[UserInfoEditVC alloc]init];
-                VC.whoPush = @"商户";
-                VC.leibie = @"银行卡号";
-                [self.navigationController pushViewController:VC animated:YES];
+                NSString *account =  [NSString getTheNoNullStr:appdelegate.shopInfoDic[@"account"] andRepalceStr:@"未设置"];
+                if ([account isEqualToString:@"未设置"]) {
+                    UserInfoEditVC *VC = [[UserInfoEditVC alloc]init];
+                    VC.whoPush = @"商户";
+                    VC.leibie = @"银行卡号";
+                    [self.navigationController pushViewController:VC animated:YES];
+                }else{
+                    AccessCodeVC *accessCodeVC = [[AccessCodeVC alloc]init];
+                    [self.navigationController pushViewController:accessCodeVC animated:YES];
+                }
+                
             }
         
         }else if (indexPath.row==7){

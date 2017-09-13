@@ -89,8 +89,27 @@
 
 
 -(void)sureClick{
+     [self.contentTF resignFirstResponder];
     
-    [self.contentTF resignFirstResponder];
+    if ([self.leibie isEqualToString:@"银行卡号"]) {
+        if (self.contentTF.text.length==16||self.contentTF.text.length==19) {
+            [self postRequestAddress];
+        }else{
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.label.text = NSLocalizedString(@"银行卡号长度不对", @"HUD message title");
+            
+            hud.label.font = [UIFont systemFontOfSize:13];
+            //    [hud setColor:[UIColor blackColor]];
+            hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
+            hud.userInteractionEnabled = YES;
+            [hud hideAnimated:YES afterDelay:2.f];
+            
+        }
+    }else{
+        [self postRequestAddress];
+    }
+   
    
 }
 
@@ -441,28 +460,6 @@
 }
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     [textField resignFirstResponder];
-    return YES;
-}
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
-    
-    if ([self.leibie isEqualToString:@"银行卡号"]) {
-        if (self.contentTF.text.length==16||self.contentTF.text.length==19) {
-            [self postRequestAddress];
-        }else{
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = NSLocalizedString(@"银行卡号长度不对", @"HUD message title");
-            
-            hud.label.font = [UIFont systemFontOfSize:13];
-            //    [hud setColor:[UIColor blackColor]];
-            hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-            hud.userInteractionEnabled = YES;
-            [hud hideAnimated:YES afterDelay:2.f];
-
-        }
-    }else{
-        [self postRequestAddress];
-    }
     return YES;
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

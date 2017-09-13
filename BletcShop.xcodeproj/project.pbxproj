@@ -68,6 +68,10 @@
 		185ABD891D80227900BD8097 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 185ABD7B1D80227900BD8097 /* Item.m */; };
 		185E51431E5D26D9009F0C01 /* PublishAdvertSecondVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E51421E5D26D9009F0C01 /* PublishAdvertSecondVC.m */; };
 		185E51461E5D2E10009F0C01 /* PublishTopScrollAdvertVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 185E51451E5D2E10009F0C01 /* PublishTopScrollAdvertVC.m */; };
+		1869915F1F68FA8E0084D3C8 /* AccessCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869915D1F68FA8E0084D3C8 /* AccessCodeVC.m */; };
+		186991601F68FA8E0084D3C8 /* AccessCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869915E1F68FA8E0084D3C8 /* AccessCodeVC.xib */; };
+		186991651F6901660084D3C8 /* IDInPutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 186991631F6901660084D3C8 /* IDInPutVC.m */; };
+		186991661F6901660084D3C8 /* IDInPutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186991641F6901660084D3C8 /* IDInPutVC.xib */; };
 		189619441D92319D003BA40C /* ContactSeverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189619431D92319D003BA40C /* ContactSeverViewController.m */; };
 		189757491E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 189757471E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt */; };
 		1897574A1E9B16A400AB1D00 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 189757481E9B16A400AB1D00 /* WebViewJavascriptBridge.m */; };
@@ -812,6 +816,12 @@
 		185E51421E5D26D9009F0C01 /* PublishAdvertSecondVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishAdvertSecondVC.m; sourceTree = "<group>"; };
 		185E51441E5D2E10009F0C01 /* PublishTopScrollAdvertVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishTopScrollAdvertVC.h; sourceTree = "<group>"; };
 		185E51451E5D2E10009F0C01 /* PublishTopScrollAdvertVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishTopScrollAdvertVC.m; sourceTree = "<group>"; };
+		1869915C1F68FA8E0084D3C8 /* AccessCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessCodeVC.h; sourceTree = "<group>"; };
+		1869915D1F68FA8E0084D3C8 /* AccessCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccessCodeVC.m; sourceTree = "<group>"; };
+		1869915E1F68FA8E0084D3C8 /* AccessCodeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccessCodeVC.xib; sourceTree = "<group>"; };
+		186991621F6901660084D3C8 /* IDInPutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDInPutVC.h; sourceTree = "<group>"; };
+		186991631F6901660084D3C8 /* IDInPutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDInPutVC.m; sourceTree = "<group>"; };
+		186991641F6901660084D3C8 /* IDInPutVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDInPutVC.xib; sourceTree = "<group>"; };
 		189619421D92319D003BA40C /* ContactSeverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSeverViewController.h; sourceTree = "<group>"; };
 		189619431D92319D003BA40C /* ContactSeverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSeverViewController.m; sourceTree = "<group>"; };
 		189757461E9B16A400AB1D00 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
@@ -2038,6 +2048,7 @@
 				184D2F541F5007F0008F8C55 /* 引导页three.png */,
 				184D2F551F5007F0008F8C55 /* 引导页one.png */,
 				184D2F561F5007F0008F8C55 /* 引导页two.png */,
+				186991611F6901240084D3C8 /* 修改银行卡号 */,
 				1CDA9E081C5A113000DFE518 /* 商户端 */,
 				D97227101F32D271009D0E2A /* 其他类 */,
 				079386C01C55BBBF0021B385 /* 更多 */,
@@ -2480,6 +2491,19 @@
 				182988521E778F4100164F32 /* 选按时间&按点击量 */,
 			);
 			name = "发布顶端轮播广告";
+			sourceTree = "<group>";
+		};
+		186991611F6901240084D3C8 /* 修改银行卡号 */ = {
+			isa = PBXGroup;
+			children = (
+				1869915C1F68FA8E0084D3C8 /* AccessCodeVC.h */,
+				1869915D1F68FA8E0084D3C8 /* AccessCodeVC.m */,
+				1869915E1F68FA8E0084D3C8 /* AccessCodeVC.xib */,
+				186991621F6901660084D3C8 /* IDInPutVC.h */,
+				186991631F6901660084D3C8 /* IDInPutVC.m */,
+				186991641F6901660084D3C8 /* IDInPutVC.xib */,
+			);
+			name = "修改银行卡号";
 			sourceTree = "<group>";
 		};
 		1873C3891E820B2900DBE72D /* 线下广告提示页 */ = {
@@ -4683,6 +4707,7 @@
 				D9AB25411D88E4ED000E9288 /* VoiceSearchFeedback019@2x.png in Resources */,
 				18F27EE91D640E84002DD03A /* 头像-1.png in Resources */,
 				D9C3A3011E9642890062B17D /* ChouJiangVC.xib in Resources */,
+				186991601F68FA8E0084D3C8 /* AccessCodeVC.xib in Resources */,
 				D9AB253F1D88E4ED000E9288 /* VoiceSearchFeedback017@2x.png in Resources */,
 				1A8312791D885444001BC3B6 /* chat_receiver_audio_playing000@2x.png in Resources */,
 				1A8312841D88544D001BC3B6 /* chat_sender_audio_playing_003@2x.png in Resources */,
@@ -4797,6 +4822,7 @@
 				0793868A1C55B5CA0021B385 /* Main.storyboard in Resources */,
 				1A4173B91D787B1400A70601 /* Localizable.strings in Resources */,
 				1CCD500F1C85281A00447AB8 /* 头像.png in Resources */,
+				186991661F6901660084D3C8 /* IDInPutVC.xib in Resources */,
 				18D8464A1ED570510048F010 /* 上角标.png in Resources */,
 				D9637DFE1D59BAF900C19D0B /* admin_pp.png in Resources */,
 				D92ACDC51F0CD59500858727 /* PackageTableViewCell.xib in Resources */,
@@ -5195,6 +5221,7 @@
 				D958AD6F1E654CF200B0776F /* JHTableDataRowModel.m in Sources */,
 				1A9B3AD31D77123D00919CDC /* MessageCell.m in Sources */,
 				D968465D1CC9FCD000146956 /* VipManagerViewController.m in Sources */,
+				186991651F6901660084D3C8 /* IDInPutVC.m in Sources */,
 				D9DEED2A1CACED7C00ACDD00 /* UIView+WebCacheOperation.m in Sources */,
 				189CC5D81EFA113900A73BB6 /* JFCityHeaderView.m in Sources */,
 				D968465A1CC9FCAB00146956 /* VipManagerTableViewCell.m in Sources */,
@@ -5260,6 +5287,7 @@
 				D9698FAD1EEFC12500D76F3F /* AddMoneyOrCountCell.m in Sources */,
 				189CC5D21EFA113900A73BB6 /* JFButton.m in Sources */,
 				D99372CC1E9F4F450088016D /* AllmessageListCell.m in Sources */,
+				1869915F1F68FA8E0084D3C8 /* AccessCodeVC.m in Sources */,
 				D9B3A5B21D74255700F3F27E /* MKAnnotationView+EMWebCache.m in Sources */,
 				189CC5D51EFA113900A73BB6 /* JFCityTableViewCell.m in Sources */,
 				D941135D1CE9A3D7008E231F /* openssl_wrapper.m in Sources */,
