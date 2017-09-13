@@ -52,10 +52,10 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (SCREENHEIGHT-64-80-10)/7;
+    return (SCREENHEIGHT-64-80-10)/8;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-        return 7;
+        return 8;
 }
 
 
@@ -108,7 +108,7 @@
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-        NSArray *labelStringArray =@[@"昵称",@"店铺名",@"手机号",@"修改密码",@"地址",@"保证金",@"入驻协议"];
+        NSArray *labelStringArray =@[@"昵称",@"店铺名",@"手机号",@"修改密码",@"地址",@"保证金",@"银行卡号",@"入驻协议"];
         UILabel *nameLabel = [[UILabel alloc]init];
         
             nameLabel.frame = CGRectMake(10, 0, 100, 70);
@@ -151,8 +151,9 @@
                     descripLabel.text =@"0.00";
                 }else
                     descripLabel.text = appdelegate.shopInfoDic[@"remain"];
-            }
-            else if(indexPath.row==6){
+            }else if(indexPath.row==6){
+                 descripLabel.text = [NSString getTheNoNullStr:appdelegate.shopInfoDic[@"account"] andRepalceStr:@"未设置"];
+            }else if(indexPath.row==7){
                 descripLabel.text=@"协议详情";
             }
             else
@@ -211,13 +212,7 @@
 
 //            self.selectRow =3;
 //            [self NewAddAction];
-        }else if (indexPath.row==6){
-            PointRuleViewController *PointRuleView = [[PointRuleViewController alloc]init];
-            PointRuleView.type = 8888;
-            [self.navigationController pushViewController:PointRuleView animated:YES];
-        }
-        else if (indexPath.row==4) {
-            
+        }else if (indexPath.row==4){
             AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
             if (![[appdelegate.shopInfoDic objectForKey:@"privi"] isEqualToString:@"register"]) {
                 UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"您没有修改权限!" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确认", nil];
@@ -231,8 +226,27 @@
                 VC.leibie = @"地址";
                 [self.navigationController pushViewController:VC animated:YES];
             }
-
-            
+           
+        }
+        else if (indexPath.row==6) {
+            AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+            if (![[appdelegate.shopInfoDic objectForKey:@"privi"] isEqualToString:@"register"]) {
+                UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"提示" message:@"您没有修改权限!" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确认", nil];
+                [alertView show];
+                
+                NSLog(@"tgtgtgtgtg");
+            }else
+            {
+                UserInfoEditVC *VC = [[UserInfoEditVC alloc]init];
+                VC.whoPush = @"商户";
+                VC.leibie = @"银行卡号";
+                [self.navigationController pushViewController:VC animated:YES];
+            }
+        
+        }else if (indexPath.row==7){
+            PointRuleViewController *PointRuleView = [[PointRuleViewController alloc]init];
+            PointRuleView.type = 8888;
+            [self.navigationController pushViewController:PointRuleView animated:YES];
         }
         
     }
