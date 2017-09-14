@@ -20,6 +20,7 @@
 @property(nonatomic,strong)UILabel *sum_Lab;
 @property(nonatomic,strong)UILabel *insure_Lab;
 @property(nonatomic,strong)UILabel *award_Lab;
+@property(nonatomic,strong)UILabel *wait_Lab;
 
 @end
 
@@ -91,7 +92,7 @@
 {
     
     [self showHudInView:self.view hint:@"加载中..."];
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/merchant/sumGet",BASEURL];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/fund/getBill",BASEURL];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     [params setObject:[appdelegate.shopInfoDic objectForKey:@"muid"] forKey:@"muid"];
@@ -137,8 +138,8 @@
     
     title_lab.font =[UIFont systemFontOfSize:25];
     [backView addSubview:title_lab];
-    NSArray *name_A  = @[@"已转账金额",@"推荐奖励金额"];
-    for (int i = 0; i <2; i ++) {
+    NSArray *name_A  = @[@"已转账金额",@"待转账金额",@"推荐奖励金额"];
+    for (int i = 0; i <name_A.count; i ++) {
         UIView *View = [[UIView alloc]initWithFrame:CGRectMake(0, backView.bottom+i*48, SCREENWIDTH, 48)];
         View.backgroundColor = [UIColor whiteColor];
         [self.view addSubview:View];
@@ -168,7 +169,7 @@
                 
             }
             
-            if (sender.tag==1) {
+            if (sender.tag==2) {
                 RJGDetailVC *VC = [[RJGDetailVC alloc]init];
             [weakSelf.navigationController pushViewController:VC animated:YES];
             
@@ -184,14 +185,21 @@
         [View addSubview:name_btn];
 
         
-        if (i==0) {
+        if (i==0||i==1) {
             UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, View.height-1, SCREENWIDTH, 1)];
             line.backgroundColor =RGB(234, 234, 234);
             [View addSubview:line];
             imgV.image = [UIImage imageNamed:@"money_icon_pr_n"];
-            self.insure_Lab = count_lab;
+
+            if (i==0) {
+                self.insure_Lab = count_lab;
+ 
+            }else{
+                self.wait_Lab = count_lab;
+            }
+            
         }
-        if (i==1) {
+        if (i==2) {
 
             imgV.image = [UIImage imageNamed:@"money_icon_bo_n"];
             
@@ -244,9 +252,12 @@
 }
 -(void)initRjgmViewWithDic:(NSDictionary*)dic
 {
-        self.sum_Lab.text = dic[@"remain"];
-       self.insure_Lab.text =[NSString getTheNoNullStr:dic[@"deposit"] andRepalceStr:@"0.00元"];
-       self.award_Lab.text = [NSString getTheNoNullStr:dic[@"award"] andRepalceStr:@"0.00元"];
+    self.sum_Lab.text = dic[@"remain"];
+    self.insure_Lab.text =[NSString stringWithFormat:@"%.2f元",[dic[@"trans_access"] floatValue]];
+
+    self.wait_Lab.text = [NSString stringWithFormat:@"%.2f元",[dic[@"trans_ready"] floatValue]];
+    
+    self.award_Lab.text = [NSString stringWithFormat:@"%.2f元",[dic[@"ref_award"] floatValue]];
     
     
 }

@@ -210,7 +210,7 @@
 
 -(void)postRequestMoney
 {
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/merchant/withdrawGet",BASEURL ];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/fund/getTransDetail",BASEURL ];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
