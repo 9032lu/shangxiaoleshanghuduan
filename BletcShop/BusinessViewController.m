@@ -40,6 +40,10 @@
 
 #import "SHOPVIPCARDVC.h"
 #import "AlertViewWithTableView.h"
+
+#import "AddressEditVC.h"
+
+
 @interface BusinessViewController ()<UIAlertViewDelegate>
 {
     NSArray *arr_imgS;
@@ -70,7 +74,7 @@
     intrueOrFast=@"";
     self.view.backgroundColor=[UIColor whiteColor];
 //    arr_imgS = @[@"广告推送",@"店铺管理",@"资金提现",@"管理员设置",@"商家介绍",@"会员延期",@"授信额度",@"预约处理",@"优惠券"];
-    arr_imgS = @[@"广告推送",@"店铺管理",@"资金提现",@"管理员设置",@"商家介绍",@"会员延期",@"预约处理",@"优惠券"];
+    arr_imgS = @[@"广告推送",@"店铺管理",@"资金管理",@"管理员设置",@"商家介绍",@"会员延期",@"预约处理",@"优惠券",@"地址编辑"];
 
     
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
@@ -140,7 +144,7 @@
 
     
 //    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_card_icon",@"bu_time_icon",@"bu_discant_icon"];
-    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_time_icon",@"bu_discant_icon"];
+    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_time_icon",@"bu_discant_icon",@"icon3"];
 
     for (int i = 0; i <arr_imgS.count; i ++) {
         int X = i %4;
@@ -494,6 +498,10 @@
     
 #endif
     
+    if (sender.tag==8) {
+        PUSH(AddressEditVC)
+    }else
+    
     
     if ([stateStr isEqualToString:@"incomplete"]) {
         //去完善信息界面
@@ -638,6 +646,7 @@
         }
             break;
 
+       
             
         default:
             break;

@@ -622,6 +622,11 @@
 		D9B894171F66682D00278B74 /* shanchu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B894161F66682D00278B74 /* shanchu.jpg */; };
 		D9B8941A1F67772000278B74 /* BaiduMapManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B894191F67772000278B74 /* BaiduMapManager.m */; };
 		D9B8941E1F67C63000278B74 /* 未标题-1 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9B8941D1F67C63000278B74 /* 未标题-1 2.jpg */; };
+		D9B894241F6A0EE600278B74 /* AddressEditVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B894221F6A0EE600278B74 /* AddressEditVC.m */; };
+		D9B894251F6A0EE600278B74 /* AddressEditVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B894231F6A0EE600278B74 /* AddressEditVC.xib */; };
+		D9B894271F6A4AF900278B74 /* 大头针.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B894261F6A4AF900278B74 /* 大头针.png */; };
+		D9B8942C1F6A5A9C00278B74 /* RewardPoliceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B8942A1F6A5A9C00278B74 /* RewardPoliceVC.m */; };
+		D9B8942D1F6A5A9C00278B74 /* RewardPoliceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B8942B1F6A5A9C00278B74 /* RewardPoliceVC.xib */; };
 		D9BA5F041D7564090067E7A2 /* FriendRequest.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9BA5F031D7564090067E7A2 /* FriendRequest.plist */; };
 		D9BB4DDA1E04EA8200971BCC /* NewOrderShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9BB4DD91E04EA8200971BCC /* NewOrderShopViewController.m */; };
 		D9BB4DE41E051DB800971BCC /* 关闭.png in Resources */ = {isa = PBXBuildFile; fileRef = D9BB4DE31E051DB800971BCC /* 关闭.png */; };
@@ -1815,6 +1820,13 @@
 		D9B894181F67772000278B74 /* BaiduMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMapManager.h; sourceTree = "<group>"; };
 		D9B894191F67772000278B74 /* BaiduMapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapManager.m; sourceTree = "<group>"; };
 		D9B8941D1F67C63000278B74 /* 未标题-1 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "未标题-1 2.jpg"; sourceTree = "<group>"; };
+		D9B894211F6A0EE600278B74 /* AddressEditVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressEditVC.h; sourceTree = "<group>"; };
+		D9B894221F6A0EE600278B74 /* AddressEditVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressEditVC.m; sourceTree = "<group>"; };
+		D9B894231F6A0EE600278B74 /* AddressEditVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressEditVC.xib; sourceTree = "<group>"; };
+		D9B894261F6A4AF900278B74 /* 大头针.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大头针.png"; sourceTree = "<group>"; };
+		D9B894291F6A5A9C00278B74 /* RewardPoliceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardPoliceVC.h; sourceTree = "<group>"; };
+		D9B8942A1F6A5A9C00278B74 /* RewardPoliceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardPoliceVC.m; sourceTree = "<group>"; };
+		D9B8942B1F6A5A9C00278B74 /* RewardPoliceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardPoliceVC.xib; sourceTree = "<group>"; };
 		D9BA5F031D7564090067E7A2 /* FriendRequest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FriendRequest.plist; sourceTree = "<group>"; };
 		D9BB4DD81E04EA8200971BCC /* NewOrderShopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewOrderShopViewController.h; sourceTree = "<group>"; };
 		D9BB4DD91E04EA8200971BCC /* NewOrderShopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderShopViewController.m; sourceTree = "<group>"; };
@@ -3269,15 +3281,17 @@
 				180B53671D4F401F00DE6641 /* MerchantDetailViewController.m */,
 				D925E6431CC60F680020CEC7 /* AdvertViewController.h */,
 				D925E6441CC60F680020CEC7 /* AdvertViewController.m */,
-				D9210BBA1CC732AC00010DF7 /* RjgmViewController.h */,
-				D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */,
+				D9B894281F6A560700278B74 /* 资金管理 */,
 				D94C5F2E1D90C53B0063EB27 /* GetMoneyVC.h */,
 				D94C5F2F1D90C53B0063EB27 /* GetMoneyVC.m */,
+<<<<<<< HEAD
 				D992925D1D8FEE0000103914 /* RJGDetailVC.h */,
 				D992925E1D8FEE0000103914 /* RJGDetailVC.m */,
 				1869916D1F6A5FA40084D3C8 /* TransferMoneyDetailVC.h */,
 				1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */,
 				1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */,
+=======
+>>>>>>> d482890b6202a8cd3fcebe40237129e1baf2a1f8
 				18EE1FA81E6EB59E000F27AE /* 管理员设置首页 */,
 				D9F135831DEE66E100D2703D /* AddAdminVC.h */,
 				D9F135841DEE66E100D2703D /* AddAdminVC.m */,
@@ -3729,6 +3743,7 @@
 		D97227101F32D271009D0E2A /* 其他类 */ = {
 			isa = PBXGroup;
 			children = (
+				D9B894201F6A0EAD00278B74 /* 地址编辑 */,
 				D9B3A4841D73CF3400F3F27E /* 聊天 */,
 				189CC5E01EFA3CDC00A73BB6 /* 商消乐风火轮 */,
 				189CC5DF1EFA14DC00A73BB6 /* 设用户信息 */,
@@ -4340,6 +4355,31 @@
 			path = PSTCollectionView;
 			sourceTree = "<group>";
 		};
+		D9B894201F6A0EAD00278B74 /* 地址编辑 */ = {
+			isa = PBXGroup;
+			children = (
+				D9B894261F6A4AF900278B74 /* 大头针.png */,
+				D9B894211F6A0EE600278B74 /* AddressEditVC.h */,
+				D9B894221F6A0EE600278B74 /* AddressEditVC.m */,
+				D9B894231F6A0EE600278B74 /* AddressEditVC.xib */,
+			);
+			name = "地址编辑";
+			sourceTree = "<group>";
+		};
+		D9B894281F6A560700278B74 /* 资金管理 */ = {
+			isa = PBXGroup;
+			children = (
+				D9210BBA1CC732AC00010DF7 /* RjgmViewController.h */,
+				D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */,
+				D992925D1D8FEE0000103914 /* RJGDetailVC.h */,
+				D992925E1D8FEE0000103914 /* RJGDetailVC.m */,
+				D9B894291F6A5A9C00278B74 /* RewardPoliceVC.h */,
+				D9B8942A1F6A5A9C00278B74 /* RewardPoliceVC.m */,
+				D9B8942B1F6A5A9C00278B74 /* RewardPoliceVC.xib */,
+			);
+			name = "资金管理";
+			sourceTree = "<group>";
+		};
 		D9BB4DD71E04EA6B00971BCC /* 新的预约 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4760,6 +4800,7 @@
 				1A9B3AD41D77123D00919CDC /* MessageCell.xib in Resources */,
 				D9AB25341D88E4ED000E9288 /* VoiceSearchFeedback006@2x.png in Resources */,
 				D9E28FC71D2F75A9004514DF /* icon3.png in Resources */,
+				D9B894251F6A0EE600278B74 /* AddressEditVC.xib in Resources */,
 				D9D50D901D879CA800A5E469 /* chatBar_face@2x.png in Resources */,
 				0793868F1C55B5CA0021B385 /* LaunchScreen.storyboard in Resources */,
 				D93027E11CFEB641007447D2 /* star_selected.png in Resources */,
@@ -4800,6 +4841,7 @@
 				D97227341F346651009D0E2A /* ChooseTradeVC.xib in Resources */,
 				D939D6CA1E9B1DE100D0569E /* AllSenderMessageCell.xib in Resources */,
 				D9AB25311D88E4ED000E9288 /* VoiceSearchFeedback003@2x.png in Resources */,
+				D9B894271F6A4AF900278B74 /* 大头针.png in Resources */,
 				D947E45B1D7D3AE700F9FEE8 /* 聊天键盘-icon-拍照-点击@2x.png in Resources */,
 				D9EC40CC1EE6B31E004BEDB8 /* SHOPVIPCARDVC.xib in Resources */,
 				18D7C48E1D5B12BA00AEF545 /* mohu-10.png in Resources */,
@@ -4830,6 +4872,7 @@
 				D9E5C3DA1E5EBED6006BA2B1 /* PushAdverViewController.xib in Resources */,
 				1897574F1E9B705400AB1D00 /* SendMessageToAllVC.xib in Resources */,
 				18EDCF741D460659004C40B7 /* custom2.png in Resources */,
+				D9B8942D1F6A5A9C00278B74 /* RewardPoliceVC.xib in Resources */,
 				18D7C4921D5B12BA00AEF545 /* mohu-14.png in Resources */,
 				1A83127C1D885444001BC3B6 /* chat_receiver_audio_playing003@2x.png in Resources */,
 				D9AB252F1D88E4ED000E9288 /* VoiceSearchFeedback001@2x.png in Resources */,
@@ -5092,6 +5135,7 @@
 				D93C1A231EE9588C006DA624 /* ShoerRegistThree.m in Sources */,
 				D96503E61CE06E1D006907EF /* GCDAsyncUdpSocket.m in Sources */,
 				D9B650071E9724A0007DF5DC /* ShopManagerDataReportVC.m in Sources */,
+				D9B8942C1F6A5A9C00278B74 /* RewardPoliceVC.m in Sources */,
 				D92ACDD91F0CD63D00858727 /* ExperienceCardTabVC.m in Sources */,
 				1A9B3AD21D77123D00919CDC /* Message.m in Sources */,
 				D9A6E46C1D4F3BB8008A3C29 /* AddVipCardViewController.m in Sources */,
@@ -5236,6 +5280,7 @@
 				D98ECBC21D9CB24600BEDD57 /* ChargeCenterVC.m in Sources */,
 				D98E5BFC1E515210009D56BF /* MASConstraint.m in Sources */,
 				D96503DA1CE02B21006907EF /* AsyncUdpSocket.m in Sources */,
+				D9B894241F6A0EE600278B74 /* AddressEditVC.m in Sources */,
 				D9A06B5E1D8679C30037795B /* EMCDDeviceManager+ProximitySensor.m in Sources */,
 				D9B3A5AC1D74255700F3F27E /* EMSDWebImageCompat.m in Sources */,
 				D947E44D1D7D0B5400F9FEE8 /* ContactView.m in Sources */,
