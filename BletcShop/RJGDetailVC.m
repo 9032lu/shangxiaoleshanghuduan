@@ -7,6 +7,7 @@
 //
 
 #import "RJGDetailVC.h"
+#import "RewardPoliceVC.h"
 
 @interface RJGDetailVC ()<UITableViewDelegate,UITableViewDataSource>{
     UILabel *num_lab;
@@ -62,7 +63,23 @@
     };
     [topView addSubview:backTi];
     
+    LZDButton *rightBtn = [LZDButton creatLZDButton];
+    rightBtn.frame = CGRectMake(kWeChatScreenWidth-70, 20, 70, 44);
+    
+    [rightBtn setTitle:@"奖励政策" forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [topView addSubview:rightBtn];
+    
+    rightBtn.block = ^(LZDButton *btn){
+        NSLog(@"奖励政策");
+        PUSH(RewardPoliceVC)
+       
+        
+    };
 
+    
+    
     UIView*red_v =[[UIView alloc]initWithFrame:CGRectMake(0, topView.bottom, SCREENWIDTH, 130)];
     red_v.backgroundColor=NavBackGroundColor;
     [self.view addSubview:red_v];
@@ -85,50 +102,53 @@
     [red_v addSubview:view3];
 
     
-    UILabel *money_lab = [[UILabel alloc]initWithFrame:CGRectMake(30, 10, SCREENWIDTH, 30)];
-    money_lab.text = @"0";
-    money_lab.textColor = [UIColor redColor];
-    money_lab.font = [UIFont systemFontOfSize:25];
+    UILabel *money_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 32, SCREENWIDTH, 17)];
+    money_lab.text = @"推荐用户总人数";
+    money_lab.textAlignment = NSTextAlignmentCenter;
+    
+    money_lab.textColor = RGB(0,0,0);
+    money_lab.font = [UIFont systemFontOfSize:18];
     [view3 addSubview:money_lab];
     sum_lab = money_lab;
     
-    UILabel *m_lab = [[UILabel alloc]initWithFrame:CGRectMake(30, money_lab.bottom, SCREENWIDTH, 15)];
-    m_lab.textColor = [UIColor grayColor];
-    m_lab.text = @"累计金额";
-    m_lab.font = [UIFont systemFontOfSize:12];
-    [view3 addSubview:m_lab];
+//    UILabel *m_lab = [[UILabel alloc]initWithFrame:CGRectMake(30, money_lab.bottom, SCREENWIDTH, 15)];
+//    m_lab.textColor = [UIColor grayColor];
+//    m_lab.text = @"累计金额";
+//    m_lab.font = [UIFont systemFontOfSize:12];
+//    [view3 addSubview:m_lab];
     
-    UILabel *count_lab = [[UILabel alloc]initWithFrame:CGRectMake(30, 70, SCREENWIDTH, 20)];
+    UILabel *count_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 66, SCREENWIDTH, 20)];
     
-    count_lab.textColor = [UIColor blackColor];
-    count_lab.text = @"0次";
-    count_lab.font = [UIFont systemFontOfSize:16];
+    count_lab.textColor = RGB(0,0,0);
+    count_lab.text = @"10人";
+    count_lab.font = [UIFont systemFontOfSize:21];
+    count_lab.textAlignment = NSTextAlignmentCenter;
     [view3 addSubview:count_lab];
     num_lab = count_lab;
     
-    UILabel *c_lab = [[UILabel alloc]initWithFrame:CGRectMake(30, 90, SCREENWIDTH, 20)];
+//    UILabel *c_lab = [[UILabel alloc]initWithFrame:CGRectMake(30, 90, SCREENWIDTH, 20)];
+//    
+//    c_lab.textColor = [UIColor grayColor];
+//    c_lab.text = @"提现";
+//    c_lab.font = [UIFont systemFontOfSize:12];
+//    [view3 addSubview:c_lab];
     
-    c_lab.textColor = [UIColor grayColor];
-    c_lab.text = @"提现";
-    c_lab.font = [UIFont systemFontOfSize:12];
-    [view3 addSubview:c_lab];
-    
-    UILabel *shengyu_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, count_lab.top, view3.width-10, count_lab.height)];
-    shengyu_lab.textColor = count_lab.textColor;
-    shengyu_lab.font = count_lab.font;
-    shengyu_lab.text = @"0元";
-    shengyu_lab.textAlignment = NSTextAlignmentRight;
-    [view3 addSubview:shengyu_lab];
-    remain_lab = shengyu_lab;
-
-    
-    UILabel *sy_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, c_lab.top, view3.width-20, c_lab.height)];
-    sy_lab.textColor = c_lab.textColor;
-    sy_lab.font = c_lab.font;
-    sy_lab.textAlignment = NSTextAlignmentRight;
-    sy_lab.text = @"剩余";
-    [view3 addSubview:sy_lab];
-
+//    UILabel *shengyu_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, count_lab.top, view3.width-10, count_lab.height)];
+//    shengyu_lab.textColor = count_lab.textColor;
+//    shengyu_lab.font = count_lab.font;
+//    shengyu_lab.text = @"0元";
+//    shengyu_lab.textAlignment = NSTextAlignmentRight;
+//    [view3 addSubview:shengyu_lab];
+//    remain_lab = shengyu_lab;
+//
+//    
+//    UILabel *sy_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, c_lab.top, view3.width-20, c_lab.height)];
+//    sy_lab.textColor = c_lab.textColor;
+//    sy_lab.font = c_lab.font;
+//    sy_lab.textAlignment = NSTextAlignmentRight;
+//    sy_lab.text = @"剩余";
+//    [view3 addSubview:sy_lab];
+//
 
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, red_v.bottom, SCREENWIDTH, SCREENHEIGHT-red_v.bottom) style:UITableViewStyleGrouped];
@@ -171,9 +191,8 @@
         lab.font = [UIFont systemFontOfSize:15];
         lab.textAlignment = NSTextAlignmentRight;
         [cell.contentView addSubview:lab];
-        
+        lab.tag = 999;
         cell.backgroundColor = RGB(243, 243, 243);
-        money_lab = lab;
         
         
         UILabel *lab1 = [[UILabel alloc]initWithFrame:CGRectMake(0, lab.bottom+6, SCREENWIDTH-10, 15)];
@@ -181,26 +200,35 @@
         lab1.font = [UIFont systemFontOfSize:11];
         lab1.textAlignment = NSTextAlignmentRight;
         [cell.contentView addSubview:lab1];
-        
+        lab1.tag =998;
         cell.backgroundColor = RGB(243, 243, 243);
-        state_lab = lab1;
     }
     
-    
+    money_lab = (UILabel*)[cell.contentView viewWithTag:999];
+    state_lab = (UILabel*)[cell.contentView viewWithTag:998];
+
     if (self.data_array.count>0) {
         NSDictionary *dic = _data_array[indexPath.row];
-        money_lab.text = [NSString stringWithFormat:@"%@元",dic[@"sum"]];
-        cell.textLabel.text = dic[@"tradenu"];
-        cell.detailTextLabel.text = dic[@"datetime"];
-        if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"wait"]) {
-            state_lab.text = @"处理中";
-        }else if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"access"]){
-            state_lab.text = @"已转账";
-
-        }else{
-            state_lab.text = @"出错!!!";
-
-        }
+        
+        cell.textLabel.text = @"推荐用户手机号";
+        
+        cell.detailTextLabel.text = @"注册日期";
+        money_lab.text = @"13100001234";
+        state_lab.text = @"2017.8.15";
+        
+        
+//        money_lab.text = [NSString stringWithFormat:@"%@元",dic[@"sum"]];
+//        cell.textLabel.text = dic[@"tradenu"];
+//        cell.detailTextLabel.text = dic[@"datetime"];
+//        if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"wait"]) {
+//            state_lab.text = @"处理中";
+//        }else if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"access"]){
+//            state_lab.text = @"已转账";
+//
+//        }else{
+//            state_lab.text = @"出错!!!";
+//
+//        }
 
     }
      return cell;
@@ -223,16 +251,17 @@
         NSLog(@"------%@",dic);
         
         if (dic.count>0) {
-            remain_lab.text = [NSString stringWithFormat:@"%@元",dic[@"remain"]];
             
-            sum_lab.text = [NSString stringWithFormat:@"%@元",dic[@"sum"]];
-            num_lab.text = [NSString stringWithFormat:@"%@次",dic[@"num"]];
+//            remain_lab.text = [NSString stringWithFormat:@"%@",dic[@"remain"]];
+//            
+//            sum_lab.text = [NSString stringWithFormat:@"%@元",dic[@"sum"]];
+            num_lab.text = [NSString stringWithFormat:@"%@人",dic[@"num"]];
             self.data_array = dic[@"record"];
-            
-            if ([sum_lab.text containsString:@"null"]) {
-                sum_lab.text = @"0.00元";
-                
-            }
+//
+//            if ([sum_lab.text containsString:@"null"]) {
+//                sum_lab.text = @"0.00元";
+//                
+//            }
             
             if (self.data_array.count>0) {
                 

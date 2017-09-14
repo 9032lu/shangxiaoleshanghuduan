@@ -57,17 +57,17 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办卡类型：储值卡" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deq-p8-OmU">
-                        <rect key="frame" x="265" y="58.5" width="108" height="13"/>
+                        <rect key="frame" x="253" y="58.5" width="120" height="13"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="108" id="YU4-Lj-8it"/>
+                            <constraint firstAttribute="width" constant="120" id="YU4-Lj-8it"/>
                             <constraint firstAttribute="height" constant="13" id="ybW-pz-T8d"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办卡金额：500元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXH-uP-Ro5">
-                        <rect key="frame" x="265" y="80.5" width="108" height="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="办卡金额：50000元" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXH-uP-Ro5">
+                        <rect key="frame" x="253" y="80.5" width="120" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="EhI-Ct-2nh"/>
                         </constraints>
