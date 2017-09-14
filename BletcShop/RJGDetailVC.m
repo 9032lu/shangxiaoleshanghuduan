@@ -49,7 +49,7 @@
     [topView addSubview:backImg];
     
     UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(0, +20, SCREENWIDTH, 44)];
-    label.text=@"提现明细";
+    label.text=@"奖励明细";
     label.font=[UIFont systemFontOfSize:19];
     label.textAlignment=NSTextAlignmentCenter;
     label.textColor=[UIColor whiteColor];

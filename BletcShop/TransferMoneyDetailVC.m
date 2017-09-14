@@ -48,7 +48,7 @@
     [topView addSubview:backImg];
     
     UILabel*label=[[UILabel alloc]initWithFrame:CGRectMake(0, +20, SCREENWIDTH, 44)];
-    label.text=@"提现明细";
+    label.text=@"转账明细";
     label.font=[UIFont systemFontOfSize:19];
     label.textAlignment=NSTextAlignmentCenter;
     label.textColor=[UIColor whiteColor];
@@ -223,7 +223,7 @@
         NSLog(@"------%@",dic);
         
         if (dic.count>0) {
-            remain_lab.text = [NSString stringWithFormat:@"%@元",dic[@"remain"]];
+            remain_lab.text = [NSString stringWithFormat:@"%@",dic[@"remain"]];
             
             sum_lab.text = [NSString stringWithFormat:@"%@元",dic[@"sum"]];
             num_lab.text = [NSString stringWithFormat:@"%@次",dic[@"num"]];

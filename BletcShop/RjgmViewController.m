@@ -10,6 +10,7 @@
 #import "RJGDetailVC.h"
 #import "NewNextViewController.h"
 #import "GetMoneyVC.h"
+#import "TransferMoneyDetailVC.h"
 
 @interface RjgmViewController ()
 {
@@ -160,6 +161,13 @@
         __weak typeof(self) weakSelf = self;
         name_btn.block = ^(LZDButton *sender) {
           
+            if (sender.tag==0) {
+                TransferMoneyDetailVC *VC = [[TransferMoneyDetailVC alloc]init];
+                [weakSelf.navigationController pushViewController:VC animated:YES];
+                
+                
+            }
+            
             if (sender.tag==1) {
                 RJGDetailVC *VC = [[RJGDetailVC alloc]init];
             [weakSelf.navigationController pushViewController:VC animated:YES];
