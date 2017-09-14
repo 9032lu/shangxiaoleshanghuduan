@@ -72,6 +72,8 @@
 		186991601F68FA8E0084D3C8 /* AccessCodeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869915E1F68FA8E0084D3C8 /* AccessCodeVC.xib */; };
 		186991651F6901660084D3C8 /* IDInPutVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 186991631F6901660084D3C8 /* IDInPutVC.m */; };
 		186991661F6901660084D3C8 /* IDInPutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186991641F6901660084D3C8 /* IDInPutVC.xib */; };
+		1869916B1F6922E30084D3C8 /* BankCardChangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 186991691F6922E30084D3C8 /* BankCardChangeVC.m */; };
+		1869916C1F6922E30084D3C8 /* BankCardChangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869916A1F6922E30084D3C8 /* BankCardChangeVC.xib */; };
 		189619441D92319D003BA40C /* ContactSeverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189619431D92319D003BA40C /* ContactSeverViewController.m */; };
 		189757491E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 189757471E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt */; };
 		1897574A1E9B16A400AB1D00 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 189757481E9B16A400AB1D00 /* WebViewJavascriptBridge.m */; };
@@ -827,6 +829,9 @@
 		186991621F6901660084D3C8 /* IDInPutVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDInPutVC.h; sourceTree = "<group>"; };
 		186991631F6901660084D3C8 /* IDInPutVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDInPutVC.m; sourceTree = "<group>"; };
 		186991641F6901660084D3C8 /* IDInPutVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IDInPutVC.xib; sourceTree = "<group>"; };
+		186991681F6922E30084D3C8 /* BankCardChangeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardChangeVC.h; sourceTree = "<group>"; };
+		186991691F6922E30084D3C8 /* BankCardChangeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardChangeVC.m; sourceTree = "<group>"; };
+		1869916A1F6922E30084D3C8 /* BankCardChangeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankCardChangeVC.xib; sourceTree = "<group>"; };
 		189619421D92319D003BA40C /* ContactSeverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSeverViewController.h; sourceTree = "<group>"; };
 		189619431D92319D003BA40C /* ContactSeverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSeverViewController.m; sourceTree = "<group>"; };
 		189757461E9B16A400AB1D00 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
@@ -2060,7 +2065,8 @@
 				184D2F541F5007F0008F8C55 /* 引导页three.png */,
 				184D2F551F5007F0008F8C55 /* 引导页one.png */,
 				184D2F561F5007F0008F8C55 /* 引导页two.png */,
-				186991611F6901240084D3C8 /* 修改银行卡号 */,
+				186991671F6922A20084D3C8 /* 修改银行卡号-(新） */,
+				186991611F6901240084D3C8 /* 修改银行卡号-(预留) */,
 				1CDA9E081C5A113000DFE518 /* 商户端 */,
 				D97227101F32D271009D0E2A /* 其他类 */,
 				079386C01C55BBBF0021B385 /* 更多 */,
@@ -2505,7 +2511,7 @@
 			name = "发布顶端轮播广告";
 			sourceTree = "<group>";
 		};
-		186991611F6901240084D3C8 /* 修改银行卡号 */ = {
+		186991611F6901240084D3C8 /* 修改银行卡号-(预留) */ = {
 			isa = PBXGroup;
 			children = (
 				1869915C1F68FA8E0084D3C8 /* AccessCodeVC.h */,
@@ -2515,7 +2521,17 @@
 				186991631F6901660084D3C8 /* IDInPutVC.m */,
 				186991641F6901660084D3C8 /* IDInPutVC.xib */,
 			);
-			name = "修改银行卡号";
+			name = "修改银行卡号-(预留)";
+			sourceTree = "<group>";
+		};
+		186991671F6922A20084D3C8 /* 修改银行卡号-(新） */ = {
+			isa = PBXGroup;
+			children = (
+				186991681F6922E30084D3C8 /* BankCardChangeVC.h */,
+				186991691F6922E30084D3C8 /* BankCardChangeVC.m */,
+				1869916A1F6922E30084D3C8 /* BankCardChangeVC.xib */,
+			);
+			name = "修改银行卡号-(新）";
 			sourceTree = "<group>";
 		};
 		1873C3891E820B2900DBE72D /* 线下广告提示页 */ = {
@@ -4798,6 +4814,7 @@
 				1C9E822C1C603B7A0007BF02 /* arraw_left@2x.png in Resources */,
 				18D7C48C1D5B12BA00AEF545 /* mohu-08.png in Resources */,
 				18D8464C1ED591630048F010 /* 线下角标.png in Resources */,
+				1869916C1F6922E30084D3C8 /* BankCardChangeVC.xib in Resources */,
 				180CC7C01E64110D002F5E35 /* 收费标准.png in Resources */,
 				184D2F581F5007F0008F8C55 /* 引导页one.png in Resources */,
 				D900718E1F4D6C24003BD522 /* Data_stastCell.xib in Resources */,
@@ -5383,6 +5400,7 @@
 				D95353D11E5C27680004E42C /* GoToPayForAdvertistTableVC.m in Sources */,
 				D9B3A5B81D74255700F3F27E /* UIImageView+EMHighlightedWebCache.m in Sources */,
 				1A4173AE1D78717E00A70601 /* LZDTextView.m in Sources */,
+				1869916B1F6922E30084D3C8 /* BankCardChangeVC.m in Sources */,
 				D9B3A5AA1D74255700F3F27E /* DACircularProgressView.m in Sources */,
 				D980B65F1D77F68800CC6637 /* LZDSearchBar.m in Sources */,
 				D9B3A4981D73D14600F3F27E /* UIView+TKCategory.m in Sources */,
