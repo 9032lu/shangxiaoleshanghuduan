@@ -14,6 +14,7 @@
 #import "ResetPhoneViewController.h"
 #import "UserInfoEditVC.h"
 #import "AccessCodeVC.h"
+#import "BankCardChangeVC.h"
 @interface ShopUserInfoViewController ()
 
 @end
@@ -154,6 +155,9 @@
                     descripLabel.text = appdelegate.shopInfoDic[@"remain"];
             }else if(indexPath.row==6){
                  descripLabel.text = [NSString getTheNoNullStr:appdelegate.shopInfoDic[@"account"] andRepalceStr:@"未设置"];
+                if ([descripLabel.text isEqualToString:@"未设置"]) {
+                    [cell setAccessoryType:UITableViewCellAccessoryNone];
+                }
             }else if(indexPath.row==7){
                 descripLabel.text=@"协议详情";
             }
@@ -240,13 +244,13 @@
             {
                 NSString *account =  [NSString getTheNoNullStr:appdelegate.shopInfoDic[@"account"] andRepalceStr:@"未设置"];
                 if ([account isEqualToString:@"未设置"]) {
-                    UserInfoEditVC *VC = [[UserInfoEditVC alloc]init];
-                    VC.whoPush = @"商户";
-                    VC.leibie = @"银行卡号";
-                    [self.navigationController pushViewController:VC animated:YES];
+//                    UserInfoEditVC *VC = [[UserInfoEditVC alloc]init];
+//                    VC.whoPush = @"商户";
+//                    VC.leibie = @"银行卡号";
+//                    [self.navigationController pushViewController:VC animated:YES];
                 }else{
-                    AccessCodeVC *accessCodeVC = [[AccessCodeVC alloc]init];
-                    [self.navigationController pushViewController:accessCodeVC animated:YES];
+                     BankCardChangeVC * bankCardChangeVC = [[ BankCardChangeVC alloc]init];
+                    [self.navigationController pushViewController: bankCardChangeVC animated:YES];
                 }
                 
             }

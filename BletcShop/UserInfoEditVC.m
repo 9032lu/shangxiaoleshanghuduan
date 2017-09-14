@@ -77,10 +77,10 @@
     self.title_lab.text = self.leibie;
     self.contentTF.placeholder = [NSString stringWithFormat:@"请填写您的%@",self.leibie];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(sureClick)];
-    if ([self.leibie isEqualToString:@"银行卡号"]) {
-        //self.navigationItem.title = [NSString stringWithFormat:@"设置%@",self.leibie];
-        self.contentTF.keyboardType=UIKeyboardTypeNumberPad;
-    }
+//    if ([self.leibie isEqualToString:@"银行卡号"]) {
+//        //self.navigationItem.title = [NSString stringWithFormat:@"设置%@",self.leibie];
+//        self.contentTF.keyboardType=UIKeyboardTypeNumberPad;
+//    }
     
     if ([self.leibie isEqualToString:@"生日"]) {
         [self _inittableDate];
@@ -91,24 +91,24 @@
 -(void)sureClick{
      [self.contentTF resignFirstResponder];
     
-    if ([self.leibie isEqualToString:@"银行卡号"]) {
-        if (self.contentTF.text.length==16||self.contentTF.text.length==19) {
-            [self postRequestAddress];
-        }else{
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = NSLocalizedString(@"银行卡号长度不对", @"HUD message title");
-            
-            hud.label.font = [UIFont systemFontOfSize:13];
-            //    [hud setColor:[UIColor blackColor]];
-            hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-            hud.userInteractionEnabled = YES;
-            [hud hideAnimated:YES afterDelay:2.f];
-            
-        }
-    }else{
+//    if ([self.leibie isEqualToString:@"银行卡号"]) {
+//        if (self.contentTF.text.length==16||self.contentTF.text.length==19) {
+//            [self postRequestAddress];
+//        }else{
+//            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//            hud.mode = MBProgressHUDModeText;
+//            hud.label.text = NSLocalizedString(@"银行卡号长度不对", @"HUD message title");
+//            
+//            hud.label.font = [UIFont systemFontOfSize:13];
+//            //    [hud setColor:[UIColor blackColor]];
+//            hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
+//            hud.userInteractionEnabled = YES;
+//            [hud hideAnimated:YES afterDelay:2.f];
+//            
+//        }
+//    }else{
         [self postRequestAddress];
-    }
+//    }
    
    
 }
@@ -123,11 +123,11 @@
     
     
     [params setObject:[appdelegate.shopInfoDic objectForKey:@"muid"] forKey:@"muid"];
-    if ([self.leibie isEqualToString:@"地址"]) {
+//    if ([self.leibie isEqualToString:@"地址"]) {
         [params setObject:@"address" forKey:@"type"];
-    }else if ([self.leibie isEqualToString:@"银行卡号"]){
-        [params setObject:@"account" forKey:@"type"];
-    }
+//    }else if ([self.leibie isEqualToString:@"银行卡号"]){
+//        [params setObject:@"account" forKey:@"type"];
+//    }
     [params setObject:self.contentTF.text forKey:@"para"];
     NSLog(@"%@",params);
     
@@ -151,11 +151,11 @@
              AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
              
              NSMutableDictionary *mutab_dic = [NSMutableDictionary dictionaryWithDictionary:appdelegate.shopInfoDic];
-             if ([self.leibie isEqualToString:@"地址"]) {
+//             if ([self.leibie isEqualToString:@"地址"]) {
                  [mutab_dic setObject:self.contentTF.text forKey:@"address"];
-             }else if ([self.leibie isEqualToString:@"银行卡号"]){
-                 [mutab_dic setObject:self.contentTF.text forKey:@"account"];
-             }
+//             }else if ([self.leibie isEqualToString:@"银行卡号"]){
+//                 [mutab_dic setObject:self.contentTF.text forKey:@"account"];
+//             }
              
              appdelegate.shopInfoDic = mutab_dic;
              [self performSelector:@selector(popVC) withObject:nil afterDelay:1.5];
