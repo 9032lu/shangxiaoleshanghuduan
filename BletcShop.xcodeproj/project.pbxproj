@@ -74,6 +74,8 @@
 		186991661F6901660084D3C8 /* IDInPutVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186991641F6901660084D3C8 /* IDInPutVC.xib */; };
 		1869916B1F6922E30084D3C8 /* BankCardChangeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 186991691F6922E30084D3C8 /* BankCardChangeVC.m */; };
 		1869916C1F6922E30084D3C8 /* BankCardChangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869916A1F6922E30084D3C8 /* BankCardChangeVC.xib */; };
+		186991701F6A5FA50084D3C8 /* TransferMoneyDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */; };
+		186991711F6A5FA50084D3C8 /* TransferMoneyDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */; };
 		189619441D92319D003BA40C /* ContactSeverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189619431D92319D003BA40C /* ContactSeverViewController.m */; };
 		189757491E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 189757471E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt */; };
 		1897574A1E9B16A400AB1D00 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 189757481E9B16A400AB1D00 /* WebViewJavascriptBridge.m */; };
@@ -827,6 +829,9 @@
 		186991681F6922E30084D3C8 /* BankCardChangeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankCardChangeVC.h; sourceTree = "<group>"; };
 		186991691F6922E30084D3C8 /* BankCardChangeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankCardChangeVC.m; sourceTree = "<group>"; };
 		1869916A1F6922E30084D3C8 /* BankCardChangeVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankCardChangeVC.xib; sourceTree = "<group>"; };
+		1869916D1F6A5FA40084D3C8 /* TransferMoneyDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferMoneyDetailVC.h; sourceTree = "<group>"; };
+		1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferMoneyDetailVC.m; sourceTree = "<group>"; };
+		1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransferMoneyDetailVC.xib; sourceTree = "<group>"; };
 		189619421D92319D003BA40C /* ContactSeverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSeverViewController.h; sourceTree = "<group>"; };
 		189619431D92319D003BA40C /* ContactSeverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSeverViewController.m; sourceTree = "<group>"; };
 		189757461E9B16A400AB1D00 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
@@ -3270,6 +3275,9 @@
 				D94C5F2F1D90C53B0063EB27 /* GetMoneyVC.m */,
 				D992925D1D8FEE0000103914 /* RJGDetailVC.h */,
 				D992925E1D8FEE0000103914 /* RJGDetailVC.m */,
+				1869916D1F6A5FA40084D3C8 /* TransferMoneyDetailVC.h */,
+				1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */,
+				1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */,
 				18EE1FA81E6EB59E000F27AE /* 管理员设置首页 */,
 				D9F135831DEE66E100D2703D /* AddAdminVC.h */,
 				D9F135841DEE66E100D2703D /* AddAdminVC.m */,
@@ -4741,6 +4749,7 @@
 				1C9E822F1C603B7A0007BF02 /* 我的界面灰色箭头.png in Resources */,
 				D92ACD891F0CD47D00858727 /* ChoseCardColorStyleViewVC.xib in Resources */,
 				D9B8941E1F67C63000278B74 /* 未标题-1 2.jpg in Resources */,
+				186991711F6A5FA50084D3C8 /* TransferMoneyDetailVC.xib in Resources */,
 				D92ACDC31F0CD59500858727 /* PackageOtherTableViewCell.xib in Resources */,
 				1CEFFA751C7ED6DF00671471 /* xuan1.png in Resources */,
 				184D2F4C1F4E8648008F8C55 /* 线上shop.png in Resources */,
@@ -5329,6 +5338,7 @@
 				D9B3A5BF1D74255700F3F27E /* PSTCollectionViewData.m in Sources */,
 				D97EE7F21D94D966009BFD77 /* NewMiddleViewController.m in Sources */,
 				D958AD641E654CF200B0776F /* JHChart.m in Sources */,
+				186991701F6A5FA50084D3C8 /* TransferMoneyDetailVC.m in Sources */,
 				D93A3AA51CDC3DD60010F72B /* DelayShopViewController.m in Sources */,
 				D90071951F4E5C93003BD522 /* DOPDropDownMenu.m in Sources */,
 				1CDCCD191C7594040094E70D /* AFHTTPSessionManager.m in Sources */,
