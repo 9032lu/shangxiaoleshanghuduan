@@ -82,16 +82,10 @@
          
          NSLog(@"%@", result);
          
-         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-         hud.mode = MBProgressHUDModeText;
+         
          if ([result[@"result_code"] intValue]==1) {
-             
-             hud.label.text = NSLocalizedString(@"修改成功", @"HUD message title");
-             hud.label.font = [UIFont systemFontOfSize:13];
-             hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-             hud.userInteractionEnabled = YES;
-             [hud hideAnimated:YES afterDelay:1.5f];
-             
+             [self showHint:@"修改成功"];
+            
              AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
              
              NSMutableDictionary *mutab_dic = [NSMutableDictionary dictionaryWithDictionary:appdelegate.shopInfoDic];
@@ -101,13 +95,7 @@
              
          }else
          {
-             hud.label.text = NSLocalizedString(@"请求失败 请重试", @"HUD message title");
-             
-             hud.label.font = [UIFont systemFontOfSize:13];
-             //    [hud setColor:[UIColor blackColor]];
-             hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-             hud.userInteractionEnabled = YES;
-             [hud hideAnimated:YES afterDelay:1.5f];
+              [self showHint:@"请求失败 请重试"];
          }
      } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
          
@@ -130,15 +118,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
