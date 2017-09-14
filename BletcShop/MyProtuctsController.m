@@ -28,18 +28,21 @@
     NSLog(@"reloadTheAPI");
 }
 
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
-}
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-
-}
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    [super viewWillAppear:animated];
+//    //self.navigationController.navigationBar.hidden = YES;
+//}
+//-(void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    self.navigationController.navigationBar.hidden = NO;
+//
+//}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    LEFTBACK;
+    
+    self.navigationItem.title=@"我的商品";
     self.editDic = [[NSMutableDictionary alloc]init];
     self.editTag = 0;
 
@@ -84,20 +87,20 @@
 -(void)_initUI
 {
     //    底层的视图
-    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
-    topView.backgroundColor = NavBackGroundColor;
-    [self.view addSubview:topView];
-    //    标题
-    UILabel *titleLab = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH/2 - 50, 20, 100, 44)];
-    titleLab.text = @"我的产品";
-    titleLab.textAlignment  = NSTextAlignmentCenter;
-    titleLab.textColor = [UIColor whiteColor];
-    titleLab.font = [UIFont systemFontOfSize:18];
-    [topView addSubview:titleLab];
+//    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
+//    topView.backgroundColor = NavBackGroundColor;
+//    [self.view addSubview:topView];
+//    //    标题
+//    UILabel *titleLab = [[UILabel alloc]initWithFrame:CGRectMake(SCREENWIDTH/2 - 50, 20, 100, 44)];
+//    titleLab.text = @"我的产品";
+//    titleLab.textAlignment  = NSTextAlignmentCenter;
+//    titleLab.textColor = [UIColor whiteColor];
+//    titleLab.font = [UIFont systemFontOfSize:18];
+//    [topView addSubview:titleLab];
     
     //新增按钮
     UIButton *NewAdd = [UIButton buttonWithType:UIButtonTypeCustom];
-    NewAdd.frame = CGRectMake(SCREENWIDTH-40, 20+(topView.height-20-25)/2, 20, 20);
+    NewAdd.frame = CGRectMake(/*SCREENWIDTH-40, 20+(topView.height-20-25)/2,*/0,0, 20, 20);
     //    [NewAdd setTitle:@"新增产品" forState:UIControlStateNormal];
     [NewAdd setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateNormal];
     [NewAdd setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateHighlighted];
@@ -105,9 +108,10 @@
     //    NewAdd.backgroundColor = [UIColor redColor];
     //    NewAdd.layer.cornerRadius = 10;
     [NewAdd addTarget:self action:@selector(addProAction:) forControlEvents:UIControlEventTouchUpInside];
-    [topView addSubview:NewAdd];
+//    [topView addSubview:NewAdd];
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:NewAdd];
     
-    self.tabView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64-49) style:UITableViewStyleGrouped];
+    self.tabView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64) style:UITableViewStyleGrouped];
     _tabView.delegate = self;
     _tabView.dataSource = self;
     _tabView.showsVerticalScrollIndicator = NO;

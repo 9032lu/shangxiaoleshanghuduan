@@ -31,12 +31,12 @@
    // NSLog(@"tgtgtgtgtg%@",appdelegate.shopInfoDic);
     
     if ([appdelegate.shopInfoDic[@"privi"]  isEqualToString:@"shopAs"]) {
-        self.selectedIndex = 2;
+        self.selectedIndex = 2-1;
         
         
     }else
     {
-        self.selectedIndex = 3;
+        self.selectedIndex = 3-1;
     }
     
     NSString *selectedIndex = [[NSUserDefaults standardUserDefaults]valueForKey:@"shopselectedIndex"];
@@ -88,8 +88,8 @@
     [self addOneChindVC:oneVc title:@"我的会员" imageName:@"bu_vip_icon_n" selectedImageName:@"bu_vip_icon_s"];
 //    oneVc.infoArray = self.array;
 //    NSLog(@"self.infoArray = %@",self.array);
-    MyProtuctsController *twoVC = [[MyProtuctsController alloc]init];
-    [self addOneChindVC:twoVC title:@"我的商品" imageName:@"bu_shop_icon_n" selectedImageName:@"bu_shop_icon_s"];
+//    MyProtuctsController *twoVC = [[MyProtuctsController alloc]init];
+//    [self addOneChindVC:twoVC title:@"我的商品" imageName:@"bu_shop_icon_n" selectedImageName:@"bu_shop_icon_s"];
     
 
     
