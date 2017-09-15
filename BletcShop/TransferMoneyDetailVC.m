@@ -94,7 +94,7 @@
     
     UILabel *m_lab = [[UILabel alloc]initWithFrame:CGRectMake(30, money_lab.bottom, SCREENWIDTH, 15)];
     m_lab.textColor = [UIColor grayColor];
-    m_lab.text = @"累计金额";
+    m_lab.text = @"累计转账";
     m_lab.font = [UIFont systemFontOfSize:12];
     [view3 addSubview:m_lab];
     
@@ -109,7 +109,7 @@
     UILabel *c_lab = [[UILabel alloc]initWithFrame:CGRectMake(30, 90, SCREENWIDTH, 20)];
     
     c_lab.textColor = [UIColor grayColor];
-    c_lab.text = @"提现";
+    c_lab.text = @"平台转账";
     c_lab.font = [UIFont systemFontOfSize:12];
     [view3 addSubview:c_lab];
     
@@ -126,7 +126,7 @@
     sy_lab.textColor = c_lab.textColor;
     sy_lab.font = c_lab.font;
     sy_lab.textAlignment = NSTextAlignmentRight;
-    sy_lab.text = @"剩余";
+    sy_lab.text = @"剩余金额";
     [view3 addSubview:sy_lab];
     
     
@@ -193,9 +193,9 @@
         cell.textLabel.text = dic[@"tradenu"];
         cell.detailTextLabel.text = dic[@"datetime"];
         if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"wait"]) {
-            state_lab.text = @"处理中";
+            state_lab.text = @"平台处理中";
         }else if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"access"]){
-            state_lab.text = @"已转账";
+            state_lab.text = @"平台已转账";
             
         }else{
             state_lab.text = @"出错!!!";

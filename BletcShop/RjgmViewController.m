@@ -189,12 +189,14 @@
             UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, View.height-1, SCREENWIDTH, 1)];
             line.backgroundColor =RGB(234, 234, 234);
             [View addSubview:line];
-            imgV.image = [UIImage imageNamed:@"money_icon_pr_n"];
+            
 
             if (i==0) {
+                imgV.image = [UIImage imageNamed:@"money_icon_pr_n"];//待转账
                 self.insure_Lab = count_lab;
  
             }else{
+                 imgV.image = [UIImage imageNamed:@"待转账"];//
                 self.wait_Lab = count_lab;
             }
             
