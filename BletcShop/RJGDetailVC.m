@@ -8,7 +8,7 @@
 
 #import "RJGDetailVC.h"
 #import "RewardPoliceVC.h"
-
+#import "ShopRefferTableViewCell.h"
 @interface RJGDetailVC ()<UITableViewDelegate,UITableViewDataSource>{
     UILabel *num_lab;
     UILabel *sum_lab;
@@ -120,7 +120,7 @@
     UILabel *count_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 66, SCREENWIDTH, 20)];
     
     count_lab.textColor = RGB(0,0,0);
-    count_lab.text = @"10人";
+    count_lab.text = @"0人";
     count_lab.font = [UIFont systemFontOfSize:21];
     count_lab.textAlignment = NSTextAlignmentCenter;
     [view3 addSubview:count_lab];
@@ -154,7 +154,7 @@
     UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, red_v.bottom, SCREENWIDTH, SCREENHEIGHT-red_v.bottom) style:UITableViewStyleGrouped];
     tableView.dataSource= self;
     tableView.delegate = self;
-    tableView.rowHeight = 49;
+    tableView.rowHeight = 66;
     tableView.backgroundColor = RGB(243, 243, 243);
     tableView.separatorStyle= UITableViewCellSeparatorStyleNone;
     [self.view addSubview:tableView];
@@ -176,69 +176,30 @@
     return self.data_array.count;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString*identifier = @"identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    UILabel *money_lab;
-    UILabel *state_lab;
 
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-        UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 48, SCREENWIDTH, 1)];
-        line.backgroundColor =RGB(234, 234, 234);
-        [cell.contentView addSubview:line];
-        UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 6, SCREENWIDTH-10, 15)];
-        lab.textColor= [UIColor blackColor];
-        lab.font = [UIFont systemFontOfSize:15];
-        lab.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:lab];
-        lab.tag = 999;
-        cell.backgroundColor = RGB(243, 243, 243);
-        
-        
-        UILabel *lab1 = [[UILabel alloc]initWithFrame:CGRectMake(0, lab.bottom+6, SCREENWIDTH-10, 15)];
-        lab1.textColor= [UIColor blackColor];
-        lab1.font = [UIFont systemFontOfSize:11];
-        lab1.textAlignment = NSTextAlignmentRight;
-        [cell.contentView addSubview:lab1];
-        lab1.tag =998;
-        cell.backgroundColor = RGB(243, 243, 243);
-    }
+    NSString   * CellIdentiferId =  @"ShopRefferCell" ;
+    ShopRefferTableViewCell   * cell = [tableView  dequeueReusableCellWithIdentifier: CellIdentiferId];
+    if  (!cell){
+        NSArray  * nibs = [[ NSBundle mainBundle ] loadNibNamed : @"ShopRefferTableViewCell" owner : nil options :nil ];
+        cell = [ nibs lastObject ];
+        cell.backgroundColor=[UIColor clearColor];
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    };
     
-    money_lab = (UILabel*)[cell.contentView viewWithTag:999];
-    state_lab = (UILabel*)[cell.contentView viewWithTag:998];
-
     if (self.data_array.count>0) {
         NSDictionary *dic = _data_array[indexPath.row];
         
-        cell.textLabel.text = @"推荐用户手机号";
+        cell.phoneNumLable.text = dic[@"phone"];
+        cell.dateTimeLable.text = dic[@"datetime"];
         
-        cell.detailTextLabel.text = @"注册日期";
-        money_lab.text = @"13100001234";
-        state_lab.text = @"2017.8.15";
-        
-        
-//        money_lab.text = [NSString stringWithFormat:@"%@元",dic[@"sum"]];
-//        cell.textLabel.text = dic[@"tradenu"];
-//        cell.detailTextLabel.text = dic[@"datetime"];
-//        if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"wait"]) {
-//            state_lab.text = @"处理中";
-//        }else if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"access"]){
-//            state_lab.text = @"已转账";
-//
-//        }else{
-//            state_lab.text = @"出错!!!";
-//
-//        }
-
     }
      return cell;
     
 }
 
-
 -(void)postRequestMoney
 {
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/merchant/withdrawGet",BASEURL ];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/fund/getReferrer",BASEURL ];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
@@ -252,16 +213,8 @@
         
         if (dic.count>0) {
             
-//            remain_lab.text = [NSString stringWithFormat:@"%@",dic[@"remain"]];
-//            
-//            sum_lab.text = [NSString stringWithFormat:@"%@元",dic[@"sum"]];
             num_lab.text = [NSString stringWithFormat:@"%@人",dic[@"num"]];
-            self.data_array = dic[@"record"];
-//
-//            if ([sum_lab.text containsString:@"null"]) {
-//                sum_lab.text = @"0.00元";
-//                
-//            }
+            self.data_array = dic[@"info"];
             
             if (self.data_array.count>0) {
                 
@@ -272,7 +225,7 @@
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-        
+        NSLog(@"%@",error);
     }];
     
 }

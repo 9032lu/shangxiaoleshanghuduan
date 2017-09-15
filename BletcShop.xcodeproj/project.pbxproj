@@ -76,6 +76,8 @@
 		1869916C1F6922E30084D3C8 /* BankCardChangeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869916A1F6922E30084D3C8 /* BankCardChangeVC.xib */; };
 		186991701F6A5FA50084D3C8 /* TransferMoneyDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */; };
 		186991711F6A5FA50084D3C8 /* TransferMoneyDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */; };
+		186991751F6A84F10084D3C8 /* ShopRefferTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 186991731F6A84F10084D3C8 /* ShopRefferTableViewCell.m */; };
+		186991761F6A84F10084D3C8 /* ShopRefferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186991741F6A84F10084D3C8 /* ShopRefferTableViewCell.xib */; };
 		189619441D92319D003BA40C /* ContactSeverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189619431D92319D003BA40C /* ContactSeverViewController.m */; };
 		189757491E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 189757471E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt */; };
 		1897574A1E9B16A400AB1D00 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 189757481E9B16A400AB1D00 /* WebViewJavascriptBridge.m */; };
@@ -837,6 +839,9 @@
 		1869916D1F6A5FA40084D3C8 /* TransferMoneyDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransferMoneyDetailVC.h; sourceTree = "<group>"; };
 		1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransferMoneyDetailVC.m; sourceTree = "<group>"; };
 		1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransferMoneyDetailVC.xib; sourceTree = "<group>"; };
+		186991721F6A84F10084D3C8 /* ShopRefferTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopRefferTableViewCell.h; sourceTree = "<group>"; };
+		186991731F6A84F10084D3C8 /* ShopRefferTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopRefferTableViewCell.m; sourceTree = "<group>"; };
+		186991741F6A84F10084D3C8 /* ShopRefferTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopRefferTableViewCell.xib; sourceTree = "<group>"; };
 		189619421D92319D003BA40C /* ContactSeverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSeverViewController.h; sourceTree = "<group>"; };
 		189619431D92319D003BA40C /* ContactSeverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSeverViewController.m; sourceTree = "<group>"; };
 		189757461E9B16A400AB1D00 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
@@ -4365,6 +4370,9 @@
 				D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */,
 				D992925D1D8FEE0000103914 /* RJGDetailVC.h */,
 				D992925E1D8FEE0000103914 /* RJGDetailVC.m */,
+				186991721F6A84F10084D3C8 /* ShopRefferTableViewCell.h */,
+				186991731F6A84F10084D3C8 /* ShopRefferTableViewCell.m */,
+				186991741F6A84F10084D3C8 /* ShopRefferTableViewCell.xib */,
 				1869916D1F6A5FA40084D3C8 /* TransferMoneyDetailVC.h */,
 				1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */,
 				1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */,
@@ -4954,6 +4962,7 @@
 				D9883A4F1ECD391800B06D24 /* 形状 1 拷贝.png in Resources */,
 				D947E4651D7D3BBA00F9FEE8 /* 聊天键盘-icon-选择照片@2x.png in Resources */,
 				D9541E9F1E1F65B1003022E5 /* 登陆-04.png in Resources */,
+				186991761F6A84F10084D3C8 /* ShopRefferTableViewCell.xib in Resources */,
 				D98E5C211E51525E009D56BF /* SRVideoPlayer.bundle in Resources */,
 				D9E1D4261D642DCB0078EF02 /* custom4.jpg in Resources */,
 				D93027E41CFEBC82007447D2 /* checkbox_ture.png in Resources */,
@@ -5314,6 +5323,7 @@
 				D958AD6C1E654CF200B0776F /* JHScatterChart.m in Sources */,
 				D958AD6A1E654CF200B0776F /* JHRadarChart.m in Sources */,
 				D92ACDB31F0CD52100858727 /* CreatPackageCardVC.m in Sources */,
+				186991751F6A84F10084D3C8 /* ShopRefferTableViewCell.m in Sources */,
 				D96503E51CE06E1D006907EF /* GCDAsyncSocket.m in Sources */,
 				D9B3A5AF1D74255700F3F27E /* EMSDWebImageDownloaderOperation.m in Sources */,
 				D9DEED1E1CACED7C00ACDD00 /* SDWebImageDecoder.m in Sources */,
