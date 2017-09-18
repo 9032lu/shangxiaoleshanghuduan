@@ -80,6 +80,8 @@
 		186991761F6A84F10084D3C8 /* ShopRefferTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186991741F6A84F10084D3C8 /* ShopRefferTableViewCell.xib */; };
 		1869917D1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1869917B1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.m */; };
 		1869917E1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869917C1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.xib */; };
+		186991821F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 186991801F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.m */; };
+		186991831F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186991811F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib */; };
 		189619441D92319D003BA40C /* ContactSeverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189619431D92319D003BA40C /* ContactSeverViewController.m */; };
 		189757491E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 189757471E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt */; };
 		1897574A1E9B16A400AB1D00 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 189757481E9B16A400AB1D00 /* WebViewJavascriptBridge.m */; };
@@ -847,6 +849,9 @@
 		1869917A1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAppriseMoneyGetVC.h; sourceTree = "<group>"; };
 		1869917B1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAppriseMoneyGetVC.m; sourceTree = "<group>"; };
 		1869917C1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopAppriseMoneyGetVC.xib; sourceTree = "<group>"; };
+		1869917F1F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopMoneyGetDetailsVC.h; sourceTree = "<group>"; };
+		186991801F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopMoneyGetDetailsVC.m; sourceTree = "<group>"; };
+		186991811F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShopMoneyGetDetailsVC.xib; sourceTree = "<group>"; };
 		189619421D92319D003BA40C /* ContactSeverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSeverViewController.h; sourceTree = "<group>"; };
 		189619431D92319D003BA40C /* ContactSeverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSeverViewController.m; sourceTree = "<group>"; };
 		189757461E9B16A400AB1D00 /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
@@ -2561,11 +2566,71 @@
 		186991791F6F7A100084D3C8 /* 商户推荐奖励提现 */ = {
 			isa = PBXGroup;
 			children = (
+				186991841F6FAC380084D3C8 /* money-home */,
+				186991851F6FAC4E0084D3C8 /* money-detail */,
+			);
+			name = "商户推荐奖励提现";
+			sourceTree = "<group>";
+		};
+		186991841F6FAC380084D3C8 /* money-home */ = {
+			isa = PBXGroup;
+			children = (
 				1869917A1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.h */,
 				1869917B1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.m */,
 				1869917C1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.xib */,
 			);
-			name = "商户推荐奖励提现";
+			name = "money-home";
+			sourceTree = "<group>";
+		};
+		186991851F6FAC4E0084D3C8 /* money-detail */ = {
+			isa = PBXGroup;
+			children = (
+				1869917F1F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.h */,
+				186991801F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.m */,
+				186991811F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib */,
+			);
+			name = "money-detail";
+			sourceTree = "<group>";
+		};
+		186991861F6FACBC0084D3C8 /* 转账明细 */ = {
+			isa = PBXGroup;
+			children = (
+				1869916D1F6A5FA40084D3C8 /* TransferMoneyDetailVC.h */,
+				1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */,
+				1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */,
+			);
+			name = "转账明细";
+			sourceTree = "<group>";
+		};
+		186991871F6FACD10084D3C8 /* 资金管理--home */ = {
+			isa = PBXGroup;
+			children = (
+				D9210BBA1CC732AC00010DF7 /* RjgmViewController.h */,
+				D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */,
+			);
+			name = "资金管理--home";
+			sourceTree = "<group>";
+		};
+		186991881F6FACEA0084D3C8 /* 奖励明细 */ = {
+			isa = PBXGroup;
+			children = (
+				186991721F6A84F10084D3C8 /* ShopRefferTableViewCell.h */,
+				186991731F6A84F10084D3C8 /* ShopRefferTableViewCell.m */,
+				186991741F6A84F10084D3C8 /* ShopRefferTableViewCell.xib */,
+				D992925D1D8FEE0000103914 /* RJGDetailVC.h */,
+				D992925E1D8FEE0000103914 /* RJGDetailVC.m */,
+			);
+			name = "奖励明细";
+			sourceTree = "<group>";
+		};
+		186991891F6FAD1C0084D3C8 /* 奖励政策 */ = {
+			isa = PBXGroup;
+			children = (
+				D9B894291F6A5A9C00278B74 /* RewardPoliceVC.h */,
+				D9B8942A1F6A5A9C00278B74 /* RewardPoliceVC.m */,
+				D9B8942B1F6A5A9C00278B74 /* RewardPoliceVC.xib */,
+			);
+			name = "奖励政策";
 			sourceTree = "<group>";
 		};
 		1873C3891E820B2900DBE72D /* 线下广告提示页 */ = {
@@ -4389,19 +4454,10 @@
 		D9B894281F6A560700278B74 /* 资金管理 */ = {
 			isa = PBXGroup;
 			children = (
-				D9210BBA1CC732AC00010DF7 /* RjgmViewController.h */,
-				D9210BBB1CC732AC00010DF7 /* RjgmViewController.m */,
-				D992925D1D8FEE0000103914 /* RJGDetailVC.h */,
-				D992925E1D8FEE0000103914 /* RJGDetailVC.m */,
-				186991721F6A84F10084D3C8 /* ShopRefferTableViewCell.h */,
-				186991731F6A84F10084D3C8 /* ShopRefferTableViewCell.m */,
-				186991741F6A84F10084D3C8 /* ShopRefferTableViewCell.xib */,
-				1869916D1F6A5FA40084D3C8 /* TransferMoneyDetailVC.h */,
-				1869916E1F6A5FA40084D3C8 /* TransferMoneyDetailVC.m */,
-				1869916F1F6A5FA40084D3C8 /* TransferMoneyDetailVC.xib */,
-				D9B894291F6A5A9C00278B74 /* RewardPoliceVC.h */,
-				D9B8942A1F6A5A9C00278B74 /* RewardPoliceVC.m */,
-				D9B8942B1F6A5A9C00278B74 /* RewardPoliceVC.xib */,
+				186991871F6FACD10084D3C8 /* 资金管理--home */,
+				186991881F6FACEA0084D3C8 /* 奖励明细 */,
+				186991861F6FACBC0084D3C8 /* 转账明细 */,
+				186991891F6FAD1C0084D3C8 /* 奖励政策 */,
 				186991791F6F7A100084D3C8 /* 商户推荐奖励提现 */,
 			);
 			name = "资金管理";
@@ -4984,6 +5040,7 @@
 				D9ED52051D2A467700267729 /* grey_red.png in Resources */,
 				D949EC351CE1C4A40023B6D6 /* area.plist in Resources */,
 				18D89C671D51EF4900717B11 /* select_false.png in Resources */,
+				186991831F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib in Resources */,
 				D9883A4F1ECD391800B06D24 /* 形状 1 拷贝.png in Resources */,
 				D947E4651D7D3BBA00F9FEE8 /* 聊天键盘-icon-选择照片@2x.png in Resources */,
 				D9541E9F1E1F65B1003022E5 /* 登陆-04.png in Resources */,
@@ -5274,6 +5331,7 @@
 				1CE8F32B1C5F3C570004F52C /* ProtuctCell.m in Sources */,
 				D99292661D8FF5E600103914 /* CashListCell.m in Sources */,
 				D97227181F32F600009D0E2A /* Base64.m in Sources */,
+				186991821F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.m in Sources */,
 				189CC5A51EF92EAA00A73BB6 /* LoginQuestionViewController.m in Sources */,
 				D941135F1CE9A3D7008E231F /* RSADataVerifier.m in Sources */,
 				D9210BBC1CC732AC00010DF7 /* RjgmViewController.m in Sources */,

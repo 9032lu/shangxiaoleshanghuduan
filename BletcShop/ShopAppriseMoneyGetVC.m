@@ -7,7 +7,7 @@
 //
 
 #import "ShopAppriseMoneyGetVC.h"
-
+#import "ShopMoneyGetDetailsVC.h"
 @interface ShopAppriseMoneyGetVC ()<UITextFieldDelegate,UIAlertViewDelegate>
 @property(nonatomic,weak)UITextField *moneyText;
 @end
@@ -18,6 +18,8 @@
     [super viewDidLoad];
     self.view.backgroundColor=RGB(243, 243, 243);
     self.navigationItem.title = @"奖励金提现";
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"明细" style:UIBarButtonItemStylePlain target:self action:@selector(detailShow)];
+    self.navigationItem.rightBarButtonItem=rightItem;
     LEFTBACK
     UIView *bigBackView=[[UIView alloc]initWithFrame:CGRectMake(15, 20, SCREENWIDTH-30, 206)];
     bigBackView.layer.cornerRadius=16;
@@ -228,6 +230,12 @@
     [textField resignFirstResponder];
     return YES;
 }
+//体现明细
+-(void)detailShow{
+    ShopMoneyGetDetailsVC *shopMoneyGetDetailsVC=[[ShopMoneyGetDetailsVC alloc]init];
+    [self.navigationController pushViewController:shopMoneyGetDetailsVC animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

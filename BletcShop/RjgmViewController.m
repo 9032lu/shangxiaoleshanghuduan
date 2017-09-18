@@ -65,7 +65,7 @@
 
     
     LZDButton *rightBtn = [LZDButton creatLZDButton];
-    rightBtn.frame = CGRectMake(kWeChatScreenWidth-50, 20, 50, 44);
+    rightBtn.frame = CGRectMake(kWeChatScreenWidth-60, 20, 50, 44);
     
     [rightBtn setTitle:@"奖励金" forState:UIControlStateNormal];
     [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
