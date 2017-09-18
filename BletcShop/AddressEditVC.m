@@ -37,6 +37,19 @@
 @implementation AddressEditVC
 
 
+
+- (IBAction)goback:(UIButton *)sender {
+    
+    NSArray *arr = [self.coordinate_lab.text componentsSeparatedByString:@","];
+    
+    self.log_latBlock(arr[0], arr[1]);
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     LEFTBACK
@@ -46,7 +59,7 @@
     
     self.detailAddress.layer.BorderColorFromUIColor = [UIColor clearColor];
     
-    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0,145, SCREENWIDTH, SCREENHEIGHT-145-64)];
+    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0,64+145, SCREENWIDTH, SCREENHEIGHT-145-64)];
     _mapView.showsUserLocation = YES;//显示定位图层
     _mapView.showMapScaleBar = YES;//显示比例尺
     _mapView.zoomLevel=18;//地图显示的级别
@@ -229,6 +242,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+
     [ _mapView viewWillAppear];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _locService.delegate=self;

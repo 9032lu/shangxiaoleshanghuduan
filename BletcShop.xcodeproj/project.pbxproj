@@ -635,6 +635,11 @@
 		D9C0B1B71E83ACF000217195 /* NewShopManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C0B1B61E83ACF000217195 /* NewShopManagerViewController.xib */; };
 		D9C0E95B1DCC81DE00FD1199 /* ShaperView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C0E95A1DCC81DD00FD1199 /* ShaperView.m */; };
 		D9C206011D1D001300761DC4 /* ShopAllInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C206001D1D001300761DC4 /* ShopAllInfoTableViewCell.m */; };
+		D9C2EF2A1F6F9178007919C2 /* FYLCity.plist in Resources */ = {isa = PBXBuildFile; fileRef = D9C2EF1F1F6F9178007919C2 /* FYLCity.plist */; };
+		D9C2EF2B1F6F9178007919C2 /* FYLCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2EF211F6F9178007919C2 /* FYLCityModel.m */; };
+		D9C2EF2C1F6F9178007919C2 /* FYLCityPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2EF231F6F9178007919C2 /* FYLCityPickView.m */; };
+		D9C2EF2D1F6F9178007919C2 /* NSObject+YYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2EF261F6F9178007919C2 /* NSObject+YYModel.m */; };
+		D9C2EF2E1F6F9178007919C2 /* YYClassInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C2EF281F6F9178007919C2 /* YYClassInfo.m */; };
 		D9C3A3001E9642890062B17D /* ChouJiangVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C3A2FE1E9642890062B17D /* ChouJiangVC.m */; };
 		D9C3A3011E9642890062B17D /* ChouJiangVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C3A2FF1E9642890062B17D /* ChouJiangVC.xib */; };
 		D9C4CDED1DE44587009C76C1 /* ValuePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C4CDEC1DE44587009C76C1 /* ValuePickerView.m */; };
@@ -1841,6 +1846,16 @@
 		D9C0E95A1DCC81DD00FD1199 /* ShaperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShaperView.m; sourceTree = "<group>"; };
 		D9C205FF1D1D001300761DC4 /* ShopAllInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopAllInfoTableViewCell.h; sourceTree = "<group>"; };
 		D9C206001D1D001300761DC4 /* ShopAllInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopAllInfoTableViewCell.m; sourceTree = "<group>"; };
+		D9C2EF1F1F6F9178007919C2 /* FYLCity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FYLCity.plist; sourceTree = "<group>"; };
+		D9C2EF201F6F9178007919C2 /* FYLCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYLCityModel.h; sourceTree = "<group>"; };
+		D9C2EF211F6F9178007919C2 /* FYLCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYLCityModel.m; sourceTree = "<group>"; };
+		D9C2EF221F6F9178007919C2 /* FYLCityPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FYLCityPickView.h; sourceTree = "<group>"; };
+		D9C2EF231F6F9178007919C2 /* FYLCityPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FYLCityPickView.m; sourceTree = "<group>"; };
+		D9C2EF251F6F9178007919C2 /* NSObject+YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YYModel.h"; sourceTree = "<group>"; };
+		D9C2EF261F6F9178007919C2 /* NSObject+YYModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YYModel.m"; sourceTree = "<group>"; };
+		D9C2EF271F6F9178007919C2 /* YYClassInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYClassInfo.h; sourceTree = "<group>"; };
+		D9C2EF281F6F9178007919C2 /* YYClassInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYClassInfo.m; sourceTree = "<group>"; };
+		D9C2EF291F6F9178007919C2 /* YYModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYModel.h; sourceTree = "<group>"; };
 		D9C3A2FD1E9642890062B17D /* ChouJiangVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChouJiangVC.h; sourceTree = "<group>"; };
 		D9C3A2FE1E9642890062B17D /* ChouJiangVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChouJiangVC.m; sourceTree = "<group>"; };
 		D9C3A2FF1E9642890062B17D /* ChouJiangVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChouJiangVC.xib; sourceTree = "<group>"; };
@@ -4395,6 +4410,31 @@
 			name = "新的预约";
 			sourceTree = "<group>";
 		};
+		D9C2EF1E1F6F9178007919C2 /* FYLCityPickView */ = {
+			isa = PBXGroup;
+			children = (
+				D9C2EF1F1F6F9178007919C2 /* FYLCity.plist */,
+				D9C2EF201F6F9178007919C2 /* FYLCityModel.h */,
+				D9C2EF211F6F9178007919C2 /* FYLCityModel.m */,
+				D9C2EF221F6F9178007919C2 /* FYLCityPickView.h */,
+				D9C2EF231F6F9178007919C2 /* FYLCityPickView.m */,
+				D9C2EF241F6F9178007919C2 /* YYModel */,
+			);
+			path = FYLCityPickView;
+			sourceTree = "<group>";
+		};
+		D9C2EF241F6F9178007919C2 /* YYModel */ = {
+			isa = PBXGroup;
+			children = (
+				D9C2EF251F6F9178007919C2 /* NSObject+YYModel.h */,
+				D9C2EF261F6F9178007919C2 /* NSObject+YYModel.m */,
+				D9C2EF271F6F9178007919C2 /* YYClassInfo.h */,
+				D9C2EF281F6F9178007919C2 /* YYClassInfo.m */,
+				D9C2EF291F6F9178007919C2 /* YYModel.h */,
+			);
+			path = YYModel;
+			sourceTree = "<group>";
+		};
 		D9C3A2FC1E9642440062B17D /* 抽奖 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4468,6 +4508,7 @@
 		D9DEECF51CACEC5300ACDD00 /* otherSDK */ = {
 			isa = PBXGroup;
 			children = (
+				D9C2EF1E1F6F9178007919C2 /* FYLCityPickView */,
 				180C3D3D1E514C0900BC9177 /* New Player */,
 				189CC5D91EFA116200A73BB6 /* 美团城市 */,
 				D958AD481E654CF200B0776F /* JHChart */,
@@ -4905,6 +4946,7 @@
 				18543E3A1ECAD89F00E0A4DA /* quan4.png in Resources */,
 				D941CCF31CF698CE0012303C /* Images.xcassets in Resources */,
 				D92ACDAA1F0CD4FF00858727 /* PackageHomePageTableViewCell.xib in Resources */,
+				D9C2EF2A1F6F9178007919C2 /* FYLCity.plist in Resources */,
 				18B9BEAE1F4AABD500863CB1 /* 圆形logo.png in Resources */,
 				D9AB253B1D88E4ED000E9288 /* VoiceSearchFeedback013@2x.png in Resources */,
 				180DC3871EF26B0A00DF9474 /* abc_card@2x.png in Resources */,
@@ -5043,6 +5085,7 @@
 				D98E5C1A1E51524D009D56BF /* SRVideoLayerView.m in Sources */,
 				185E51461E5D2E10009F0C01 /* PublishTopScrollAdvertVC.m in Sources */,
 				D9B3BB9A1DE7E05700CC8B0D /* AddproductVC.m in Sources */,
+				D9C2EF2E1F6F9178007919C2 /* YYClassInfo.m in Sources */,
 				D9A06B601D8679C30037795B /* EMCDDeviceManagerBase.m in Sources */,
 				D9D50DB71D87DE0E00A5E469 /* ExpressionKeyboardView.m in Sources */,
 				D9CF3FA21D7671D500D9D0EC /* ApplyAndNoticeVC.m in Sources */,
@@ -5112,6 +5155,7 @@
 				D9B3A5B11D74255700F3F27E /* EMSDWebImagePrefetcher.m in Sources */,
 				18EDCF6B1D460358004C40B7 /* ShopAllInfoViewController.m in Sources */,
 				D9DEED261CACED7C00ACDD00 /* UIImage+MultiFormat.m in Sources */,
+				D9C2EF2B1F6F9178007919C2 /* FYLCityModel.m in Sources */,
 				D947E44A1D7D0AB900F9FEE8 /* ChatGroupDetailViewController.m in Sources */,
 				D9B3A4A41D73D6A900F3F27E /* LZDRootController.m in Sources */,
 				189CC5D61EFA113900A73BB6 /* JFLocation.m in Sources */,
@@ -5265,6 +5309,7 @@
 				D9F2E9351E03D89F008F6517 /* NewShopManagerViewController.m in Sources */,
 				D92ACDFB1F0CD68600858727 /* PictureAndVeidoDetailVC.m in Sources */,
 				1CCD50161C85703000447AB8 /* MBProgressHUD.m in Sources */,
+				D9C2EF2C1F6F9178007919C2 /* FYLCityPickView.m in Sources */,
 				D9B3A5A71D74255700F3F27E /* MWTapDetectingImageView.m in Sources */,
 				18390D641F4D8984008FFBDD /* NewBuyCardRecordVC.m in Sources */,
 				D9A06B611D8679C30037795B /* amrFileCodec.mm in Sources */,
@@ -5399,6 +5444,7 @@
 				D98E5C021E515210009D56BF /* MASViewAttribute.m in Sources */,
 				D9C7B2CF1F5696DD00406BC9 /* NewOrderCell.m in Sources */,
 				1A4173C01D787C1500A70601 /* EMChooseViewController.m in Sources */,
+				D9C2EF2D1F6F9178007919C2 /* NSObject+YYModel.m in Sources */,
 				D939D6C91E9B1DE100D0569E /* AllSenderMessageCell.m in Sources */,
 				D9B3A5BA1D74255700F3F27E /* UIView+EMWebCacheOperation.m in Sources */,
 				D9B3A4911D73CFE800F3F27E /* LZDToolView.m in Sources */,

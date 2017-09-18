@@ -34,9 +34,11 @@
 //需要传递的参数
 
 //本页面需要传往下个页面的元素
-@property(nonatomic,retain)UILabel *locationLab;//当前地区
+@property(nonatomic,retain)UITextField *locationLab;//当前地区
 @property(nonatomic,strong)UITextField *detailAddressTF;//街道
 @property(nonatomic,strong)UITextField *adddetailnewAddressTF;//详细地址----real
+@property(nonatomic,strong)UITextField *location_log_lat;//经纬度----real
+
 @property(nonatomic,strong)UITextField *company_nameTF;//公司名称
 @property(nonatomic,strong)UITextField *company_styleTF;
 

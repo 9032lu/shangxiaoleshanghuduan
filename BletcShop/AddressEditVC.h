@@ -10,4 +10,6 @@
 
 @interface AddressEditVC : UIViewController
 
+@property (nonatomic,copy)  void(^log_latBlock)(NSString *log,NSString*lat);// 经纬度
+
 @end

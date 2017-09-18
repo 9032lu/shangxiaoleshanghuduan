@@ -163,6 +163,9 @@
 #import "getUUID.h"
 #import "CALayer+LZDLayColor.h"
 #import "Database.h"
+#import "FYLCityPickView.h"
+
+
 #define kWeChatPadding 10
 #define kWeChatScreenHeight [UIScreen mainScreen].bounds.size.height
 #define kWeChatScreenWidth [UIScreen mainScreen].bounds.size.width

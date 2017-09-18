@@ -44,7 +44,7 @@
 @property(nonatomic,copy)NSString *searchStr;//手机授权查询
 
 //本页面需要传往下个页面的元素
-@property(nonatomic,retain)UILabel *locationLab;//当前地区
+@property(nonatomic,retain)UITextField *locationLab;//当前地区
 @property(nonatomic,strong)UITextField *detailAddressTF;//详细地址
 @property(nonatomic,strong)UITextField *adddetailnewAddressTF;//详细地址----real
 @property(nonatomic,strong)UITextField *company_nameTF;//公司名称

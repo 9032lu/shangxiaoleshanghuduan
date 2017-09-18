@@ -21,6 +21,7 @@
 #import "UIButton+WebCache.h"
 #import "BaiduMapManager.h"
 #import "SingleModel.h"
+#import "AddressEditVC.h"
 
 @interface AuthFailShopVC ()<UITextFieldDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIGestureRecognizerDelegate>
 {
@@ -47,6 +48,8 @@
 @property(nonatomic,retain)UITextField *realNameTF;//姓名
 @property(nonatomic,strong)NSMutableArray *add_more_img_A;
 @property(nonatomic,strong)SingleModel *s_model;
+@property(nonatomic,strong)NSArray*selectAddress_A;//选择的省市区
+
 @end
 
 @implementation AuthFailShopVC
@@ -58,6 +61,12 @@
     return _add_more_img_A;
 }
 
+-(NSArray *)selectAddress_A{
+    if (!_selectAddress_A) {
+        _selectAddress_A=[NSArray array];
+    }
+    return _selectAddress_A;
+}
 -(NSMutableArray *)tradeArray{
     if (!_tradeArray) {
         _tradeArray = [NSMutableArray array];
@@ -119,35 +128,6 @@
         [userDefaults removeObjectForKey:@"isPositioning"];
         [userDefaults synchronize];
 
-        AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-
-        if (!app.city || app.city.length ==0) {
-
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.font = [UIFont systemFontOfSize:13];
-            hud.label.text = @"正在定位...";
-            hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-            
-            BaiduMapManager *manager = [BaiduMapManager shareBaiduMapManager];
-
-            [manager startUserLocationService];
-
-            manager.userAddressBlock = ^(BMKReverseGeoCodeResult *result) {
-                
-                [hud hideAnimated:YES];
-                app.addressInfo = result.address;
-                app.addressDistrite = result.addressDetail.district;
-                app.province =result.addressDetail.province;
-                app.city =result.addressDetail.city;
-                app.districtString =result.addressDetail.district;
-                
-                [self setaddressInfo];
-                
-                
-                          };
-            
-        }
         
         
         
@@ -161,10 +141,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
+    AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     
+    NSDictionary *dic =[[NSUserDefaults standardUserDefaults]objectForKey:app.shopInfoDic[@"muid"]];
+    
+    shopInfoDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
+
     
     [self getIndustryArray];
-    [self getStreest];
+//    [self getStreest];
     
     [self initTopView];
     [self initScrollView];
@@ -172,69 +157,107 @@
     [self postRequestGetAddPictures];
     
 
-    SingleModel *s_model = [SingleModel sharedManager];
-    
-    [s_model addObserver:self forKeyPath:@"advertArea" options:
-     NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+//    SingleModel *s_model = [SingleModel sharedManager];
+//    
+//    [s_model addObserver:self forKeyPath:@"advertArea" options:
+//     NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
 
     
     
     
 }
 
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
-                       change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    NSLog(@"change+++++%@",change);
-
-    // 判断是否为self.myKVO的属性“num”:
-    if([keyPath isEqualToString:@"advertArea"]) {
-        // 响应变化处理：UI更新（label文本改变）
-        NSString *string=  [NSString stringWithFormat:@"当前的advertArea值为：%@",
-                            [change valueForKey:@"new"]];
-        NSLog(@"+++++%@",string);
-        //change的使用：上文注册时，枚举为2个，因此可以提取change字典中的新、旧值的这两个方法
-        NSLog(@"\\noldnum:%@ newadvertArea:%@",[change valueForKey:@"old"],
-              [change valueForKey:@"new"]);
-        
-        
-        
-        [self setaddressInfo];
-        
-
-        
-        
-    }
-}
-
--(void)setaddressInfo{
+-(void)startLocation{
+    
     AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    if (app.province==nil||[app.province isEqualToString:@"(null)"]) {
-        app.province = @"";
-    }if (app.city==nil||[app.city isEqualToString:@"(null)"]) {
-        app.city = @"";
-    }if (app.addressDistrite==nil||[app.addressDistrite isEqualToString:@"(null)"]) {
-        app.addressDistrite = @"";
-    }
-    _locationLab.text=[[NSString alloc] initWithFormat:@"%@%@%@",app.province,app.city,app.addressDistrite];
-    
-    NSString *detail_s =shopInfoDic[@"address"];
-    
-    if (detail_s.length>_locationLab.text.length) {
-        _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
+    if (!app.city || app.city.length ==0) {
         
-    }else{
-        _detailAddressTF.text=detail_s;
         
-    }
-    
-    
-    
-    
-    [self getStreest];
-    
+        BaiduMapManager *manager = [BaiduMapManager shareBaiduMapManager];
+        
+        [manager startUserLocationService];
+        
+        manager.userAddressBlock = ^(BMKReverseGeoCodeResult *result) {
+            
 
+            app.addressInfo = result.address;
+            app.addressDistrite = result.addressDetail.district;
+            app.province =result.addressDetail.province;
+            app.city =result.addressDetail.city;
+            app.districtString =result.addressDetail.district;
+            
+
+            
+            
+        };
+        
+        manager.userLocationBlock = ^(BMKUserLocation *location) {
+            
+            app.userLocation = location;
+            
+            self.location_log_lat.text = [NSString stringWithFormat:@"%f,%f",location.location.coordinate.longitude,location.location.coordinate.latitude];
+
+
+        };
+        
+    }
+
+    
 }
+//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+//                       change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+//    NSLog(@"change+++++%@",change);
+//
+//    // 判断是否为self.myKVO的属性“num”:
+//    if([keyPath isEqualToString:@"advertArea"]) {
+//        // 响应变化处理：UI更新（label文本改变）
+//        NSString *string=  [NSString stringWithFormat:@"当前的advertArea值为：%@",
+//                            [change valueForKey:@"new"]];
+//        NSLog(@"+++++%@",string);
+//        //change的使用：上文注册时，枚举为2个，因此可以提取change字典中的新、旧值的这两个方法
+//        NSLog(@"\\noldnum:%@ newadvertArea:%@",[change valueForKey:@"old"],
+//              [change valueForKey:@"new"]);
+//        
+//        
+//        
+//        [self setaddressInfo];
+//        
+//
+//        
+//        
+//    }
+//}
+
+//-(void)setaddressInfo{
+//    AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+//    
+//    if (app.province==nil||[app.province isEqualToString:@"(null)"]) {
+//        app.province = @"";
+//    }if (app.city==nil||[app.city isEqualToString:@"(null)"]) {
+//        app.city = @"";
+//    }if (app.addressDistrite==nil||[app.addressDistrite isEqualToString:@"(null)"]) {
+//        app.addressDistrite = @"";
+//    }
+//    _locationLab.text=[[NSString alloc] initWithFormat:@"%@%@%@",app.province,app.city,app.addressDistrite];
+//    
+//    NSString *detail_s =shopInfoDic[@"address"];
+//    
+//    if (detail_s.length>_locationLab.text.length) {
+//        _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
+//        
+//    }else{
+//        _detailAddressTF.text=detail_s;
+//        
+//    }
+//    
+//    
+//    
+//    
+//    [self getStreest];
+//    
+//
+//}
 
 -(void)initTopView{
     UIView *navView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
@@ -354,21 +377,31 @@
     label_local.text=@"当前地区";
     [_scrollView addSubview:label_local];
 
-    _locationLab=[[UILabel alloc]initWithFrame:CGRectMake(140, label_local.top, SCREENWIDTH-140, 40)];
+    _locationLab=[[UITextField alloc]initWithFrame:CGRectMake(140, label_local.top, SCREENWIDTH-140, 40)];
     _locationLab.font=[UIFont systemFontOfSize:15.0f];
-    _locationLab.textColor=[UIColor grayColor];
+
+    _locationLab.placeholder=@"省市区";
+
+    _locationLab.delegate = self;
     [_scrollView addSubview:_locationLab];
     
-    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-    if (appdelegate.province==nil||[appdelegate.province isEqualToString:@"(null)"]) {
-        appdelegate.province = @"";
-    }if (appdelegate.city==nil||[appdelegate.city isEqualToString:@"(null)"]) {
-        appdelegate.city = @"";
-    }if (appdelegate.addressDistrite==nil||[appdelegate.addressDistrite isEqualToString:@"(null)"]) {
-        appdelegate.addressDistrite = @"";
-    }
-    _locationLab.text=[[NSString alloc] initWithFormat:@"%@%@%@",appdelegate.province,appdelegate.city,appdelegate.addressDistrite];
+//    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+//    if (appdelegate.province==nil||[appdelegate.province isEqualToString:@"(null)"]) {
+//        appdelegate.province = @"";
+//    }if (appdelegate.city==nil||[appdelegate.city isEqualToString:@"(null)"]) {
+//        appdelegate.city = @"";
+//    }if (appdelegate.addressDistrite==nil||[appdelegate.addressDistrite isEqualToString:@"(null)"]) {
+//        appdelegate.addressDistrite = @"";
+//    }
+//    _locationLab.text=[[NSString alloc] initWithFormat:@"%@%@%@",appdelegate.province,appdelegate.city,appdelegate.addressDistrite];
     
+    
+    
+    
+    if ([_locationLab.text containsString:@"全城"]) {
+        _locationLab.text =@"";
+    }
+
     
     UIView *lineView1=[[UIView alloc]initWithFrame:CGRectMake(10, _locationLab.bottom+5, SCREENWIDTH-20, 1)];
     lineView1.backgroundColor=[UIColor lightGrayColor];
@@ -397,6 +430,9 @@
     _detailAddressTF.delegate = self;
     
     NSString *detail_s =shopInfoDic[@"address"];
+    if ([detail_s containsString:@"全城"]) {
+        detail_s =@"";
+    }
     if (detail_s.length>_locationLab.text.length) {
         _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
         
@@ -439,11 +475,38 @@
     [_scrollView addSubview: lineViewnew];
     
     
+    //经纬度
+    UILabel *xingLab_jing=[[UILabel alloc]initWithFrame:CGRectMake(10, 15+lineViewnew.bottom, 20, 20)];
+    xingLab_jing.font=[UIFont systemFontOfSize:20.0f];
+    xingLab_jing.textColor=[UIColor redColor];
+    xingLab_jing.text=@"*";
+    xingLab_jing.textAlignment=1;
+    [_scrollView addSubview:xingLab_jing];
+    
+    UILabel *labelnewjing=[[UILabel alloc]initWithFrame:CGRectMake(30, lineViewnew.bottom+5, 110, 40)];
+    labelnewjing.font=[UIFont systemFontOfSize:15.0f];
+    labelnewjing.text=@"经纬度";
+    [_scrollView addSubview:labelnewjing];
+    
+    _location_log_lat=[[UITextField alloc]initWithFrame:CGRectMake(140, labelnewjing.top, SCREENWIDTH-140, 40)];
+    _location_log_lat.font=[UIFont systemFontOfSize:13.0f];
+    _location_log_lat.text=[NSString stringWithFormat:@"%@,%@",[NSString getTheNoNullStr:shopInfoDic[@"longtitude"] andRepalceStr:@""],[NSString getTheNoNullStr:shopInfoDic[@"latitude"] andRepalceStr:@""]];
+    _location_log_lat.placeholder=@"经纬度";
+    _location_log_lat.delegate=self;
+    _location_log_lat.returnKeyType=UIReturnKeyDone;
+    [_scrollView addSubview:_location_log_lat];
+    
+    UIView *lineViewnewjing=[[UIView alloc]initWithFrame:CGRectMake(10, _location_log_lat.bottom+5, SCREENWIDTH-20, 1)];
+    lineViewnewjing.backgroundColor=[UIColor lightGrayColor];
+    [_scrollView addSubview: lineViewnewjing];
+    
+
+    
     
     
     //店铺名称
     
-    UILabel *xingLab3=[[UILabel alloc]initWithFrame:CGRectMake(10, 15+lineViewnew.bottom, 20, 20)];
+    UILabel *xingLab3=[[UILabel alloc]initWithFrame:CGRectMake(10, 15+lineViewnewjing.bottom, 20, 20)];
     xingLab3.font=[UIFont systemFontOfSize:20.0f];
     xingLab3.textColor=[UIColor redColor];
     xingLab3.text=@"*";
@@ -451,7 +514,7 @@
     [_scrollView addSubview:xingLab3];
     
 
-    UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(30, 5+lineViewnew.bottom, 110, 40)];
+    UILabel *label3=[[UILabel alloc]initWithFrame:CGRectMake(30, 5+lineViewnewjing.bottom, 110, 40)];
     label3.font=[UIFont systemFontOfSize:15.0f];
     label3.text=@"店铺名称";
     [_scrollView addSubview:label3];
@@ -727,12 +790,21 @@
     NSLog(@"%@",newStr);
     [params setObject:newStr forKey:@"address"];//市区街道地点
     
-    float lat = appdelegate.userLocation.location.coordinate.latitude;
-    NSString *latitude =[[NSString alloc]initWithFormat:@"%f",lat];
+//    float lat = appdelegate.userLocation.location.coordinate.latitude;
+//    NSString *latitude =[[NSString alloc]initWithFormat:@"%f",lat];
+//    float longti = appdelegate.userLocation.location.coordinate.longitude;
+//    NSString *longtitude =[[NSString alloc]initWithFormat:@"%f",longti];
+
+    
+    NSArray *log_lat_A = [_location_log_lat.text componentsSeparatedByString:@","];
+    
+    NSString *latitude = log_lat_A[1];
+    NSString *longtitude = log_lat_A[0];
+
+    
+    
     [params setObject:latitude forKey:@"latitude"];//纬度
-    float longti = appdelegate.userLocation.location.coordinate.longitude;
-    NSString *longtitude =[[NSString alloc]initWithFormat:@"%f",longti];
-    [params setObject:longtitude forKey:@"longtitude"];//经度
+     [params setObject:longtitude forKey:@"longtitude"];//经度
     
     
     [params setObject:_adddetailnewAddressTF.text forKey:@"full_add"];
@@ -1030,29 +1102,8 @@
 -(void)tapClick:(UITapGestureRecognizer *)tap{
     
     UIImageView *imageViews=(UIImageView *)[tap view];
-    if (imageViews==self.imageView1) {
-        self.indexTag=1;
-            [self.view endEditing:YES];
-            UIActionSheet *sheet;
-            // 判断是否支持相机
-            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-                
-            {
-                sheet  = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
-                
-            }
-            
-            else {
-                
-                sheet = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
-                
-            }
-            
-            sheet.tag = 255;
-            
-            [sheet showInView:self.view];
-        
-    }else {
+
+    
         
         [self.view endEditing:YES];
         UIActionSheet *sheet;
@@ -1060,7 +1111,19 @@
         if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
             
         {
-            sheet  = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
+            
+      
+            if (imageViews==self.imageView5){
+                sheet  = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照", nil];
+
+                [self  startLocation];
+                
+            
+            
+            }else{
+                sheet  = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
+
+            }
             
         }
         
@@ -1077,7 +1140,9 @@
         
         
         
-        
+    if (imageViews==self.imageView1) {
+        self.indexTag=1;
+    }else
         if (imageViews==self.imageView2){
             self.indexTag=2;
             
@@ -1099,7 +1164,9 @@
             
         }
         
-    }
+    
+    
+    NSLog(@"-----%ld",_indexTag);
 }
 -(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -1352,6 +1419,21 @@
 }
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
+    
+    if (textField ==_locationLab) {
+        
+        __weak typeof(self) weskSelf = self;
+
+        [FYLCityPickView showPickViewWithComplete:^(NSArray *arr) {
+            
+            weskSelf.selectAddress_A = arr;
+            
+            
+            weskSelf.locationLab.text = [NSString stringWithFormat:@"%@%@%@",[arr[0] containsString:arr[1]]?@"":arr[0],arr[1],arr[2]];
+        }];
+        
+        return NO;
+    }
     if (textField==self.reasonTF) {
         if (self.haveBtn.selected) {
             return NO;
@@ -1359,48 +1441,42 @@
     }
     
     if (textField ==self.detailAddressTF) {
-        if (_streetArray.count==0) {
-            
-          
-//            CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-//            if (kCLAuthorizationStatusDenied == status || kCLAuthorizationStatusRestricted == status)
-//            {
-//                //读取本地数据
-//                NSString * isPositioning = [[NSUserDefaults standardUserDefaults] valueForKey:@"isPositioning"];
-//                if (isPositioning == nil)//提示
-//                {
-//                    UIAlertView * positioningAlertivew = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"为了更好的体验,请到设置->隐私->定位服务中开启!【商消乐】定位服务,已便获取附近信息!" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:@"永不提示",@"残忍拒绝",nil];
-//                    positioningAlertivew.tag = 999;
-//                    [positioningAlertivew show];
-//                }
-//            }else//开启的
-//            {
-//                //需要删除本地字符
-//                NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-//                [userDefaults removeObjectForKey:@"isPositioning"];
-//                [userDefaults synchronize];  
-//            }
-//
-            
-            
-        }else{
-            for (UITextField *tf in _scrollView.subviews) {
-                [tf resignFirstResponder];
-            }
-            pickView.dataSource=self.streetArray;
-            __weak AuthFailShopVC *wealSelf=self;
-            pickView.valueDidSelect = ^(NSString *value) {
-                
-                wealSelf.detailAddressTF.text =  [[value componentsSeparatedByString:@"/"] firstObject];
-                
-            };
-            [pickView show];
- 
+        
+        for (UITextField *tf in _scrollView.subviews) {
+            [tf resignFirstResponder];
         }
+        
+        if (self.selectAddress_A.count==0) {
+            [self showHint:@"请选择省市区"];
+        }else{
+            
+            [self getStreest];
+        }
+        
+        
+        
         
         
         return NO;
     }
+    
+    if (textField ==_location_log_lat) {
+
+        
+    AddressEditVC *vc = [[AddressEditVC alloc]init];
+        
+        [self presentViewController:vc animated:YES completion:nil];
+        
+        vc.log_latBlock = ^(NSString *log, NSString *lat) {
+          
+            _location_log_lat.text = [NSString stringWithFormat:@"%@,%@",log,lat];
+            
+        };
+        
+        
+        return NO;
+    }
+    
     
     if (textField ==self.company_styleTF) {
         pickView.dataSource=@[@"国有企业",@"集体企业",@"联营企业",@"股份合作制企业",@"私营企业",@"个体户",@"合作企业",@"有限责任公司",@"股份有限公司"];
@@ -1441,25 +1517,31 @@
 }
 
 -(void)getStreest{
-    AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    NSDictionary *dic =[[NSUserDefaults standardUserDefaults]objectForKey:app.shopInfoDic[@"muid"]];
-    
-    shopInfoDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
-    
-    DebugLog(@"shopInfoDic==%@",shopInfoDic);
+
     
     
     __block typeof(self)  bloskSelf = self;
     
-    NSLog(@"-app.city-----%@",app.city);
+    NSString *city =[NSString getTheNoNullStr:self.selectAddress_A[1] andRepalceStr:@""];
+   city = city.length!=0 ? city :self.selectAddress_A[0];
     
-    [[JFAreaDataManager shareManager] currentCityDic:app.city currentCityDic:^(NSDictionary *dic) {
+    
+
+      NSLog(@"-app.city-----%@",city);
+
+    [[JFAreaDataManager shareManager] currentCityDic:city currentCityDic:^(NSDictionary *dic) {
         
         
         NSLog(@"-dic-----%@",dic);
         [[JFAreaDataManager shareManager]areaData:dic[@"code"] areaData:^(NSMutableArray *areaData) {
             
+            if (areaData.count==0) {
+             
+                [self showHint:@"当前地区暂无街道数据"];
+                
+                return ;
+            }
             
             NSLog(@"-areaData-----%@",areaData);
             
@@ -1467,7 +1549,14 @@
                 NSString *name = dic[@"name"];
                 
                 
-                if ([name isEqualToString:app.addressDistrite] || [name containsString:app.addressDistrite] || [app.addressDistrite containsString:name]) {
+                NSString*town = [NSString getTheNoNullStr:self.selectAddress_A[2] andRepalceStr:@""];
+                
+                town = town.length!=0 ? town :self.selectAddress_A[1];
+
+                town = town.length!=0 ? town :self.selectAddress_A[0];
+
+                
+                if ([name isEqualToString:town]) {
                     
                     
                     NSString *url = [NSString stringWithFormat:@"%@Extra/address/getStreet",BASEURL];;
@@ -1480,13 +1569,18 @@
                         
                         NSLog(@"-areaData-----%@",areaData);
                         
+                        
+                
                         eare_data = [NSMutableArray arrayWithArray:result];
+                        
                         
                         NSMutableArray *arr = [NSMutableArray array];
                         for (NSDictionary *dic_eare in result) {
                             [arr addObject:dic_eare[@"name"]];
                             
                         }
+                        
+                        
                         self.streetArray=[[NSArray alloc]initWithArray:arr];
                         pickView= [[ValuePickerView alloc]init];
                         
@@ -1498,6 +1592,8 @@
                             bloskSelf.detailAddressTF.text =  [[value componentsSeparatedByString:@"/"] firstObject];
                             
                         };
+                        
+                        [pickView show];
                         
                     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
                         
