@@ -11,7 +11,7 @@
 #import "NewNextViewController.h"
 #import "GetMoneyVC.h"
 #import "TransferMoneyDetailVC.h"
-
+#import "ShopAppriseMoneyGetVC.h"
 @interface RjgmViewController ()
 {
     NSDictionary *data_dic;
@@ -64,20 +64,25 @@
     [topView addSubview:backTi];
 
     
-//    LZDButton *rightBtn = [LZDButton creatLZDButton];
-//    rightBtn.frame = CGRectMake(kWeChatScreenWidth-50, 20, 50, 44);
-//    
-//    [rightBtn setTitle:@"明细" forState:UIControlStateNormal];
-//    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-//    [topView addSubview:rightBtn];
-//    
-//    rightBtn.block = ^(LZDButton *btn){
-//        NSLog(@"明细");
-//
+    LZDButton *rightBtn = [LZDButton creatLZDButton];
+    rightBtn.frame = CGRectMake(kWeChatScreenWidth-50, 20, 50, 44);
+    
+    [rightBtn setTitle:@"奖励金" forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    rightBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [topView addSubview:rightBtn];
+    
+    rightBtn.block = ^(LZDButton *btn){
+        NSLog(@"明细");
+        ShopAppriseMoneyGetVC *vc=[[ShopAppriseMoneyGetVC alloc]init];
+        vc.sum_string=data_dic[@"ref_award"];
+        vc.block = ^(){
+                            [self postRequestMoney];
+                        };
+        [self.navigationController pushViewController:vc animated:YES];
 //        RJGDetailVC *VC = [[RJGDetailVC alloc]init];
 //        [self.navigationController pushViewController:VC animated:YES];
-//    };
+    };
 
     
     [self creatSubViews];
