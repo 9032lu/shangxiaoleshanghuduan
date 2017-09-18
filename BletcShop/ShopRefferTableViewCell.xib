@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="355" height="77"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="355" height="76.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="355" height="77"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐用户手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLi-Ix-ivM">
@@ -84,6 +84,8 @@
             <connections>
                 <outlet property="dateTimeLable" destination="4Jr-Ju-KzA" id="8Jf-ZD-4aa"/>
                 <outlet property="phoneNumLable" destination="V8I-t6-Lex" id="Ffw-5w-1kr"/>
+                <outlet property="referPhone" destination="KLi-Ix-ivM" id="XXr-80-7qm"/>
+                <outlet property="registDate" destination="PFF-CU-o9N" id="PAm-E0-eyI"/>
             </connections>
             <point key="canvasLocation" x="126.5" y="-51.5"/>
         </tableViewCell>

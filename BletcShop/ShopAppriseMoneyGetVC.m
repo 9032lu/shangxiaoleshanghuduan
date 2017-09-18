@@ -1,40 +1,35 @@
 //
-//  GetMoneyVC.m
+//  ShopAppriseMoneyGetVC.m
 //  BletcShop
 //
-//  Created by Bletc on 16/9/20.
-//  Copyright © 2016年 bletc. All rights reserved.
+//  Created by apple on 2017/9/18.
+//  Copyright © 2017年 bletc. All rights reserved.
 //
 
-#import "GetMoneyVC.h"
-
-@interface GetMoneyVC ()<UITextFieldDelegate,UIAlertViewDelegate>
-
+#import "ShopAppriseMoneyGetVC.h"
+#import "ShopMoneyGetDetailsVC.h"
+@interface ShopAppriseMoneyGetVC ()<UITextFieldDelegate,UIAlertViewDelegate>
 @property(nonatomic,weak)UITextField *moneyText;
-
 @end
 
-@implementation GetMoneyVC
+@implementation ShopAppriseMoneyGetVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor=RGB(243, 243, 243);
-    self.navigationItem.title = @"提现";
+    self.navigationItem.title = @"奖励金提现";
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithTitle:@"明细" style:UIBarButtonItemStylePlain target:self action:@selector(detailShow)];
+    self.navigationItem.rightBarButtonItem=rightItem;
     LEFTBACK
     UIView *bigBackView=[[UIView alloc]initWithFrame:CGRectMake(15, 20, SCREENWIDTH-30, 206)];
     bigBackView.layer.cornerRadius=16;
     bigBackView.clipsToBounds=YES;
     [self.view addSubview:bigBackView];
     
-    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     UILabel*account_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH-30, 44)];
     account_lab.backgroundColor = RGB(234, 234, 234);
-
-    NSString *account =app.shopInfoDic[@"account"];
     
-    NSRange range = NSMakeRange(account.length-3, 3);
-    account = [account substringWithRange:range];
-    account_lab.text = [NSString stringWithFormat:@"  银行卡   %@(%@)",app.shopInfoDic[@"bank"],account];
+    account_lab.text = [NSString stringWithFormat:@"  奖励金余额：   %@元",[NSString getTheNoNullStr:self.sum_string andRepalceStr:@"0.00"]];
     account_lab.font = [UIFont systemFontOfSize:18];
     account_lab.textColor = [UIColor darkGrayColor];
     [bigBackView addSubview:account_lab];
@@ -57,14 +52,14 @@
     
     UITextField *shangjiaText = [[UITextField alloc]initWithFrame:CGRectMake(60, back_view.height/2, SCREENWIDTH-50-40, 30)];
     
-
+    
     shangjiaText.borderStyle = UITextBorderStyleNone;
     shangjiaText.delegate = self;
     shangjiaText.tag = 101;
     shangjiaText.textColor=[UIColor darkGrayColor];
     shangjiaText.keyboardType=UIKeyboardTypeNumbersAndPunctuation;
     shangjiaText.font = [UIFont systemFontOfSize:24];
-
+    
     self.moneyText = shangjiaText;
     [back_view addSubview:shangjiaText];
     
@@ -78,8 +73,9 @@
     [back_view addSubview:line];
     
     UILabel *lab_m = [[UILabel alloc]initWithFrame:CGRectMake(15, 0, SCREENWIDTH, 20)];
+   
+    lab_m.text = [NSString stringWithFormat:@"当前奖励金余额%@元,", [NSString getTheNoNullStr:self.sum_string andRepalceStr:@"0.00"]];
     lab_m.textColor= [UIColor grayColor];
-    lab_m.text = [NSString stringWithFormat:@"当前零钱余额%@,",self.sum_string];
     lab_m.font =[UIFont systemFontOfSize:14];
     [back_view1 addSubview:lab_m];
     CGFloat www = [lab_m.text boundingRectWithSize:CGSizeMake(SCREENWIDTH, 100) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:lab_m.font} context:nil].size.width;
@@ -97,7 +93,7 @@
     };
     
     UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, lab_m.bottom, SCREENWIDTH, 63)];
-    lab.text = @"预计24小时内到账";
+    lab.text = @"提现成功后，即刻到账账户余额";
     lab.font=[UIFont systemFontOfSize:14.0f];
     lab.textColor = [UIColor grayColor];
     lab.textAlignment = NSTextAlignmentCenter;
@@ -113,7 +109,7 @@
     btn.block = ^(LZDButton *b){
         
         NSString* sum = [self.sum_string componentsSeparatedByString:@"元"][0];
-        
+        NSLog(@"%@",self.moneyText.text);
         if([self.moneyText.text isEqualToString:@""])
         {
             [self tishi:@"请填写提现金额"];
@@ -131,8 +127,7 @@
         }
         
     };
-    
-    
+
 }
 
 -(void)rigmAction
@@ -149,7 +144,7 @@
         [self postRequest];
         
     }];
-
+    
     
     [alertController addAction:cancel];
     [alertController addAction:sure];
@@ -160,24 +155,17 @@
     
     
     
-   }
+}
 
 -(void)postRequest{
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/merchant/withdrawApp",BASEURL];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/merchant/withdraw",BASEURL];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    //    [params setObject:[appdelegate.shopUserInfoArray objectAtIndex:0] forKey:@"merchant"];
     [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
     [params setObject:self.moneyText.text forKey:@"sum"];
-    
-    //    NSDateFormatter* matter = [[NSDateFormatter alloc]init];
-    //    [matter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    //    NSDate* date  = [NSDate date];
-    //    NSString *NowDate = [matter stringFromDate:date];
-    //    [params setObject:NowDate forKey:@"date"];
-    
+
     NSLog(@"params==%@", params);
     
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
@@ -186,16 +174,23 @@
         NSDictionary *dic = (NSDictionary *)result;
         if ([dic[@"result_code"] intValue]==1) {
             
-            [self showTiShi:@"提现申请成功,三个工作日到账?" LeftBtn_s:@"确定" RightBtn_s:@""];
+            [self showTiShi:@"恭喜您，提现成功！" LeftBtn_s:@"确定" RightBtn_s:@""];
             
             
+        }else{
+            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"体现失败" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles: @"确定",nil];
+            
+            [altView show];
+
         }
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         
+        UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"接口出错!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles: @"确定",nil];
         
+        [altView show];
     }];
     
-
+    
 }
 -(void)tishi:(NSString*)str{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -235,11 +230,16 @@
     [textField resignFirstResponder];
     return YES;
 }
+//体现明细
+-(void)detailShow{
+    ShopMoneyGetDetailsVC *shopMoneyGetDetailsVC=[[ShopMoneyGetDetailsVC alloc]init];
+    [self.navigationController pushViewController:shopMoneyGetDetailsVC animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 @end
