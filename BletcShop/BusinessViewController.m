@@ -74,7 +74,7 @@
     intrueOrFast=@"";
     self.view.backgroundColor=[UIColor whiteColor];
 //    arr_imgS = @[@"广告推送",@"店铺管理",@"资金提现",@"管理员设置",@"商家介绍",@"会员延期",@"授信额度",@"预约处理",@"优惠券"];
-    arr_imgS = @[@"广告推送",@"店铺管理",@"资金管理",@"管理员设置",@"商家介绍",@"会员延期",@"预约处理",@"优惠券",@"我的商品",@"地址编辑"];
+    arr_imgS = @[@"广告推送",@"店铺管理",@"资金管理",@"管理员设置",@"商家介绍",@"会员延期",@"预约处理",@"优惠券",@"我的商品"];
 
     
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
