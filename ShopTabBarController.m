@@ -15,6 +15,9 @@
 #import "MyProtuctsController.h"
 #import "ChargeCenterVC.h"
 
+#import "LZDMemberListVC.h"
+
+
 @interface ShopTabBarController ()
 
 @end
@@ -82,10 +85,16 @@
 -(void)addchildVc
 {
     
-    ShopVipController *oneVc = [[ShopVipController alloc]init];
+//    ShopVipController *oneVc = [[ShopVipController alloc]init];
+//    oneVc.shopEnter = self.shopEnter;
+    LZDMemberListVC *oneVc = [[LZDMemberListVC alloc]init];
     oneVc.shopEnter = self.shopEnter;
-    NSLog(@"oneVc.shopEnter%d",self.shopEnter);
+    
+    
+//    NSLog(@"oneVc.shopEnter%d",self.shopEnter);
     [self addOneChindVC:oneVc title:@"我的会员" imageName:@"bu_vip_icon_n" selectedImageName:@"bu_vip_icon_s"];
+    
+    
 //    oneVc.infoArray = self.array;
 //    NSLog(@"self.infoArray = %@",self.array);
 //    MyProtuctsController *twoVC = [[MyProtuctsController alloc]init];
