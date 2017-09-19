@@ -173,10 +173,21 @@
     if (self.data_array.count>0) {
         NSDictionary *dic = _data_array[indexPath.row];
         
-        cell.phoneNumLable.text = dic[@"phone"];
-        cell.dateTimeLable.text = dic[@"datetime"];
+        cell.phoneNumLable.text = [NSString getTheNoNullStr:dic[@"sum"] andRepalceStr:@"0"];
         cell.referPhone.text=@"提现金额";
-        cell.registDate.text=@"提现日期";
+        cell.registDate.text=dic[@"datetime"];
+        CGRect frame=cell.dateTimeLable.frame;
+        frame.size.width=250;
+        cell.dateTimeLable.frame=frame;
+        if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"wait"]) {
+           cell.dateTimeLable.text = @"平台处理中";
+        }else if ([[NSString getTheNoNullStr:dic[@"state"] andRepalceStr:@""]  isEqualToString:@"access"]){
+           cell.dateTimeLable.text = @"平台已转账";
+            
+        }else{
+            cell.dateTimeLable.text = @"出错!!!";
+            
+        }
     }
     return cell;
     
@@ -184,7 +195,7 @@
 
 -(void)postRequestMoney
 {
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/fund/getReferrer",BASEURL ];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/fund/getWithdraw",BASEURL ];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
@@ -199,7 +210,8 @@
         if (dic.count>0) {
             
             num_lab.text = [NSString stringWithFormat:@"%@笔",dic[@"num"]];
-            self.data_array = dic[@"info"];
+            
+            self.data_array = dic[@"record"];
             
             if (self.data_array.count>0) {
                 

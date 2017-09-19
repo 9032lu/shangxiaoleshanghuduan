@@ -148,7 +148,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     };
     [view3 addSubview:tixian];
-    if ([self.sum_string floatValue]==0) {
+    if ([self.sum_string floatValue]<=0) {
         tixian.userInteractionEnabled=NO;
         tixian.backgroundColor=RGB(180, 180, 180);
     }
@@ -209,7 +209,6 @@
     
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
 
-        
         NSDictionary *dic = [NSDictionary dictionary];
         dic = [result copy];
         NSLog(@"------%@",dic);
@@ -218,7 +217,7 @@
             remain_lab.text=[NSString stringWithFormat:@"%@元",self.sum_string];//////////
             num_lab.text = [NSString stringWithFormat:@"%@人",dic[@"num"]];
             NSString *remain= [remain_lab.text componentsSeparatedByString:@"元"][0];
-            if ([remain floatValue]==0) {
+            if ([remain floatValue]<=0) {
                 tixian.userInteractionEnabled=NO;
                 tixian.backgroundColor=RGB(180, 180, 180);
             }else{

@@ -26,10 +26,15 @@
     bigBackView.clipsToBounds=YES;
     [self.view addSubview:bigBackView];
     
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
     UILabel*account_lab = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH-30, 44)];
     account_lab.backgroundColor = RGB(234, 234, 234);
     
-    account_lab.text = [NSString stringWithFormat:@"  奖励金余额：   %@元",[NSString getTheNoNullStr:self.sum_string andRepalceStr:@"0.00"]];
+    NSString *account =app.shopInfoDic[@"account"];
+    
+    NSRange range = NSMakeRange(account.length-3, 3);
+    account = [account substringWithRange:range];
+    account_lab.text = [NSString stringWithFormat:@"  银行卡   %@(%@)",app.shopInfoDic[@"bank"],account];
     account_lab.font = [UIFont systemFontOfSize:18];
     account_lab.textColor = [UIColor darkGrayColor];
     [bigBackView addSubview:account_lab];
@@ -93,7 +98,7 @@
     };
     
     UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, lab_m.bottom, SCREENWIDTH, 63)];
-    lab.text = @"提现成功后，即刻到账账户余额";
+    lab.text = @"预计24小时内到账";
     lab.font=[UIFont systemFontOfSize:14.0f];
     lab.textColor = [UIColor grayColor];
     lab.textAlignment = NSTextAlignmentCenter;
@@ -158,7 +163,7 @@
 }
 
 -(void)postRequest{
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/merchant/withdraw",BASEURL];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/fund/withdrawAward",BASEURL];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
@@ -184,7 +189,7 @@
 
         }
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        NSLog(@"error=====%@",error);
         UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"接口出错!" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles: @"确定",nil];
         
         [altView show];
@@ -216,7 +221,7 @@
             
             self.block();
             
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popToViewController:self.navigationController.viewControllers[1] animated:YES];
         }
         
     }
