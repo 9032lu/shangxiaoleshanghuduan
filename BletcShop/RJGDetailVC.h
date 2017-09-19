@@ -11,5 +11,5 @@
 @interface RJGDetailVC : UIViewController
 
 @property (nonatomic , strong) UITableView *tableview;// <#Description#>
-
+@property(nonatomic,copy)NSString *sum_string;
 @end

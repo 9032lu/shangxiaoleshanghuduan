@@ -16,14 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="355" height="77"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="355" height="77"/>
+                <rect key="frame" x="0.0" y="0.0" width="355" height="76.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐用户手机号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLi-Ix-ivM">
-                        <rect key="frame" x="11" y="15" width="110" height="15"/>
+                        <rect key="frame" x="11" y="15" width="107.5" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="baM-wQ-3HO"/>
-                            <constraint firstAttribute="width" constant="110" id="rTh-sE-NcK"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="rTh-sE-NcK"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -39,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jr-Ju-KzA">
-                        <rect key="frame" x="91" y="38" width="239" height="15"/>
+                        <rect key="frame" x="292.5" y="38" width="37.5" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="gPT-Xd-P4k"/>
                         </constraints>
@@ -55,9 +55,9 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册日期" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFF-CU-o9N">
-                        <rect key="frame" x="11" y="38" width="70" height="15"/>
+                        <rect key="frame" x="11" y="38" width="61.5" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="70" id="moH-83-l0f"/>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="moH-83-l0f"/>
                             <constraint firstAttribute="height" constant="15" id="wla-b9-nwJ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -78,7 +78,7 @@
                     <constraint firstItem="4Jr-Ju-KzA" firstAttribute="top" secondItem="V8I-t6-Lex" secondAttribute="bottom" constant="8" id="gpn-V4-jAz"/>
                     <constraint firstItem="PFF-CU-o9N" firstAttribute="top" secondItem="KLi-Ix-ivM" secondAttribute="bottom" constant="8" id="hQk-Vb-Qrk"/>
                     <constraint firstItem="V8I-t6-Lex" firstAttribute="top" secondItem="KLi-Ix-ivM" secondAttribute="top" id="rs1-dz-fna"/>
-                    <constraint firstItem="4Jr-Ju-KzA" firstAttribute="leading" secondItem="PFF-CU-o9N" secondAttribute="trailing" constant="10" id="vfn-4K-1w7"/>
+                    <constraint firstItem="4Jr-Ju-KzA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="PFF-CU-o9N" secondAttribute="trailing" constant="10" id="vfn-4K-1w7"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

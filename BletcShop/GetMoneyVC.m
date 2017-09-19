@@ -97,7 +97,7 @@
     };
     
     UILabel *lab = [[UILabel alloc]initWithFrame:CGRectMake(0, lab_m.bottom, SCREENWIDTH, 63)];
-    lab.text = @"预计24小时内到账";
+    lab.text = @"预计三个工作日内到账";
     lab.font=[UIFont systemFontOfSize:14.0f];
     lab.textColor = [UIColor grayColor];
     lab.textAlignment = NSTextAlignmentCenter;
