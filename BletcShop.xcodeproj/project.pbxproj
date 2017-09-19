@@ -82,6 +82,7 @@
 		1869917E1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1869917C1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.xib */; };
 		186991821F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 186991801F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.m */; };
 		186991831F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 186991811F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib */; };
+		1869918A1F70EC850084D3C8 /* RJGDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D992925E1D8FEE0000103914 /* RJGDetailVC.m */; };
 		189619441D92319D003BA40C /* ContactSeverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189619431D92319D003BA40C /* ContactSeverViewController.m */; };
 		189757491E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt in Resources */ = {isa = PBXBuildFile; fileRef = 189757471E9B16A400AB1D00 /* WebViewJavascriptBridge.js.txt */; };
 		1897574A1E9B16A400AB1D00 /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 189757481E9B16A400AB1D00 /* WebViewJavascriptBridge.m */; };
@@ -5567,6 +5568,7 @@
 				D98E5C051E515210009D56BF /* MASViewConstraint.m in Sources */,
 				D98E5BFB1E515210009D56BF /* MASCompositeConstraint.m in Sources */,
 				D98E5C071E515210009D56BF /* NSArray+MASAdditions.m in Sources */,
+				1869918A1F70EC850084D3C8 /* RJGDetailVC.m in Sources */,
 				D98E5C191E51524D009D56BF /* SRVideoBottomBar.m in Sources */,
 				D98E5C0F1E515210009D56BF /* ViewController+MASAdditions.m in Sources */,
 				D98E5C1D1E51524D009D56BF /* SRVideoOperationTip.m in Sources */,
