@@ -1712,9 +1712,13 @@
     
     [parmer setObject:img_Data forKey:@"file1"];
     
-    NSLog(@"_indexTag=%ld=====%@",(long)_indexTag,parmer);
+//    NSLog(@"_indexTag=%ld=====%@",(long)_indexTag,parmer);
     
     [KKRequestDataService requestWithURL:url params:parmer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        [parmer setObject:@"file1" forKey:@"file1"];
+
+        NSLog(@"parmer----%@",parmer);
         
         if ([result[@"result_code"] isEqualToString:@"access"]) {
             [self tishi:@"上传成功"];

@@ -1350,6 +1350,11 @@
     
     [KKRequestDataService requestWithURL:url params:parmer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
+        [parmer setObject:@"file1" forKey:@"file1"];
+        
+        NSLog(@"parmer----%@",parmer);
+
+        
         if ([result[@"result_code"] isEqualToString:@"access"]) {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
