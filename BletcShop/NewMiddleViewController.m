@@ -46,6 +46,8 @@
 @property(nonatomic,strong)NSArray*selectAddress_A;//选择的省市区
 @property(nonatomic,strong)UITextField *location_log_lat;//经纬度----real
 
+@property(nonatomic,copy)NSString *real_log_lat;//拍照地经纬度
+
 @end
 
 @implementation NewMiddleViewController
@@ -194,8 +196,7 @@
     
     AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    if (!app.city || app.city.length ==0) {
-        
+    
         
         BaiduMapManager *manager = [BaiduMapManager shareBaiduMapManager];
         
@@ -220,12 +221,14 @@
             app.userLocation = location;
             
             
-            self.location_log_lat.text = [NSString stringWithFormat:@"%f,%f",location.location.coordinate.longitude,location.location.coordinate.latitude];
+            self.real_log_lat = [NSString stringWithFormat:@"%f,%f",location.location.coordinate.longitude,location.location.coordinate.latitude];
 
+            
+            NSLog(@"self.real_log_lat==%@",self.real_log_lat);
             
         };
         
-    }
+
     
     
 }
@@ -359,11 +362,11 @@
 
 -(void)saveRequest:(NSInteger)tag{
     
-    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+//    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
 
     //开始发起请求,请求成功，显示一下信息
     //地点问题
-    NSLog(@"%@",self.kindLab.text);
+//    NSLog(@"%@",self.kindLab.text);
     
     
     [self saveInfo];
@@ -521,6 +524,38 @@
 //        appdelegate.addressDistrite = @"";
 //    }
 //    _locationLab.text=[[NSString alloc] initWithFormat:@"%@%@%@",appdelegate.province,appdelegate.city,appdelegate.addressDistrite];
+    
+    
+    
+    NSString *detail_s =shopInfoDic[@"address"];
+    
+    NSString *jiedao , *shengshiqu;
+    
+    
+    if ([detail_s containsString:@"区"]&&![detail_s containsString:@"地区"]) {
+        
+        //包含区,但不包含地区,XX区
+        jiedao = [[detail_s componentsSeparatedByString:@"区"] lastObject];
+        
+        
+    }else if ([detail_s containsString:@"县"]){
+        //XXX县
+        jiedao = [[detail_s componentsSeparatedByString:@"区"] lastObject];
+        
+        
+    }else{
+        
+        //XX市,如兴平市,杨凌市
+        jiedao = [[detail_s componentsSeparatedByString:@"市"] lastObject];
+        
+    }
+    shengshiqu = [detail_s substringToIndex:(detail_s.length-jiedao.length)];
+    
+    
+    _locationLab.text = shengshiqu;
+
+    
+    
     if ([_locationLab.text containsString:@"全城"]) {
         _locationLab.text =@"";
     }
@@ -552,18 +587,20 @@
     _detailAddressTF.placeholder=@"门店地址";
     _detailAddressTF.delegate = self;
     
-    NSString *detail_s =shopInfoDic[@"address"];
-    if ([detail_s containsString:@"全城"]) {
-        detail_s =@"";
-    }
+    _detailAddressTF.text = jiedao;
     
-    if (detail_s.length>_locationLab.text.length) {
-        _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
-
-    }else{
-        _detailAddressTF.text=detail_s;
-
-    }
+//    NSString *detail_s =shopInfoDic[@"address"];
+//    if ([detail_s containsString:@"全城"]) {
+//        detail_s =@"";
+//    }
+//    
+//    if (detail_s.length>_locationLab.text.length) {
+//        _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
+//
+//    }else{
+//        _detailAddressTF.text=detail_s;
+//
+//    }
 
 
     [_scrollView addSubview:_detailAddressTF];
@@ -1441,35 +1478,7 @@
 -(void)tapClick:(UITapGestureRecognizer *)tap{
     
     UIImageView *imageViews=(UIImageView *)[tap view];
-//    if (imageViews==self.imageView1) {
-//        self.indexTag=1;
-////        if (self.haveBtn.selected) {
-//            //有营业执照
-//            [self.view endEditing:YES];
-//            UIActionSheet *sheet;
-//            // 判断是否支持相机
-//            if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-//                
-//            {
-//                sheet  = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照",@"从相册选择", nil];
-//                
-//            }
-//            
-//            else {
-//                
-//                sheet = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"从相册选择", nil];
-//                
-//            }
-//            
-//            sheet.tag = 255;
-//            
-//            [sheet showInView:self.view];
-////        }else{
-////            //上传失效,无营业执照，写原因
-////            
-////        }
-//        
-//    }else {
+
     
         [self.view endEditing:YES];
         UIActionSheet *sheet;
@@ -1480,9 +1489,8 @@
             if (imageViews==self.imageView5){
                 sheet  = [[UIActionSheet alloc] initWithTitle:@"选择照片" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"取消" otherButtonTitles:@"拍照", nil];
                 
+                
                 [self startLocation];
-                
-                
                 
                 
             }else{
@@ -1530,7 +1538,7 @@
         
     }
         
-//     }
+
 }
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
@@ -1630,11 +1638,11 @@
     [parmer setValue:name forKey:@"muid"];
 
     
-    if (_indexTag==1) {
+    if (self.indexTag==1) {
         [parmer setValue:@"license" forKey:@"type"];
         
         
-    }else if(_indexTag==2)
+    }else if(self.indexTag==2)
     {
         
         
@@ -1660,7 +1668,7 @@
             
         }
         
-    }else if(_indexTag==3)
+    }else if(self.indexTag==3)
     {
         NSString *name2 = [[NSString alloc]initWithFormat:@"%@_02",shopInfoDic[@"muid"]];
         
@@ -1683,22 +1691,28 @@
         }
 
         
+
         
-//    }else if (_indexTag==4){
-//        [self.imageView4 setImage:savedImage];
-//        [parmer setValue:@"lp" forKey:@"type"];
         
-    }else if (_indexTag==5){
-        AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-        [appdelegate.locService startUserLocationService];
+    }else if (self.indexTag==5){
+       
+        NSArray *arr = [_real_log_lat componentsSeparatedByString:@","];
+        
+        [parmer setValue:arr[1] forKey:@"latitude"];
+        [parmer setValue:arr[0] forKey:@"longtitude"];
+        
+     
+        
         [parmer setValue:@"address" forKey:@"type"];
-    }else if (_indexTag==6){
+    }else if (self.indexTag==6){
         [parmer setValue:@"wep" forKey:@"type"];
     }
     
    
     
     [parmer setObject:img_Data forKey:@"file1"];
+    
+    NSLog(@"_indexTag=%ld=====%@",(long)_indexTag,parmer);
     
     [KKRequestDataService requestWithURL:url params:parmer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
@@ -1747,6 +1761,10 @@
                 [self.imageView5 setImage:savedImage];
 
                 self.ifImageView5=YES;
+                
+
+                
+                
             }else if (self.indexTag==6){
                 [self.imageView6 setImage:savedImage];
 
@@ -1801,6 +1819,10 @@
         __weak typeof(self) weskSelf = self;
         
         [FYLCityPickView showPickViewWithComplete:^(NSArray *arr) {
+            
+            [[NSUserDefaults standardUserDefaults]setObject:arr forKey:SELECTADDRESS];
+            
+            [[NSUserDefaults standardUserDefaults]synchronize];
             
             weskSelf.selectAddress_A = arr;
             
@@ -1885,7 +1907,7 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     //Tip:我们可以通过打印touch.view来看看具体点击的view是具体是什么名称,像点击UITableViewCell时响应的View则是UITableViewCellContentView.
-    NSLog(@"%@",touch.view);
+//    NSLog(@"%@",touch.view);
     if (gestureRecognizer.view == _scrollView) {
         
         if ([NSStringFromClass([touch.view class])    isEqualToString:@"UITableViewCellContentView"]) {
@@ -1909,7 +1931,19 @@
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
-    [shopInfoDic setValue:self.detailAddressTF.text forKey:@"address"];
+    if (self.detailAddressTF.text.length==0) {
+        
+        [shopInfoDic setValue:self.locationLab.text forKey:@"address"];
+
+    }else if (self.locationLab.text.length==0){
+        [shopInfoDic setValue:self.detailAddressTF.text forKey:@"address"];
+
+    }else{
+        
+        [shopInfoDic setValue:[NSString stringWithFormat:@"%@%@",self.locationLab.text,self.detailAddressTF.text] forKey:@"address"];
+
+    }
+    
     [shopInfoDic setValue:self.agencyNameTF.text forKey:@"store"];
     [shopInfoDic setValue:self.kindLab.text forKey:@"trade"];
     [shopInfoDic setValue:_adddetailnewAddressTF.text forKey:@"full_add"];

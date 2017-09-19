@@ -49,6 +49,7 @@
 @property(nonatomic,strong)NSMutableArray *add_more_img_A;
 @property(nonatomic,strong)SingleModel *s_model;
 @property(nonatomic,strong)NSArray*selectAddress_A;//选择的省市区
+@property(nonatomic,copy)NSString *real_log_lat;//拍照地经纬度
 
 @end
 
@@ -147,6 +148,7 @@
     
     shopInfoDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
 
+    NSLog(@"shopInfoDic-----%@",shopInfoDic);
     
     [self getIndustryArray];
 //    [self getStreest];
@@ -171,9 +173,8 @@
     
     AppDelegate *app=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     
-    if (!app.city || app.city.length ==0) {
-        
-        
+    
+    
         BaiduMapManager *manager = [BaiduMapManager shareBaiduMapManager];
         
         [manager startUserLocationService];
@@ -196,12 +197,11 @@
             
             app.userLocation = location;
             
-            self.location_log_lat.text = [NSString stringWithFormat:@"%f,%f",location.location.coordinate.longitude,location.location.coordinate.latitude];
+            self.real_log_lat = [NSString stringWithFormat:@"%f,%f",location.location.coordinate.longitude,location.location.coordinate.latitude];
 
 
         };
         
-    }
 
     
 }
@@ -294,6 +294,8 @@
 
 
 -(void)initScrollView{
+    
+    
     _scrollView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64)];
     _scrollView.showsVerticalScrollIndicator=NO;
     
@@ -396,7 +398,32 @@
 //    _locationLab.text=[[NSString alloc] initWithFormat:@"%@%@%@",appdelegate.province,appdelegate.city,appdelegate.addressDistrite];
     
     
+    NSString *detail_s =shopInfoDic[@"address"];
+
+    NSString *jiedao , *shengshiqu;
     
+    
+    if ([detail_s containsString:@"区"]&&![detail_s containsString:@"地区"]) {
+       
+        //包含区,但不包含地区,XX区
+        jiedao = [[detail_s componentsSeparatedByString:@"区"] lastObject];
+        
+        
+    }else if ([detail_s containsString:@"县"]){
+        //XXX县
+        jiedao = [[detail_s componentsSeparatedByString:@"区"] lastObject];
+
+        
+    }else{
+        
+        //XX市,如兴平市,杨凌市
+        jiedao = [[detail_s componentsSeparatedByString:@"市"] lastObject];
+
+    }
+    shengshiqu = [detail_s substringToIndex:(detail_s.length-jiedao.length)];
+
+    
+    _locationLab.text = shengshiqu;
     
     if ([_locationLab.text containsString:@"全城"]) {
         _locationLab.text =@"";
@@ -429,17 +456,18 @@
     _detailAddressTF.placeholder=@"所在街道";
     _detailAddressTF.delegate = self;
     
-    NSString *detail_s =shopInfoDic[@"address"];
-    if ([detail_s containsString:@"全城"]) {
-        detail_s =@"";
-    }
-    if (detail_s.length>_locationLab.text.length) {
-        _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
-        
-    }else{
-        _detailAddressTF.text=detail_s;
-        
-    }
+    _detailAddressTF.text = jiedao;
+    
+//    if ([detail_s containsString:@"全城"]) {
+//        detail_s =@"";
+//    }
+//    if (detail_s.length>_locationLab.text.length) {
+//        _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
+//        
+//    }else{
+//        _detailAddressTF.text=detail_s;
+//        
+//    }
     
     
     [_scrollView addSubview:_detailAddressTF];
@@ -1302,8 +1330,15 @@
         [parmer setValue:@"lp" forKey:@"type"];
         
     }else if (_indexTag==5){
-        AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-        [appdelegate.locService startUserLocationService];
+       
+        NSArray *arr = [_real_log_lat componentsSeparatedByString:@","];
+        
+        [parmer setValue:arr[1] forKey:@"latitude"];
+        [parmer setValue:arr[0] forKey:@"longtitude"];
+        
+        
+
+        
         [parmer setValue:@"address" forKey:@"type"];
     }else if (_indexTag==6){
         [parmer setValue:@"wep" forKey:@"type"];
@@ -1430,6 +1465,11 @@
             
             
             weskSelf.locationLab.text = [NSString stringWithFormat:@"%@%@%@",[arr[0] containsString:arr[1]]?@"":arr[0],arr[1],arr[2]];
+            
+            [[NSUserDefaults standardUserDefaults]setObject:arr forKey:SELECTADDRESS];
+            
+            [[NSUserDefaults standardUserDefaults]synchronize];
+            
         }];
         
         return NO;
@@ -1446,12 +1486,21 @@
             [tf resignFirstResponder];
         }
         
+        
         if (self.selectAddress_A.count==0) {
-            [self showHint:@"请选择省市区"];
-        }else{
+            self.selectAddress_A = [[NSUserDefaults standardUserDefaults]objectForKey:SELECTADDRESS];
             
-            [self getStreest];
+            
+            if (self.selectAddress_A.count==0) {
+                
+                
+                [self showHint:@"请选择省市区"];
+            }else{
+                
+                [self getStreest];
+            }
         }
+       
         
         
         
@@ -1504,7 +1553,7 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
     //Tip:我们可以通过打印touch.view来看看具体点击的view是具体是什么名称,像点击UITableViewCell时响应的View则是UITableViewCellContentView.
-    NSLog(@"%@",touch.view);
+//    NSLog(@"%@",touch.view);
     if (gestureRecognizer.view == _scrollView) {
         
         if ([NSStringFromClass([touch.view class])    isEqualToString:@"UITableViewCellContentView"]) {
@@ -1522,6 +1571,8 @@
     
     
     __block typeof(self)  bloskSelf = self;
+    
+    
     
     NSString *city =[NSString getTheNoNullStr:self.selectAddress_A[1] andRepalceStr:@""];
    city = city.length!=0 ? city :self.selectAddress_A[0];
@@ -1543,7 +1594,7 @@
                 return ;
             }
             
-            NSLog(@"-areaData-----%@",areaData);
+//            NSLog(@"-areaData-----%@",areaData);
             
             for (NSDictionary *dic in areaData) {
                 NSString *name = dic[@"name"];
@@ -1567,7 +1618,7 @@
                     NSLog(@"url====+%@=====%@",url,parame);
                     [KKRequestDataService requestWithURL:url params:parame httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
                         
-                        NSLog(@"-areaData-----%@",areaData);
+//                        NSLog(@"-areaData-----%@",areaData);
                         
                         
                 
@@ -1584,7 +1635,7 @@
                         self.streetArray=[[NSArray alloc]initWithArray:arr];
                         pickView= [[ValuePickerView alloc]init];
                         
-                        NSLog(@"--------------%@",arr);
+//                        NSLog(@"--------------%@",arr);
                         pickView.dataSource = arr;
                         pickView.valueDidSelect = ^(NSString *value) {
                             
