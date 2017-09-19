@@ -1848,14 +1848,29 @@
 //        [pickView show];
 //        
 
+        
+        
     
         if (self.selectAddress_A.count==0) {
-            [self showHint:@"请选择省市区"];
-        }else{
+
             
+            self.selectAddress_A = [[NSUserDefaults standardUserDefaults]objectForKey:SELECTADDRESS];
+            NSLog(@"_selectAddress_A-----%@",_selectAddress_A);
+            
+            
+            if (self.selectAddress_A.count==0) {
+                
+                
+                [self showHint:@"请选择省市区"];
+            }else{
+                
+                [self getStreest];
+            }
+
+        }else{
             [self getStreest];
+ 
         }
-        
         return NO;
 
         

@@ -1489,6 +1489,7 @@
         
         if (self.selectAddress_A.count==0) {
             self.selectAddress_A = [[NSUserDefaults standardUserDefaults]objectForKey:SELECTADDRESS];
+            NSLog(@"_selectAddress_A-----%@",_selectAddress_A);
             
             
             if (self.selectAddress_A.count==0) {
@@ -1499,6 +1500,9 @@
                 
                 [self getStreest];
             }
+        }else{
+            [self getStreest];
+            
         }
        
         
