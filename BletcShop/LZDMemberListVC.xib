@@ -37,14 +37,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWc-t8-UZX">
                             <rect key="frame" x="297" y="20" width="78" height="44"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="行业内搜索" translatesAutoresizingMaskIntoConstraints="NO" id="aWi-tM-oBY">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="搜索icon" translatesAutoresizingMaskIntoConstraints="NO" id="aWi-tM-oBY">
                                     <rect key="frame" x="13.5" y="14" width="17" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="S4Q-Nx-kJ2"/>
                                         <constraint firstAttribute="width" constant="17" id="y4R-qw-tUA"/>
                                     </constraints>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="行业内条件筛选" translatesAutoresizingMaskIntoConstraints="NO" id="zh5-1O-EaI">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="筛选icon" translatesAutoresizingMaskIntoConstraints="NO" id="zh5-1O-EaI">
                                     <rect key="frame" x="47.5" y="14" width="17" height="17"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="17" id="Xjd-sL-8Xy"/>
@@ -56,14 +56,12 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="44" id="T8M-bR-g3x"/>
                                     </constraints>
-                                    <state key="normal" image="scan-open"/>
                                     <connections>
                                         <action selector="searchBtn:" destination="-1" eventType="touchUpInside" id="PRX-Fx-TjG"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fgg-il-ygB">
                                     <rect key="frame" x="44" y="0.0" width="34" height="44"/>
-                                    <state key="normal" image="scan-open"/>
                                     <connections>
                                         <action selector="searchBtn:" destination="-1" eventType="touchUpInside" id="bez-VU-gfo"/>
                                     </connections>
@@ -119,8 +117,7 @@
         </view>
     </objects>
     <resources>
-        <image name="scan-open" width="44" height="44"/>
-        <image name="行业内搜索" width="16" height="16"/>
-        <image name="行业内条件筛选" width="16" height="16"/>
+        <image name="搜索icon" width="17" height="17"/>
+        <image name="筛选icon" width="17" height="17"/>
     </resources>
 </document>

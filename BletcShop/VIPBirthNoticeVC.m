@@ -21,7 +21,7 @@
     LEFTBACK
     UIButton *customButton=[UIButton buttonWithType:UIButtonTypeCustom];
     customButton.frame=CGRectMake(0, 0, 20, 20);
-    [customButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+    [customButton setImage:[UIImage imageNamed:@"生日提醒icon"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(noticeTimeLimit) forControlEvents:UIControlEventTouchUpInside];
     
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:customButton];
