@@ -32,21 +32,23 @@
     bgView.clipsToBounds=YES;
     [self.view addSubview:bgView];
     
-    UIImageView *headImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, bgView.width, 100)];
-    headImage.image=[UIImage imageNamed:@""];
+    UIImageView *headImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, bgView.width, 268*bgView.width/698)];
+    headImage.image=[UIImage imageNamed:@"srbj"];
     [bgView addSubview:headImage];
     
-    NSArray *personArr=@[@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日生日"},@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日生日"},@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日生日"}];
-    int state=0;//state 代表有会员还是没会员生日==0没有，1有
+    NSArray *personArr=@[@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日"},@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日"},@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日"}];
+    int state=1;//state 代表有会员还是没会员生日==0没有，1有
     
     
-    UIScrollView *src=[[UIScrollView alloc]initWithFrame:CGRectMake(0, (bgView.height-110)/2, bgView.width, 110)];
+    UIScrollView *src=[[UIScrollView alloc]initWithFrame:CGRectMake(0, (bgView.height-110)/2-30, bgView.width, 110)];
     src.showsVerticalScrollIndicator=NO;
     src.showsHorizontalScrollIndicator=NO;
     if (personArr.count==1) {
         if (state==0) {
             UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54)/2, 0, 54, 54)];
-            cryImage.image=[UIImage imageNamed:@""];
+            cryImage.layer.cornerRadius=27;
+            cryImage.clipsToBounds=YES;
+            cryImage.image=[UIImage imageNamed:@"表情ss"];
             [src addSubview:cryImage];
             
             UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(0, cryImage.bottom+10, src.width, 13)];
@@ -59,8 +61,14 @@
             src.contentSize=CGSizeMake(0, 0);
         }else{
             UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54)/2, 0, 54, 54)];
+            cryImage.layer.cornerRadius=27;
+            cryImage.clipsToBounds=YES;
             cryImage.image=[UIImage imageNamed:@"icon3"];
             [src addSubview:cryImage];
+            
+            UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
+            circle.image=[UIImage imageNamed:@"选择ssss"];
+            [src addSubview:circle];
             
             UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(0, cryImage.bottom+10, src.width, 13)];
             notice.textAlignment=NSTextAlignmentCenter;
@@ -81,8 +89,14 @@
     }else if(personArr.count<=3){
         for (int i=0; i<personArr.count; i++) {
             UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54*personArr.count)/(personArr.count+1) + i%personArr.count*(54+(src.width-54*personArr.count)/(personArr.count+1)), 0, 54, 54)];
+            cryImage.layer.cornerRadius=27;
+            cryImage.clipsToBounds=YES;
             cryImage.image=[UIImage imageNamed:@"icon3"];
             [src addSubview:cryImage];
+            
+            UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
+            circle.image=[UIImage imageNamed:@"选择ssss"];
+            [src addSubview:circle];
             
             UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left, cryImage.bottom+10, cryImage.width, 13)];
             notice.textAlignment=NSTextAlignmentCenter;
@@ -104,7 +118,13 @@
         for (int i=0; i<personArr.count; i++) {
             UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54*3)/(3+1) + i%personArr.count*(54+(src.width-54*3)/(personArr.count+1)), 0, 54, 54)];
             cryImage.image=[UIImage imageNamed:@"icon3"];
+            cryImage.layer.cornerRadius=27;
+            cryImage.clipsToBounds=YES;
             [src addSubview:cryImage];
+            
+            UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
+            circle.image=[UIImage imageNamed:@"选择ssss"];
+            [src addSubview:circle];
             
             UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left, cryImage.bottom+10, cryImage.width, 13)];
             notice.textAlignment=NSTextAlignmentCenter;
@@ -130,19 +150,23 @@
     [sendCoupon setTitle:@"送上生日优惠信息" forState:UIControlStateNormal];
     [ sendCoupon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     sendCoupon.backgroundColor=NavBackGroundColor;
-    sendCoupon.frame=CGRectMake(19, src.height-113, src.width-38, 46);
+    sendCoupon.frame=CGRectMake(19, bgView.height-113, bgView.width-38, 46);
     sendCoupon.layer.cornerRadius=12;
     sendCoupon.clipsToBounds=YES;
-    [src addSubview:sendCoupon];
+    [bgView addSubview:sendCoupon];
     [sendCoupon addTarget:self action:@selector(sendCouponBtnClick) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel *bottomLable=[[UILabel alloc]initWithFrame:CGRectMake(0, sendCoupon.bottom+15, src.width, 13)];
+    UILabel *bottomLable=[[UILabel alloc]initWithFrame:CGRectMake(0, sendCoupon.bottom+15, bgView.width, 13)];
     bottomLable.text=@"即将生日的会员会在生日当天收到优惠信息";
     bottomLable.font=[UIFont systemFontOfSize:13.0f];
     bottomLable.textColor=RGB(119, 119, 119);
     bottomLable.textAlignment=NSTextAlignmentCenter;
-    [src addSubview:bottomLable];
+    [bgView addSubview:bottomLable];
     
+    if (personArr.count==1&&state==0) {
+        sendCoupon.backgroundColor=RGB(166, 166, 166);
+        sendCoupon.userInteractionEnabled=NO;
+    }
 }
 //生日提醒
 -(void)noticeTimeLimit{
@@ -150,7 +174,7 @@
 }
 //送生日问候
 -(void)sendCouponBtnClick{
-    
+    NSLog(@"老板还钱！！！！！！！！！！");
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
