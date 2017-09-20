@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, ZMButtonType) {
     if(_btnRectArray == nil)
     {
         _btnRectArray=[NSMutableArray new];
-        
+
     }
     return _btnRectArray;
 }
@@ -192,16 +192,21 @@ typedef NS_ENUM(NSInteger, ZMButtonType) {
             //按钮要到的位置的frame
 //            CGRect toValue =CGRectMake(margin*(i+1)+width*i+width/2, ScreenHeight*0.7+width/2, width, width);
             CGRect toValue;
-            toValue = CGRectMake(SCREENWIDTH-89-41, SCREENHEIGHT-100-41, 41, 41);
 
+            
             if (i==1) {
-                toValue = CGRectMake(SCREENWIDTH-21-41, SCREENHEIGHT-142-41, 41, 41);
+                
+                toValue = CGRectMake(_addBtn.center.x, _addBtn.top-25-41/2, 41, 41);
  
+            }else{
+                toValue = CGRectMake(_addBtn.left-25-41/2, _addBtn.top, 41, 41);
+
             }
             
             [self.fromRectArray addObject:[NSValue valueWithCGRect:toValue]];
             
             pushButton *menuButton = self.btnArray[i];
+            
             
             
             
@@ -357,6 +362,8 @@ typedef NS_ENUM(NSInteger, ZMButtonType) {
         menuButton0.center=[self.fromRectArray[0] CGRectValue].origin;
     }
     
+//    NSLog(@"===%@\n==%@\n==%@",_fromRectArray,NSStringFromCGPoint(menuButton0.center),NSStringFromCGPoint(menuButton1.center));
+
     
 //    pushButton *menuButton2 = self.btnArray[2];
 //    if([anim isEqual:[menuButton2.layer animationForKey:@"animation2"]])

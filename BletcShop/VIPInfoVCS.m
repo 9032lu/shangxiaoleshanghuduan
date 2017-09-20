@@ -8,7 +8,7 @@
 
 #import "VIPInfoVCS.h"
 #import "VIPInfoTableViewCell.h"
-#import "VIPBirthNoticeVC.h"
+
 @interface VIPInfoVCS ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *tableHeadView;
@@ -27,20 +27,17 @@
     LEFTBACK
     self.tableView.tableHeaderView=_tableHeadView;
     self.tableView.tableFooterView=_tableFootVeiw;
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"生日推送" style:UIBarButtonItemStylePlain target:self action: @selector(gonext)];
-   
+
+    
 }
--(void)gonext{
-    VIPBirthNoticeVC *vc=[[VIPBirthNoticeVC alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 65;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 0.01;
 }
--(CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section{
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return 0.01;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

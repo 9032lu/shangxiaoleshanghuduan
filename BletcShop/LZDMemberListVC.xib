@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LZDMemberListVC">
             <connections>
+                <outlet property="screenBtn" destination="fgg-il-ygB" id="k1b-7v-OD2"/>
                 <outlet property="table_View" destination="maN-G2-yFA" id="Yup-m3-wqN"/>
                 <outlet property="view" destination="BZG-v0-sT5" id="noh-xP-52E"/>
             </connections>
@@ -114,7 +115,7 @@
                 <constraint firstAttribute="trailing" secondItem="maN-G2-yFA" secondAttribute="trailing" id="ohJ-mu-Hyy"/>
                 <constraint firstItem="rG8-yf-Ly2" firstAttribute="leading" secondItem="BZG-v0-sT5" secondAttribute="leading" id="wa3-I9-Ex7"/>
             </constraints>
-            <point key="canvasLocation" x="-1453.5" y="-616.5"/>
+            <point key="canvasLocation" x="-2087" y="-903"/>
         </view>
     </objects>
     <resources>
