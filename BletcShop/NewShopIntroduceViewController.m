@@ -429,7 +429,7 @@
         pickReasonView.title = @"请选择门店服务";
         pickReasonView.dataSource = @[@"支持WIFI",@"提供车位",@"提供包间",@"提供纸巾",@"提供打包服务",@"其它(详情请咨询商家)"];
         pickReasonView.mutab_select = YES;
-        [self.view addSubview:pickReasonView];
+        [[UIApplication sharedApplication].keyWindow addSubview:pickReasonView];
         
         [pickReasonView show];
         
@@ -459,7 +459,7 @@
         pickReasonView.title = @"请选择购买须知";
         pickReasonView.dataSource = @[@"需要至少提前两小时预约",@"需要提前一天预约",@"无需预约",@"不在与其他优惠同享",@"本店每张会员卡仅限一人使用",@"消费时需出示本人证件",@"会员可使用/体验店内所有产品",@"其它(详情请咨询商家)"];
         pickReasonView.mutab_select = YES;
-        [self.view addSubview:pickReasonView];
+        [[UIApplication sharedApplication].keyWindow addSubview:pickReasonView];
         
         [pickReasonView show];
         

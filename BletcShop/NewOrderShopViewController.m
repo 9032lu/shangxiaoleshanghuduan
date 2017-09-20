@@ -276,7 +276,7 @@
                     pickReasonView.title = @"拒绝原因";
                     
                     pickReasonView.dataSource = @[@"商家休息中",@"商家暂停歇业",@"预约已满",@"店铺装修/硬件维修中",@"消费时需出示本人证件",@"需要至少提前两小时预约",@"其它(详情请咨询商家)"];
-                    [self.view addSubview:pickReasonView];
+                    [[UIApplication sharedApplication].keyWindow addSubview:pickReasonView];
                     
                     [pickReasonView show];
                     

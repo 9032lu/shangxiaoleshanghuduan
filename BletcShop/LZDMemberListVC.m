@@ -8,6 +8,8 @@
 
 #define ORANGECOLOR RGB(254,177,130)
 #define LIGHTGRAYCOLOR RGB(229,229,229)
+#define WHITEWIDTH 310
+
 
 #import "LZDMemberListVC.h"
 #import "DOPDropDownMenu.h"
@@ -16,7 +18,7 @@
 #import "ValuePickerView.h"
 #import "VIPInfoVCS.h"
 #import "VIPBirthNoticeVC.h"
-
+#import "PickReasonView.h"
 @interface LZDMemberListVC ()<DOPDropDownMenuDelegate,DOPDropDownMenuDataSource,UITableViewDelegate,UITableViewDataSource>
 {
     LZDButton *sex_old_btn;
@@ -42,6 +44,7 @@
 @property(nonatomic,strong)NSArray*profession_A;//职业
 
 @property(nonatomic,strong)NSArray*hobby_A;//爱好
+@property(nonatomic,strong)NSArray*festival_A;//节日
 
 @property(nonatomic,strong)ValuePickerView *valuePickView;
 
@@ -66,13 +69,14 @@
     [self.view addSubview:menu];
     
     
-    
+    PickReasonView *pickReasonView = [[PickReasonView alloc]init];
+
 
     
     
     LZDButton *addbtn = [LZDButton creatLZDButton];
-    addbtn.frame = CGRectMake(SCREENWIDTH-57-14, SCREENHEIGHT-60-57, 57, 57);
-    addbtn.backgroundColor = [UIColor redColor];
+    addbtn.frame = CGRectMake(SCREENWIDTH-74.5-14, SCREENHEIGHT-60-74.5, 74.5, 74.5);
+    [addbtn setBackgroundImage:[UIImage imageNamed:@"优惠推送"] forState:0];
     [self.view addSubview:addbtn];
     
     addbtn.block = ^(LZDButton *sender) {
@@ -82,9 +86,32 @@
         [[UIApplication sharedApplication].keyWindow addSubview:myview];
         [myview pushButton];
         
+        self.myPushView = myview;
+        
+        
+        
         myview.btnClickBlock = ^(UIButton *sender) {
           
+            [self.myPushView pushButton];
+
             NSLog(@"----%ld",sender.tag);
+            
+            if (sender.tag ==0) {
+                
+                pickReasonView.title = @"选择节日";
+                pickReasonView.dataSource =self.festival_A ;
+                pickReasonView.mutab_select = NO;
+                [[UIApplication sharedApplication].keyWindow addSubview:pickReasonView];
+                
+                
+                [pickReasonView show];
+
+                
+                pickReasonView.sureBtnClick = ^(NSArray *value_A) {
+                  
+                    NSLog(@"value_A--%@",value_A);
+                };
+            }
             
             if (sender.tag==1) {
                 PUSH(VIPBirthNoticeVC)
@@ -108,7 +135,11 @@
     [[UIApplication sharedApplication].keyWindow addSubview:screenBackView];
     self.screenBackView = screenBackView;
     
-    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(SCREENWIDTH-310, 0, 310, SCREENHEIGHT)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(screenHide:)];
+    
+    [screenBackView addGestureRecognizer:tap];
+    
+    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(SCREENWIDTH-WHITEWIDTH, 0, WHITEWIDTH, SCREENHEIGHT)];
 
     whiteView.backgroundColor = [UIColor whiteColor];
     [_screenBackView addSubview:whiteView];
@@ -183,7 +214,7 @@
                 //性别选择
                 if (sender.section==0) {
                 
-                    NSLog(@"---%@--%@",sender,sex_old_btn);
+
                     if (sender != sex_old_btn) {
                         sender.backgroundColor =ORANGECOLOR;
                         sex_old_btn.backgroundColor =LIGHTGRAYCOLOR;
@@ -274,26 +305,25 @@
             
             if (sender.tag ==0) {
                 
+                for (int i = 0; i <_btn_mut_A.count; i ++) {
+                    
+                    for (int j = 0; j <[_btn_mut_A[i] count]; j ++) {
+                        
+                        LZDButton *btn = _btn_mut_A[i][j];
+
+                        btn.backgroundColor = LIGHTGRAYCOLOR;
+                        [btn setTitle:_search_A[i][j] forState:0];
+                        
+                        if (i ==0&& j == 1) {
+                            sex_old_btn = btn;
+                            btn.backgroundColor = ORANGECOLOR;
+                        }
+                    }
+                    
+                }
                 
-//                for (int j = 0; j<[_search_A[i] count] ; j++) {
-//                    
-//                    LZDButton *btn = [LZDButton creatLZDButton];
-//                    
-//                    btn.frame = CGRectMake(16+(85+13)*j, sexLab.bottom +15, 85, 45);
-//                    btn.section = i;
-//                    btn.row = j;
-//                    btn.backgroundColor = LIGHTGRAYCOLOR;
-//                    
-//                    if (i==0&&j==1) {
-//                        btn.backgroundColor =ORANGECOLOR;
-//                        sex_old_btn = btn;
-//                    }
-//                    btn.layer.cornerRadius =5;
-//                    btn.layer.masksToBounds = YES;
-//                    btn.titleLabel.font = [UIFont systemFontOfSize:16];
-//                    [btn setTitle:_search_A[i][j] forState:UIControlStateNormal];
-//
-//                
+
+ 
                 
                 
                 
@@ -380,7 +410,7 @@
     
     
     UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, picker_backView.height-40)];
-    datePicker.backgroundColor= [UIColor lightGrayColor];
+    datePicker.backgroundColor= [UIColor whiteColor];
     
     
     datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
@@ -391,14 +421,17 @@
  
     datePicker.maximumDate= [NSDate date];
   
-    datePicker.date = [NSDate date];
+    datePicker.date = datePicker.maximumDate;
     
     [picker_backView addSubview:datePicker];
     
     [datePicker addTarget:self action:@selector(dateChange:)forControlEvents:UIControlEventValueChanged];
     
 
-
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc]init];
+    [dateformatter setDateFormat:@"yyyy年-MM月-dd日"];
+    
+    select_date = [dateformatter stringFromDate:datePicker.date];
   
     
     
@@ -506,15 +539,20 @@
 }
 
 
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+-(void)screenHide:(UITapGestureRecognizer*)tap{
     
-    for (UITouch *touch in touches) {
-        NSLog(@"%@",touch.view) ;
-        if (touch.view.tag ==999) {
-            
-            [self searchBtn:_screenBtn];
-        }
+    CGPoint point = [tap locationInView:_screenBackView];
+  
+//    NSLog(@"===%@",NSStringFromCGPoint(point));
+    
+    
+    if (point.x<=SCREENWIDTH-WHITEWIDTH || point.y <=64) {
+        
+        [self searchBtn:_screenBtn];
+        
+        
     }
+
     
     
 }
@@ -545,6 +583,30 @@
         _valuePickView = [[ValuePickerView alloc]init];
     }
     return _valuePickView;
+}
+-(NSArray *)festival_A{
+    if (!_festival_A) {
+        _festival_A =@[@"元旦",
+                       @"情人节",
+                       @"妇女节",
+                       @"植树节",
+                       @"消费者权益日",
+                       @"愚人节",
+                       @"劳动节",
+                       @"青年节",
+                       @"护士节",
+                       @"儿童节",
+                       @"建党节",
+                       @"建军节",
+                       @"教师节",
+                       @"孔子诞辰",
+                       @"国庆节",
+                       @"老人节",
+                       @"联合国日",
+                       @"平安夜",
+                       @"圣诞节"];
+    }
+    return _festival_A;
 }
 -(NSArray *)hobby_A{
     

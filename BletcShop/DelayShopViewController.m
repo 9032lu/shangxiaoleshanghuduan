@@ -330,7 +330,7 @@
                     pickReasonView.title = @"拒绝原因";
                     
                     pickReasonView.dataSource = @[@"直接拒绝",@"该卡不可延期",@"其它(详情请咨询商家)"];
-                    [self.view addSubview:pickReasonView];
+                    [[UIApplication sharedApplication].keyWindow addSubview:pickReasonView];
                     
                     [pickReasonView show];
                     

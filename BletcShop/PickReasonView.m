@@ -45,7 +45,7 @@
 
 -(void)initSubViews{
     
-    UIView *backView =[[UIView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-347-64, SCREENWIDTH, 347)];
+    UIView *backView =[[UIView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-347, SCREENWIDTH, 347)];
     backView.backgroundColor = [UIColor whiteColor];
     [self addSubview:backView];
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 56)];

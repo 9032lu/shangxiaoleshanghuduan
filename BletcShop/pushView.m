@@ -91,15 +91,15 @@ typedef NS_ENUM(NSInteger, ZMButtonType) {
         
         //添加加号按钮
         UIButton *addbtn=[UIButton buttonWithType:UIButtonTypeCustom];
-        
-        [addbtn setBackgroundImage:[UIImage imageNamed:@"post_animate_add"] forState:UIControlStateNormal];
+        [addbtn setBackgroundImage:[UIImage imageNamed:@"优惠推送"] forState:0];
+
+
         
 //        addbtn.frame=CGRectMake(0, 0, 60, 60);
 //        
 //        addbtn.center=CGPointMake(ScreenWidth/2, ScreenHeight-44);
         
-        addbtn.backgroundColor = [UIColor redColor];
-        addbtn.frame = CGRectMake(SCREENWIDTH-57-14, SCREENHEIGHT-60-57, 57, 57);
+        addbtn.frame = CGRectMake(SCREENWIDTH-74.5-14, SCREENHEIGHT-60-74.5, 74.5, 74.5);
 
         
         [addbtn addTarget:self action:@selector(closePushView) forControlEvents:UIControlEventTouchUpInside];
@@ -123,17 +123,22 @@ typedef NS_ENUM(NSInteger, ZMButtonType) {
         
         
         pushButton *btn=[pushButton buttonWithType:UIButtonTypeCustom];
-        btn.backgroundColor = [UIColor greenColor];
         [btn addTarget:self action:@selector(blick:) forControlEvents:UIControlEventTouchUpInside];
         
         btn.tag=i;
         
         //使按钮的frame和加号按钮的frame一样
-        btn.frame=CGRectMake(0, 0, 41, 41);
+        btn.frame=CGRectMake(0, 0, 59, 59);
         btn.center=self.addBtn.center;
         
+        if (i ==0) {
+            [btn setImage:[UIImage imageNamed:@"节日推送"] forState:UIControlStateNormal];
+
+        }else{
+            [btn setImage:[UIImage imageNamed:@"生日推送"] forState:UIControlStateNormal];
+
+        }
         
-        [btn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"post_animate_%lu",(unsigned long)(i+1)]] forState:UIControlStateNormal];
         
         //把按钮放到数组里，以便时候使用
         [self.btnArray addObject:btn];
@@ -196,10 +201,10 @@ typedef NS_ENUM(NSInteger, ZMButtonType) {
             
             if (i==1) {
                 
-                toValue = CGRectMake(_addBtn.center.x, _addBtn.top-25-41/2, 41, 41);
+                toValue = CGRectMake(_addBtn.center.x, _addBtn.top-25-59/2, 59, 59);
  
             }else{
-                toValue = CGRectMake(_addBtn.left-25-41/2, _addBtn.top, 41, 41);
+                toValue = CGRectMake(_addBtn.left-25-59/2, _addBtn.top, 59, 59);
 
             }
             
