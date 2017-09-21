@@ -13,6 +13,8 @@
 {
     
     UITableViewCell *oldCell;
+    
+    NSInteger singleSelect;
 }
 @property(nonatomic,strong)UITableView *table_View;
 @property(nonatomic,copy)NSMutableDictionary *value_mutab;
@@ -44,6 +46,8 @@
 
 
 -(void)initSubViews{
+    
+    singleSelect = 0;
     
     UIView *backView =[[UIView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-347, SCREENWIDTH, 347)];
     backView.backgroundColor = [UIColor whiteColor];
@@ -155,26 +159,19 @@
         }
         
     }else{
-        if (!oldCell) {
-            
-            if (indexPath.row ==0) {
-                oldCell = cell;
-                oldCell.tag = indexPath.row;
-                ((UIImageView*)[cell.contentView viewWithTag:999]).image = [UIImage imageNamed:@"选中sex"];
-            }else{
-                ((UIImageView*)[cell.contentView viewWithTag:999]).image = [UIImage imageNamed:@"默认sex"];
-                
-            }
+        
+        cell.tag = indexPath.row;
+        
+        
+        if (indexPath.row == singleSelect) {
+            ((UIImageView*)[cell.contentView viewWithTag:999]).image = [UIImage imageNamed:@"选中sex"];
+
         }else{
-            
-            if (oldCell.tag == indexPath.row) {
-                ((UIImageView*)[cell.contentView viewWithTag:999]).image = [UIImage imageNamed:@"选中sex"];
-                
-            }else{
-                ((UIImageView*)[cell.contentView viewWithTag:999]).image = [UIImage imageNamed:@"默认sex"];
-                
-            }
+            ((UIImageView*)[cell.contentView viewWithTag:999]).image = [UIImage imageNamed:@"默认sex"];
+ 
         }
+
+        
     }
     
   
@@ -233,28 +230,21 @@
             
         }
     
-        [tableView reloadData];
        
     }else{
         
+        singleSelect = indexPath.row;
         
-        if (cell !=oldCell) {
-            
-            ((UIImageView*)[cell.contentView viewWithTag:999]).image = [UIImage imageNamed:@"选中sex"];
-            ((UIImageView*)[oldCell.contentView viewWithTag:999]).image = [UIImage imageNamed:@"默认sex"];
-            
-            
-            
-            oldCell = cell;
-            oldCell.tag = indexPath.row;
-        }
-  
+        
+     
+        
         [self.value_mutab removeAllObjects];
         [self.value_mutab setValue:self.dataSource[indexPath.row] forKey:[NSString stringWithFormat:@"%ld",indexPath.row]];
         
         
     }
     
+    [tableView reloadData];
 
     
 }

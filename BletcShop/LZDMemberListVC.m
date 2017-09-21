@@ -19,6 +19,18 @@
 #import "VIPInfoVCS.h"
 #import "VIPBirthNoticeVC.h"
 #import "PickReasonView.h"
+#import "UIImageView+WebCache.h"
+
+typedef NS_ENUM(NSInteger,ScreenType) {
+    
+    sum,
+    count,
+    age,
+    extra
+    
+};//筛选类型
+
+
 @interface LZDMemberListVC ()<DOPDropDownMenuDelegate,DOPDropDownMenuDataSource,UITableViewDelegate,UITableViewDataSource>
 {
     LZDButton *sex_old_btn;
@@ -26,7 +38,9 @@
     UIView *picker_backView;
     
     NSString *select_date;//所选的日期
-    
+    SDRefreshHeaderView *_refreshheader;
+    SDRefreshFooterView *_refreshFooter;
+
 }
 @property (strong, nonatomic) IBOutlet UITableView *table_View;
 @property (strong, nonatomic) IBOutlet UIButton *screenBtn;
@@ -48,6 +62,18 @@
 
 @property(nonatomic,strong)ValuePickerView *valuePickView;
 
+@property(nonatomic,assign)NSInteger pageIndex;//页码
+
+
+@property(nonatomic,strong)NSMutableArray *data_Muta_A;
+
+@property(nonatomic,strong)NSMutableDictionary *extra_screen_Dic;//其他筛选条件
+
+
+
+@property ScreenType s_type;
+
+
 @end
 
 @implementation LZDMemberListVC
@@ -58,9 +84,14 @@
     [super viewDidLoad];
     self.view.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
     
+    self.pageIndex = 1;
+    
     self.table_View.estimatedRowHeight = 100;
     self.table_View.rowHeight = UITableViewAutomaticDimension;
 
+    
+    
+    
     
     DOPDropDownMenu *menu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0,64) andHeight:44 andSuperView:self.view];
     menu.delegate = self;
@@ -125,6 +156,34 @@
     if (!self.screenBackView) {
         [self creatScreenView];
     }
+    
+    
+    _refreshheader = [SDRefreshHeaderView refreshView];
+    [_refreshheader addToScrollView:self.table_View];
+    _refreshheader.isEffectedByNavigationController = NO;
+    
+    __block typeof(self)tempSelf =self;
+    _refreshheader.beginRefreshingOperation = ^{
+        tempSelf.pageIndex=1;
+
+        //请求数据
+        [tempSelf getDataRequest];
+    };
+    
+    
+    _refreshFooter = [SDRefreshFooterView refreshView];
+    [_refreshFooter addToScrollView:self.table_View];
+    _refreshFooter.beginRefreshingOperation =^{
+        tempSelf.pageIndex++;
+        //数据请求
+
+        [tempSelf getDataRequest];
+        
+    };
+
+    
+    [self getDataRequest];
+    
 }
 
 -(void)creatScreenView{
@@ -183,6 +242,7 @@
         [whiteView addSubview:sexLab];
         
     
+        __block typeof(self) blockSelf = self;
 
         NSMutableArray *muta_A = [NSMutableArray array];
         
@@ -195,10 +255,7 @@
             btn.row = j;
             btn.backgroundColor = LIGHTGRAYCOLOR;
 
-            if (i==0&&j==1) {
-                btn.backgroundColor =ORANGECOLOR;
-                sex_old_btn = btn;
-            }
+           
             btn.layer.cornerRadius =5;
             btn.layer.masksToBounds = YES;
             btn.titleLabel.font = [UIFont systemFontOfSize:16];
@@ -219,6 +276,9 @@
                         sender.backgroundColor =ORANGECOLOR;
                         sex_old_btn.backgroundColor =LIGHTGRAYCOLOR;
                         sex_old_btn = sender;
+                        
+                        
+                        [blockSelf.extra_screen_Dic setValue:[sender titleForState:0] forKey:@"sex"];
                     }
                 }
                 //生日选择
@@ -236,7 +296,7 @@
                 if (sender.section ==2) {
                     
                   
-                    self.valuePickView.dataSource = self.profession_A;
+                    blockSelf.valuePickView.dataSource = self.profession_A;
                     
                     [_valuePickView show];
 
@@ -245,6 +305,9 @@
                         sender.backgroundColor =ORANGECOLOR;
                         
                         [sender setTitle:[[value componentsSeparatedByString:@"/"] firstObject] forState:0];
+                        
+                        
+                        [blockSelf.extra_screen_Dic setValue:[sender titleForState:0] forKey:@"occupation"];
 
                         
                     };
@@ -267,6 +330,8 @@
                         
                         [sender setTitle:[[value componentsSeparatedByString:@"/"] firstObject] forState:0];
                         
+                        [blockSelf.extra_screen_Dic setValue:[sender titleForState:0] forKey:@"hobby"];
+
                         
                     };
                     
@@ -295,9 +360,11 @@
         if ( i ==0) {
             [btn setTitle:@"重置" forState:0];
             
+            
         }else{
             [btn setTitle:@"确定" forState:0];
            
+            
         }
         [whiteView addSubview:btn];
         
@@ -314,16 +381,14 @@
                         btn.backgroundColor = LIGHTGRAYCOLOR;
                         [btn setTitle:_search_A[i][j] forState:0];
                         
-                        if (i ==0&& j == 1) {
-                            sex_old_btn = btn;
-                            btn.backgroundColor = ORANGECOLOR;
-                        }
+                       
+                        
                     }
                     
                 }
                 
 
- 
+                [_extra_screen_Dic removeAllObjects];
                 
                 
                 
@@ -331,8 +396,14 @@
             
             
             if (sender.tag ==1) {
+                
+                NSLog(@"_extra_screen_Dic----%@",_extra_screen_Dic);
+
                 [self searchBtn:_screenBtn];
 
+                _pageIndex = 1;
+                _s_type = extra;
+                [self getDataRequest];
             }
         };
         
@@ -375,6 +446,20 @@
 
         }
         
+        NSString *year = date_A[0];
+        NSString *month = date_A[1];
+        NSString *day = date_A[2];
+
+        year= [year substringToIndex:4];
+        month= [month substringToIndex:2];
+        day= [day substringToIndex:2];
+
+        NSString *y_m_d = [NSString stringWithFormat:@"%d-%d-%d",[year intValue],[month intValue],[day intValue]];
+        
+        NSLog(@"----%@",y_m_d);
+        
+        [self.extra_screen_Dic setValue:y_m_d forKey:@"birth"];
+
 
         [UIView animateWithDuration:0.3 animations:^{
             
@@ -478,7 +563,7 @@
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.data_Muta_A.count;
 }
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -491,17 +576,30 @@
         
     }
     
-    cell.consumeLab.text = @"消费次数：18次";
+    if (self.data_Muta_A.count) {
+        NSDictionary *dic= _data_Muta_A[indexPath.row];
+    
+        
+        NSString *name = [NSString getTheNoNullStr:dic[@"name"] andRepalceStr:@""];
+        name = name.length==0?[NSString getTheNoNullStr:dic[@"nickname"] andRepalceStr:@""]:name;
+        
+        
+        cell.nameLab.text = [NSString stringWithFormat:@"名称:%@",name];
+        cell.cardTypelab.text = [NSString stringWithFormat:@"消费卡种:%@",[NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@""]];
+        cell.consumeLab.text = [NSString stringWithFormat:@"消费次数:%.2f元",[dic[@"sum"] floatValue]];
+
+    
+        [cell.headerImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HEADIMAGE,dic[@"headimage"]]] placeholderImage:[UIImage imageNamed:@"userHeader"]];
+    
     
     
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]initWithString:cell.consumeLab.text];
-    
-    
+ 
     
     [attr setAttributes:@{NSForegroundColorAttributeName:RGB(51,51,51),NSFontAttributeName:[UIFont systemFontOfSize:13]} range:NSMakeRange(0, 5)];
-    
 
     cell.consumeLab.attributedText = attr;
+    }
 
     return cell;
 }
@@ -543,7 +641,7 @@
     
     CGPoint point = [tap locationInView:_screenBackView];
   
-//    NSLog(@"===%@",NSStringFromCGPoint(point));
+
     
     
     if (point.x<=SCREENWIDTH-WHITEWIDTH || point.y <=64) {
@@ -554,6 +652,75 @@
     }
 
     
+    
+}
+
+#pragma mark 数据请求
+
+-(void)getDataRequest{
+    
+    NSString *url = [NSString stringWithFormat:@"%@MerchantType/member/getList",BASEURL];
+    
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    
+    NSMutableDictionary*paramer = [NSMutableDictionary dictionary];
+    [paramer setValue:app.shopInfoDic[@"muid"] forKey:@"muid"];
+    
+    if (self.s_type ==sum) {
+        
+        [paramer setValue:@"consum_sum" forKey:@"type"];
+        [paramer setValue:@"asc" forKey:@"order"];
+        
+    }else if (_s_type ==count){
+        [paramer setValue:@"consum_count" forKey:@"type"];
+
+    }else if (_s_type ==age){
+        
+        [paramer setValue:@"consum_age" forKey:@"type"];
+
+        
+    }else if (_s_type ==extra){
+        
+        
+        [paramer setValue:@"extra" forKey:@"type"];
+        
+        NSString *json_s = [NSString dictionaryToJson:_extra_screen_Dic];
+        
+        [paramer setValue:json_s forKey:@"order"];
+
+    }
+    
+   
+    
+    [paramer setValue:[NSString stringWithFormat:@"%ld",_pageIndex] forKey:@"page"];
+
+
+    NSLog(@"paramer===%@",paramer);
+    [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        
+        [_refreshFooter endRefreshing];
+        [_refreshheader endRefreshing];
+        if (_pageIndex==1) {
+            
+            [self.data_Muta_A removeAllObjects];
+            
+            self.data_Muta_A = [result mutableCopy];
+        }else{
+            
+            [self.data_Muta_A addObjectsFromArray:result];
+        }
+        
+        
+        [self.table_View reloadData];
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"===%@",error);
+        [_refreshFooter endRefreshing];
+        [_refreshheader endRefreshing];
+
+    }];
+
     
 }
 
@@ -577,7 +744,19 @@
 
 
 #pragma mark 懒加载
+-(NSMutableDictionary *)extra_screen_Dic{
+    if (!_extra_screen_Dic) {
+        _extra_screen_Dic = [NSMutableDictionary dictionary];
+    }
+    return _extra_screen_Dic;
+}
 
+-(NSMutableArray *)data_Muta_A{
+    if (!_data_Muta_A) {
+        _data_Muta_A = [NSMutableArray array];
+    }
+    return _data_Muta_A;
+}
 -(ValuePickerView *)valuePickView{
     if (!_valuePickView) {
         _valuePickView = [[ValuePickerView alloc]init];
