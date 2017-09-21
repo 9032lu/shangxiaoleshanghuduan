@@ -8,17 +8,50 @@
 
 #import "VIPInfoVCS.h"
 #import "VIPInfoTableViewCell.h"
-
+#import "UIImageView+WebCache.h"
+#import "LZDChartViewController.h"
+#import "VipMoneyRecordRelationVC.h"//升级和续卡记录
+#import "CardBuyRecordVC.h"//办卡记录
+#import "ChargeRecVC.h"//记录-升级，续卡
 @interface VIPInfoVCS ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *tableHeadView;
 @property (strong, nonatomic) IBOutlet UIView *tableFootVeiw;
-
+@property (weak, nonatomic) IBOutlet UIImageView *headImage;
+@property (weak, nonatomic) IBOutlet UILabel *nickName;
+@property (weak, nonatomic) IBOutlet UILabel *realName;
+@property (weak, nonatomic) IBOutlet UILabel *sexy;
+@property (weak, nonatomic) IBOutlet UILabel *telPhone;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *cardCounts;
+@property (weak, nonatomic) IBOutlet UILabel *cardMoney;
+@property (weak, nonatomic) IBOutlet UILabel *cardRemain;
+@property (nonatomic,strong)NSDictionary *resultDic;
 @end
 
 @implementation VIPInfoVCS
+- (IBAction)buyCardRecordClick:(id)sender {
+    PUSH(CardBuyRecordVC)
+    vc.title = @"办卡明细";
+    vc.dic=self.infoDic;
+}
+
+//发送消息
 - (IBAction)sendMSG:(id)sender {
     
+    Person *p = [Person modalWith:[NSString getTheNoNullStr:self.resultDic[@"info"][@"nickname"] andRepalceStr:@""] imgStr:[NSString getTheNoNullStr:self.resultDic[@"info"][@"headimage"]  andRepalceStr:@""] idstring:self.infoDic[@"uuid"]];
+    
+    [Database savePerdon:p];
+    
+    LZDChartViewController *chatCtr = [[LZDChartViewController alloc]init];
+    [chatCtr setHidesBottomBarWhenPushed:YES];
+    chatCtr.title=[NSString getTheNoNullStr:self.resultDic[@"info"][@"nickname"] andRepalceStr:@""];
+    chatCtr.username = self.infoDic[@"uuid"];
+    NSLog(@"chatCtr.username---%@",chatCtr.username);
+
+    chatCtr.chatType = EMChatTypeChat;
+    
+    [self.navigationController pushViewController:chatCtr animated:YES];
 }
 
 - (void)viewDidLoad {
@@ -27,8 +60,11 @@
     LEFTBACK
     self.tableView.tableHeaderView=_tableHeadView;
     self.tableView.tableFooterView=_tableFootVeiw;
-
-    
+    self.headImage.layer.cornerRadius=27;
+    self.headImage.clipsToBounds=YES;
+    NSLog(@"infoDic======%@",self.infoDic);
+    self.resultDic=[[NSDictionary alloc]init];
+    [self postRequestVIPinfos];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -53,12 +89,56 @@
     }
     if (indexPath.row==0) {
         cell.title.text=@"消费总额(元)：";
-        cell.money.text=@"2000";
+        NSString *costMoney=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:self.resultDic[@"consum"][@"sum"] andRepalceStr:@"0"]];
+        float total=[costMoney floatValue];
+        cell.money.text=[NSString stringWithFormat:@"%.2f",total];
     }else{
         cell.title.text=@"充值总额(次)：";
-        cell.money.text=@"3000";
+        cell.money.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:self.resultDic[@"rec"][@"sum"] andRepalceStr:@"0"]];
     }
     return cell;
+}
+//获取会员个人信息
+-(void)postRequestVIPinfos{
+    NSString *url =[[NSString alloc]initWithFormat:@"%@/MerchantType/member/getInfo",BASEURL];
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [params setObject:self.infoDic[@"uuid"] forKey:@"uuid"];
+    [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
+    
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        self.resultDic=result;
+        [self.headImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HEADIMAGE,result[@"info"][@"headimage"]]] placeholderImage:[UIImage imageNamed:@"userHeader"]];
+        self.nickName.text=[NSString stringWithFormat:@"昵称：%@",[NSString getTheNoNullStr:result[@"info"][@"nickname"] andRepalceStr:@""]];
+        self.realName.text=[NSString stringWithFormat:@"真实姓名：%@",[NSString getTheNoNullStr:result[@"info"][@"name"] andRepalceStr:@""]];
+        self.sexy.text=[NSString stringWithFormat:@"性别：%@",[NSString getTheNoNullStr:result[@"info"][@"sex"] andRepalceStr:@""]];
+        self.telPhone.text=[NSString stringWithFormat:@"电话：%@",[NSString getTheNoNullStr:result[@"info"][@"phone"] andRepalceStr:@""]];
+        self.address.text=[NSString stringWithFormat:@"地址：%@",[NSString getTheNoNullStr:result[@"info"][@"address"] andRepalceStr:@""]];
+        self.cardCounts.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"num"] andRepalceStr:@""]];
+        self.cardMoney.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"sum"] andRepalceStr:@""]];
+        self.cardRemain.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"remain"] andRepalceStr:@""]];
+        NSLog(@"%@", result);
+       
+        [self.tableView reloadData];
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@", error);
+        
+    }];
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.row==0) {
+        PUSH(VipMoneyRecordRelationVC)
+        vc.title = @"消费明细";
+        vc.dic=self.infoDic;
+    }else{
+        PUSH(ChargeRecVC)
+        vc.title = @"充值明细";
+        vc.dic=self.infoDic;
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

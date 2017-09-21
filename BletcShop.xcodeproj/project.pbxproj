@@ -130,6 +130,14 @@
 		18CB32D91D6C2B2B005A9D64 /* UIBarButtonItem+Extends.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32CF1D6C2B2B005A9D64 /* UIBarButtonItem+Extends.m */; };
 		18CB32DA1D6C2B2B005A9D64 /* UIImage+Extends.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32D11D6C2B2B005A9D64 /* UIImage+Extends.m */; };
 		18CB32DB1D6C2B2B005A9D64 /* UINavigationController+Extends.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32D31D6C2B2B005A9D64 /* UINavigationController+Extends.m */; };
+		18CF67A01F739AF90004C573 /* VipMoneyRecordRelationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF679E1F739AF90004C573 /* VipMoneyRecordRelationVC.m */; };
+		18CF67A11F739AF90004C573 /* VipMoneyRecordRelationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF679F1F739AF90004C573 /* VipMoneyRecordRelationVC.xib */; };
+		18CF67AD1F73A5F40004C573 /* CardBuyRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67AB1F73A5F40004C573 /* CardBuyRecordVC.m */; };
+		18CF67AE1F73A5F40004C573 /* CardBuyRecordVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67AC1F73A5F40004C573 /* CardBuyRecordVC.xib */; };
+		18CF67B21F73B27E0004C573 /* CardBuyRecTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67B01F73B27E0004C573 /* CardBuyRecTableViewCell.m */; };
+		18CF67B31F73B27E0004C573 /* CardBuyRecTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67B11F73B27E0004C573 /* CardBuyRecTableViewCell.xib */; };
+		18CF67B81F73C8850004C573 /* ChargeRecVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67B61F73C8850004C573 /* ChargeRecVC.m */; };
+		18CF67B91F73C8850004C573 /* ChargeRecVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67B71F73C8850004C573 /* ChargeRecVC.xib */; };
 		18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E411ED6D4EC0077861A /* NSTimer+addition.m */; };
 		18D43E471ED6D4EC0077861A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E431ED6D4EC0077861A /* UIView+Frame.m */; };
 		18D43E481ED6D4EC0077861A /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E451ED6D4EC0077861A /* WYWebProgressLayer.m */; };
@@ -954,6 +962,18 @@
 		18CB32D31D6C2B2B005A9D64 /* UINavigationController+Extends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Extends.m"; sourceTree = "<group>"; };
 		18CB32D41D6C2B2B005A9D64 /* HKModelMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKModelMarco.h; sourceTree = "<group>"; };
 		18CB32D51D6C2B2B005A9D64 /* HKViewMarco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewMarco.h; sourceTree = "<group>"; };
+		18CF679D1F739AF90004C573 /* VipMoneyRecordRelationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VipMoneyRecordRelationVC.h; sourceTree = "<group>"; };
+		18CF679E1F739AF90004C573 /* VipMoneyRecordRelationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VipMoneyRecordRelationVC.m; sourceTree = "<group>"; };
+		18CF679F1F739AF90004C573 /* VipMoneyRecordRelationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VipMoneyRecordRelationVC.xib; sourceTree = "<group>"; };
+		18CF67AA1F73A5F40004C573 /* CardBuyRecordVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardBuyRecordVC.h; sourceTree = "<group>"; };
+		18CF67AB1F73A5F40004C573 /* CardBuyRecordVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardBuyRecordVC.m; sourceTree = "<group>"; };
+		18CF67AC1F73A5F40004C573 /* CardBuyRecordVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBuyRecordVC.xib; sourceTree = "<group>"; };
+		18CF67AF1F73B27E0004C573 /* CardBuyRecTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardBuyRecTableViewCell.h; sourceTree = "<group>"; };
+		18CF67B01F73B27E0004C573 /* CardBuyRecTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardBuyRecTableViewCell.m; sourceTree = "<group>"; };
+		18CF67B11F73B27E0004C573 /* CardBuyRecTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardBuyRecTableViewCell.xib; sourceTree = "<group>"; };
+		18CF67B51F73C8850004C573 /* ChargeRecVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargeRecVC.h; sourceTree = "<group>"; };
+		18CF67B61F73C8850004C573 /* ChargeRecVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargeRecVC.m; sourceTree = "<group>"; };
+		18CF67B71F73C8850004C573 /* ChargeRecVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargeRecVC.xib; sourceTree = "<group>"; };
 		18D43E401ED6D4EC0077861A /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		18D43E411ED6D4EC0077861A /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
 		18D43E421ED6D4EC0077861A /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -2690,6 +2710,7 @@
 				186991961F721C350084D3C8 /* VIPInfoTableViewCell.h */,
 				186991971F721C350084D3C8 /* VIPInfoTableViewCell.m */,
 				186991981F721C350084D3C8 /* VIPInfoTableViewCell.xib */,
+				18CF679C1F739AA40004C573 /* 会员消费-办卡-升级等记录 */,
 			);
 			name = "会员信息页面s";
 			sourceTree = "<group>";
@@ -2882,6 +2903,57 @@
 				18CB32D51D6C2B2B005A9D64 /* HKViewMarco.h */,
 			);
 			name = "定义剪裁框";
+			sourceTree = "<group>";
+		};
+		18CF679C1F739AA40004C573 /* 会员消费-办卡-升级等记录 */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67B41F73C83F0004C573 /* 充值 */,
+				18CF67A41F73A2B40004C573 /* 续卡升级 record */,
+				18CF67A31F73A29D0004C573 /* 办卡 record */,
+				18CF67A21F73A2880004C573 /* 消费 record */,
+			);
+			name = "会员消费-办卡-升级等记录";
+			sourceTree = "<group>";
+		};
+		18CF67A21F73A2880004C573 /* 消费 record */ = {
+			isa = PBXGroup;
+			children = (
+				18CF679D1F739AF90004C573 /* VipMoneyRecordRelationVC.h */,
+				18CF679E1F739AF90004C573 /* VipMoneyRecordRelationVC.m */,
+				18CF679F1F739AF90004C573 /* VipMoneyRecordRelationVC.xib */,
+			);
+			name = "消费 record";
+			sourceTree = "<group>";
+		};
+		18CF67A31F73A29D0004C573 /* 办卡 record */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67AA1F73A5F40004C573 /* CardBuyRecordVC.h */,
+				18CF67AB1F73A5F40004C573 /* CardBuyRecordVC.m */,
+				18CF67AC1F73A5F40004C573 /* CardBuyRecordVC.xib */,
+				18CF67AF1F73B27E0004C573 /* CardBuyRecTableViewCell.h */,
+				18CF67B01F73B27E0004C573 /* CardBuyRecTableViewCell.m */,
+				18CF67B11F73B27E0004C573 /* CardBuyRecTableViewCell.xib */,
+			);
+			name = "办卡 record";
+			sourceTree = "<group>";
+		};
+		18CF67A41F73A2B40004C573 /* 续卡升级 record */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "续卡升级 record";
+			sourceTree = "<group>";
+		};
+		18CF67B41F73C83F0004C573 /* 充值 */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67B51F73C8850004C573 /* ChargeRecVC.h */,
+				18CF67B61F73C8850004C573 /* ChargeRecVC.m */,
+				18CF67B71F73C8850004C573 /* ChargeRecVC.xib */,
+			);
+			name = "充值";
 			sourceTree = "<group>";
 		};
 		18D0B4BF1EFE05BB00302D79 /* 添加套餐卡 */ = {
@@ -5007,6 +5079,7 @@
 				D9B8941E1F67C63000278B74 /* 未标题-1 2.jpg in Resources */,
 				186991711F6A5FA50084D3C8 /* TransferMoneyDetailVC.xib in Resources */,
 				D92ACDC31F0CD59500858727 /* PackageOtherTableViewCell.xib in Resources */,
+				18CF67AE1F73A5F40004C573 /* CardBuyRecordVC.xib in Resources */,
 				1CEFFA751C7ED6DF00671471 /* xuan1.png in Resources */,
 				184D2F4C1F4E8648008F8C55 /* 线上shop.png in Resources */,
 				D92ACDA81F0CD4FF00858727 /* PackageCheckVC.xib in Resources */,
@@ -5068,6 +5141,7 @@
 				D92ACDDA1F0CD63D00858727 /* ExperienceCardTabVC.xib in Resources */,
 				D9AB25331D88E4ED000E9288 /* VoiceSearchFeedback005@2x.png in Resources */,
 				D94B86E71D6BED5D00E15A70 /* app_icon3.png in Resources */,
+				18CF67B31F73B27E0004C573 /* CardBuyRecTableViewCell.xib in Resources */,
 				189CC5B31EF930CD00A73BB6 /* ResetPhoneNextVC.xib in Resources */,
 				18F27EEE1D640E84002DD03A /* 头像-6.png in Resources */,
 				D9AB25301D88E4ED000E9288 /* VoiceSearchFeedback002@2x.png in Resources */,
@@ -5168,6 +5242,7 @@
 				1844372A1F57E554001D5046 /* ChatForAllDatasVC.xib in Resources */,
 				18D846491ED570510048F010 /* 下角标.png in Resources */,
 				D9AB253E1D88E4ED000E9288 /* VoiceSearchFeedback016@2x.png in Resources */,
+				18CF67B91F73C8850004C573 /* ChargeRecVC.xib in Resources */,
 				D980B6651D77FB0F00CC6637 /* user@2x.png in Resources */,
 				D980B6631D77FB0900CC6637 /* group@2x.png in Resources */,
 				189CC5A61EF92EAA00A73BB6 /* LoginQuestionViewController.xib in Resources */,
@@ -5177,6 +5252,7 @@
 				D93C1A241EE9588C006DA624 /* ShoerRegistThree.xib in Resources */,
 				D9ED52051D2A467700267729 /* grey_red.png in Resources */,
 				D949EC351CE1C4A40023B6D6 /* area.plist in Resources */,
+				18CF67A11F739AF90004C573 /* VipMoneyRecordRelationVC.xib in Resources */,
 				18D89C671D51EF4900717B11 /* select_false.png in Resources */,
 				186991831F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib in Resources */,
 				D9883A4F1ECD391800B06D24 /* 形状 1 拷贝.png in Resources */,
@@ -5260,6 +5336,7 @@
 				D98ECBCC1D9CE07100BEDD57 /* LZDAddVIPViewController.m in Sources */,
 				D9637DF71D59B4AB00C19D0B /* ChoiceAdminAlertView.m in Sources */,
 				18EDCF701D46039D004C40B7 /* NSString+Addition.m in Sources */,
+				18CF67B21F73B27E0004C573 /* CardBuyRecTableViewCell.m in Sources */,
 				D98E5C1A1E51524D009D56BF /* SRVideoLayerView.m in Sources */,
 				185E51461E5D2E10009F0C01 /* PublishTopScrollAdvertVC.m in Sources */,
 				D9B3BB9A1DE7E05700CC8B0D /* AddproductVC.m in Sources */,
@@ -5356,7 +5433,9 @@
 				18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */,
 				18CA8AEF1F565C7200E1D84A /* AlertViewWithTableView.m in Sources */,
 				D92C632B1CC8C8D4006768C6 /* AdminViewController.m in Sources */,
+				18CF67AD1F73A5F40004C573 /* CardBuyRecordVC.m in Sources */,
 				D958AD691E654CF200B0776F /* JHPieItemsView.m in Sources */,
+				18CF67A01F739AF90004C573 /* VipMoneyRecordRelationVC.m in Sources */,
 				D98E5C001E515210009D56BF /* MASLayoutConstraint.m in Sources */,
 				D93C1A231EE9588C006DA624 /* ShoerRegistThree.m in Sources */,
 				D96503E61CE06E1D006907EF /* GCDAsyncUdpSocket.m in Sources */,
@@ -5412,6 +5491,7 @@
 				D9B3A49E1D73D5BF00F3F27E /* LZDChartViewController.m in Sources */,
 				D99292621D8FF44A00103914 /* CashListViewController.m in Sources */,
 				D9B3A5C11D74255700F3F27E /* PSTCollectionViewItemKey.m in Sources */,
+				18CF67B81F73C8850004C573 /* ChargeRecVC.m in Sources */,
 				1CDA9E1D1C5A160D00DFE518 /* ShopMoreViewController.m in Sources */,
 				D941135B1CE9A3D7008E231F /* MD5DataSigner.m in Sources */,
 				D9CDFB691CC47F7C0054EBE3 /* BDMapViewController.m in Sources */,
@@ -5859,7 +5939,7 @@
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/BletcShop/AlipaySDK";
 				INFOPLIST_FILE = BletcShop/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/BletcShop/AlipaySDK",
@@ -5911,7 +5991,7 @@
 				GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/BletcShop/AlipaySDK";
 				INFOPLIST_FILE = BletcShop/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(SRCROOT)/BletcShop/AlipaySDK",
