@@ -2681,7 +2681,7 @@
 			name = "奖励政策";
 			sourceTree = "<group>";
 		};
-		186991901F7204330084D3C8 /* 会员其它信息页面s */ = {
+		186991901F7204330084D3C8 /* 会员信息页面s */ = {
 			isa = PBXGroup;
 			children = (
 				186991911F72050C0084D3C8 /* VIPInfoVCS.h */,
@@ -2691,7 +2691,7 @@
 				186991971F721C350084D3C8 /* VIPInfoTableViewCell.m */,
 				186991981F721C350084D3C8 /* VIPInfoTableViewCell.xib */,
 			);
-			name = "会员其它信息页面s";
+			name = "会员信息页面s";
 			sourceTree = "<group>";
 		};
 		1869919B1F72371E0084D3C8 /* 生日推送s */ = {
@@ -4576,7 +4576,7 @@
 			isa = PBXGroup;
 			children = (
 				1869919B1F72371E0084D3C8 /* 生日推送s */,
-				186991901F7204330084D3C8 /* 会员其它信息页面s */,
+				186991901F7204330084D3C8 /* 会员信息页面s */,
 				D9C2EF301F70F151007919C2 /* 会员列表s */,
 			);
 			name = "新的会员管理s";
