@@ -10,4 +10,6 @@
 
 @interface VIPInfoVCS : UIViewController
 
+@property (nonatomic , strong) NSDictionary *infoDic;// <#Description#>
+
 @end

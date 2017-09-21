@@ -607,6 +607,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     PUSH(VIPInfoVCS)
+    vc.infoDic =self.data_Muta_A[indexPath.row];
     
 }
 
