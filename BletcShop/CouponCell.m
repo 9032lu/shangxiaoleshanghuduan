@@ -121,6 +121,14 @@
     
     self.youjian=more;
     
+    UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(view.width-35, 38, 15, 15)];
+    circle.image=[UIImage imageNamed:@"选择nnnn"];
+    circle.hidden=YES;
+    [view addSubview:circle];
+    
+    self.chooseCircle=circle;
+    
+    
     UIView *line=[[UIView alloc]initWithFrame:CGRectMake(18, 84, view.width-36, 1)];
     line.backgroundColor=RGB(231, 231, 231);
     [view addSubview:line];
@@ -141,12 +149,23 @@
     rightCircle.clipsToBounds=YES;
     [view addSubview:rightCircle];
     
-    UILabel *detail=[[UILabel alloc]initWithFrame:CGRectMake(18, line.bottom+10, 30, 12)];
+    UILabel *detail=[[UILabel alloc]initWithFrame:CGRectMake(18, line.bottom+10, view.width-18-55, 12)];
     detail.font=[UIFont systemFontOfSize:12];
     detail.textColor=RGB(132, 132, 132);
     detail.text=@"详情";
     [view addSubview:detail];
     self.detail = detail;
+    
+    UIButton *moreBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    [moreBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    moreBtn.frame=CGRectMake(detail.right+5, line.bottom, 50, 30);
+    [moreBtn setTitle:@"更多..." forState: UIControlStateNormal];
+    [moreBtn setTitleColor:RGB(243, 73, 78) forState:UIControlStateNormal];
+    [view addSubview:moreBtn];
+    moreBtn.titleLabel.font=[UIFont systemFontOfSize:14.0f];
+    moreBtn.hidden=YES;
+    self.lookMore=moreBtn;
+    
     
 //    UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
 //    [button setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
@@ -164,9 +183,6 @@
 //    
 //    self.contentLable=messageLable;
 //    
-//    UIImageView *jiantou=[[UIImageView alloc]initWithFrame:CGRectMake(detail.right+4, line.bottom+13, 10, 10)];
-//    [view addSubview:jiantou];
-//    self.jian=jiantou;
     
     UILabel *couponMoney=[[UILabel alloc]initWithFrame:CGRectMake(useLimit.right +40, 35, 80, 18)];
     couponMoney.font=[UIFont systemFontOfSize:14.0f];

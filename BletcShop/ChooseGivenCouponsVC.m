@@ -227,11 +227,13 @@
         NSURL * nurl1=[[NSURL alloc] initWithString:[[SHOPIMAGE_ADDIMAGE stringByAppendingString:[NSString getTheNoNullStr:[_dataArray[indexPath.row]  objectForKey:@"image_url"] andRepalceStr:@""]]stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
         [cell.headImg sd_setImageWithURL:nurl1 placeholderImage:[UIImage imageNamed:@"icon3.png"] options:SDWebImageRetryFailed];
         cell.shopNamelab.text=_dataArray[indexPath.row][@"store"];
-        cell.couponMoney.text=_dataArray[indexPath.row][@"sum"];
+        cell.couponMoney.text=[NSString stringWithFormat:@"%@元",_dataArray[indexPath.row][@"sum"]];
+        cell.couponMoney.font=[UIFont systemFontOfSize:22];
         cell.deadTime.text=[NSString stringWithFormat:@"有效期为:%@～%@",_dataArray[indexPath.row][@"date_start"],_dataArray[indexPath.row][@"date_end"]];
         cell.limitLab.text=_dataArray[indexPath.row][@"content"];
         
-        
+        cell.youjian.hidden=YES;
+        cell.chooseCircle.hidden=NO;
         if ([_dataArray[indexPath.row][@"validate"] isEqualToString:@"true"]) {
             cell.showImg.hidden = YES ;
         }else{
@@ -241,12 +243,15 @@
         
         if ([_dataArray[indexPath.row][@"coupon_type"] isEqualToString:@"ONLINE"]||[_dataArray[indexPath.row][@"coupon_type"] isEqualToString:@"null"]) {
             cell.onlineState.image=[UIImage imageNamed:@"线上shop"];
-            
+            cell.detail.text=[NSString stringWithFormat:@"办卡使用，满%@元可用",_dataArray[indexPath.row][@"pri_condition"]];
         }else{
             cell.onlineState.image=[UIImage imageNamed:@"线下shop"];
-            
+             cell.detail.text=[NSString stringWithFormat:@"进店使用，满%@元可用",_dataArray[indexPath.row][@"pri_condition"]];
         }
-        
+        cell.lookMore.hidden=NO;
+        [cell.lookMore addTarget:self action:@selector(lookMoreBtnClick:)
+            forControlEvents:UIControlEventTouchUpInside];
+        cell.lookMore.tag=indexPath.row;
     }
     
     return cell;
@@ -261,18 +266,18 @@
     return 126;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (tableView.editing) {
-        [self.deleteArr addObject:[_dataArray objectAtIndex:indexPath.row]];
-        
-    }else{
-        AddCouponDetailsVC *vc=[[AddCouponDetailsVC alloc]init];
-        vc.statess=1;
-        vc.infoDic=_dataArray[indexPath.row];
-        [self.navigationController pushViewController:vc animated:YES];
-        
-        
-        
-    }
+//    if (tableView.editing) {
+//        [self.deleteArr addObject:[_dataArray objectAtIndex:indexPath.row]];
+//        
+//    }else{
+//        AddCouponDetailsVC *vc=[[AddCouponDetailsVC alloc]init];
+//        vc.statess=1;
+//        vc.infoDic=_dataArray[indexPath.row];
+//        [self.navigationController pushViewController:vc animated:YES];
+//        
+//        
+//        
+//    }
     
 }
 
@@ -285,15 +290,7 @@
 }
 
 -(void)postGetCouponRequest{
-    /*
-     muid=>商户ID
-     sum => 优惠券金额
-     condition => 优惠条件
-     remain => 发布数量
-     date_start => 开始日期
-     date_end => 结束日期
-     content => 优惠券内容
-     */
+    
     if (imageView) {
         [imageView removeFromSuperview];
     }
@@ -406,7 +403,12 @@
 -(void)goVCBtnClick{
     PUSH(SendCouponCompleteVC);
 }
-
+-(void)lookMoreBtnClick:(UIButton *)sender{
+    AddCouponDetailsVC *vc=[[AddCouponDetailsVC alloc]init];
+    vc.statess=1;
+    vc.infoDic=_dataArray[sender.tag];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

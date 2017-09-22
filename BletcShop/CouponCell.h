@@ -34,6 +34,8 @@ static NSString *identifier = @"couponCellId";
 @property(nonatomic,strong)UIImageView *expiredView;
 @property(nonatomic,strong)UIView *topView;
 @property(nonatomic,strong)UIImageView *youjian;
+@property(nonatomic,strong)UIImageView *chooseCircle;
+@property(nonatomic,strong)UIButton *lookMore;
 +(instancetype)couponCellWithTableView:(UITableView*)tableView;
 
 @end

@@ -8,9 +8,13 @@
 
 #import "VIPBirthNoticeVC.h"
 #import "ChooseGivenCouponsVC.h"
+#import "UIImageView+WebCache.h"
 @interface VIPBirthNoticeVC ()
 {
     UIView *alert;
+    UIScrollView *src;
+    UIButton *sendCoupon;
+    NSMutableArray *personArr;
 }
 @end
 
@@ -37,128 +41,24 @@
     UIImageView *headImage=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, bgView.width, 268*bgView.width/698)];
     headImage.image=[UIImage imageNamed:@"srbj"];
     [bgView addSubview:headImage];
-    int a = arc4random()%2;
-    int b=arc4random()%6+1;
-    int state=a;//state 代表有会员还是没会员生日==0没有，1有
-    NSMutableArray *personArr=[[NSMutableArray alloc]initWithCapacity:0];
-    NSDictionary *dic=@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日"};
-    for (int k=0; k<b; k++) {
-        [personArr addObject:dic];
-    }
+    
+    personArr=[[NSMutableArray alloc]initWithCapacity:0];
+    
 //    NSArray *personArr=@[@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日"},@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日"},@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日"}];
     
     
     
-    UIScrollView *src=[[UIScrollView alloc]initWithFrame:CGRectMake(0, (bgView.height-110)/2-30, bgView.width, 110)];
+    src=[[UIScrollView alloc]initWithFrame:CGRectMake(0, (bgView.height-110)/2-30, bgView.width, 110)];
     src.showsVerticalScrollIndicator=NO;
     src.showsHorizontalScrollIndicator=NO;
-    if (personArr.count==1) {
-        if (state==0) {
-            UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54)/2, 0, 54, 54)];
-            cryImage.layer.cornerRadius=27;
-            cryImage.clipsToBounds=YES;
-            cryImage.image=[UIImage imageNamed:@"表情ss"];
-            [src addSubview:cryImage];
-            
-            UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(0, cryImage.bottom+10, src.width, 13)];
-            notice.textAlignment=NSTextAlignmentCenter;
-            notice.text=@"会员生日没到喔";
-            notice.font=[UIFont systemFontOfSize:13.0];
-            notice.textColor=RGB(153,153,153);
-            [src addSubview:notice];
-        
-            src.contentSize=CGSizeMake(0, 0);
-        }else{
-            UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54)/2, 0, 54, 54)];
-            cryImage.layer.cornerRadius=27;
-            cryImage.clipsToBounds=YES;
-            cryImage.image=[UIImage imageNamed:@"icon3"];
-            [src addSubview:cryImage];
-            
-            UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
-            circle.image=[UIImage imageNamed:@"选择ssss"];
-            [src addSubview:circle];
-            
-            UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(0, cryImage.bottom+10, src.width, 13)];
-            notice.textAlignment=NSTextAlignmentCenter;
-            notice.text=@"张大大";
-            notice.font=[UIFont systemFontOfSize:13.0];
-            notice.textColor=RGB(51,51,51);
-            [src addSubview:notice];
-            
-            UILabel *birth=[[UILabel alloc]initWithFrame:CGRectMake(0, notice.bottom+10, src.width, 12)];
-            birth.textAlignment=NSTextAlignmentCenter;
-            birth.text=@"9月26日";
-            birth.font=[UIFont systemFontOfSize:13.0];
-            birth.textColor=RGB(51,51,51);
-            [src addSubview:birth];
-            
-            src.contentSize=CGSizeMake(0, 0);
-        }
-    }else if(personArr.count<=3){
-        for (int i=0; i<personArr.count; i++) {
-            UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54*personArr.count)/(personArr.count+1) + i%personArr.count*(54+(src.width-54*personArr.count)/(personArr.count+1)), 0, 54, 54)];
-            cryImage.layer.cornerRadius=27;
-            cryImage.clipsToBounds=YES;
-            cryImage.image=[UIImage imageNamed:@"icon3"];
-            [src addSubview:cryImage];
-            
-            UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
-            circle.image=[UIImage imageNamed:@"选择ssss"];
-            [src addSubview:circle];
-            
-            UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left, cryImage.bottom+10, cryImage.width, 13)];
-            notice.textAlignment=NSTextAlignmentCenter;
-            notice.text=@"张大大";
-            notice.font=[UIFont systemFontOfSize:13.0];
-            notice.textColor=RGB(51,51,51);
-            [src addSubview:notice];
-            
-            UILabel *birth=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left, notice.bottom+10, notice.width, 12)];
-            birth.textAlignment=NSTextAlignmentCenter;
-            birth.text=@"9月26日";
-            birth.font=[UIFont systemFontOfSize:13.0];
-            birth.textColor=RGB(51,51,51);
-            [src addSubview:birth];
-            
-            src.contentSize=CGSizeMake(0, 0);
-        }
-    }else{
-        for (int i=0; i<personArr.count; i++) {
-            UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54*3)/(3+1) + i%personArr.count*(54+(src.width-54*3)/(3+1)), 0, 54, 54)];
-            cryImage.image=[UIImage imageNamed:@"icon3"];
-            cryImage.layer.cornerRadius=27;
-            cryImage.clipsToBounds=YES;
-            [src addSubview:cryImage];
-            
-            UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
-            circle.image=[UIImage imageNamed:@"选择ssss"];
-            [src addSubview:circle];
-            
-            UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left, cryImage.bottom+10, cryImage.width, 13)];
-            notice.textAlignment=NSTextAlignmentCenter;
-            notice.text=@"张大大";
-            notice.font=[UIFont systemFontOfSize:13.0];
-            notice.textColor=RGB(51,51,51);
-            [src addSubview:notice];
-            
-            UILabel *birth=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left, notice.bottom+10, notice.width, 12)];
-            birth.textAlignment=NSTextAlignmentCenter;
-            birth.text=@"9月26日";
-            birth.font=[UIFont systemFontOfSize:13.0];
-            birth.textColor=RGB(51,51,51);
-            [src addSubview:birth];
-            
-            src.contentSize=CGSizeMake(cryImage.right, 0);
-        }
-
-    }
+    
     [bgView addSubview:src];
     
-    UIButton *sendCoupon=[UIButton buttonWithType:UIButtonTypeCustom];
+    sendCoupon=[UIButton buttonWithType:UIButtonTypeCustom];
     [sendCoupon setTitle:@"送上生日优惠" forState:UIControlStateNormal];
     [ sendCoupon setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    sendCoupon.backgroundColor=NavBackGroundColor;
+    sendCoupon.backgroundColor=RGB(166, 166, 166);
+    sendCoupon.userInteractionEnabled=NO;
     sendCoupon.frame=CGRectMake(19, bgView.height-113, bgView.width-38, 46);
     sendCoupon.layer.cornerRadius=12;
     sendCoupon.clipsToBounds=YES;
@@ -172,10 +72,7 @@
     bottomLable.textAlignment=NSTextAlignmentCenter;
     [bgView addSubview:bottomLable];
     
-    if (personArr.count==1&&state==0) {
-        sendCoupon.backgroundColor=RGB(166, 166, 166);
-        sendCoupon.userInteractionEnabled=NO;
-    }
+    [self postGetVIPSRequest];
 }
 //生日提醒
 -(void)noticeTimeLimit{
@@ -297,6 +194,157 @@
             }
         }
     }
+}
+-(void)postGetVIPSRequest{
+   
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/member/getBirthMemb",BASEURL];
+    //http://www.cnconsum.com/cnconsum/App/MerchantType/member/getBirthMemb
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
+    NSLog(@"------%@",params);
+    
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        NSLog(@"%@",result);
+        if (result) {
+            if ([result count]>0) {
+                sendCoupon.backgroundColor=NavBackGroundColor;
+                sendCoupon.userInteractionEnabled=YES;
+                //NSDictionary *dic=@{@"image":@"icon3",@"name":@"张大大",@"birth":@"9月26日"};
+                for (int k=0; k<[result count]; k++) {
+                    [personArr addObject:result[k]];
+                }
+                if (personArr.count==1) {
+                    UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54)/2, 0, 54, 54)];
+                    cryImage.layer.cornerRadius=27;
+                    cryImage.clipsToBounds=YES;
+                    [cryImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HEADIMAGE,result[0][@"headimage"]]] placeholderImage:[UIImage imageNamed:@"userHeader"]];
+                    [src addSubview:cryImage];
+                    
+                    UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
+                    circle.image=[UIImage imageNamed:@"选择ssss"];
+                    [src addSubview:circle];
+                    
+                    UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(0, cryImage.bottom+10, src.width, 13)];
+                    notice.textAlignment=NSTextAlignmentCenter;
+                    notice.text=personArr[0][@"nickname"];
+                    notice.font=[UIFont systemFontOfSize:13.0];
+                    notice.textColor=RGB(51,51,51);
+                    [src addSubview:notice];
+                    
+                    UILabel *birth=[[UILabel alloc]initWithFrame:CGRectMake(0, notice.bottom+10, src.width, 12)];
+                    birth.textAlignment=NSTextAlignmentCenter;
+                    birth.text=personArr[0][@"age"];
+                    birth.font=[UIFont systemFontOfSize:13.0];
+                    birth.textColor=RGB(51,51,51);
+                    [src addSubview:birth];
+                    
+                    src.contentSize=CGSizeMake(0, 0);
+                    
+                }else if(personArr.count<=3){
+                    for (int i=0; i<personArr.count; i++) {
+                        UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54*personArr.count)/(personArr.count+1) + i%personArr.count*(54+(src.width-54*personArr.count)/(personArr.count+1)), 0, 54, 54)];
+                        cryImage.layer.cornerRadius=27;
+                        cryImage.clipsToBounds=YES;
+                        [cryImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HEADIMAGE,result[i][@"headimage"]]] placeholderImage:[UIImage imageNamed:@"userHeader"]];
+                        [src addSubview:cryImage];
+                        
+                        UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
+                        circle.image=[UIImage imageNamed:@"选择ssss"];
+                        [src addSubview:circle];
+                        
+                        UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left, cryImage.bottom+10, cryImage.width, 13)];
+                        notice.textAlignment=NSTextAlignmentCenter;
+                        notice.text=personArr[i][@"nickname"];
+                        notice.font=[UIFont systemFontOfSize:13.0];
+                        notice.textColor=RGB(51,51,51);
+                        [src addSubview:notice];
+                        
+                        UILabel *birth=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left-15, notice.bottom+10, notice.width+30, 12)];
+                        birth.textAlignment=NSTextAlignmentCenter;
+                        birth.text=personArr[i][@"age"];
+                        birth.font=[UIFont systemFontOfSize:13.0];
+                        birth.textColor=RGB(51,51,51);
+                        [src addSubview:birth];
+                        
+                        src.contentSize=CGSizeMake(0, 0);
+                    }
+                }else{
+                    for (int i=0; i<personArr.count; i++) {
+                        UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54*3)/(3+1) + i%personArr.count*(54+(src.width-54*3)/(3+1)), 0, 54, 54)];
+                        [cryImage sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HEADIMAGE,result[i][@"headimage"]]] placeholderImage:[UIImage imageNamed:@"userHeader"]];
+                        cryImage.layer.cornerRadius=27;
+                        cryImage.clipsToBounds=YES;
+                        [src addSubview:cryImage];
+                        
+                        UIImageView *circle=[[UIImageView alloc]initWithFrame:CGRectMake(cryImage.right-16, cryImage.top, 16, 16)];
+                        circle.image=[UIImage imageNamed:@"选择ssss"];
+                        [src addSubview:circle];
+                        
+                        UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left-15, cryImage.bottom+10, cryImage.width+30, 13)];
+                        notice.textAlignment=NSTextAlignmentCenter;
+                        notice.text=personArr[i][@"nickname"];
+                        notice.font=[UIFont systemFontOfSize:13.0];
+                        notice.textColor=RGB(51,51,51);
+                        [src addSubview:notice];
+                        
+                        UILabel *birth=[[UILabel alloc]initWithFrame:CGRectMake(cryImage.left, notice.bottom+10, notice.width, 12)];
+                        birth.textAlignment=NSTextAlignmentCenter;
+                         birth.text=personArr[i][@"age"];
+                        birth.font=[UIFont systemFontOfSize:13.0];
+                        birth.textColor=RGB(51,51,51);
+                        [src addSubview:birth];
+                        
+                        src.contentSize=CGSizeMake(cryImage.right, 0);
+                    }
+                    
+                }
+                
+            }else{
+                sendCoupon.backgroundColor=RGB(166, 166, 166);
+                sendCoupon.userInteractionEnabled=NO;
+                
+                UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54)/2, 0, 54, 54)];
+                cryImage.layer.cornerRadius=27;
+                cryImage.clipsToBounds=YES;
+                cryImage.image=[UIImage imageNamed:@"表情ss"];
+                [src addSubview:cryImage];
+                
+                UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(0, cryImage.bottom+10, src.width, 13)];
+                notice.textAlignment=NSTextAlignmentCenter;
+                notice.text=@"会员生日没到喔";
+                notice.font=[UIFont systemFontOfSize:13.0];
+                notice.textColor=RGB(153,153,153);
+                [src addSubview:notice];
+                
+                src.contentSize=CGSizeMake(0, 0);
+            }
+        }else{
+            sendCoupon.backgroundColor=RGB(166, 166, 166);
+            sendCoupon.userInteractionEnabled=NO;
+            
+            UIImageView *cryImage=[[UIImageView alloc]initWithFrame:CGRectMake((src.width-54)/2, 0, 54, 54)];
+            cryImage.layer.cornerRadius=27;
+            cryImage.clipsToBounds=YES;
+            cryImage.image=[UIImage imageNamed:@"表情ss"];
+            [src addSubview:cryImage];
+            
+            UILabel *notice=[[UILabel alloc]initWithFrame:CGRectMake(0, cryImage.bottom+10, src.width, 13)];
+            notice.textAlignment=NSTextAlignmentCenter;
+            notice.text=@"会员生日没到喔";
+            notice.font=[UIFont systemFontOfSize:13.0];
+            notice.textColor=RGB(153,153,153);
+            [src addSubview:notice];
+            
+            src.contentSize=CGSizeMake(0, 0);
+        }
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@", error);
+        
+    }];
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
