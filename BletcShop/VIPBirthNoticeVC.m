@@ -7,7 +7,7 @@
 //
 
 #import "VIPBirthNoticeVC.h"
-
+#import "ChooseGivenCouponsVC.h"
 @interface VIPBirthNoticeVC ()
 {
     UIView *alert;
@@ -202,7 +202,7 @@
         [bgView addSubview:line1];
         
         UILabel *notone=[[UILabel alloc]initWithFrame:CGRectMake(0, line1.bottom, bgView.width, 54)];
-        notone.text=@"提前一个月提醒";
+        notone.text=@"提前一周提醒";
         notone.userInteractionEnabled=YES;
         notone.tag=1;
         notone.font=[UIFont systemFontOfSize:16];
@@ -248,7 +248,7 @@
         [bgView addSubview:line3];
         
         UILabel *nothree=[[UILabel alloc]initWithFrame:CGRectMake(0, line3.bottom, bgView.width, 54)];
-        nothree.text=@"提前一周提醒";
+        nothree.text=@"提前一个月提醒";
         nothree.userInteractionEnabled=YES;
         nothree.tag=3;
         nothree.font=[UIFont systemFontOfSize:16];
@@ -280,6 +280,7 @@
 //送生日问候
 -(void)sendCouponBtnClick{
     NSLog(@"老板！！！！！！！！！！");
+    PUSH(ChooseGivenCouponsVC);
 }
 -(void)closeNoticeBtnClick{
     [alert removeFromSuperview];

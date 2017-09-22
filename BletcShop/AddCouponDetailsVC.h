@@ -10,4 +10,5 @@
 
 @interface AddCouponDetailsVC : UIViewController
 @property(nonatomic,strong)NSDictionary *infoDic;
+@property(nonatomic)NSInteger statess;
 @end

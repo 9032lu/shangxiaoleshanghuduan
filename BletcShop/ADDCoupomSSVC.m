@@ -1,14 +1,14 @@
 //
-//  AddCouponVC.m
+//  ADDCoupomSSVC.m
 //  BletcShop
 //
-//  Created by apple on 17/2/20.
+//  Created by apple on 2017/9/22.
 //  Copyright © 2017年 bletc. All rights reserved.
 //
 
-#import "AddCouponVC.h"
+#import "ADDCoupomSSVC.h"
 #import "ValuePickerViewEric.h"
-@interface AddCouponVC ()<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextViewDelegate>
+@interface ADDCoupomSSVC ()<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UITextViewDelegate>
 {
     UIScrollView *_scrollView;
     NSMutableArray *yearArray;
@@ -34,7 +34,7 @@
     UIView *_contentView;
     UITextField *couponMoneyTF;
     UITextField *useLimitTF;
-    UITextField *couponRemainTF;
+    
     UITextView *_textView;
     UITextField *useLimTF;
 }
@@ -47,8 +47,8 @@
 @property(nonatomic,copy)NSString *onlineOrNot;
 @end
 
-@implementation AddCouponVC
-#pragma mark 初始化UI界面
+@implementation ADDCoupomSSVC
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pickerView = [[ValuePickerViewEric alloc]init];
@@ -127,31 +127,16 @@
     chooseAcKindButton.frame=CGRectMake(10, line.bottom, SCREENWIDTH-20, 40);
     [section1 addSubview:chooseAcKindButton];
     [chooseAcKindButton addTarget:self action:@selector(chooseAcKindBtnClick) forControlEvents:UIControlEventTouchUpInside];
-
-    UIView *section2=[[UIView alloc]initWithFrame:CGRectMake(0, 131+41, SCREENWIDTH, 40)];
-    section2.backgroundColor=[UIColor whiteColor];
-    [_scrollView addSubview:section2];
-    //券的库存
-    UILabel *couponRemain=[[UILabel alloc]initWithFrame:CGRectMake(10, 0, 80, 40)];
-    couponRemain.text=@"券的库存: ";
-    couponRemain.font=[UIFont systemFontOfSize:15.0f];
-    couponRemain.textColor=[UIColor grayColor];
-    [section2 addSubview:couponRemain];
-    //券的库存输入框
-    couponRemainTF=[[UITextField alloc]initWithFrame:CGRectMake(90,0 , SCREENWIDTH-100, 40)];
-    couponRemainTF.placeholder=@"可被领取的总券数";
-    couponRemainTF.keyboardType=UIKeyboardTypePhonePad;
-    couponRemainTF.font=couponMoney.font=[UIFont systemFontOfSize:15.0f];
-    [section2 addSubview:couponRemainTF];
+    
     //有效期
-    UILabel *validityPeriod=[[UILabel alloc]initWithFrame:CGRectMake(10, 40+81+10+40+41, SCREENWIDTH-10, 40)];
+    UILabel *validityPeriod=[[UILabel alloc]initWithFrame:CGRectMake(10, 40+81+41, SCREENWIDTH-10, 40)];
     validityPeriod.text=@"有效期";
     validityPeriod.font=[UIFont systemFontOfSize:13.0f];
     validityPeriod.textColor=[UIColor grayColor];
     validityPeriod.backgroundColor=RGB(234,234,234);
     [_scrollView addSubview:validityPeriod];
     
-    UIView *section3=[[UIView alloc]initWithFrame:CGRectMake(0, 40+81+10+40+40+41, SCREENWIDTH, 81)];
+    UIView *section3=[[UIView alloc]initWithFrame:CGRectMake(0, 40+81+40+41, SCREENWIDTH, 81)];
     section3.backgroundColor=[UIColor whiteColor];
     [_scrollView addSubview:section3];
     //开始时间
@@ -227,7 +212,7 @@
     
     
     _scrollView.contentSize=CGSizeMake(SCREENWIDTH, completeAddAction.bottom+20);
-
+    
     
     [self _inittable];
 
@@ -267,8 +252,8 @@
         hud.userInteractionEnabled = YES;
         
         [hud hideAnimated:YES afterDelay:3.f];
-
-    }else if ([couponMoneyTF.text isEqualToString:@""]||[useLimitTF.text isEqualToString:@""]||[couponRemainTF.text isEqualToString:@""]){
+        
+    }else if ([couponMoneyTF.text isEqualToString:@""]||[useLimitTF.text isEqualToString:@""]){
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         hud.mode = MBProgressHUDModeText;
         hud.label.text = NSLocalizedString(@"请检查输入项", @"HUD message title");
@@ -289,7 +274,7 @@
             hud.userInteractionEnabled = YES;
             
             [hud hideAnimated:YES afterDelay:3.f];
-
+            
         }else{
             [self postAddCouponRequest];
         }
@@ -307,13 +292,13 @@
      date_end => 结束日期
      content => 优惠券内容
      */
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/coupon/add",BASEURL];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/member/addCoupon",BASEURL];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
     [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
     [params setObject: couponMoneyTF.text forKey:@"sum"];
     [params setObject: useLimitTF.text forKey:@"condition"];
-    [params setObject: couponRemainTF.text forKey:@"remain"];
+//    [params setObject: couponRemainTF.text forKey:@"remain"];
     [params setObject:_startText.text forKey:@"date_start"];
     [params setObject:_endText.text forKey:@"date_end"];
     [params setObject:_onlineOrNot forKey:@"coupon_type"];//ONLINE   OFFLINE
@@ -335,12 +320,12 @@
             [self presentViewController:alertController animated:YES completion:^{
                 
             }];
-    
+            
         }else if([result[@"result_code"] intValue]==1062)
         {
             [self tishiSting:@"发布重复!"];
             
-    
+            
         }else{
             [self tishiSting:@"发布失败!"];
             
@@ -351,7 +336,7 @@
         NSLog(@"%@", error);
         
     }];
-
+    
     
 }
 -(void)tishiSting:(NSString*)tishi{
@@ -362,23 +347,23 @@
     hud.label.font = [UIFont systemFontOfSize:13];
     hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
     [hud hideAnimated:YES afterDelay:4.f];
-
+    
 }
 #pragma mark 显示时间选取器页面
 -(void)showBeginTime{
     [couponMoneyTF resignFirstResponder];
-    [couponRemainTF resignFirstResponder];
+  
     [useLimitTF resignFirstResponder];
-     [useLimTF resignFirstResponder];
+    [useLimTF resignFirstResponder];
     [_textView resignFirstResponder];
     index_=0;
     [self show];
 }
 -(void)showEndTime{
     [couponMoneyTF resignFirstResponder];
-    [couponRemainTF resignFirstResponder];
+   
     [useLimitTF resignFirstResponder];
-     [useLimTF resignFirstResponder];
+    [useLimTF resignFirstResponder];
     [_textView resignFirstResponder];
     index_=1;
     [self show];
@@ -651,7 +636,7 @@
     [self.customPicker selectRow:[monthArray indexOfObject:currentMonthString] inComponent:1 animated:YES];
     
     [self.customPicker selectRow:0 inComponent:2 animated:YES];
-
+    
 }
 #pragma mark - UIPickerViewDelegate
 
@@ -704,7 +689,7 @@
 - (void)actionCancel
 {
     [self removeSelfFromSupView];
-
+    
 }
 
 - (void)actionDone
@@ -747,13 +732,13 @@
 
 /*
  
-*/
+ */
 -(void)chooseAcKindBtnClick{
-    __weak AddCouponVC *tempSelf=self;
+    __weak ADDCoupomSSVC *tempSelf=self;
     tempSelf.pickerView.valueDidSelect = ^(NSString *value,NSInteger selectedRow){
         NSArray * arr =[value componentsSeparatedByString:@"/"];
         NSString * newValue=arr[0];
-       useLimTF.text=newValue;
+        useLimTF.text=newValue;
         if (selectedRow==0) {
             _onlineOrNot=@"ONLINE";
         }else if (selectedRow==1){
@@ -763,7 +748,17 @@
     [tempSelf.pickerView show];
     [couponMoneyTF resignFirstResponder];
     [useLimitTF resignFirstResponder];
-    [couponRemainTF resignFirstResponder];
+    
     [_textView resignFirstResponder];
 }
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
 @end

@@ -140,6 +140,12 @@
 		18CF67B91F73C8850004C573 /* ChargeRecVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67B71F73C8850004C573 /* ChargeRecVC.xib */; };
 		18CF67BE1F74A7160004C573 /* MSGNotificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67BC1F74A7160004C573 /* MSGNotificationVC.m */; };
 		18CF67BF1F74A7160004C573 /* MSGNotificationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67BD1F74A7160004C573 /* MSGNotificationVC.xib */; };
+		18CF67C41F74B9CE0004C573 /* ChooseGivenCouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67C21F74B9CE0004C573 /* ChooseGivenCouponsVC.m */; };
+		18CF67C51F74B9CE0004C573 /* ChooseGivenCouponsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67C31F74B9CE0004C573 /* ChooseGivenCouponsVC.xib */; };
+		18CF67CA1F74DECF0004C573 /* SendCouponCompleteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67C81F74DECE0004C573 /* SendCouponCompleteVC.m */; };
+		18CF67CB1F74DECF0004C573 /* SendCouponCompleteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67C91F74DECE0004C573 /* SendCouponCompleteVC.xib */; };
+		18CF67D01F74E81E0004C573 /* ADDCoupomSSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67CE1F74E81E0004C573 /* ADDCoupomSSVC.m */; };
+		18CF67D11F74E81E0004C573 /* ADDCoupomSSVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67CF1F74E81E0004C573 /* ADDCoupomSSVC.xib */; };
 		18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E411ED6D4EC0077861A /* NSTimer+addition.m */; };
 		18D43E471ED6D4EC0077861A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E431ED6D4EC0077861A /* UIView+Frame.m */; };
 		18D43E481ED6D4EC0077861A /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E451ED6D4EC0077861A /* WYWebProgressLayer.m */; };
@@ -980,6 +986,15 @@
 		18CF67BB1F74A7160004C573 /* MSGNotificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSGNotificationVC.h; sourceTree = "<group>"; };
 		18CF67BC1F74A7160004C573 /* MSGNotificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSGNotificationVC.m; sourceTree = "<group>"; };
 		18CF67BD1F74A7160004C573 /* MSGNotificationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MSGNotificationVC.xib; sourceTree = "<group>"; };
+		18CF67C11F74B9CE0004C573 /* ChooseGivenCouponsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseGivenCouponsVC.h; sourceTree = "<group>"; };
+		18CF67C21F74B9CE0004C573 /* ChooseGivenCouponsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseGivenCouponsVC.m; sourceTree = "<group>"; };
+		18CF67C31F74B9CE0004C573 /* ChooseGivenCouponsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseGivenCouponsVC.xib; sourceTree = "<group>"; };
+		18CF67C71F74DECE0004C573 /* SendCouponCompleteVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SendCouponCompleteVC.h; sourceTree = "<group>"; };
+		18CF67C81F74DECE0004C573 /* SendCouponCompleteVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SendCouponCompleteVC.m; sourceTree = "<group>"; };
+		18CF67C91F74DECE0004C573 /* SendCouponCompleteVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendCouponCompleteVC.xib; sourceTree = "<group>"; };
+		18CF67CD1F74E81E0004C573 /* ADDCoupomSSVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADDCoupomSSVC.h; sourceTree = "<group>"; };
+		18CF67CE1F74E81E0004C573 /* ADDCoupomSSVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADDCoupomSSVC.m; sourceTree = "<group>"; };
+		18CF67CF1F74E81E0004C573 /* ADDCoupomSSVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ADDCoupomSSVC.xib; sourceTree = "<group>"; };
 		18D43E401ED6D4EC0077861A /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		18D43E411ED6D4EC0077861A /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
 		18D43E421ED6D4EC0077861A /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -2966,6 +2981,38 @@
 			name = "消息提醒s";
 			sourceTree = "<group>";
 		};
+		18CF67C01F74B7F80004C573 /* 选优惠券推送s */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67C11F74B9CE0004C573 /* ChooseGivenCouponsVC.h */,
+				18CF67C21F74B9CE0004C573 /* ChooseGivenCouponsVC.m */,
+				18CF67C31F74B9CE0004C573 /* ChooseGivenCouponsVC.xib */,
+				18CF67CC1F74E7C80004C573 /* 创建优惠券s */,
+				18CF67C61F74DAB60004C573 /* 优惠券推成功后的页面 */,
+			);
+			name = "选优惠券推送s";
+			sourceTree = "<group>";
+		};
+		18CF67C61F74DAB60004C573 /* 优惠券推成功后的页面 */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67C71F74DECE0004C573 /* SendCouponCompleteVC.h */,
+				18CF67C81F74DECE0004C573 /* SendCouponCompleteVC.m */,
+				18CF67C91F74DECE0004C573 /* SendCouponCompleteVC.xib */,
+			);
+			name = "优惠券推成功后的页面";
+			sourceTree = "<group>";
+		};
+		18CF67CC1F74E7C80004C573 /* 创建优惠券s */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67CD1F74E81E0004C573 /* ADDCoupomSSVC.h */,
+				18CF67CE1F74E81E0004C573 /* ADDCoupomSSVC.m */,
+				18CF67CF1F74E81E0004C573 /* ADDCoupomSSVC.xib */,
+			);
+			name = "创建优惠券s";
+			sourceTree = "<group>";
+		};
 		18D0B4BF1EFE05BB00302D79 /* 添加套餐卡 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4658,6 +4705,7 @@
 		D9C2EF2F1F70F12D007919C2 /* 新的会员管理s */ = {
 			isa = PBXGroup;
 			children = (
+				18CF67C01F74B7F80004C573 /* 选优惠券推送s */,
 				1869919B1F72371E0084D3C8 /* 生日推送s */,
 				186991901F7204330084D3C8 /* 会员信息页面s */,
 				D9C2EF301F70F151007919C2 /* 会员列表s */,
@@ -5069,6 +5117,7 @@
 				D93C1A1A1EE9567C006DA624 /* ShoperRegistVCOne.xib in Resources */,
 				D9541EA61E1FA994003022E5 /* 商消乐002.png in Resources */,
 				D9AB25411D88E4ED000E9288 /* VoiceSearchFeedback019@2x.png in Resources */,
+				18CF67C51F74B9CE0004C573 /* ChooseGivenCouponsVC.xib in Resources */,
 				18F27EE91D640E84002DD03A /* 头像-1.png in Resources */,
 				D9C3A3011E9642890062B17D /* ChouJiangVC.xib in Resources */,
 				186991601F68FA8E0084D3C8 /* AccessCodeVC.xib in Resources */,
@@ -5260,6 +5309,7 @@
 				D980B6631D77FB0900CC6637 /* group@2x.png in Resources */,
 				189CC5A61EF92EAA00A73BB6 /* LoginQuestionViewController.xib in Resources */,
 				181163971E7FBD9E00CA92A9 /* OffLineNoticeVC.xib in Resources */,
+				18CF67D11F74E81E0004C573 /* ADDCoupomSSVC.xib in Resources */,
 				18EEE6E21D49940F00E168B4 /* Icon-240.png in Resources */,
 				18D89C681D51EF4900717B11 /* select_true.png in Resources */,
 				D93C1A241EE9588C006DA624 /* ShoerRegistThree.xib in Resources */,
@@ -5275,6 +5325,7 @@
 				D98E5C211E51525E009D56BF /* SRVideoPlayer.bundle in Resources */,
 				D9E1D4261D642DCB0078EF02 /* custom4.jpg in Resources */,
 				D93027E41CFEBC82007447D2 /* checkbox_ture.png in Resources */,
+				18CF67CB1F74DECF0004C573 /* SendCouponCompleteVC.xib in Resources */,
 				D9D50DB91D87DE2800A5E469 /* d_aini@2x.png in Resources */,
 				D97338C11ED666600093A2FB /* 下角标ss.png in Resources */,
 				18CF67BF1F74A7160004C573 /* MSGNotificationVC.xib in Resources */,
@@ -5348,7 +5399,9 @@
 				D9DEED221CACED7C00ACDD00 /* SDWebImageManager.m in Sources */,
 				D9B3A5B61D74255700F3F27E /* UIImage+EMMultiFormat.m in Sources */,
 				D98ECBCC1D9CE07100BEDD57 /* LZDAddVIPViewController.m in Sources */,
+				18CF67D01F74E81E0004C573 /* ADDCoupomSSVC.m in Sources */,
 				D9637DF71D59B4AB00C19D0B /* ChoiceAdminAlertView.m in Sources */,
+				18CF67C41F74B9CE0004C573 /* ChooseGivenCouponsVC.m in Sources */,
 				18EDCF701D46039D004C40B7 /* NSString+Addition.m in Sources */,
 				18CF67B21F73B27E0004C573 /* CardBuyRecTableViewCell.m in Sources */,
 				D98E5C1A1E51524D009D56BF /* SRVideoLayerView.m in Sources */,
@@ -5692,6 +5745,7 @@
 				189CC5D21EFA113900A73BB6 /* JFButton.m in Sources */,
 				D99372CC1E9F4F450088016D /* AllmessageListCell.m in Sources */,
 				1869915F1F68FA8E0084D3C8 /* AccessCodeVC.m in Sources */,
+				18CF67CA1F74DECF0004C573 /* SendCouponCompleteVC.m in Sources */,
 				D9B3A5B21D74255700F3F27E /* MKAnnotationView+EMWebCache.m in Sources */,
 				189CC5D51EFA113900A73BB6 /* JFCityTableViewCell.m in Sources */,
 				D941135D1CE9A3D7008E231F /* openssl_wrapper.m in Sources */,

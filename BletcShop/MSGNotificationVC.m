@@ -29,7 +29,10 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
-        cell=[[UITableViewCell alloc]initWithStyle:(UITableViewCellStyleValue2) reuseIdentifier:@"cell"];
+        cell=[[UITableViewCell alloc]initWithStyle:(UITableViewCellStyleValue1) reuseIdentifier:@"cell"];
+        UIView *line=[[UIView alloc]initWithFrame:CGRectMake(0, 54, SCREENWIDTH, 1)];
+        line.backgroundColor=RGB(220, 220, 220);
+        [cell addSubview:line];
     }
     cell.textLabel.text=@"您有一笔新消费!";
     cell.detailTextLabel.text=@"2017.9.21 09:20:35";
