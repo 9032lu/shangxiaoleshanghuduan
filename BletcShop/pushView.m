@@ -66,8 +66,10 @@ typedef NS_ENUM(NSInteger, ZMButtonType) {
     return _btnRectArray;
 }
 
-- (instancetype)init
-{
+
+-(instancetype)initWithBtnFrame:(CGRect)frame{
+    
+
     self = [super init];
     if (self) {
         
@@ -99,7 +101,7 @@ typedef NS_ENUM(NSInteger, ZMButtonType) {
 //        
 //        addbtn.center=CGPointMake(ScreenWidth/2, ScreenHeight-44);
         
-        addbtn.frame = CGRectMake(SCREENWIDTH-74.5-14, SCREENHEIGHT-60-74.5, 74.5, 74.5);
+        addbtn.frame = frame;
 
         
         [addbtn addTarget:self action:@selector(closePushView) forControlEvents:UIControlEventTouchUpInside];
