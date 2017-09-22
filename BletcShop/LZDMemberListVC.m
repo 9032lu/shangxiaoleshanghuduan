@@ -628,6 +628,8 @@ typedef NS_ENUM(NSInteger,ScreenType) {
         [cell.headerImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HEADIMAGE,dic[@"headimage"]]] placeholderImage:[UIImage imageNamed:@"userHeader"]];
         
         
+        cell.datetime.text = @"";
+        
         if (self.s_type ==extra) {
             
             cell.cardTypelab.text = cell.consumeLab.text= @"";
@@ -709,9 +711,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
         }
     }else{
         
-        _s_type = sum;
-        [self getDataRequest];
-        
+       
         
     }
     
