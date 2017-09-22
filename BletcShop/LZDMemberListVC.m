@@ -144,13 +144,13 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     
     
     LZDButton *addbtn = [LZDButton creatLZDButton];
-    addbtn.frame = CGRectMake(SCREENWIDTH-74.5-14, SCREENHEIGHT-60-74.5, 74.5, 74.5);
+    addbtn.frame = CGRectMake(SCREENWIDTH-74.5-14, SCREENHEIGHT-self.tabBarController.tabBar.height-15-74.5, 74.5, 74.5);
     [addbtn setBackgroundImage:[UIImage imageNamed:@"优惠推送"] forState:0];
     [self.view addSubview:addbtn];
     
     addbtn.block = ^(LZDButton *sender) {
      
-        pushView *myview=[pushView new];
+        pushView *myview=[[pushView alloc]initWithBtnFrame:sender.frame];
 
         [[UIApplication sharedApplication].keyWindow addSubview:myview];
         [myview pushButton];

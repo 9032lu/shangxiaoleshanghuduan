@@ -13,6 +13,9 @@
 
 @property (nonatomic,copy)void (^btnClickBlock)(UIButton*sender);//
 
+
+-(instancetype)initWithBtnFrame:(CGRect)frame;
+
 -(void)pushButton;
 
 @end
