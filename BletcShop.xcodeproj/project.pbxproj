@@ -675,6 +675,7 @@
 		D9C7B2CF1F5696DD00406BC9 /* NewOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C7B2CD1F5696DD00406BC9 /* NewOrderCell.m */; };
 		D9C7B2D01F5696DD00406BC9 /* NewOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9C7B2CE1F5696DD00406BC9 /* NewOrderCell.xib */; };
 		D9C7B2D21F5940EF00406BC9 /* 商户启动页.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C7B2D11F5940EF00406BC9 /* 商户启动页.png */; };
+		D9C810711F73835E004E7E41 /* LZDDopDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9C810701F73835E004E7E41 /* LZDDopDownView.m */; };
 		D9CDFB691CC47F7C0054EBE3 /* BDMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFB681CC47F7C0054EBE3 /* BDMapViewController.m */; };
 		D9CDFBB51CC4CE5B0054EBE3 /* CustomIOSAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFBB41CC4CE5B0054EBE3 /* CustomIOSAlertView.m */; };
 		D9CDFBB81CC4DB8C0054EBE3 /* ShopManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9CDFBB71CC4DB8C0054EBE3 /* ShopManagerViewController.m */; };
@@ -1936,6 +1937,8 @@
 		D9C7B2CD1F5696DD00406BC9 /* NewOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewOrderCell.m; sourceTree = "<group>"; };
 		D9C7B2CE1F5696DD00406BC9 /* NewOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewOrderCell.xib; sourceTree = "<group>"; };
 		D9C7B2D11F5940EF00406BC9 /* 商户启动页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "商户启动页.png"; sourceTree = "<group>"; };
+		D9C8106F1F73835D004E7E41 /* LZDDopDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZDDopDownView.h; sourceTree = "<group>"; };
+		D9C810701F73835E004E7E41 /* LZDDopDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZDDopDownView.m; sourceTree = "<group>"; };
 		D9CDFB671CC47F7C0054EBE3 /* BDMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BDMapViewController.h; sourceTree = "<group>"; };
 		D9CDFB681CC47F7C0054EBE3 /* BDMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BDMapViewController.m; sourceTree = "<group>"; };
 		D9CDFBB31CC4CE5B0054EBE3 /* CustomIOSAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomIOSAlertView.h; path = ../../CustomIOSAlertView.h; sourceTree = "<group>"; };
@@ -4671,6 +4674,8 @@
 				D9C2EF4A1F70FFAC007919C2 /* LZDMemberCell.h */,
 				D9C2EF4B1F70FFAC007919C2 /* LZDMemberCell.m */,
 				D9C2EF4C1F70FFAC007919C2 /* LZDMemberCell.xib */,
+				D9C8106F1F73835D004E7E41 /* LZDDopDownView.h */,
+				D9C810701F73835E004E7E41 /* LZDDopDownView.m */,
 			);
 			name = "会员列表s";
 			sourceTree = "<group>";
@@ -5671,6 +5676,7 @@
 				D947E4901D7D71C400F9FEE8 /* Database.m in Sources */,
 				D9B3A5C01D74255700F3F27E /* PSTCollectionViewFlowLayout.m in Sources */,
 				D94743951CE56A6000D1D3EE /* LNSearchManager.m in Sources */,
+				D9C810711F73835E004E7E41 /* LZDDopDownView.m in Sources */,
 				D9B3A5A81D74255700F3F27E /* MWTapDetectingView.m in Sources */,
 				18D7C47F1D5B113800AEF545 /* XieYiViewController.m in Sources */,
 				D9B3A5BB1D74255700F3F27E /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,

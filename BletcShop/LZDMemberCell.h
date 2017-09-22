@@ -11,8 +11,8 @@
 @interface LZDMemberCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *headerImg;
 @property (weak, nonatomic) IBOutlet UILabel *nameLab;
+@property (weak, nonatomic) IBOutlet UILabel *datetime;
 
-@property (weak, nonatomic) IBOutlet UILabel *timeLab;
 @property (weak, nonatomic) IBOutlet UILabel *cardTypelab;
 @property (weak, nonatomic) IBOutlet UILabel *consumeLab;
 
