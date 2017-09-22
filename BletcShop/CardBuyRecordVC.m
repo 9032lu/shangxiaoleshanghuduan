@@ -44,19 +44,19 @@
     [self.view addSubview:bgView];
     
     head=[[UIImageView alloc]initWithFrame:CGRectMake(11, 11, 54, 54)];
-    head.image=[UIImage imageNamed:@"icon3"];
+    head.image=[UIImage imageNamed:@""];
     head.layer.cornerRadius=27;
     head.clipsToBounds=YES;
     [bgView addSubview:head];
     
     nick=[[UILabel alloc]initWithFrame:CGRectMake(11, head.bottom+4, head.width+100, 16)];
-    nick.text=@"张大大";
+    nick.text=@"";
     nick.textColor=RGB(51,51,51);
     nick.font=[UIFont systemFontOfSize:13];
     [bgView addSubview:nick];
     
     totalMoney=[[UILabel alloc]initWithFrame:CGRectMake(head.right+10, 0, bgView.width-head.right-10, nick.bottom+5)];
-    totalMoney.text=@"办卡总额：0";
+    totalMoney.text=@"";
     totalMoney.textAlignment=NSTextAlignmentCenter;
     totalMoney.font=[UIFont systemFontOfSize:18];
     totalMoney.textColor=RGB(241,122,18);
@@ -66,7 +66,7 @@
     line.backgroundColor=RGB(220, 220, 220);
     [bgView addSubview:line];
     
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(13, line.bottom, bgView.width-13, SCREENHEIGHT-64-112) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, line.bottom, bgView.width, SCREENHEIGHT-64-112) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.separatorStyle=UITableViewCellSeparatorStyleNone;

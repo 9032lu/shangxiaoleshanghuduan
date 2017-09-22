@@ -138,6 +138,8 @@
 		18CF67B31F73B27E0004C573 /* CardBuyRecTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67B11F73B27E0004C573 /* CardBuyRecTableViewCell.xib */; };
 		18CF67B81F73C8850004C573 /* ChargeRecVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67B61F73C8850004C573 /* ChargeRecVC.m */; };
 		18CF67B91F73C8850004C573 /* ChargeRecVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67B71F73C8850004C573 /* ChargeRecVC.xib */; };
+		18CF67BE1F74A7160004C573 /* MSGNotificationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67BC1F74A7160004C573 /* MSGNotificationVC.m */; };
+		18CF67BF1F74A7160004C573 /* MSGNotificationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67BD1F74A7160004C573 /* MSGNotificationVC.xib */; };
 		18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E411ED6D4EC0077861A /* NSTimer+addition.m */; };
 		18D43E471ED6D4EC0077861A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E431ED6D4EC0077861A /* UIView+Frame.m */; };
 		18D43E481ED6D4EC0077861A /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E451ED6D4EC0077861A /* WYWebProgressLayer.m */; };
@@ -974,6 +976,9 @@
 		18CF67B51F73C8850004C573 /* ChargeRecVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargeRecVC.h; sourceTree = "<group>"; };
 		18CF67B61F73C8850004C573 /* ChargeRecVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargeRecVC.m; sourceTree = "<group>"; };
 		18CF67B71F73C8850004C573 /* ChargeRecVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargeRecVC.xib; sourceTree = "<group>"; };
+		18CF67BB1F74A7160004C573 /* MSGNotificationVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSGNotificationVC.h; sourceTree = "<group>"; };
+		18CF67BC1F74A7160004C573 /* MSGNotificationVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSGNotificationVC.m; sourceTree = "<group>"; };
+		18CF67BD1F74A7160004C573 /* MSGNotificationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MSGNotificationVC.xib; sourceTree = "<group>"; };
 		18D43E401ED6D4EC0077861A /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		18D43E411ED6D4EC0077861A /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
 		18D43E421ED6D4EC0077861A /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -2909,7 +2914,6 @@
 			isa = PBXGroup;
 			children = (
 				18CF67B41F73C83F0004C573 /* 充值 */,
-				18CF67A41F73A2B40004C573 /* 续卡升级 record */,
 				18CF67A31F73A29D0004C573 /* 办卡 record */,
 				18CF67A21F73A2880004C573 /* 消费 record */,
 			);
@@ -2939,13 +2943,6 @@
 			name = "办卡 record";
 			sourceTree = "<group>";
 		};
-		18CF67A41F73A2B40004C573 /* 续卡升级 record */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "续卡升级 record";
-			sourceTree = "<group>";
-		};
 		18CF67B41F73C83F0004C573 /* 充值 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2954,6 +2951,16 @@
 				18CF67B71F73C8850004C573 /* ChargeRecVC.xib */,
 			);
 			name = "充值";
+			sourceTree = "<group>";
+		};
+		18CF67BA1F74A6E00004C573 /* 消息提醒s */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67BB1F74A7160004C573 /* MSGNotificationVC.h */,
+				18CF67BC1F74A7160004C573 /* MSGNotificationVC.m */,
+				18CF67BD1F74A7160004C573 /* MSGNotificationVC.xib */,
+			);
+			name = "消息提醒s";
 			sourceTree = "<group>";
 		};
 		18D0B4BF1EFE05BB00302D79 /* 添加套餐卡 */ = {
@@ -3244,10 +3251,12 @@
 		1CDA9E081C5A113000DFE518 /* 商户端 */ = {
 			isa = PBXGroup;
 			children = (
+				18CF67BA1F74A6E00004C573 /* 消息提醒s */,
 				D9C2EF2F1F70F12D007919C2 /* 新的会员管理s */,
 				D98ECBC31D9CB26B00BEDD57 /* 新的结算中心 */,
 				1CDA9E0A1C5A119C00DFE518 /* 我的会员 */,
 				1CDA9E0E1C5A11E800DFE518 /* 更多 */,
+				1887C70C1F58EA670030C290 /* 业务center--home */,
 				1CDA9E0D1C5A11C600DFE518 /* 业务中心 */,
 				1CDA9E0C1C5A11AD00DFE518 /* 我的商品 */,
 			);
@@ -3286,7 +3295,6 @@
 				D9CDFBB61CC4DB8C0054EBE3 /* ShopManagerViewController.h */,
 				D9CDFBB71CC4DB8C0054EBE3 /* ShopManagerViewController.m */,
 				D925E6421CC60EEC0020CEC7 /* 多种业务界面 */,
-				1887C70C1F58EA670030C290 /* 业务center--home */,
 				D9E5C3D61E5EBED6006BA2B1 /* PushAdverViewController.h */,
 				D9E5C3D71E5EBED6006BA2B1 /* PushAdverViewController.m */,
 				D9E5C3D81E5EBED6006BA2B1 /* PushAdverViewController.xib */,
@@ -5264,6 +5272,7 @@
 				D93027E41CFEBC82007447D2 /* checkbox_ture.png in Resources */,
 				D9D50DB91D87DE2800A5E469 /* d_aini@2x.png in Resources */,
 				D97338C11ED666600093A2FB /* 下角标ss.png in Resources */,
+				18CF67BF1F74A7160004C573 /* MSGNotificationVC.xib in Resources */,
 				1A8312811D88544D001BC3B6 /* chat_sender_audio_playing_000@2x.png in Resources */,
 				1A83127A1D885444001BC3B6 /* chat_receiver_audio_playing001@2x.png in Resources */,
 				D9D50DB51D87DE0E00A5E469 /* Emoticons.bundle in Resources */,
@@ -5385,6 +5394,7 @@
 				D9C4CDED1DE44587009C76C1 /* ValuePickerView.m in Sources */,
 				189CC5A91EF92F8000A73BB6 /* PointRuleViewController.m in Sources */,
 				D9F3A3C91D794EC400F06E0C /* PublicGroupViewController.m in Sources */,
+				18CF67BE1F74A7160004C573 /* MSGNotificationVC.m in Sources */,
 				D972271E1F32F8CB009D0E2A /* NewPasswordViewController.m in Sources */,
 				185E51431E5D26D9009F0C01 /* PublishAdvertSecondVC.m in Sources */,
 				D9B3A5C41D74255700F3F27E /* PSTGridLayoutInfo.m in Sources */,
