@@ -15,5 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *cardTypelab;
 @property (weak, nonatomic) IBOutlet UILabel *consumeLab;
+@property (strong, nonatomic) IBOutlet UIView *lineView;
 
 @end

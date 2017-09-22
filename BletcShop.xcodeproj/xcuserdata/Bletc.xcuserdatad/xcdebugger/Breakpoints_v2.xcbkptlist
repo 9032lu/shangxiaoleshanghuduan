@@ -34,7 +34,7 @@
                   offsetFromSymbolStart = "394">
                </Location>
                <Location
-                  shouldBeEnabled = "No"
+                  shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__41-[BankListViewController getAllbankList:]_block_invoke"

@@ -40,6 +40,8 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 {
     LZDButton *sex_old_btn;
     
+    
+    
     UIView *picker_backView;
     
     NSString *select_date;//所选的日期
@@ -47,12 +49,17 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     SDRefreshFooterView *_refreshFooter;
 
 }
+@property (strong, nonatomic) IBOutlet UIView *footView;
 @property (strong, nonatomic) IBOutlet UITableView *table_View;
 @property (strong, nonatomic) IBOutlet UIButton *screenBtn;
 
+
+@property(nonatomic,strong)UIButton *oldBtn;
 @property(nonatomic,strong)NSArray *dopMenuData_A;
 @property(strong,nonatomic)pushView *myPushView;
 @property(strong,nonatomic)UIView *screenBackView;
+
+@property(nonatomic,strong)PickReasonView *pickReasonView;
 
 @property(nonatomic,strong)NSMutableArray*btn_mut_A;
 
@@ -95,9 +102,11 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     
     self.table_View.estimatedRowHeight = 100;
     self.table_View.rowHeight = UITableViewAutomaticDimension;
+    self.pickReasonView = [[PickReasonView alloc]init];
 
     
-    
+    self.footView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 48);
+    [self.view addSubview:_footView];
     
 
     
@@ -138,8 +147,6 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     
     
     
-    PickReasonView *pickReasonView = [[PickReasonView alloc]init];
-
 
     
     
@@ -167,19 +174,36 @@ typedef NS_ENUM(NSInteger,ScreenType) {
             
             if (sender.tag ==0) {
                 
-                pickReasonView.title = @"选择节日";
-                pickReasonView.dataSource =self.festival_A ;
-                pickReasonView.mutab_select = NO;
-                [[UIApplication sharedApplication].keyWindow addSubview:pickReasonView];
+                
+                self.oldBtn = sender;
+                
+                self.table_View.editing = !self.table_View.isEditing;
+                
+                CGRect footViewFrame = _footView.frame;
+
+                if (self.table_View.editing) {
+                    
+                    footViewFrame.origin.y = SCREENHEIGHT -49;
+                    [UIView animateWithDuration:0.3 animations:^{
+                        _footView.frame = footViewFrame;
+                        
+                    }];
+                    
+                }else{
+                    footViewFrame.origin.y = SCREENHEIGHT;
+                    [UIView animateWithDuration:0.3 animations:^{
+                        _footView.frame = footViewFrame;
+                        
+                    }];
+                }
+             
                 
                 
-                [pickReasonView show];
+                self.tabBarController.tabBar.hidden = self.table_View.isEditing;
+                
 
                 
-                pickReasonView.sureBtnClick = ^(NSArray *value_A) {
-                  
-                    NSLog(@"value_A--%@",value_A);
-                };
+                
             }
             
             if (sender.tag==1) {
@@ -427,6 +451,8 @@ typedef NS_ENUM(NSInteger,ScreenType) {
                 
 
                 [_extra_screen_Dic removeAllObjects];
+                sex_old_btn = nil;
+                
                 
                 
                 
@@ -682,9 +708,22 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 }
 
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+    
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    PUSH(VIPInfoVCS)
-    vc.infoDic =self.data_Muta_A[indexPath.row];
+    
+    if (!_table_View.isEditing) {
+        PUSH(VIPInfoVCS)
+        vc.infoDic =self.data_Muta_A[indexPath.row];
+    }
+   
     
 }
 
@@ -828,8 +867,58 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     
 }
 
+- (IBAction)footBtnClick:(UIButton *)sender {
+    
+    
+    if (sender.tag==1) {
+        
+        
+        
+        _pickReasonView.title = @"选择节日";
+        _pickReasonView.dataSource =self.festival_A ;
+        _pickReasonView.mutab_select = NO;
+        [[UIApplication sharedApplication].keyWindow addSubview:_pickReasonView];
+        
+        
+        
+        __block typeof(self) blockSlef = self;
+        
+        _pickReasonView.sureBtnClick = ^(NSArray *value_A) {
+            
+            blockSlef.myPushView.btnClickBlock(blockSlef.oldBtn);
+            
+            NSLog(@"value_A--%@",value_A);
+        };
+        [self.pickReasonView show];
+
+        
+    }else{
+        
+        sender.selected = !sender.isSelected;
+        
+        if (sender.isSelected) {
+            [self.data_Muta_A enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                [self.table_View selectRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0] animated:NO scrollPosition:UITableViewScrollPositionNone];
+            }];
+        }else{
+            [self.table_View reloadData];
+        }
+        
+       
+        
+       
+        
+    }
+    
+}
+
+
 
 #pragma mark 懒加载
+
+
+
 -(NSMutableDictionary *)extra_screen_Dic{
     if (!_extra_screen_Dic) {
         _extra_screen_Dic = [NSMutableDictionary dictionary];
