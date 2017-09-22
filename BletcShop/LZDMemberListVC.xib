@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LZDMemberListVC">
             <connections>
+                <outlet property="footView" destination="DHn-da-t5r" id="0Fm-Hn-ZPr"/>
                 <outlet property="screenBtn" destination="fgg-il-ygB" id="k1b-7v-OD2"/>
                 <outlet property="table_View" destination="maN-G2-yFA" id="Yup-m3-wqN"/>
                 <outlet property="view" destination="BZG-v0-sT5" id="noh-xP-52E"/>
@@ -113,7 +114,51 @@
                 <constraint firstAttribute="trailing" secondItem="maN-G2-yFA" secondAttribute="trailing" id="ohJ-mu-Hyy"/>
                 <constraint firstItem="rG8-yf-Ly2" firstAttribute="leading" secondItem="BZG-v0-sT5" secondAttribute="leading" id="wa3-I9-Ex7"/>
             </constraints>
-            <point key="canvasLocation" x="-2087" y="-903"/>
+            <point key="canvasLocation" x="-2890" y="-988"/>
+        </view>
+        <view contentMode="scaleToFill" id="DHn-da-t5r">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpA-s8-ep0">
+                    <rect key="frame" x="0.0" y="1" width="187" height="47"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="全选">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <state key="selected" title="取消">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="footBtnClick:" destination="-1" eventType="touchUpInside" id="kEE-wh-mQX"/>
+                    </connections>
+                </button>
+                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0W-zQ-fLF">
+                    <rect key="frame" x="188" y="1" width="187" height="47"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="节日优惠">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="footBtnClick:" destination="-1" eventType="touchUpInside" id="dk4-X6-xwg"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="cpA-s8-ep0" secondAttribute="bottom" id="7wJ-Ai-eHT"/>
+                <constraint firstItem="cpA-s8-ep0" firstAttribute="leading" secondItem="DHn-da-t5r" secondAttribute="leading" id="Ata-PN-uQQ"/>
+                <constraint firstItem="G0W-zQ-fLF" firstAttribute="leading" secondItem="cpA-s8-ep0" secondAttribute="trailing" constant="1" id="Cua-6Y-E6G"/>
+                <constraint firstAttribute="bottom" secondItem="G0W-zQ-fLF" secondAttribute="bottom" id="LA9-s4-oHa"/>
+                <constraint firstItem="G0W-zQ-fLF" firstAttribute="width" secondItem="cpA-s8-ep0" secondAttribute="width" id="VwK-d8-Z2u"/>
+                <constraint firstAttribute="trailing" secondItem="G0W-zQ-fLF" secondAttribute="trailing" id="bN9-sK-no1"/>
+                <constraint firstItem="G0W-zQ-fLF" firstAttribute="top" secondItem="DHn-da-t5r" secondAttribute="top" constant="1" id="hl0-ut-lyt"/>
+                <constraint firstItem="cpA-s8-ep0" firstAttribute="top" secondItem="DHn-da-t5r" secondAttribute="top" constant="1" id="xHX-yV-wtJ"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-2287.5" y="-1574.5"/>
         </view>
     </objects>
     <resources>

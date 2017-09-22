@@ -14,13 +14,15 @@
     
     UITableViewCell *oldCell;
     
+    
+    
     NSInteger singleSelect;
 }
 @property(nonatomic,strong)UITableView *table_View;
 @property(nonatomic,copy)NSMutableDictionary *value_mutab;
 @property (nonatomic, strong) NSMutableDictionary * select_dic;
 @property(nonatomic,strong)UILabel *titleLab;
-
+@property(nonatomic,strong)UIView *backView;
 @end
 @implementation PickReasonView
 -(NSMutableDictionary *)select_dic{
@@ -49,9 +51,11 @@
     
     singleSelect = 0;
     
-    UIView *backView =[[UIView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT-347, SCREENWIDTH, 347)];
+ UIView*  backView =[[UIView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 347)];
     backView.backgroundColor = [UIColor whiteColor];
     [self addSubview:backView];
+    self.backView = backView;
+    
     UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 56)];
     title.textAlignment = NSTextAlignmentCenter;
     title.textColor = RGB(0,0,0);
@@ -204,7 +208,6 @@
     
     NSLog(@"-----index =%ld",indexPath.row);
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     
     if (self.mutab_select) {
@@ -254,10 +257,19 @@
 
     
     CGRect frame = self.frame;
+    
+
     if (frame.origin.y == SCREENHEIGHT) {
         frame.origin.y = 0;
+        self.frame = frame;
+        
+        CGRect backFrame = self.backView.frame;
+        backFrame.origin.y = SCREENHEIGHT-self.backView.height;
+
         [UIView animateWithDuration:0.3 animations:^{
-            self.frame = frame;
+            
+            self.backView.frame = backFrame;
+            
         }];
     }
 }
@@ -274,8 +286,18 @@
     CGRect selfFrame = self.frame;
     if (selfFrame.origin.y == 0) {
         selfFrame.origin.y = SCREENHEIGHT;
+        self.frame = selfFrame;
+
+        
+        CGRect backFrame = self.backView.frame;
+        backFrame.origin.y = SCREENHEIGHT;
+   
+        
+        
         [UIView animateWithDuration:0.3 animations:^{
-            self.frame = selfFrame;
+            self.backView.frame = backFrame;
+
+        
         }completion:^(BOOL finished) {
             [self removeFromSuperview];
         }];

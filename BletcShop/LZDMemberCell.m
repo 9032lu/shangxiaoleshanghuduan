@@ -8,17 +8,21 @@
 
 #import "LZDMemberCell.h"
 
+
 @implementation LZDMemberCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+    self.multipleSelectionBackgroundView = [UIView new];
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    self.lineView.backgroundColor = RGB(240, 240, 240);
+
 }
 
 

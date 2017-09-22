@@ -12,11 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="memberCellID" rowHeight="87" id="KGk-i7-Jjw" customClass="LZDMemberCell">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="memberCellID" rowHeight="87" id="KGk-i7-Jjw" customClass="LZDMemberCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="86.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="87"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="OGp-KF-AGj">
@@ -98,14 +98,16 @@
                     <constraint firstAttribute="bottom" secondItem="PKr-Lc-bpC" secondAttribute="bottom" id="vDc-8c-S6N"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="tintColor" red="0.94901960780000005" green="0.2156862745" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="cardTypelab" destination="K3f-9t-I0e" id="RFY-xv-G9x"/>
                 <outlet property="consumeLab" destination="rQ7-gc-dWl" id="rAk-Yj-rpR"/>
                 <outlet property="datetime" destination="PKr-Lc-bpC" id="JnS-fg-yYI"/>
                 <outlet property="headerImg" destination="OGp-KF-AGj" id="oTv-ga-1gH"/>
+                <outlet property="lineView" destination="By6-qZ-kAz" id="vov-dV-fVY"/>
                 <outlet property="nameLab" destination="fWl-qx-gOG" id="pAX-OT-A17"/>
             </connections>
-            <point key="canvasLocation" x="58" y="-217"/>
+            <point key="canvasLocation" x="-43" y="-350"/>
         </tableViewCell>
     </objects>
     <resources>
