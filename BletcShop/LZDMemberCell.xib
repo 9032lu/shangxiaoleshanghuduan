@@ -32,7 +32,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称：张大大" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWl-qx-gOG">
-                        <rect key="frame" x="80" y="21" width="80" height="13"/>
+                        <rect key="frame" x="80" y="37" width="80" height="13"/>
                         <constraints>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="Mmj-gQ-rZU"/>
                             <constraint firstAttribute="height" constant="13" id="S8l-Mb-Ukc"/>
@@ -41,19 +41,8 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017.08.21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3A-fu-xGN">
-                        <rect key="frame" x="80" y="53.5" width="56" height="13"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="13" id="Ovb-Hv-GHk"/>
-                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="Uhf-Wo-2CF"/>
-                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="9" id="ZnM-Cl-Gke"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="消费卡种：储值卡" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3f-9t-I0e">
-                        <rect key="frame" x="254.5" y="21" width="106.5" height="13"/>
+                        <rect key="frame" x="254.5" y="20" width="106.5" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="h2B-Xo-h2r"/>
                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="rrJ-Uj-Q3Y"/>
@@ -79,33 +68,43 @@
                             <constraint firstAttribute="height" constant="1" id="x8j-oN-gGe"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PKr-Lc-bpC">
+                        <rect key="frame" x="212" y="0.0" width="150" height="86.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="t3x-2w-uJN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.46666666670000001" green="0.46666666670000001" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="K3f-9t-I0e" firstAttribute="height" secondItem="fWl-qx-gOG" secondAttribute="height" id="3Yi-yc-dbJ"/>
-                    <constraint firstItem="K3f-9t-I0e" firstAttribute="centerY" secondItem="fWl-qx-gOG" secondAttribute="centerY" id="6lg-SB-SjZ"/>
-                    <constraint firstAttribute="bottom" secondItem="m3A-fu-xGN" secondAttribute="bottom" constant="20" id="SgS-om-bGZ"/>
-                    <constraint firstItem="m3A-fu-xGN" firstAttribute="leading" secondItem="fWl-qx-gOG" secondAttribute="leading" id="cr7-BU-QU7"/>
+                    <constraint firstItem="K3f-9t-I0e" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="9VM-po-RRD"/>
+                    <constraint firstItem="PKr-Lc-bpC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Qft-aE-KrN"/>
+                    <constraint firstItem="fWl-qx-gOG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Yzj-3P-Bjq"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="By6-qZ-kAz" secondAttribute="bottom" id="eOo-48-xVl"/>
                     <constraint firstAttribute="trailing" secondItem="By6-qZ-kAz" secondAttribute="trailing" constant="13" id="enb-jh-nSi"/>
                     <constraint firstItem="By6-qZ-kAz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="jwZ-wh-PmN"/>
                     <constraint firstItem="fWl-qx-gOG" firstAttribute="leading" secondItem="OGp-KF-AGj" secondAttribute="trailing" constant="13" id="kTa-kw-Sna"/>
                     <constraint firstItem="By6-qZ-kAz" firstAttribute="top" secondItem="OGp-KF-AGj" secondAttribute="bottom" constant="14" id="nAO-ch-Nlj"/>
                     <constraint firstItem="OGp-KF-AGj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="oWO-YH-thg"/>
+                    <constraint firstAttribute="trailing" secondItem="PKr-Lc-bpC" secondAttribute="trailing" constant="13" id="oYe-7K-Egb"/>
                     <constraint firstItem="OGp-KF-AGj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="soS-fZ-7OD"/>
                     <constraint firstAttribute="trailingMargin" secondItem="rQ7-gc-dWl" secondAttribute="trailing" constant="14" id="t1h-HX-G4i"/>
                     <constraint firstAttribute="bottom" secondItem="rQ7-gc-dWl" secondAttribute="bottom" constant="20" id="v1A-MP-zK7"/>
-                    <constraint firstItem="fWl-qx-gOG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="21" id="xuf-kl-Aih"/>
+                    <constraint firstAttribute="bottom" secondItem="PKr-Lc-bpC" secondAttribute="bottom" id="vDc-8c-S6N"/>
                     <constraint firstAttribute="trailing" secondItem="K3f-9t-I0e" secondAttribute="trailing" constant="14" id="zfj-zX-oG2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="cardTypelab" destination="K3f-9t-I0e" id="RFY-xv-G9x"/>
                 <outlet property="consumeLab" destination="rQ7-gc-dWl" id="rAk-Yj-rpR"/>
+                <outlet property="datetime" destination="PKr-Lc-bpC" id="JnS-fg-yYI"/>
                 <outlet property="headerImg" destination="OGp-KF-AGj" id="oTv-ga-1gH"/>
                 <outlet property="nameLab" destination="fWl-qx-gOG" id="pAX-OT-A17"/>
-                <outlet property="timeLab" destination="m3A-fu-xGN" id="khp-br-ynk"/>
             </connections>
-            <point key="canvasLocation" x="-142.5" y="-217.5"/>
+            <point key="canvasLocation" x="-56.5" y="-159.5"/>
         </tableViewCell>
     </objects>
     <resources>

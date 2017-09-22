@@ -19,7 +19,12 @@
 #import "VIPInfoVCS.h"
 #import "VIPBirthNoticeVC.h"
 #import "PickReasonView.h"
+
+#import "LZDDopDownView.h"
+
+
 #import "UIImageView+WebCache.h"
+
 
 typedef NS_ENUM(NSInteger,ScreenType) {
     
@@ -68,7 +73,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 @property(nonatomic,strong)NSMutableArray *data_Muta_A;
 
 @property(nonatomic,strong)NSMutableDictionary *extra_screen_Dic;//其他筛选条件
-
+@property(nonatomic,copy)NSString *selectOrder_s;//筛选条件,如上到下
 
 
 @property ScreenType s_type;
@@ -86,18 +91,51 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     
     self.pageIndex = 1;
     
+    self.selectOrder_s =@"desc";
+    
     self.table_View.estimatedRowHeight = 100;
     self.table_View.rowHeight = UITableViewAutomaticDimension;
 
     
     
     
+
     
-    DOPDropDownMenu *menu = [[DOPDropDownMenu alloc] initWithOrigin:CGPointMake(0,64) andHeight:44 andSuperView:self.view];
-    menu.delegate = self;
-    menu.dataSource = self;
-    menu.isClickHaveItemValid = YES;
+    
+    LZDDopDownView *menu = [[LZDDopDownView alloc]initWithOrigin:CGPointMake(0, 64) andHeight:44 andSuperView:self.view];
+    
+    menu.data_source_A = self.dopMenuData_A;
+    
+    [menu selectDefalutIndexPath];
+    
     [self.view addSubview:menu];
+
+    __block typeof(self) blockSelf = self;
+    
+    menu.selectBlock = ^(NSInteger section, NSInteger row) {
+      
+        blockSelf.pageIndex = 1;
+
+        blockSelf.s_type = section;
+    
+        if (row ==0) {
+            blockSelf.selectOrder_s =@"desc";
+
+
+        }else if (row==1){
+            blockSelf.selectOrder_s =@"asc";
+
+        }else{
+            blockSelf.selectOrder_s =@"";
+ 
+        }
+        
+        
+        
+        [blockSelf getDataRequest];
+        
+    };
+    
     
     
     PickReasonView *pickReasonView = [[PickReasonView alloc]init];
@@ -182,7 +220,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     };
 
     
-    [self getDataRequest];
+   [self getDataRequest];
     
 }
 
@@ -585,21 +623,58 @@ typedef NS_ENUM(NSInteger,ScreenType) {
         
         
         cell.nameLab.text = [NSString stringWithFormat:@"名称:%@",name];
-        cell.cardTypelab.text = [NSString stringWithFormat:@"消费卡种:%@",[NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@""]];
-        cell.consumeLab.text = [NSString stringWithFormat:@"消费次数:%.2f元",[dic[@"sum"] floatValue]];
-
-    
+        
+        
         [cell.headerImg sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HEADIMAGE,dic[@"headimage"]]] placeholderImage:[UIImage imageNamed:@"userHeader"]];
-    
-    
-    
-    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]initWithString:cell.consumeLab.text];
- 
-    
-    [attr setAttributes:@{NSForegroundColorAttributeName:RGB(51,51,51),NSFontAttributeName:[UIFont systemFontOfSize:13]} range:NSMakeRange(0, 5)];
+        
+        
+        if (self.s_type ==extra) {
+            
+            cell.cardTypelab.text = cell.consumeLab.text= @"";
+            
+        }else if(_s_type ==sum){
+            
+            cell.cardTypelab.text = [NSString stringWithFormat:@"消费卡种:%@",[NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"会员卡"]];
+            
+            
+            cell.consumeLab.text = [NSString stringWithFormat:@"消费金额:%.2f元",[dic[@"sum"] floatValue]];
+            NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]initWithString:cell.consumeLab.text];
+            
+            
+            [attr setAttributes:@{NSForegroundColorAttributeName:RGB(51,51,51),NSFontAttributeName:[UIFont systemFontOfSize:13]} range:NSMakeRange(0, 5)];
+            
+            cell.consumeLab.attributedText = attr;
 
-    cell.consumeLab.attributedText = attr;
-    }
+ 
+            
+        }else if (_s_type ==count){
+            
+            cell.cardTypelab.text = [NSString stringWithFormat:@"消费卡种:%@",[NSString getTheNoNullStr:dic[@"card_type"] andRepalceStr:@"会员卡"]];
+            
+            
+            cell.consumeLab.text = [NSString stringWithFormat:@"消费次数:%@",dic[@"count"]];
+            
+            NSMutableAttributedString *attr = [[NSMutableAttributedString alloc]initWithString:cell.consumeLab.text];
+            
+            
+            [attr setAttributes:@{NSForegroundColorAttributeName:RGB(51,51,51),NSFontAttributeName:[UIFont systemFontOfSize:13]} range:NSMakeRange(0, 5)];
+            
+            cell.consumeLab.attributedText = attr;
+
+
+        }else if(_s_type ==age){
+            cell.cardTypelab.text = cell.consumeLab.text= @"";
+
+            cell.datetime.text = [NSString stringWithFormat:@"办卡时间:%@",[dic[@"datetime"] substringToIndex:10]];
+            
+        }
+        
+
+        
+    
+    
+    
+       }
 
     return cell;
 }
@@ -632,6 +707,12 @@ typedef NS_ENUM(NSInteger,ScreenType) {
                 
             }];
         }
+    }else{
+        
+        _s_type = sum;
+        [self getDataRequest];
+        
+        
     }
     
     
@@ -667,17 +748,20 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     NSMutableDictionary*paramer = [NSMutableDictionary dictionary];
     [paramer setValue:app.shopInfoDic[@"muid"] forKey:@"muid"];
     
+    
+    [paramer setValue:_selectOrder_s forKey:@"order"];
+
+    
     if (self.s_type ==sum) {
         
         [paramer setValue:@"consum_sum" forKey:@"type"];
-        [paramer setValue:@"asc" forKey:@"order"];
         
     }else if (_s_type ==count){
         [paramer setValue:@"consum_count" forKey:@"type"];
 
     }else if (_s_type ==age){
         
-        [paramer setValue:@"consum_age" forKey:@"type"];
+        [paramer setValue:@"member_age" forKey:@"type"];
 
         
     }else if (_s_type ==extra){
@@ -699,6 +783,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     NSLog(@"paramer===%@",paramer);
     [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
+        NSLog(@"---%@",result);
         
         [_refreshFooter endRefreshing];
         [_refreshheader endRefreshing];
@@ -825,9 +910,18 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 
 -(NSArray *)dopMenuData_A{
     if (!_dopMenuData_A) {
-        _dopMenuData_A = @[@[@"综合排序",@"消费额度",@"消费额度由高到低",@"消费额度由低到高"],@[@"消费次数",@"消费次数由高到低",@"消费次数由低到高"],@[@"本月新增"]];
+        _dopMenuData_A = @[
+                           @{@"title":@"消费额度",@"content":@[@"由高到低",@"由低到高"]},
+                           @{@"title":@"消费次数",@"content":@[@"由高到低",@"由低到高"]},
+                           @{@"title":@"会员时间长度",@"content":@[@"由高到低",@"由低到高"]}
+                           
+                           ];
     }
     return _dopMenuData_A;
 }
+
+
+
+
 
 @end
