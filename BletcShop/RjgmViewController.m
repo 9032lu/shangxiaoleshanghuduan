@@ -260,12 +260,12 @@
 }
 -(void)initRjgmViewWithDic:(NSDictionary*)dic
 {
-    self.sum_Lab.text = dic[@"remain"];
-    self.insure_Lab.text =[NSString stringWithFormat:@"%.2f元",[dic[@"trans_access"] floatValue]];
+    self.sum_Lab.text = [NSString getTheNoNullStr:dic[@"remain"] andRepalceStr:@"0.00"];
+    self.insure_Lab.text =[NSString stringWithFormat:@"%.2f元",[[NSString getTheNoNullStr:dic[@"trans_access"] andRepalceStr:@"0.00"] floatValue]];
 
-    self.wait_Lab.text = [NSString stringWithFormat:@"%.2f元",[dic[@"trans_ready"] floatValue]];
+    self.wait_Lab.text = [NSString stringWithFormat:@"%.2f元",[[NSString getTheNoNullStr:dic[@"trans_ready"] andRepalceStr:@"0.00"] floatValue]];
     
-    self.award_Lab.text = [NSString stringWithFormat:@"%.2f元",[dic[@"ref_award"] floatValue]];
+    self.award_Lab.text = [NSString stringWithFormat:@"%.2f元",[[NSString getTheNoNullStr:dic[@"ref_award"] andRepalceStr:@"0.00"] floatValue]];
     
     
 }

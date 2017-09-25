@@ -12,6 +12,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShopCodeResultVC">
             <connections>
+                <outlet property="cardType" destination="uDf-Wo-raq" id="XRh-nB-b5X"/>
+                <outlet property="confirmBtn" destination="BS2-Mb-K5e" id="nWX-N1-KWe"/>
+                <outlet property="head" destination="HPA-jt-RTt" id="x9J-p5-3bH"/>
+                <outlet property="nickName" destination="U3p-ds-4T9" id="MTp-k2-Id4"/>
+                <outlet property="payMoneyOrCounts" destination="t2O-Ez-89k" id="EgS-vg-lde"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -104,6 +109,19 @@
                     <state key="normal" title="确认收款">
                         <color key="titleColor" red="0.035294117647058823" green="0.75294117647058822" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="confirmBtnClick:" destination="-1" eventType="touchUpInside" id="Ol5-Gd-wZt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KlZ-MG-xgQ">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="KAs-b0-3ag"/>
+                        <constraint firstAttribute="width" constant="80" id="bcB-gB-n68"/>
+                    </constraints>
+                    <connections>
+                        <action selector="backBtnClick:" destination="-1" eventType="touchUpInside" id="zlg-gn-gSz"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -113,6 +131,7 @@
                 <constraint firstItem="74d-gQ-TXo" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="13" id="7fN-Lq-tdf"/>
                 <constraint firstItem="wB7-to-5mH" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="13" id="9PM-fQ-ncR"/>
                 <constraint firstItem="U3p-ds-4T9" firstAttribute="leading" secondItem="HPA-jt-RTt" secondAttribute="trailing" constant="8" id="9ZG-ob-2z7"/>
+                <constraint firstItem="KlZ-MG-xgQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BaX-Nd-1gW"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="BS2-Mb-K5e" secondAttribute="trailing" constant="85" id="Iwh-6H-jsn"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="U3p-ds-4T9" secondAttribute="trailing" constant="13" id="KBV-uS-2g0"/>
                 <constraint firstItem="B3F-Q6-ny5" firstAttribute="top" secondItem="t2O-Ez-89k" secondAttribute="bottom" constant="65" id="NcW-yU-Oa0"/>
@@ -130,6 +149,7 @@
                 <constraint firstItem="jPV-ww-Jo0" firstAttribute="top" secondItem="uDf-Wo-raq" secondAttribute="bottom" constant="20" id="oSI-Na-Vyh"/>
                 <constraint firstItem="uDf-Wo-raq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="pQ6-Vl-nXZ"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="B3F-Q6-ny5" secondAttribute="trailing" constant="13" id="r1n-Ev-lFW"/>
+                <constraint firstItem="KlZ-MG-xgQ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="sGn-l3-LGb"/>
                 <constraint firstItem="wB7-to-5mH" firstAttribute="top" secondItem="B3F-Q6-ny5" secondAttribute="bottom" constant="16" id="sIr-Id-5FQ"/>
                 <constraint firstItem="vMY-Iq-d17" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="tES-4l-Lug"/>
                 <constraint firstItem="t2O-Ez-89k" firstAttribute="top" secondItem="vMY-Iq-d17" secondAttribute="bottom" constant="30" id="veR-0J-Mse"/>

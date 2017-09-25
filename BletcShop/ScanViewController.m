@@ -12,7 +12,8 @@
 #import "ScanViewController.h"
 #import "SoundPaly.h"
 #import "ErrorQRViewController.h"
-#import "ShopCodeResultVC.h"
+#import "ShopCodeResultVC.h"//储&计
+#import "ShopCodeResultOtherVC.h"//套餐
 @interface ScanViewController ()<AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate>
 {
     AVCaptureSession * session;//输入输出的中间桥梁
@@ -368,8 +369,10 @@
                 
                 if ([self.shopOrUser isEqualToString:@"shop"]) {
                     //
-                    NSLog(@"商户端扫码");
-                    ShopCodeResultVC *VC = [[ShopCodeResultVC alloc]init];
+                    NSLog(@"商户端扫码");//ShopCodeResultOtherVC
+//                    ShopCodeResultVC *VC = [[ShopCodeResultVC alloc]init];
+//                    [self.navigationController pushViewController:VC animated:YES];
+                    ShopCodeResultOtherVC *VC = [[ShopCodeResultOtherVC alloc]init];
                     [self.navigationController pushViewController:VC animated:YES];
                     //[self payForCoupons:dic];
                 }

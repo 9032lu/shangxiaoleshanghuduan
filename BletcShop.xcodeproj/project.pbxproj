@@ -148,6 +148,10 @@
 		18CF67D11F74E81E0004C573 /* ADDCoupomSSVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67CF1F74E81E0004C573 /* ADDCoupomSSVC.xib */; };
 		18CF67D61F78E4B40004C573 /* ShopCodeResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67D41F78E4B40004C573 /* ShopCodeResultVC.m */; };
 		18CF67D71F78E4B40004C573 /* ShopCodeResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67D51F78E4B40004C573 /* ShopCodeResultVC.xib */; };
+		18CF67DC1F78F9D10004C573 /* ShopCodeResultOtherVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67DA1F78F9D10004C573 /* ShopCodeResultOtherVC.m */; };
+		18CF67DD1F78F9D10004C573 /* ShopCodeResultOtherVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67DB1F78F9D10004C573 /* ShopCodeResultOtherVC.xib */; };
+		18CF67E11F7902990004C573 /* PayForTaoCanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67DF1F7902990004C573 /* PayForTaoCanTableViewCell.m */; };
+		18CF67E21F7902990004C573 /* PayForTaoCanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67E01F7902990004C573 /* PayForTaoCanTableViewCell.xib */; };
 		18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E411ED6D4EC0077861A /* NSTimer+addition.m */; };
 		18D43E471ED6D4EC0077861A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E431ED6D4EC0077861A /* UIView+Frame.m */; };
 		18D43E481ED6D4EC0077861A /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E451ED6D4EC0077861A /* WYWebProgressLayer.m */; };
@@ -1000,6 +1004,12 @@
 		18CF67D31F78E4B40004C573 /* ShopCodeResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCodeResultVC.h; sourceTree = "<group>"; };
 		18CF67D41F78E4B40004C573 /* ShopCodeResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCodeResultVC.m; sourceTree = "<group>"; };
 		18CF67D51F78E4B40004C573 /* ShopCodeResultVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCodeResultVC.xib; sourceTree = "<group>"; };
+		18CF67D91F78F9D10004C573 /* ShopCodeResultOtherVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCodeResultOtherVC.h; sourceTree = "<group>"; };
+		18CF67DA1F78F9D10004C573 /* ShopCodeResultOtherVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCodeResultOtherVC.m; sourceTree = "<group>"; };
+		18CF67DB1F78F9D10004C573 /* ShopCodeResultOtherVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCodeResultOtherVC.xib; sourceTree = "<group>"; };
+		18CF67DE1F7902990004C573 /* PayForTaoCanTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayForTaoCanTableViewCell.h; sourceTree = "<group>"; };
+		18CF67DF1F7902990004C573 /* PayForTaoCanTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayForTaoCanTableViewCell.m; sourceTree = "<group>"; };
+		18CF67E01F7902990004C573 /* PayForTaoCanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayForTaoCanTableViewCell.xib; sourceTree = "<group>"; };
 		18D43E401ED6D4EC0077861A /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		18D43E411ED6D4EC0077861A /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
 		18D43E421ED6D4EC0077861A /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -3028,6 +3038,19 @@
 			name = "商户扫码结果1";
 			sourceTree = "<group>";
 		};
+		18CF67D81F78F99D0004C573 /* 商户扫码结果2 */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67D91F78F9D10004C573 /* ShopCodeResultOtherVC.h */,
+				18CF67DA1F78F9D10004C573 /* ShopCodeResultOtherVC.m */,
+				18CF67DB1F78F9D10004C573 /* ShopCodeResultOtherVC.xib */,
+				18CF67DE1F7902990004C573 /* PayForTaoCanTableViewCell.h */,
+				18CF67DF1F7902990004C573 /* PayForTaoCanTableViewCell.m */,
+				18CF67E01F7902990004C573 /* PayForTaoCanTableViewCell.xib */,
+			);
+			name = "商户扫码结果2";
+			sourceTree = "<group>";
+		};
 		18D0B4BF1EFE05BB00302D79 /* 添加套餐卡 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4213,6 +4236,7 @@
 		D98ECBC31D9CB26B00BEDD57 /* 新的结算中心 */ = {
 			isa = PBXGroup;
 			children = (
+				18CF67D81F78F99D0004C573 /* 商户扫码结果2 */,
 				18CF67D21F78E47C0004C573 /* 商户扫码结果1 */,
 				D98ECBC01D9CB24600BEDD57 /* ChargeCenterVC.h */,
 				D98ECBC11D9CB24600BEDD57 /* ChargeCenterVC.m */,
@@ -5123,6 +5147,7 @@
 				D96E1B731ECAD46200084453 /* AddSeriesViewController.xib in Resources */,
 				D9F1358A1DEE696700D2703D /* AddAdminCell.xib in Resources */,
 				D932B2771ECC51BD0052CC37 /* AddFriendCell.xib in Resources */,
+				18CF67E21F7902990004C573 /* PayForTaoCanTableViewCell.xib in Resources */,
 				189CC5B81EF9311300A73BB6 /* UserInfoEditVC.xib in Resources */,
 				18D43E4E1ED6DC9C0077861A /* 帮助中心@2x.png in Resources */,
 				D9AB25361D88E4ED000E9288 /* VoiceSearchFeedback008@2x.png in Resources */,
@@ -5135,6 +5160,7 @@
 				D9AB25411D88E4ED000E9288 /* VoiceSearchFeedback019@2x.png in Resources */,
 				18CF67C51F74B9CE0004C573 /* ChooseGivenCouponsVC.xib in Resources */,
 				18F27EE91D640E84002DD03A /* 头像-1.png in Resources */,
+				18CF67DD1F78F9D10004C573 /* ShopCodeResultOtherVC.xib in Resources */,
 				D9C3A3011E9642890062B17D /* ChouJiangVC.xib in Resources */,
 				186991601F68FA8E0084D3C8 /* AccessCodeVC.xib in Resources */,
 				D9AB253F1D88E4ED000E9288 /* VoiceSearchFeedback017@2x.png in Resources */,
@@ -5428,6 +5454,7 @@
 				D9A06B601D8679C30037795B /* EMCDDeviceManagerBase.m in Sources */,
 				D9D50DB71D87DE0E00A5E469 /* ExpressionKeyboardView.m in Sources */,
 				D9CF3FA21D7671D500D9D0EC /* ApplyAndNoticeVC.m in Sources */,
+				18CF67DC1F78F9D10004C573 /* ShopCodeResultOtherVC.m in Sources */,
 				1A4173CF1D78809B00A70601 /* RealtimeSearchUtil.m in Sources */,
 				D9B3A5A61D74255700F3F27E /* MWPhotoBrowser.m in Sources */,
 				D9A8ABF01E02959B00D4597F /* RoyTableViewCell.m in Sources */,
@@ -5663,6 +5690,7 @@
 				18390D641F4D8984008FFBDD /* NewBuyCardRecordVC.m in Sources */,
 				D9A06B611D8679C30037795B /* amrFileCodec.mm in Sources */,
 				D92ACD951F0CD4A800858727 /* GeneralCardSeriseListVC.m in Sources */,
+				18CF67E11F7902990004C573 /* PayForTaoCanTableViewCell.m in Sources */,
 				D92ACDD31F0CD5EE00858727 /* TimeLimitCardHomeVC.m in Sources */,
 				D947E4931D7D729000F9FEE8 /* Person.m in Sources */,
 				D9DEED241CACED7C00ACDD00 /* UIButton+WebCache.m in Sources */,
