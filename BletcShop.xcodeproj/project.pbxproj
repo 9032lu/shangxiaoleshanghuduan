@@ -146,6 +146,8 @@
 		18CF67CB1F74DECF0004C573 /* SendCouponCompleteVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67C91F74DECE0004C573 /* SendCouponCompleteVC.xib */; };
 		18CF67D01F74E81E0004C573 /* ADDCoupomSSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67CE1F74E81E0004C573 /* ADDCoupomSSVC.m */; };
 		18CF67D11F74E81E0004C573 /* ADDCoupomSSVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67CF1F74E81E0004C573 /* ADDCoupomSSVC.xib */; };
+		18CF67D61F78E4B40004C573 /* ShopCodeResultVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67D41F78E4B40004C573 /* ShopCodeResultVC.m */; };
+		18CF67D71F78E4B40004C573 /* ShopCodeResultVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67D51F78E4B40004C573 /* ShopCodeResultVC.xib */; };
 		18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E411ED6D4EC0077861A /* NSTimer+addition.m */; };
 		18D43E471ED6D4EC0077861A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E431ED6D4EC0077861A /* UIView+Frame.m */; };
 		18D43E481ED6D4EC0077861A /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E451ED6D4EC0077861A /* WYWebProgressLayer.m */; };
@@ -995,6 +997,9 @@
 		18CF67CD1F74E81E0004C573 /* ADDCoupomSSVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADDCoupomSSVC.h; sourceTree = "<group>"; };
 		18CF67CE1F74E81E0004C573 /* ADDCoupomSSVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADDCoupomSSVC.m; sourceTree = "<group>"; };
 		18CF67CF1F74E81E0004C573 /* ADDCoupomSSVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ADDCoupomSSVC.xib; sourceTree = "<group>"; };
+		18CF67D31F78E4B40004C573 /* ShopCodeResultVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopCodeResultVC.h; sourceTree = "<group>"; };
+		18CF67D41F78E4B40004C573 /* ShopCodeResultVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopCodeResultVC.m; sourceTree = "<group>"; };
+		18CF67D51F78E4B40004C573 /* ShopCodeResultVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopCodeResultVC.xib; sourceTree = "<group>"; };
 		18D43E401ED6D4EC0077861A /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		18D43E411ED6D4EC0077861A /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
 		18D43E421ED6D4EC0077861A /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -3013,6 +3018,16 @@
 			name = "创建优惠券s";
 			sourceTree = "<group>";
 		};
+		18CF67D21F78E47C0004C573 /* 商户扫码结果1 */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67D31F78E4B40004C573 /* ShopCodeResultVC.h */,
+				18CF67D41F78E4B40004C573 /* ShopCodeResultVC.m */,
+				18CF67D51F78E4B40004C573 /* ShopCodeResultVC.xib */,
+			);
+			name = "商户扫码结果1";
+			sourceTree = "<group>";
+		};
 		18D0B4BF1EFE05BB00302D79 /* 添加套餐卡 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4198,6 +4213,7 @@
 		D98ECBC31D9CB26B00BEDD57 /* 新的结算中心 */ = {
 			isa = PBXGroup;
 			children = (
+				18CF67D21F78E47C0004C573 /* 商户扫码结果1 */,
 				D98ECBC01D9CB24600BEDD57 /* ChargeCenterVC.h */,
 				D98ECBC11D9CB24600BEDD57 /* ChargeCenterVC.m */,
 				D98B7B671DF5374E0017EC20 /* ReveiveMoneyQRInfoVC.h */,
@@ -5135,6 +5151,7 @@
 				D91395B11CF4589400509491 /* mapapi.bundle in Resources */,
 				18EDCF731D460659004C40B7 /* custom1.png in Resources */,
 				184D2F421F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.xib in Resources */,
+				18CF67D71F78E4B40004C573 /* ShopCodeResultVC.xib in Resources */,
 				D92ACDAC1F0CD4FF00858727 /* PackageServiceVC.xib in Resources */,
 				1C9E822F1C603B7A0007BF02 /* 我的界面灰色箭头.png in Resources */,
 				D92ACD891F0CD47D00858727 /* ChoseCardColorStyleViewVC.xib in Resources */,
@@ -5607,6 +5624,7 @@
 				18E3DA151D82460A0089597B /* SoundPaly.m in Sources */,
 				18CB32D81D6C2B2B005A9D64 /* HKImageClipperViewController.m in Sources */,
 				D947E4731D7D4CB000F9FEE8 /* SDRefreshFooterView.m in Sources */,
+				18CF67D61F78E4B40004C573 /* ShopCodeResultVC.m in Sources */,
 				1869917D1F6F7A540084D3C8 /* ShopAppriseMoneyGetVC.m in Sources */,
 				D9A06B5B1D8679C30037795B /* EMAudioRecorderUtil.m in Sources */,
 				D947E4561D7D263200F9FEE8 /* UIViewController+HUD.m in Sources */,

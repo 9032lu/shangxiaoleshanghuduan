@@ -36,6 +36,7 @@
 - (NSString *)stringByReversed;//字符串倒序
 +(NSString*)getCurrentTimestamp;
 +(NSString *)getSecretStringWithPhone:(NSString *)phone;
++ (NSString *)arrayToJSONString:(NSArray *)array;
 @end
 
 

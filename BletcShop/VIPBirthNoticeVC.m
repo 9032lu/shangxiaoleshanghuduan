@@ -178,6 +178,8 @@
 -(void)sendCouponBtnClick{
     NSLog(@"老板！！！！！！！！！！");
     PUSH(ChooseGivenCouponsVC);
+    vc.vips=personArr;
+    
 }
 -(void)closeNoticeBtnClick{
     [alert removeFromSuperview];

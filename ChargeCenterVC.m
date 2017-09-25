@@ -65,13 +65,13 @@
         if (i==0) {
             [btn setTitle:@"收" forState:0];
             btn.backgroundColor = RGB(277, 196, 0);
-            lab.text = @"我要收款";
+            lab.text = @"扫码收款";
             
             
         }else{
             [btn setTitle:@"入" forState:0];
             btn.backgroundColor = RGB(0, 185, 25);
-            lab.text = @"现金入账";
+            lab.text = @"用户扫码付款";
 
         }
     }
@@ -115,18 +115,22 @@
         switch (sender.tag) {
                 
             case 0:
+                //商户扫码
+            {
+                ScanViewController *VC = [[ScanViewController alloc]init];
+                VC.shopOrUser=@"shop";
+                VC.delegate=self;
+                [self.navigationController pushViewController:VC animated:YES];
+                
+               
+            }
+                break;
+            case 1:
                 //收款二维码
             {
                 ReveiveMoneyQRInfoVC *VC = [[ReveiveMoneyQRInfoVC alloc]init];
                 [self.navigationController pushViewController:VC animated:YES];
                
-            }
-                break;
-            case 1:
-                //现金结算
-            {
-                ChargeToAccountVC *VC = [[ChargeToAccountVC alloc]init];
-                [self.navigationController pushViewController:VC animated:YES];
                 
             }
                 break;
@@ -149,13 +153,10 @@
     [altView show];
     
 }
-
+//现金结算
 -(void)saoMa{
-    ScanViewController *VC = [[ScanViewController alloc]init];
-    VC.shopOrUser=@"shop";
-    VC.delegate=self;
+    ChargeToAccountVC *VC = [[ChargeToAccountVC alloc]init];
     [self.navigationController pushViewController:VC animated:YES];
-
 }
 -(void)sendResult:(NSString *)state{
     UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:state message:@"" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];

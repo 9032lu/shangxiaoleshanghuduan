@@ -16,10 +16,11 @@
 @interface ChooseGivenCouponsVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     
-    NSArray *_dataArray;
+    NSMutableArray *_dataArray;
     UIImageView *imageView;
     UILabel *noticeLabel;
     CGFloat heights;
+    MBProgressHUD *shophud;
 }
 @property(nonatomic, strong) NSMutableArray *deleteArr;//删除数据的数组
 @property(nonatomic,strong)LZDButton *leftPopBtn;
@@ -174,7 +175,7 @@
         
     };
     
-    _dataArray=[[NSArray alloc]init];//@[dic1,dic2,dic3];
+    _dataArray=[[NSMutableArray alloc]initWithCapacity:0];//@[dic1,dic2,dic3];
     
     self.tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64-82) style:UITableViewStyleGrouped];
     _tableView.delegate=self;
@@ -234,6 +235,12 @@
         
         cell.youjian.hidden=YES;
         cell.chooseCircle.hidden=NO;
+        if ([_dataArray[indexPath.row][@"chooseState"] isEqualToString:@"none"]) {
+            cell.chooseCircle.image=[UIImage imageNamed:@"选择nnnn"];
+        }else{
+            cell.chooseCircle.image=[UIImage imageNamed:@"选择ssss"];
+        }
+        
         if ([_dataArray[indexPath.row][@"validate"] isEqualToString:@"true"]) {
             cell.showImg.hidden = YES ;
         }else{
@@ -279,6 +286,14 @@
 //        
 //    }
     
+    NSMutableDictionary *dic=_dataArray[indexPath.row];
+    if ([dic[@"chooseState"] isEqualToString:@"none"]) {
+        [dic setObject:@"yes" forKey:@"chooseState"];
+    }else{
+        [dic setObject:@"none" forKey:@"chooseState"];
+    }
+    [_dataArray replaceObjectAtIndex:indexPath.row withObject:dic];
+    [_tableView reloadData];
 }
 
 //取消选中时 将存放在self.deleteArr中的数据移除
@@ -305,10 +320,18 @@
     
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         NSLog(@"%@",result);
+        if (_dataArray.count>0) {
+            [_dataArray removeAllObjects];
+        }
         if ([result count]>0) {
-            _dataArray=result;
+            for (int i=0; i<[result count]; i++) {
+                NSMutableDictionary *dic=[NSMutableDictionary dictionaryWithDictionary:result[i]];
+                [dic setObject:@"none" forKey:@"chooseState"];
+                [_dataArray addObject:dic];
+            }
+            
         }else{
-            _dataArray=@[];
+            
             [self initNoneActiveView];
             
         }
@@ -399,8 +422,81 @@
     [hud hideAnimated:YES afterDelay:4.f];
     
 }
-
+//推送
 -(void)goVCBtnClick{
+    
+    //
+    NSMutableArray *couponids=[[NSMutableArray alloc]initWithCapacity:0];
+    for (int i=0; i<_dataArray.count; i++) {
+        NSMutableDictionary *dic=_dataArray[i];
+        if (![dic[@"chooseState"] isEqualToString:@"none"]) {
+            [couponids addObject:dic[@"coupon_id"]];
+        }
+    }
+    NSString *jsonString_couponids=[NSString arrayToJSONString:couponids];
+    //
+    NSMutableArray *uuids=[[NSMutableArray alloc]initWithCapacity:0];
+    for (int j=0; j<self.vips.count; j++) {
+        [uuids addObject:self.vips[j][@"uuid"]];
+    }
+     NSString *jsonString_uuids=[NSString arrayToJSONString:uuids];
+    
+    if (couponids.count>0) {
+        [self postSendCounponsToVips:jsonString_couponids uuids:jsonString_uuids];
+    }else{
+        //提示，请选优惠券
+         [self tishiSting:@"请选择优惠券!"];
+    }
+   
+    
+    
+}
+
+-(void)postSendCounponsToVips:(NSString *)coupon_ids uuids:(NSString *)uuidss{
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/member/propCoupon",BASEURL];
+    //  http://101.201.100.191/cnconsum/App/MerchantType/member/propCoupon
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
+    [params setObject:uuidss forKey:@"uuids"];
+    [params setObject:coupon_ids forKey:@"coupon_ids"];
+    UIWindow *window=[UIApplication sharedApplication].keyWindow;
+    
+    shophud =[MBProgressHUD showHUDAddedTo:window animated:YES];
+    shophud.label.text = @"正在推送...";
+    NSLog(@"------%@",params);
+    
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        NSLog(@"result===%@",result);
+        
+       
+        
+        if ([result[@"result_code"] intValue]==1)
+            
+        {
+            shophud.label.text = @"推送成功！";
+            [self performSelector:@selector(goNext) withObject:nil afterDelay:0.3];
+           
+            
+        }else if([result[@"result_code"] intValue]==1062)
+        {
+             shophud.label.text = @"推送重复！";
+           
+        }else{
+             shophud.label.text = @"推送失败！";
+            
+        }
+         //[shophud hideAnimated:YES];
+        [shophud hideAnimated:YES afterDelay:0.3];
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+         shophud.label.text = @"接口出错404！";
+         [shophud hideAnimated:YES afterDelay:0.3];
+        //[shophud hideAnimated:YES];
+        NSLog(@"%@", error);
+        
+    }];
+}
+-(void)goNext{
     PUSH(SendCouponCompleteVC);
 }
 -(void)lookMoreBtnClick:(UIButton *)sender{

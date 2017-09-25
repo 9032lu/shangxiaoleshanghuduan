@@ -42,7 +42,13 @@
     
     [self.QRView addGestureRecognizer:longPress];
     
-    
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, self.QRView.bottom+30, SCREENWIDTH, 50)];
+    label.numberOfLines=0;
+    label.text=@"提示：用户扫描此二维码，可进行会员结算、购买会员卡等";
+    label.textAlignment=NSTextAlignmentCenter;
+    label.textColor=RGB(51, 51, 51);
+    label.font=[UIFont systemFontOfSize:13.0f];
+    [self.view addSubview:label];
     
     
     

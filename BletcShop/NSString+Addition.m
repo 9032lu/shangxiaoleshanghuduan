@@ -316,7 +316,14 @@
     
     return data_;
 }
-
++ (NSString *)arrayToJSONString:(NSArray *)array
+{
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:array options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    return jsonString;
+}
 @end
 
 

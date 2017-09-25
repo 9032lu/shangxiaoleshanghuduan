@@ -10,4 +10,5 @@
 
 @interface ChooseGivenCouponsVC : UIViewController
 @property (nonatomic,strong)NSDictionary *delete_dic;//需要编辑的数据
+@property (nonatomic,strong)NSArray *vips;
 @end
