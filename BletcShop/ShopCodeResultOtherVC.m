@@ -27,7 +27,14 @@
 - (IBAction)confirmBtnClick:(id)sender {
     
 }
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden=NO;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden=YES;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.confirmBtn.layer.borderColor = [RGB(9,192,132) CGColor];
