@@ -49,7 +49,7 @@
             <rect key="frame" x="0.0" y="0.0" width="404" height="200"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="epg-NC-4jt">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_back" translatesAutoresizingMaskIntoConstraints="NO" id="epg-NC-4jt">
                     <rect key="frame" x="13" y="24" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="IGS-JG-k5i"/>
@@ -65,7 +65,7 @@
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="IbT-p5-7MH">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="收款ss" translatesAutoresizingMaskIntoConstraints="NO" id="IbT-p5-7MH">
                     <rect key="frame" x="180" y="109" width="45" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="aRD-ym-I4C"/>
@@ -197,5 +197,7 @@
     </objects>
     <resources>
         <image name="icon3.png" width="227" height="152"/>
+        <image name="new_back" width="20" height="20"/>
+        <image name="收款ss" width="45" height="45"/>
     </resources>
 </document>

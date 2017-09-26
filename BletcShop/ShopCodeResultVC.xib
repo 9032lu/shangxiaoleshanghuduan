@@ -34,14 +34,14 @@
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="74d-gQ-TXo">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_back" translatesAutoresizingMaskIntoConstraints="NO" id="74d-gQ-TXo">
                     <rect key="frame" x="13" y="24" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="20" id="oUq-kx-4VA"/>
                         <constraint firstAttribute="height" constant="20" id="osp-Am-Q4b"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="jPV-ww-Jo0">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="收款ss" translatesAutoresizingMaskIntoConstraints="NO" id="jPV-ww-Jo0">
                     <rect key="frame" x="165" y="110" width="44" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="44" id="0sG-bo-oUC"/>
@@ -160,5 +160,7 @@
     </objects>
     <resources>
         <image name="icon3.png" width="227" height="152"/>
+        <image name="new_back" width="20" height="20"/>
+        <image name="收款ss" width="45" height="45"/>
     </resources>
 </document>

@@ -29,7 +29,7 @@
     
     UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
     button.frame=CGRectMake(0, 0, 18, 18);
-    [button setImage:[UIImage imageNamed:@"扫描二维码"] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:@"录入ss"] forState:UIControlStateNormal];
     [button addTarget:self action:@selector(saoMa) forControlEvents:UIControlEventTouchUpInside];
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:button];
     
@@ -61,16 +61,21 @@
         lab.font = [UIFont boldSystemFontOfSize:18];
         [self.view addSubview:lab];
 
+        UIImageView *imageView=[[UIImageView alloc]init];
+        imageView.center=btn.center;
+        imageView.bounds =CGRectMake(0, 0, 0.53*btn.width, 0.53*btn.height);
+        [self.view addSubview:imageView];
+       
  
         if (i==0) {
-            [btn setTitle:@"收" forState:0];
-            btn.backgroundColor = RGB(277, 196, 0);
+            imageView.image=[UIImage imageNamed:@"扫码ss"];
+            btn.backgroundColor = RGB(70,141,221);
             lab.text = @"扫码收款";
             
             
         }else{
-            [btn setTitle:@"入" forState:0];
-            btn.backgroundColor = RGB(0, 185, 25);
+             imageView.image=[UIImage imageNamed:@"用户扫码ss"];
+            btn.backgroundColor = RGB(83, 182, 59);
             lab.text = @"用户扫码付款";
 
         }
