@@ -25,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款卡种：计次卡" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDf-Wo-raq">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="付款卡种：" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uDf-Wo-raq">
                     <rect key="frame" x="0.0" y="74" width="375" height="16"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="16" id="LIe-zq-Oik"/>
@@ -93,7 +93,7 @@
                     <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="HPA-jt-RTt">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userHeader" translatesAutoresizingMaskIntoConstraints="NO" id="HPA-jt-RTt">
                     <rect key="frame" x="285" y="310" width="26" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="26" id="cgN-sc-69H"/>
@@ -159,8 +159,8 @@
         </view>
     </objects>
     <resources>
-        <image name="icon3.png" width="227" height="152"/>
         <image name="new_back" width="20" height="20"/>
+        <image name="userHeader" width="75" height="75"/>
         <image name="收款ss" width="45" height="45"/>
     </resources>
 </document>

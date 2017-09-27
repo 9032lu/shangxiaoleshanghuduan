@@ -368,13 +368,8 @@
             }else{
                 
                 if ([self.shopOrUser isEqualToString:@"shop"]) {
-                    //
-                    NSLog(@"商户端扫码");//ShopCodeResultOtherVC
-//                    ShopCodeResultVC *VC = [[ShopCodeResultVC alloc]init];
-//                    [self.navigationController pushViewController:VC animated:YES];
-                    ShopCodeResultOtherVC *VC = [[ShopCodeResultOtherVC alloc]init];
-                    [self.navigationController pushViewController:VC animated:YES];
-                    //[self payForCoupons:dic];
+                        [self postRequestPayForVipCards:dic];
+                   
                 }
             }
         }
@@ -384,34 +379,69 @@
 
 }
 
--(void)payForCoupons:(NSDictionary*)dic{
-    NSString *url = [NSString stringWithFormat:@"%@MerchantType/coupon/scan",BASEURL];
-    NSMutableDictionary *paramer = [NSMutableDictionary dictionary];
-    AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//-(void)payForCoupons:(NSDictionary*)dic{
+//    NSString *url = [NSString stringWithFormat:@"%@MerchantType/coupon/scan",BASEURL];
+//    NSMutableDictionary *paramer = [NSMutableDictionary dictionary];
+//    AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+//
+//    [paramer setValue:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
+//    [paramer setValue:dic[@"uuid"] forKey:@"uuid"];
+//    [paramer setValue:dic[@"coupon_id"] forKey:@"coupon_id"];
+//
+//    [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+//
+//        printf("result====%s",[[NSString dictionaryToJson:result] UTF8String]);
+//        if (result) {
+//             [self.navigationController popViewControllerAnimated:YES];
+//            if ([_delegate respondsToSelector:@selector(sendResult:)]) {
+//                if ( [result[@"result_code"] integerValue]==1) {
+//                     [_delegate sendResult:@"消费成功"];
+//                }else{
+//                     [_delegate sendResult:@"消费失败"];
+//                }
+//
+//            }
+//        }
+//
+//    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"%@",error);
+//         [self.navigationController popViewControllerAnimated:YES];
+//    }];
+//
+//}
+-(void)postRequestPayForVipCards:(NSDictionary*)dic{
+  
+    NSString *url = [NSString stringWithFormat:@"%@MerchantType/gather/recQrcode",BASEURL];
     
-    [paramer setValue:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
-    [paramer setValue:dic[@"uuid"] forKey:@"uuid"];
-    [paramer setValue:dic[@"coupon_id"] forKey:@"coupon_id"];
+    NSMutableDictionary *paramer = [NSMutableDictionary dictionaryWithDictionary:dic];
+
+     NSLog(@"%@",paramer);
+    
     [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
         printf("result====%s",[[NSString dictionaryToJson:result] UTF8String]);
+        
         if (result) {
-             [self.navigationController popViewControllerAnimated:YES];
-            if ([_delegate respondsToSelector:@selector(sendResult:)]) {
-                if ( [result[@"result_code"] integerValue]==1) {
-                     [_delegate sendResult:@"消费成功"];
-                }else{
-                     [_delegate sendResult:@"消费失败"];
-                }
+            
+            if ([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"meal_card"]) {
+                ShopCodeResultOtherVC *VC = [[ShopCodeResultOtherVC alloc]init];
+                VC.dic=result;
+                [self.navigationController pushViewController:VC animated:YES];
                
+            }else if([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"coupon"]){
+                //-----
+                
+            }else{
+                ShopCodeResultVC *VC = [[ShopCodeResultVC alloc]init];
+                VC.dic=result;
+                [self.navigationController pushViewController:VC animated:YES];
             }
         }
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
-         [self.navigationController popViewControllerAnimated:YES];
+        
     }];
-
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ShopCodeResultVC : UIViewController
-
+@property(nonatomic,strong)NSDictionary *dic;
 @end

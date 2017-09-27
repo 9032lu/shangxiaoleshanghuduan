@@ -31,7 +31,16 @@
     self.confirmBtn.layer.borderWidth=1;
     self.confirmBtn.layer.cornerRadius=6;
     self.confirmBtn.clipsToBounds=YES;
-    
+    if ([[NSString getTheNoNullStr:self.dic[@"operate"] andRepalceStr:@""] isEqualToString:@"count_card"]) {
+        self.cardType.text=@"付款卡种：计次卡";
+        self.payMoneyOrCounts.text=[NSString stringWithFormat:@"%@次",[NSString getTheNoNullStr:self.dic[@"num"] andRepalceStr:@"0.00"]];
+    }else if ([[NSString getTheNoNullStr:self.dic[@"operate"] andRepalceStr:@""] isEqualToString:@"value_card"]){
+        self.cardType.text=@"付款卡种：储值卡";
+        self.payMoneyOrCounts.text=[NSString stringWithFormat:@"%@元",[NSString getTheNoNullStr:self.dic[@"sum"] andRepalceStr:@"0.00"]];
+    }else if ([[NSString getTheNoNullStr:self.dic[@"operate"] andRepalceStr:@""] isEqualToString:@"exp_card"]){
+        self.cardType.text=@"付款卡种：体验卡";
+        self.payMoneyOrCounts.text=[NSString stringWithFormat:@"%@元",[NSString getTheNoNullStr:self.dic[@"sum"] andRepalceStr:@"0.00"]];
+    }
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
