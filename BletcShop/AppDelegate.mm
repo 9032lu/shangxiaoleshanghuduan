@@ -1677,10 +1677,40 @@
 
                 
             }else{
-                Data_statisticsVC *commenDataVC=[[Data_statisticsVC alloc]init];
-
                 
-                [topVC.navigationController pushViewController:commenDataVC animated:YES];
+   
+                NSLog(@"==%@",topVC.navigationController.viewControllers);
+                
+                NSInteger index =-1;
+                
+                for (NSInteger i = 0; i< topVC.navigationController.viewControllers.count; i++) {
+                    UIViewController *VC = topVC.navigationController.viewControllers[i];
+                    
+                    
+                    if ([VC isKindOfClass:[Data_statisticsVC class]]) {
+                        index = i ;
+                        
+                        [topVC.navigationController popToViewController:VC animated:YES];
+
+                    }
+                }
+                
+                
+                if (index==-1) {
+                    
+                    Data_statisticsVC *commenDataVC=[[Data_statisticsVC alloc]init];
+                    
+                    
+                    [topVC.navigationController pushViewController:commenDataVC animated:YES];
+                }
+                
+             
+                
+                
+                    
+                
+                
+             
             }
             
         }
@@ -1918,9 +1948,35 @@
             
         }else{
             
-            Data_statisticsVC *commenDataVC=[[Data_statisticsVC alloc]init];
+           
+            NSInteger index =-1;
             
-            [topVC.navigationController pushViewController:commenDataVC animated:YES];
+            for (NSInteger i = 0; i< topVC.navigationController.viewControllers.count; i++) {
+                UIViewController *VC = topVC.navigationController.viewControllers[i];
+                
+                
+                if ([VC isKindOfClass:[Data_statisticsVC class]]) {
+                    index = i ;
+                    
+
+                    [topVC.navigationController popToViewController:VC animated:YES];
+
+                }
+            }
+            
+            
+            if (index==-1) {
+                
+                Data_statisticsVC *commenDataVC=[[Data_statisticsVC alloc]init];
+                
+                
+                [topVC.navigationController pushViewController:commenDataVC animated:YES];
+            }
+            
+            
+//            Data_statisticsVC *commenDataVC=[[Data_statisticsVC alloc]init];
+//
+//            [topVC.navigationController pushViewController:commenDataVC animated:YES];
         }
         
         
