@@ -368,7 +368,24 @@
             }else{
                 
                 if ([self.shopOrUser isEqualToString:@"shop"]) {
-                        [self postRequestPayForVipCards:dic];
+                    if ([NSString getTheNoNullStr:dic[@"order_id"] andRepalceStr:@""].length!=0) {
+                         AppDelegate *appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+                        
+                        if ([dic[@"muid"] isEqualToString:appdelegate.shopInfoDic[@"muid"]]) {
+                            [self postRequestPayForVipCards:dic];
+                            
+                        }else{
+                            ErrorQRViewController *VC = [[ErrorQRViewController alloc]init];
+                            VC.errorString = @"非本店会员不能进行该操作！";
+                            [self.navigationController pushViewController:VC animated:YES];
+                        }
+                        
+                    }else{
+                        ErrorQRViewController *VC = [[ErrorQRViewController alloc]init];
+                        VC.errorString = @"没有收款金额！";
+                        [self.navigationController pushViewController:VC animated:YES];
+                    }
+                    
                    
                 }
             }
@@ -414,18 +431,19 @@
     NSString *url = [NSString stringWithFormat:@"%@MerchantType/gather/recQrcode",BASEURL];
     
     NSMutableDictionary *paramer = [NSMutableDictionary dictionaryWithDictionary:dic];
-
+    [paramer removeObjectForKey:@"muid"];
      NSLog(@"%@",paramer);
     
     [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
         printf("result====%s",[[NSString dictionaryToJson:result] UTF8String]);
         
-        if (result) {
+        if ([result[@"result_code"] isEqualToString:@"access"]) {
             
             if ([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"meal_card"]) {
                 ShopCodeResultOtherVC *VC = [[ShopCodeResultOtherVC alloc]init];
                 VC.dic=result;
+                VC.postDic=dic;
                 [self.navigationController pushViewController:VC animated:YES];
                
             }else if([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"coupon"]){
@@ -434,8 +452,13 @@
             }else{
                 ShopCodeResultVC *VC = [[ShopCodeResultVC alloc]init];
                 VC.dic=result;
+                VC.postDic=dic;
                 [self.navigationController pushViewController:VC animated:YES];
             }
+        }else if([result[@"result_code"] isEqualToString:@"time_out"]){
+            ErrorQRViewController *VC = [[ErrorQRViewController alloc]init];
+            VC.errorString = @" 二维码失效！";
+            [self.navigationController pushViewController:VC animated:YES];
         }
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {

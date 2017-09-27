@@ -10,6 +10,9 @@
 #import "HGDQQRCodeView.h"
 
 @interface ReveiveMoneyQRInfoVC ()<UIActionSheetDelegate>
+{
+    MBProgressHUD *shophud;
+}
 @property (nonatomic,strong)  UIView *QRView;
 @property (strong, nonatomic)  UILabel *msglabel;
 
@@ -26,18 +29,7 @@
     self.QRView = [[UIView alloc]initWithFrame:CGRectMake(20, 50, SCREENWIDTH-40, SCREENWIDTH-40)];
     [self.view addSubview:_QRView];
     
-    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-    NSDictionary *dic = @{@"muid":appdelegate.shopInfoDic[@"muid"]};
-    
-    
-    NSString *codeString = [NSString dictionaryToJson:dic];
-    
-    
-    
-    
-    [HGDQQRCodeView creatQRCodeWithURLString:codeString superView:self.QRView logoImage:[UIImage imageNamed:@"app_icon3"] logoImageSize:CGSizeMake(SCREENWIDTH*0.2, SCREENWIDTH*0.2) logoImageWithCornerRadius:0];
-    
-    
+
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressClcik:)];
     
     [self.QRView addGestureRecognizer:longPress];
@@ -50,7 +42,7 @@
     label.font=[UIFont systemFontOfSize:13.0f];
     [self.view addSubview:label];
     
-    
+    [self postRequesQrcode];
     
 }
 
@@ -96,6 +88,36 @@
     }
 
 }
+-(void)postRequesQrcode{
+   // http://101.201.100.191/cnconsum/App/MerchantType/gather/genQrcode
+    NSString *url = [NSString stringWithFormat:@"%@MerchantType/gather/genQrcode",BASEURL];
+     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    
+    NSMutableDictionary *paramer = [NSMutableDictionary dictionary];
+    [paramer setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
+    
+    UIWindow *window=[UIApplication sharedApplication].keyWindow;
+    shophud =[MBProgressHUD showHUDAddedTo:window animated:YES];
+    shophud.label.text = @"";
+    
+    NSLog(@"%@",paramer);
+    
+    [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        
+        printf("result====%s",[[NSString dictionaryToJson:result] UTF8String]);
+        [shophud hideAnimated:YES];
+        if (result) {
 
+            NSString *codeString =result[@"qrcode"];
+            
+            [HGDQQRCodeView creatQRCodeWithURLString:codeString superView:self.QRView logoImage:[UIImage imageNamed:@"app_icon3"] logoImageSize:CGSizeMake(SCREENWIDTH*0.2, SCREENWIDTH*0.2) logoImageWithCornerRadius:0];
+        }
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+        shophud.label.text = @"接口出错404！";
+        [shophud hideAnimated:YES afterDelay:0.8];
+    }];
+}
 
 @end

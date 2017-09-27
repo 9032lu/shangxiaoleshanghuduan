@@ -10,4 +10,5 @@
 
 @interface ShopCodeResultVC : UIViewController
 @property(nonatomic,strong)NSDictionary *dic;
+@property(nonatomic,strong)NSDictionary *postDic;
 @end
