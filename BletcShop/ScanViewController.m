@@ -438,7 +438,7 @@
         
         printf("result====%s",[[NSString dictionaryToJson:result] UTF8String]);
         
-        if ([result[@"result_code"] isEqualToString:@"access"]) {
+        if (result) {
             
             if ([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"meal_card"]) {
                 ShopCodeResultOtherVC *VC = [[ShopCodeResultOtherVC alloc]init];
@@ -455,10 +455,10 @@
                 VC.postDic=dic;
                 [self.navigationController pushViewController:VC animated:YES];
             }
-        }else if([result[@"result_code"] isEqualToString:@"time_out"]){
-            ErrorQRViewController *VC = [[ErrorQRViewController alloc]init];
-            VC.errorString = @" 二维码失效！";
-            [self.navigationController pushViewController:VC animated:YES];
+//        }else if([result[@"result_code"] isEqualToString:@"time_out"]){
+//            ErrorQRViewController *VC = [[ErrorQRViewController alloc]init];
+//            VC.errorString = @" 二维码失效！";
+//            [self.navigationController pushViewController:VC animated:YES];
         }
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
