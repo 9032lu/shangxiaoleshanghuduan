@@ -467,7 +467,9 @@
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
-        
+        ErrorQRViewController *VC = [[ErrorQRViewController alloc]init];
+        VC.errorString = @"接口出错404！";
+        [self.navigationController pushViewController:VC animated:YES];
     }];
 }
 - (void)didReceiveMemoryWarning {
