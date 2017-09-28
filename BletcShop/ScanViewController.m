@@ -439,30 +439,32 @@
         
         printf("result====%s",[[NSString dictionaryToJson:result] UTF8String]);
         
-        if (result) {
+        if ([result[@"result_code"] isEqualToString:@"access"]) {
             
-            if ([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"meal_card"]) {
+             NSDictionary *dicss =[NSDictionary dictionaryWithJsonString:result[@"content"]];//
+            
+            if ([[NSString getTheNoNullStr:dicss[@"operate"] andRepalceStr:@""] isEqualToString:@"meal_card"]) {
                 ShopCodeResultOtherVC *VC = [[ShopCodeResultOtherVC alloc]init];
-                VC.dic=result;
+                VC.dic=dicss;
                 VC.postDic=dic;
                 [self.navigationController pushViewController:VC animated:YES];
                
-            }else if([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"coupon"]){//RebackCouponsVC
+            }else if([[NSString getTheNoNullStr:dicss[@"operate"] andRepalceStr:@""] isEqualToString:@"coupon"]){//RebackCouponsVC
                 RebackCouponsVC *VC = [[RebackCouponsVC alloc]init];
-                VC.dic=result;
+                VC.dic=dicss;
                 VC.postDic=dic;
                 [self.navigationController pushViewController:VC animated:YES];
                 NSLog(@"扫描的是优惠券!");
             }else{
                 ShopCodeResultVC *VC = [[ShopCodeResultVC alloc]init];
-                VC.dic=result;
+                VC.dic=dicss;
                 VC.postDic=dic;
                 [self.navigationController pushViewController:VC animated:YES];
             }
-//        }else if([result[@"result_code"] isEqualToString:@"time_out"]){
-//            ErrorQRViewController *VC = [[ErrorQRViewController alloc]init];
-//            VC.errorString = @" 二维码失效！";
-//            [self.navigationController pushViewController:VC animated:YES];
+        }else if([result[@"result_code"] isEqualToString:@"order_time_out"]){
+            ErrorQRViewController *VC = [[ErrorQRViewController alloc]init];
+            VC.errorString = @" 二维码失效！";
+            [self.navigationController pushViewController:VC animated:YES];
         }
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
