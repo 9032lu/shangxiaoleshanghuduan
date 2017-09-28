@@ -449,7 +449,7 @@
                 VC.postDic=dic;
                 [self.navigationController pushViewController:VC animated:YES];
                
-            }else if([[NSString getTheNoNullStr:dicss[@"operate"] andRepalceStr:@""] isEqualToString:@"coupon"]){//RebackCouponsVC
+            }else if([[NSString getTheNoNullStr:dicss[@"operate"] andRepalceStr:@""] isEqualToString:@"coupon"]){//RebackCouponsVC                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
                 RebackCouponsVC *VC = [[RebackCouponsVC alloc]init];
                 VC.dic=dicss;
                 VC.postDic=dic;
