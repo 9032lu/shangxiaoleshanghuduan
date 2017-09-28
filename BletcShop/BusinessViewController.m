@@ -144,7 +144,7 @@
 
     
 //    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_card_icon",@"bu_time_icon",@"bu_discant_icon"];
-    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_time_icon",@"bu_discant_icon",@"商品ssss",@"提醒ssss"];
+    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_time_icon",@"bu_discant_icon",@"商品ssss",@"gdss"];//提醒ssss
 
     for (int i = 0; i <arr_imgS.count; i ++) {
         int X = i %4;

@@ -14,6 +14,7 @@
 #import "ErrorQRViewController.h"
 #import "ShopCodeResultVC.h"//储&计
 #import "ShopCodeResultOtherVC.h"//套餐
+#import "RebackCouponsVC.h"
 @interface ScanViewController ()<AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate>
 {
     AVCaptureSession * session;//输入输出的中间桥梁
@@ -446,9 +447,12 @@
                 VC.postDic=dic;
                 [self.navigationController pushViewController:VC animated:YES];
                
-            }else if([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"coupon"]){
-                //-----
-                
+            }else if([[NSString getTheNoNullStr:result[@"operate"] andRepalceStr:@""] isEqualToString:@"coupon"]){//RebackCouponsVC
+                RebackCouponsVC *VC = [[RebackCouponsVC alloc]init];
+                VC.dic=result;
+                VC.postDic=dic;
+                [self.navigationController pushViewController:VC animated:YES];
+                NSLog(@"扫描的是优惠券!");
             }else{
                 ShopCodeResultVC *VC = [[ShopCodeResultVC alloc]init];
                 VC.dic=result;

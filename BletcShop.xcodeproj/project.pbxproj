@@ -152,6 +152,8 @@
 		18CF67DD1F78F9D10004C573 /* ShopCodeResultOtherVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67DB1F78F9D10004C573 /* ShopCodeResultOtherVC.xib */; };
 		18CF67E11F7902990004C573 /* PayForTaoCanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67DF1F7902990004C573 /* PayForTaoCanTableViewCell.m */; };
 		18CF67E21F7902990004C573 /* PayForTaoCanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67E01F7902990004C573 /* PayForTaoCanTableViewCell.xib */; };
+		18CF67F11F7BA1280004C573 /* RebackCouponsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CF67EF1F7BA1270004C573 /* RebackCouponsVC.m */; };
+		18CF67F21F7BA1280004C573 /* RebackCouponsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF67F01F7BA1280004C573 /* RebackCouponsVC.xib */; };
 		18D43E461ED6D4EC0077861A /* NSTimer+addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E411ED6D4EC0077861A /* NSTimer+addition.m */; };
 		18D43E471ED6D4EC0077861A /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E431ED6D4EC0077861A /* UIView+Frame.m */; };
 		18D43E481ED6D4EC0077861A /* WYWebProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D43E451ED6D4EC0077861A /* WYWebProgressLayer.m */; };
@@ -1010,6 +1012,9 @@
 		18CF67DE1F7902990004C573 /* PayForTaoCanTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PayForTaoCanTableViewCell.h; sourceTree = "<group>"; };
 		18CF67DF1F7902990004C573 /* PayForTaoCanTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PayForTaoCanTableViewCell.m; sourceTree = "<group>"; };
 		18CF67E01F7902990004C573 /* PayForTaoCanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayForTaoCanTableViewCell.xib; sourceTree = "<group>"; };
+		18CF67EE1F7BA1270004C573 /* RebackCouponsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RebackCouponsVC.h; sourceTree = "<group>"; };
+		18CF67EF1F7BA1270004C573 /* RebackCouponsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RebackCouponsVC.m; sourceTree = "<group>"; };
+		18CF67F01F7BA1280004C573 /* RebackCouponsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RebackCouponsVC.xib; sourceTree = "<group>"; };
 		18D43E401ED6D4EC0077861A /* NSTimer+addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+addition.h"; sourceTree = "<group>"; };
 		18D43E411ED6D4EC0077861A /* NSTimer+addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+addition.m"; sourceTree = "<group>"; };
 		18D43E421ED6D4EC0077861A /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -3051,6 +3056,16 @@
 			name = "商户扫码结果2";
 			sourceTree = "<group>";
 		};
+		18CF67ED1F7BA0E40004C573 /* 商户扫线下优惠券 */ = {
+			isa = PBXGroup;
+			children = (
+				18CF67EE1F7BA1270004C573 /* RebackCouponsVC.h */,
+				18CF67EF1F7BA1270004C573 /* RebackCouponsVC.m */,
+				18CF67F01F7BA1280004C573 /* RebackCouponsVC.xib */,
+			);
+			name = "商户扫线下优惠券";
+			sourceTree = "<group>";
+		};
 		18D0B4BF1EFE05BB00302D79 /* 添加套餐卡 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4236,6 +4251,7 @@
 		D98ECBC31D9CB26B00BEDD57 /* 新的结算中心 */ = {
 			isa = PBXGroup;
 			children = (
+				18CF67ED1F7BA0E40004C573 /* 商户扫线下优惠券 */,
 				18CF67D81F78F99D0004C573 /* 商户扫码结果2 */,
 				18CF67D21F78E47C0004C573 /* 商户扫码结果1 */,
 				D98ECBC01D9CB24600BEDD57 /* ChargeCenterVC.h */,
@@ -5146,6 +5162,7 @@
 				D98FDF851E601C280057C206 /* AD_ad_is@3x.png in Resources */,
 				D96E1B731ECAD46200084453 /* AddSeriesViewController.xib in Resources */,
 				D9F1358A1DEE696700D2703D /* AddAdminCell.xib in Resources */,
+				18CF67F21F7BA1280004C573 /* RebackCouponsVC.xib in Resources */,
 				D932B2771ECC51BD0052CC37 /* AddFriendCell.xib in Resources */,
 				18CF67E21F7902990004C573 /* PayForTaoCanTableViewCell.xib in Resources */,
 				189CC5B81EF9311300A73BB6 /* UserInfoEditVC.xib in Resources */,
@@ -5521,6 +5538,7 @@
 				D92ACDFC1F0CD68600858727 /* PictureDetailViewController.m in Sources */,
 				D9B3A5B11D74255700F3F27E /* EMSDWebImagePrefetcher.m in Sources */,
 				18EDCF6B1D460358004C40B7 /* ShopAllInfoViewController.m in Sources */,
+				18CF67F11F7BA1280004C573 /* RebackCouponsVC.m in Sources */,
 				D9DEED261CACED7C00ACDD00 /* UIImage+MultiFormat.m in Sources */,
 				D9C2EF2B1F6F9178007919C2 /* FYLCityModel.m in Sources */,
 				D947E44A1D7D0AB900F9FEE8 /* ChatGroupDetailViewController.m in Sources */,
