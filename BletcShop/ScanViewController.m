@@ -441,7 +441,8 @@
         
         if ([result[@"result_code"] isEqualToString:@"access"]) {
             
-             NSDictionary *dicss =[NSDictionary dictionaryWithJsonString:result[@"content"]];//
+//             NSDictionary *dicss =[NSDictionary dictionaryWithJsonString:result[@"content"]];//
+            NSDictionary *dicss =result[@"content"];
             
             if ([[NSString getTheNoNullStr:dicss[@"operate"] andRepalceStr:@""] isEqualToString:@"meal_card"]) {
                 ShopCodeResultOtherVC *VC = [[ShopCodeResultOtherVC alloc]init];
