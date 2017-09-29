@@ -172,39 +172,39 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 
             NSLog(@"----%ld",sender.tag);
             
-            if (sender.tag ==0) {
-                
-                
-                self.oldBtn = sender;
-                
-                self.table_View.editing = !self.table_View.isEditing;
-                
-                CGRect footViewFrame = _footView.frame;
-
-                if (self.table_View.editing) {
-                    
-                    footViewFrame.origin.y = SCREENHEIGHT -49;
-                    [UIView animateWithDuration:0.3 animations:^{
-                        _footView.frame = footViewFrame;
-                        
-                    }];
-                    
-                }else{
-                    footViewFrame.origin.y = SCREENHEIGHT;
-                    [UIView animateWithDuration:0.3 animations:^{
-                        _footView.frame = footViewFrame;
-                        
-                    }];
-                }
-             
-                
-                
-                self.tabBarController.tabBar.hidden = self.table_View.isEditing;
-                
-
-                
-                
-            }
+//            if (sender.tag ==0) {
+//
+//
+//                self.oldBtn = sender;
+//
+//                self.table_View.editing = !self.table_View.isEditing;
+//
+//                CGRect footViewFrame = _footView.frame;
+//
+//                if (self.table_View.editing) {
+//
+//                    footViewFrame.origin.y = SCREENHEIGHT -49;
+//                    [UIView animateWithDuration:0.3 animations:^{
+//                        _footView.frame = footViewFrame;
+//
+//                    }];
+//
+//                }else{
+//                    footViewFrame.origin.y = SCREENHEIGHT;
+//                    [UIView animateWithDuration:0.3 animations:^{
+//                        _footView.frame = footViewFrame;
+//
+//                    }];
+//                }
+//
+//
+//
+//                self.tabBarController.tabBar.hidden = self.table_View.isEditing;
+//
+//
+//
+//
+//            }
             
             if (sender.tag==1) {
                 PUSH(VIPBirthNoticeVC)
@@ -728,7 +728,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 }
 
 - (IBAction)searchBtn:(UIButton *)sender {
-    NSLog(@"====%ld",sender.tag);
+    NSLog(@"====%ld",sender.tag);//搜索icon
     if (sender.tag==1) {
         
         sender.selected = !sender.isSelected;
@@ -749,7 +749,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
             }];
         }
     }else{
-        
+        //搜索的逻辑
        
         
     }
