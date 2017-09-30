@@ -44,7 +44,7 @@
         
         _leftPopBtn =[LZDButton creatLZDButton];
         _leftPopBtn.frame = CGRectMake(13, 31, 10, 20);
-        [_leftPopBtn setImage:[UIImage imageNamed:@"leftArrow"] forState:0];
+        [_leftPopBtn setImage:[UIImage imageNamed:@"返回（白）"] forState:0];
         _leftPopBtn.block = ^(LZDButton *sender) {
             [weakSelf.navigationController popViewControllerAnimated:YES];
         };
@@ -504,6 +504,12 @@
     vc.statess=1;
     vc.infoDic=_dataArray[sender.tag];
     [self.navigationController pushViewController:vc animated:YES];
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [[UIView alloc] init];
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] init];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

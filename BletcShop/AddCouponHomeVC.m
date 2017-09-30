@@ -42,7 +42,7 @@
         
         _leftPopBtn =[LZDButton creatLZDButton];
         _leftPopBtn.frame = CGRectMake(13, 31, 10, 20);
-        [_leftPopBtn setImage:[UIImage imageNamed:@"leftArrow"] forState:0];
+        [_leftPopBtn setImage:[UIImage imageNamed:@"返回（白）"] forState:0];
         _leftPopBtn.block = ^(LZDButton *sender) {
             [weakSelf.navigationController popViewControllerAnimated:YES];
         };
@@ -83,7 +83,6 @@
     [super viewDidLoad];
      heights=0;
     self.deleteArr = [NSMutableArray array];
-
     self.view.backgroundColor=RGB(238, 238, 238);
     self.navigationItem.title=@"优惠券";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.leftPopBtn];
@@ -380,7 +379,12 @@
     
 }
 
-
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [[UIView alloc] init];
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] init];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
