@@ -115,9 +115,16 @@
         self.sexy.text=[NSString stringWithFormat:@"性别：%@",[NSString getTheNoNullStr:result[@"info"][@"sex"] andRepalceStr:@""]];
         self.telPhone.text=[NSString stringWithFormat:@"电话：%@",[NSString getTheNoNullStr:result[@"info"][@"phone"] andRepalceStr:@""]];
         self.address.text=[NSString stringWithFormat:@"地址：%@",[NSString getTheNoNullStr:result[@"info"][@"address"] andRepalceStr:@""]];
-        self.cardCounts.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"num"] andRepalceStr:@""]];
-        self.cardMoney.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"sum"] andRepalceStr:@""]];
-        self.cardRemain.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"remain"] andRepalceStr:@""]];
+        self.cardCounts.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"num"] andRepalceStr:@"0"]];
+        
+        NSString *costMoney=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"sum"] andRepalceStr:@"0"]];
+        float total=[costMoney floatValue];
+        self.cardMoney.text = [NSString stringWithFormat:@"%.2f",total];
+//        self.cardMoney.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"sum"] andRepalceStr:@"0"]];
+        NSString *remainMoney=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"remain"] andRepalceStr:@"0"]];
+        float total2=[remainMoney floatValue];
+        self.cardRemain.text = [NSString stringWithFormat:@"%.2f",total2];
+//        self.cardRemain.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:result[@"buy"][@"remain"] andRepalceStr:@"0"]];
         NSLog(@"%@", result);
        
         [self.tableView reloadData];
