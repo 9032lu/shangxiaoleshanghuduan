@@ -92,88 +92,100 @@
     
     
     
-    LZDButton *rightBtn = [LZDButton creatLZDButton];
-    rightBtn.frame = CGRectMake(kWeChatScreenWidth-50, 0, 40, 30);
+//    LZDButton *rightBtn = [LZDButton creatLZDButton];
+//    rightBtn.frame = CGRectMake(kWeChatScreenWidth-50, 0, 40, 30);
+//    
+//    [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
+//    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    rightBtn.titleLabel.font = [UIFont systemFontOfSize:17];
+//    
+//    self.rightBtn = rightBtn;
+//    
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
+//    
+//    
+//    
+//    
+//    rightBtn.block = ^(LZDButton *btn){
+//        __weak typeof(self) weakSelf = self;
+//        
+//        
+//        if (btn.selected) {
+//            
+//            weakSelf.tableView.editing = NO;
+//            btn.selected = NO;
+//            
+//            [btn setTitle:@"编辑" forState:UIControlStateNormal];
+//            
+//            [weakSelf showHint:[NSString stringWithFormat:@"删除选中的-%lu-项",(unsigned long)weakSelf.deleteArr.count]];
+//            weakSelf.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:weakSelf.leftPopBtn];
+//            
+//            [weakSelf.deleteArr removeAllObjects];
+//            
+//        }else{
+//            
+//            
+//            
+//            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"编辑" preferredStyle:UIAlertControllerStyleActionSheet];
+//            
+//            NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:@"编辑"];
+//            [hogan addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, [[hogan string] length])];
+//            //            [hogan addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, [[hogan string] length])];
+//            [alertController setValue:hogan forKey:@"attributedMessage"];
+//            
+//            UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"添加" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//                ADDCoupomSSVC *couponVC=[[ADDCoupomSSVC alloc]init];
+//                [weakSelf.navigationController pushViewController:couponVC animated:YES];
+//                
+//            }];
+//            
+//            UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+//                
+//                [btn setTitle:@"删除" forState:UIControlStateNormal];
+//                
+//                btn.selected = YES;
+//                
+//                weakSelf.tableView.editing = YES;
+//                
+//                
+//                
+//                weakSelf.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:weakSelf.leftCancleBtn];
+//                
+//                
+//                
+//            }];
+//            UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//                
+//                
+//                
+//                
+//            }];
+//            
+//            [alertController addAction:addAction];
+//            [alertController addAction:deleteAction];
+//            [alertController addAction:cancleAction];
+//            
+//            [weakSelf presentViewController:alertController animated:YES completion:^{
+//                
+//            }];
+//            
+//            
+//        }
+//        
+//        
+//    };
     
-    [rightBtn setTitle:@"编辑" forState:UIControlStateNormal];
-    [rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    rightBtn.titleLabel.font = [UIFont systemFontOfSize:17];
+    UIButton *NewAdd = [UIButton buttonWithType:UIButtonTypeCustom];
+    NewAdd.frame = CGRectMake(/*SCREENWIDTH-40, 20+(topView.height-20-25)/2,*/0,0, 20, 20);
+    //    [NewAdd setTitle:@"新增产品" forState:UIControlStateNormal];
+    [NewAdd setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateNormal];
+    [NewAdd setImage:[UIImage imageNamed:@"add_yellow"] forState:UIControlStateHighlighted];
     
-    self.rightBtn = rightBtn;
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:rightBtn];
-    
-    
-    
-    
-    rightBtn.block = ^(LZDButton *btn){
-        __weak typeof(self) weakSelf = self;
-        
-        
-        if (btn.selected) {
-            
-            weakSelf.tableView.editing = NO;
-            btn.selected = NO;
-            
-            [btn setTitle:@"编辑" forState:UIControlStateNormal];
-            
-            [weakSelf showHint:[NSString stringWithFormat:@"删除选中的-%lu-项",(unsigned long)weakSelf.deleteArr.count]];
-            weakSelf.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:weakSelf.leftPopBtn];
-            
-            [weakSelf.deleteArr removeAllObjects];
-            
-        }else{
-            
-            
-            
-            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"编辑" preferredStyle:UIAlertControllerStyleActionSheet];
-            
-            NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:@"编辑"];
-            [hogan addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20] range:NSMakeRange(0, [[hogan string] length])];
-            //            [hogan addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0, [[hogan string] length])];
-            [alertController setValue:hogan forKey:@"attributedMessage"];
-            
-            UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"添加" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                ADDCoupomSSVC *couponVC=[[ADDCoupomSSVC alloc]init];
-                [weakSelf.navigationController pushViewController:couponVC animated:YES];
-                
-            }];
-            
-            UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"删除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-                
-                [btn setTitle:@"删除" forState:UIControlStateNormal];
-                
-                btn.selected = YES;
-                
-                weakSelf.tableView.editing = YES;
-                
-                
-                
-                weakSelf.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:weakSelf.leftCancleBtn];
-                
-                
-                
-            }];
-            UIAlertAction *cancleAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                
-                
-                
-                
-            }];
-            
-            [alertController addAction:addAction];
-            [alertController addAction:deleteAction];
-            [alertController addAction:cancleAction];
-            
-            [weakSelf presentViewController:alertController animated:YES completion:^{
-                
-            }];
-            
-            
-        }
-        
-        
-    };
+    //    NewAdd.backgroundColor = [UIColor redColor];
+    //    NewAdd.layer.cornerRadius = 10;
+    [NewAdd addTarget:self action:@selector(addProAction:) forControlEvents:UIControlEventTouchUpInside];
+    //    [topView addSubview:NewAdd];
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithCustomView:NewAdd];
     
     _dataArray=[[NSMutableArray alloc]initWithCapacity:0];//@[dic1,dic2,dic3];
     
@@ -511,13 +523,13 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return [[UIView alloc] init];
 }
+-(void)addProAction:(UIButton *)sender{
+    ADDCoupomSSVC *couponVC=[[ADDCoupomSSVC alloc]init];
+    [self.navigationController pushViewController:couponVC animated:YES];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-
 @end
 
