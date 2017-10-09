@@ -137,7 +137,7 @@
     
     
    totalMoney=[[UILabel alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, 66)];
-    totalMoney.text=@"办卡总金额：10′000元";
+    totalMoney.text=@"办卡总金额：0元";
     totalMoney.textAlignment=NSTextAlignmentCenter;
     totalMoney.font=[UIFont systemFontOfSize:16];
     totalMoney.backgroundColor=RGB(240, 240, 240);
