@@ -249,7 +249,7 @@
                      priceText.text = self.codeDic[@"price"];
                 }
                 self.priceText = priceText;
-                priceText.placeholder = @"请输入会员卡价格";
+                priceText.placeholder = @"请输入会员卡原价";
                 priceText.font = [UIFont systemFontOfSize:14];
                 
                 priceText.keyboardType = UIKeyboardTypeNumberPad;
@@ -350,12 +350,12 @@
                 {
                     self.zhekouLabel.text = @"折扣率:";
                     self.zhekouLabel1.text = @"%";
-                    self.zhekouText.placeholder = @"请输入折扣率";
+                    self.zhekouText.placeholder = @"如八折，折扣率为80%";
                     
                 }else{
                     self.zhekouLabel.text = @"使用次数:";
                     self.zhekouLabel1.text = @"次";
-                    self.zhekouText.placeholder = @"请输入可使用次数";
+                    self.zhekouText.placeholder = @"请输入使用次数";
                     
                 }
                 
@@ -449,7 +449,7 @@
                     priceText.text = self.codeDic[@"price"];
                 }
                 self.priceText = priceText;
-                priceText.placeholder = @"请输入会员卡价格";
+                priceText.placeholder = @"请输入会员卡原价";
                 priceText.font = [UIFont systemFontOfSize:14];
                 priceText.clearButtonMode = UITextFieldViewModeWhileEditing;
                 [cell addSubview:priceText];
@@ -525,12 +525,12 @@
                 {
                     self.zhekouLabel.text = @"折扣率:";
                     self.zhekouLabel1.text = @"%";
-                    self.zhekouText.placeholder = @"请输入折扣率";
+                    self.zhekouText.placeholder = @"如八折，折扣率为80%";
                     
                 }else{
                     self.zhekouLabel.text = @"使用次数:";
                     self.zhekouLabel1.text = @"次";
-                    self.zhekouText.placeholder = @"请输入可使用次数";
+                    self.zhekouText.placeholder = @"请输入使用次数";
                     
                 }
             }

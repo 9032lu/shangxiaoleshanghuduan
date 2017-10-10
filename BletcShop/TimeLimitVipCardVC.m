@@ -22,6 +22,7 @@
 //选择的卡模板
 @property (nonatomic,retain)NSDictionary *choiceCard;
 
+@property (strong, nonatomic) IBOutlet UILabel *placeHodelLab;
 
 @property(nonatomic,strong)NSArray*deadLine_A;//有效期
 @property (nonatomic , strong) NSDictionary *deadLine_dic;// <#Description#>
@@ -101,6 +102,16 @@
     }
 }
 #pragma mark --textViewDelegate
+
+-(void)textViewDidChange:(UITextView *)textView{
+    if (textView.text.length==0) {
+        self.placeHodelLab.hidden = NO;
+    }else{
+        self.placeHodelLab.hidden = YES;
+        
+    }
+}
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
         //在这里做你响应return键的代码
@@ -168,10 +179,10 @@
 - (IBAction)sureBtnClick:(id)sender {
     
     if (_cardOriginPrice.text.length==0) {
-        [self showHint:@"请输入价格"];
+        [self showHint:@"请输入体验价"];
     }else if (_cardTimeLimit.text.length==0)
     {
-        [self showHint:@"请选择有效期"];
+        [self showHint:@"请选择会员卡的使用期限"];
     }else if (_instrumentTextView.text.length==0){
         [self showHint:@"请填写会员说明"];
     }else if (!_choiceCard){

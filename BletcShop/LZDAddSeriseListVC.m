@@ -24,7 +24,7 @@
 - (IBAction)sureBtnClick:(id)sender {
     
     if (_text_Field.text.length==0) {
-        [self showHint:@"请输入系列名称"];
+        [self showHint:@"请输入本套卡的系列名称"];
     }else{
         [self postAddSeriseRequest];
     }

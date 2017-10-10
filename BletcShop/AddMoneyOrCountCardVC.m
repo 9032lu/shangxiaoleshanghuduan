@@ -319,11 +319,11 @@
     if (!_cardInfo_dic[@"level"]) {
         [self showHint:@"请选择会员卡级别"];
     }else if (!_cardInfo_dic[@"price"]){
-        [self showHint:@"请输入会员卡价格"];
+        [self showHint:@"请输入会员卡原价"];
 
     }else if (!_cardInfo_dic[@"rule"]){
         if ([self.cardTypeName isEqualToString:@"计次卡"]) {
-            [self showHint:@"请输入可使用次数"];
+            [self showHint:@"请输入使用次数"];
 
         }else{
             [self showHint:@"请输入会员卡折扣率"];
@@ -334,7 +334,7 @@
         [self showHint:@"请选择会员卡有效期"];
         
     }else if (!_cardInfo_dic[@"content"]){
-        [self showHint:@"请输入优惠内容"];
+        [self showHint:@"请输入会员卡的具体优惠内容"];
         
     }else if (!_cardInfo_dic[@"card_temp_color"]){
         [self showHint:@"请选择板式"];
@@ -595,13 +595,13 @@
         _placeHoder_Dic = [NSMutableDictionary dictionary];
         
         if ([self.cardTypeName isEqualToString:@"计次卡"]) {
-            [_placeHoder_Dic setObject:@[@"",@"请选择会员卡级别",@"请输入会员卡价格",@"请输入可使用次数",@"",@"请选择有效期"] forKey:@"0"];
-            [_placeHoder_Dic setObject:@[@"",@"请选择会员卡级别",@"请输入会员卡价格",@"请输入可使用次数",@"",@"请输入附赠金额",@"请选择有效期"] forKey:@"1"];
+            [_placeHoder_Dic setObject:@[@"",@"一个系列只能有一张同等级的会员卡",@"请输入会员卡原价",@"请输入使用次数",@"",@"请选择会员卡的使用期限"] forKey:@"0"];
+            [_placeHoder_Dic setObject:@[@"",@"一个系列只能有一张同等级的会员卡",@"请输入会员卡原价",@"请输入使用次数",@"",@"如充500送100，100为附赠金额",@"请选择会员卡的使用期限"] forKey:@"1"];
             
             
         }else{
-            [_placeHoder_Dic setObject:@[@"",@"请选择会员卡级别",@"请输入会员卡价格",@"请输入折扣率",@"",@"请选择有效期"] forKey:@"0"];
-            [_placeHoder_Dic setObject:@[@"",@"请选择会员卡级别",@"请输入会员卡价格",@"请输入折扣率",@"",@"请输入附赠金额",@"请选择有效期"] forKey:@"1"];
+            [_placeHoder_Dic setObject:@[@"",@"一个系列只能有一张同等级的会员卡",@"请输入会员卡原价",@"如八折，折扣率为80%",@"",@"请选择会员卡的使用期限"] forKey:@"0"];
+            [_placeHoder_Dic setObject:@[@"",@"一个系列只能有一张同等级的会员卡",@"请输入会员卡原价",@"如八折，折扣率为80%",@"",@"如充500送100，100为附赠金额",@"请选择会员卡的使用期限"] forKey:@"1"];
             
             
         }

@@ -20,29 +20,79 @@
 
 @implementation ReveiveMoneyQRInfoVC
 
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = @"二维码";
-    LEFTBACK
-    self.QRView = [[UIView alloc]initWithFrame:CGRectMake(20, 50, SCREENWIDTH-40, SCREENWIDTH-40)];
-    [self.view addSubview:_QRView];
+    self.view.backgroundColor = NavBackGroundColor;
+    UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
+    topView.backgroundColor =NavBackGroundColor;
+    [self.view addSubview:topView];
+    
+    
+     LZDButton *back =[LZDButton creatLZDButton];
+    back.frame = CGRectMake(0, 24, 30, 40);
+    back.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);
+    [back setImage:[UIImage imageNamed:@"返回（白）"] forState:0];
+    back.block = ^(LZDButton *sender) {
+        POP
+        
+    };
+    [topView addSubview:back];
+    
+    UILabel*titlelabel=[[UILabel alloc]initWithFrame:CGRectMake(0, +20, SCREENWIDTH, 44)];
+    titlelabel.text=@"收款";
+    titlelabel.font=[UIFont systemFontOfSize:19];
+    titlelabel.textAlignment=NSTextAlignmentCenter;
+    titlelabel.textColor = [UIColor whiteColor];
+    [topView addSubview:titlelabel];
+    
+    
+    UIView *whiteView = [[UIView alloc]initWithFrame:CGRectMake(22, topView.bottom+6, SCREENWIDTH-44, 467)];
+    
+    whiteView.layer.cornerRadius = 12;
+    whiteView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:whiteView];
+    
+    
+    UILabel*title_label=[[UILabel alloc]initWithFrame:CGRectMake(0, 40, whiteView.width, 15)];
+    title_label.text=@"二维码收款";
+    title_label.font=[UIFont systemFontOfSize:16];
+    title_label.textAlignment=NSTextAlignmentCenter;
+    title_label.textColor = RGB(51,51,51);
+    [whiteView addSubview:title_label];
+    
+    
+    self.QRView = [[UIView alloc]initWithFrame:CGRectMake(38, 95, whiteView.width-38*2, whiteView.width-38*2)];
+    [whiteView addSubview:_QRView];
     
 
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressClcik:)];
     
     [self.QRView addGestureRecognizer:longPress];
     
-    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, self.QRView.bottom+30, SCREENWIDTH, 50)];
+    UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(0, self.QRView.bottom+30, whiteView.width, 50)];
     label.numberOfLines=0;
-    label.text=@"提示：用户扫描此二维码，可进行会员结算、购买会员卡等";
+    label.text=@"提示：用户扫描此二维码\n\n可进行会员结算、购买会员卡等";
     label.textAlignment=NSTextAlignmentCenter;
-    label.textColor=RGB(51, 51, 51);
+    label.textColor=RGB(119,119,119);
     label.font=[UIFont systemFontOfSize:13.0f];
-    [self.view addSubview:label];
+    [whiteView addSubview:label];
     
     [self postRequesQrcode];
+    
+    
+    CGRect fram = whiteView.frame ;
+    fram.size.height = label.bottom+41;
+    whiteView.frame = fram;
     
 }
 

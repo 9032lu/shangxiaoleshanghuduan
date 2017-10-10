@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,6 +18,7 @@
                 <outlet property="cardTimeLimit" destination="NhQ-Q2-lQu" id="ua6-Pq-Uja"/>
                 <outlet property="imageView" destination="dXP-xB-DLG" id="226-Xb-cIK"/>
                 <outlet property="instrumentTextView" destination="1rh-Cc-LR4" id="1Lc-yg-lqn"/>
+                <outlet property="placeHodelLab" destination="S0o-ng-Es3" id="fZK-Db-i4a"/>
                 <outlet property="topBgView" destination="ly2-ZV-IzX" id="dEg-GL-02V"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -93,7 +94,7 @@
                                         <constraint firstAttribute="width" constant="2" id="V4s-g6-H3z"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入价格" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tvR-Mw-qPZ">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入体验价" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tvR-Mw-qPZ">
                                     <rect key="frame" x="82" y="0.0" width="293" height="44"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -181,7 +182,7 @@
                                         <constraint firstAttribute="width" constant="2" id="Oxk-LN-cqQ"/>
                                     </constraints>
                                 </view>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="会员卡有效期" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-Q2-lQu">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="点击选择体验卡使用期限" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NhQ-Q2-lQu">
                                     <rect key="frame" x="82" y="0.0" width="293" height="44"/>
                                     <nil key="textColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -333,7 +334,7 @@
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1rh-Cc-LR4">
                             <rect key="frame" x="7" y="30" width="361" height="130"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="130" id="SnO-9O-voe"/>
                             </constraints>
@@ -351,14 +352,26 @@
                                 <outlet property="delegate" destination="-1" id="blo-N0-nZ8"/>
                             </connections>
                         </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入体验卡内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S0o-ng-Es3">
+                            <rect key="frame" x="20" y="36" width="114.5" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="eLW-Tf-yT7"/>
+                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="joL-CA-oIj"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="Y7e-cx-g2M" secondAttribute="bottom" constant="5" id="4MK-IC-GnW"/>
                         <constraint firstItem="rXV-e8-1lh" firstAttribute="leading" secondItem="vQl-DG-G5W" secondAttribute="leading" constant="2" id="DOD-OK-Eh4"/>
                         <constraint firstAttribute="bottom" secondItem="1rh-Cc-LR4" secondAttribute="bottom" constant="30" id="Dga-0F-PKe"/>
+                        <constraint firstItem="S0o-ng-Es3" firstAttribute="leading" secondItem="1rh-Cc-LR4" secondAttribute="leading" constant="13" id="FOn-e9-bCy"/>
                         <constraint firstItem="rXV-e8-1lh" firstAttribute="top" secondItem="vQl-DG-G5W" secondAttribute="top" id="P1o-Ee-hbS"/>
                         <constraint firstAttribute="trailing" secondItem="Y7e-cx-g2M" secondAttribute="trailing" constant="7" id="VV7-hA-qf2"/>
+                        <constraint firstItem="S0o-ng-Es3" firstAttribute="top" secondItem="1rh-Cc-LR4" secondAttribute="top" constant="6" id="YIm-dc-dzu"/>
                         <constraint firstAttribute="height" constant="190" id="YjO-eC-Dcy"/>
                         <constraint firstItem="1rh-Cc-LR4" firstAttribute="leading" secondItem="vQl-DG-G5W" secondAttribute="leading" constant="7" id="bLe-hp-jGx"/>
                         <constraint firstItem="1rh-Cc-LR4" firstAttribute="top" secondItem="rXV-e8-1lh" secondAttribute="bottom" id="cDr-qE-UtH"/>

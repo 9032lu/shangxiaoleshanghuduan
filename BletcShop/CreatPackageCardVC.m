@@ -59,7 +59,7 @@
     }else if(!_colorDic){
         [self showTishi:@"请选择套餐卡样式" dele:nil cancel:nil operate:@"确认"];
     }else if(_text_View.text.length ==0){
-        [self showTishi:@"请输入套餐说明" dele:nil cancel:nil operate:@"确认"];
+        [self showTishi:@"请输入套餐卡使用详情" dele:nil cancel:nil operate:@"确认"];
 
     }else{
         [self postRequestAddPackageCard];
