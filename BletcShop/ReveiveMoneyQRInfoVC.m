@@ -40,7 +40,7 @@
     
      LZDButton *back =[LZDButton creatLZDButton];
     back.frame = CGRectMake(0, 24, 30, 40);
-    back.imageEdgeInsets = UIEdgeInsetsMake(0, -13, 0, 0);
+    back.imageEdgeInsets = UIEdgeInsetsMake(0, 13, 0, 0);
     [back setImage:[UIImage imageNamed:@"返回（白）"] forState:0];
     back.block = ^(LZDButton *sender) {
         POP
