@@ -424,11 +424,15 @@
 //点击顶部，让键盘消失
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
-    
+    _tableView.frame =CGRectMake(0, 108, SCREENWIDTH, SCREENHEIGHT-108);
+
 }
 //点击下一步，去下一个页面
 -(void)btnClick:(UIButton *)sender{
+    [self tapAndHidden];
+    
 
+    
     NSLog(@"%@1---%@2---%@3---",self.nickTextTF.text,self.addressTF.text,self.idenCardText.text);
     if ([self.nickTextTF.text isEqualToString:@""]||[self.addressTF.text isEqualToString:@""]||[self.idenCardText.text isEqualToString:@""]||[self.kaihuTF.text isEqualToString:@""]||[self.realNameTF.text isEqualToString:@""]||[self.zhanghaoTF.text isEqualToString:@""]||[self.phonePswText.text isEqualToString:@""]) {
 //        ||self.ifImageView==NO||self.ifImageView1==NO||self.ifImageView2==NO
@@ -836,7 +840,6 @@
     }
     [textField resignFirstResponder];
     [self.view endEditing:YES];
-    _tableView.frame =CGRectMake(0, 108, SCREENWIDTH, SCREENHEIGHT-108);
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [self.view endEditing:YES];
@@ -856,6 +859,9 @@
 }
 -(void)tapAndHidden{
     [_tableView endEditing:YES];
+    
+    _tableView.frame =CGRectMake(0, 108, SCREENWIDTH, SCREENHEIGHT-108);
+
 }
 - (BOOL)isPureInt:(NSString*)string{
     NSScanner* scan = [NSScanner scannerWithString:string]; //定义一个NSScanner，扫描string
@@ -974,7 +980,8 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     [textField resignFirstResponder];//取消第一响应者
-    
+    _tableView.frame =CGRectMake(0, 108, SCREENWIDTH, SCREENHEIGHT-108);
+
     return YES;
 }
 
