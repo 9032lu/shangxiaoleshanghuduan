@@ -81,6 +81,9 @@
         alert.backgroundColor=[UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:0.3];
         [self.view addSubview:alert];
         
+        UITapGestureRecognizer *tapss=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapClickss:)];
+        [alert addGestureRecognizer:tapss];
+        
         UIView *bgView=[[UIView alloc]initWithFrame:CGRectMake(13, 0, SCREENWIDTH-26, 273)];
         bgView.backgroundColor=[UIColor whiteColor];
         bgView.layer.cornerRadius=12;
@@ -182,6 +185,10 @@
     
 }
 -(void)closeNoticeBtnClick{
+    [alert removeFromSuperview];
+    alert=nil;
+}
+-(void)tapClickss:(UITapGestureRecognizer *)tap{
     [alert removeFromSuperview];
     alert=nil;
 }
@@ -348,6 +355,7 @@
     }];
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
