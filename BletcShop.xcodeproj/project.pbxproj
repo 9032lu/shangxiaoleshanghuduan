@@ -2183,15 +2183,10 @@
 			children = (
 				079386821C55B5CA0021B385 /* AppDelegate.h */,
 				D972270E1F32D26B009D0E2A /* AppDelegate.mm */,
-				18B9BEAA1F4AAAD100863CB1 /* XLAlertView.h */,
-				18B9BEAB1F4AAAD100863CB1 /* XLAlertView.m */,
-				18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */,
-				18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */,
+				18F10C6B1F8C623F007CB370 /* 弹框 */,
 				184437261F57E554001D5046 /* ChatForAllDatasVC.h */,
 				184437271F57E554001D5046 /* ChatForAllDatasVC.m */,
 				184437281F57E554001D5046 /* ChatForAllDatasVC.xib */,
-				18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */,
-				18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */,
 				184D2F541F5007F0008F8C55 /* 引导页three.png */,
 				184D2F551F5007F0008F8C55 /* 引导页one.png */,
 				184D2F561F5007F0008F8C55 /* 引导页two.png */,
@@ -3173,6 +3168,35 @@
 			name = "管理员设置首页";
 			sourceTree = "<group>";
 		};
+		18F10C6B1F8C623F007CB370 /* 弹框 */ = {
+			isa = PBXGroup;
+			children = (
+				18F10C6D1F8C6279007CB370 /* 审核失败弹框 */,
+				18F10C6C1F8C625F007CB370 /* 版本升级弹框 */,
+			);
+			name = "弹框";
+			sourceTree = "<group>";
+		};
+		18F10C6C1F8C625F007CB370 /* 版本升级弹框 */ = {
+			isa = PBXGroup;
+			children = (
+				18B9BEAA1F4AAAD100863CB1 /* XLAlertView.h */,
+				18B9BEAB1F4AAAD100863CB1 /* XLAlertView.m */,
+				18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */,
+				18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */,
+			);
+			name = "版本升级弹框";
+			sourceTree = "<group>";
+		};
+		18F10C6D1F8C6279007CB370 /* 审核失败弹框 */ = {
+			isa = PBXGroup;
+			children = (
+				18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */,
+				18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */,
+			);
+			name = "审核失败弹框";
+			sourceTree = "<group>";
+		};
 		18F50DEA1D1E365800811CD1 /* 按钮所有图标 */ = {
 			isa = PBXGroup;
 			children = (
@@ -3357,6 +3381,8 @@
 				18CF67BA1F74A6E00004C573 /* 消息提醒s */,
 				D9C2EF2F1F70F12D007919C2 /* 新的会员管理s */,
 				D98ECBC31D9CB26B00BEDD57 /* 新的结算中心 */,
+				D9A00A051CA2314F0018B7A4 /* 商户端注册 */,
+				D9A00A041CA231310018B7A4 /* 商户端登录 */,
 				1CDA9E0A1C5A119C00DFE518 /* 我的会员 */,
 				1CDA9E0E1C5A11E800DFE518 /* 更多 */,
 				1887C70C1F58EA670030C290 /* 业务center--home */,
@@ -3370,8 +3396,6 @@
 			isa = PBXGroup;
 			children = (
 				D97240D41D6707E3005A7BB8 /* 我的 */,
-				D9A00A051CA2314F0018B7A4 /* 商户端注册 */,
-				D9A00A041CA231310018B7A4 /* 商户端登录 */,
 				1CE8F3131C5EFB110004F52C /* View */,
 			);
 			name = "我的会员";

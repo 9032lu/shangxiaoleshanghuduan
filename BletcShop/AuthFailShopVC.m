@@ -1461,7 +1461,9 @@
 {
     
     if (textField ==_locationLab) {
-        
+        for (UITextField *tf in _scrollView.subviews) {
+            [tf resignFirstResponder];
+        }
         __weak typeof(self) weskSelf = self;
 
         [FYLCityPickView showPickViewWithComplete:^(NSArray *arr) {
