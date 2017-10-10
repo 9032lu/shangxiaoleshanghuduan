@@ -348,7 +348,7 @@
         UITextField *textField=[[UITextField alloc]initWithFrame:CGRectMake(140, 5, SCREENWIDTH-140, 40)];
         textField.keyboardType=UIKeyboardTypeNumberPad;
         textField.delegate=self;
-        textField.placeholder=@"目前仅支持建行储蓄卡";
+        textField.placeholder=@"请输入银行卡号";
         textField.tag=203;
          textField.returnKeyType=UIReturnKeyDone;
         textField.font=[UIFont systemFontOfSize:13.0f];
