@@ -338,6 +338,8 @@ typedef NS_ENUM(NSInteger,ScreenType) {
                      .extra_screen_Dic[@"sex"] isEqualToString:btn.titleLabel.text]) {
                     btn.backgroundColor =ORANGECOLOR;
 
+                    sex_old_btn = btn;
+
                 }
             }
             
