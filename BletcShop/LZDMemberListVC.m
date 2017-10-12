@@ -36,11 +36,16 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 };//筛选类型
 
 
-@interface LZDMemberListVC ()<DOPDropDownMenuDelegate,DOPDropDownMenuDataSource,UITableViewDelegate,UITableViewDataSource>
+@interface LZDMemberListVC ()<DOPDropDownMenuDelegate,DOPDropDownMenuDataSource,UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate>
 {
     LZDButton *sex_old_btn;
     
+   UIPickerView *datePicker;
     
+    NSString *lzd_mon;
+    NSString *lzd_day;
+    
+    NSInteger all_day;
     
     UIView *picker_backView;
     
@@ -97,7 +102,9 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     self.view.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
     
     self.pageIndex = 1;
-    
+    lzd_mon = @"1月";
+    lzd_day = @"1日";
+    all_day = 31;
     self.selectOrder_s =@"desc";
     
     self.table_View.estimatedRowHeight = 100;
@@ -326,6 +333,62 @@ typedef NS_ENUM(NSInteger,ScreenType) {
             [whiteView addSubview:btn];
             
             
+            if (btn.section ==0) {
+                if ([blockSelf
+                     .extra_screen_Dic[@"sex"] isEqualToString:btn.titleLabel.text]) {
+                    btn.backgroundColor =ORANGECOLOR;
+
+                }
+            }
+            
+            if (btn.section == 1) {
+                NSString *birth =blockSelf
+                .extra_screen_Dic[@"birth"];
+                
+                if (birth.length !=0) {
+                    btn.backgroundColor =ORANGECOLOR;
+                    
+                    NSArray *m_d = [birth componentsSeparatedByString:@"-"];
+                    
+
+                    
+                    if (btn.row ==0) {
+                        [btn setTitle:[NSString stringWithFormat:@"%@月",m_d[0]] forState:UIControlStateNormal];
+
+                    }else{
+                        [btn setTitle:[NSString stringWithFormat:@"%@日",m_d[1]] forState:UIControlStateNormal];
+
+                    }
+                    
+
+                }
+            }
+            
+            
+            if (btn.section ==2) {
+           NSString *occupation =blockSelf
+                .extra_screen_Dic[@"occupation"];
+                
+                if (occupation.length !=0) {
+                    btn.backgroundColor =ORANGECOLOR;
+
+                    [btn setTitle:occupation forState:UIControlStateNormal];
+
+                }
+            }
+            
+            if (btn.section ==3) {
+                NSString *hobby =blockSelf
+                .extra_screen_Dic[@"hobby"];
+                
+                if (hobby.length !=0) {
+                    btn.backgroundColor =ORANGECOLOR;
+                    
+                    [btn setTitle:hobby forState:UIControlStateNormal];
+                    
+                }
+            }
+            
             [muta_A addObject:btn];
             
             btn.block = ^(LZDButton *sender) {
@@ -454,7 +517,10 @@ typedef NS_ENUM(NSInteger,ScreenType) {
                 sex_old_btn = nil;
                 
                 
-                
+                [datePicker selectRow:0 inComponent:0 animated:NO];
+                [datePicker selectRow:0 inComponent:1 animated:NO];
+                select_date = @"1月-1日";
+
                 
             }
             
@@ -463,11 +529,19 @@ typedef NS_ENUM(NSInteger,ScreenType) {
                 
                 NSLog(@"_extra_screen_Dic----%@",_extra_screen_Dic);
 
-                [self searchBtn:_screenBtn];
-
-                _pageIndex = 1;
-                _s_type = extra;
-                [self getDataRequest];
+                if (_extra_screen_Dic.count) {
+                    [self searchBtn:_screenBtn];
+                    
+                    _pageIndex = 1;
+                    _s_type = extra;
+                    [self getDataRequest];
+                }else{
+                    
+                    [self showHint:@"请选择筛选条件"];
+                    
+                }
+                
+             
             }
         };
         
@@ -510,15 +584,15 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 
         }
         
-        NSString *year = date_A[0];
-        NSString *month = date_A[1];
-        NSString *day = date_A[2];
+//        NSString *year = date_A[0];
+        NSString *month = date_A[0];
+        NSString *day = date_A[1];
 
-        year= [year substringToIndex:4];
+//        year= [year substringToIndex:4];
         month= [month substringToIndex:2];
         day= [day substringToIndex:2];
 
-        NSString *y_m_d = [NSString stringWithFormat:@"%d-%d-%d",[year intValue],[month intValue],[day intValue]];
+        NSString *y_m_d = [NSString stringWithFormat:@"%d-%d",[month intValue],[day intValue]];
         
         NSLog(@"----%@",y_m_d);
         
@@ -558,45 +632,131 @@ typedef NS_ENUM(NSInteger,ScreenType) {
   
     
     
-    UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, picker_backView.height-40)];
+    
+    
+//    UIDatePicker *datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, picker_backView.height-40)];
+    
+    datePicker = [[UIPickerView alloc]initWithFrame:CGRectMake(0, 40, SCREENWIDTH, picker_backView.height-40)];
     datePicker.backgroundColor= [UIColor whiteColor];
-    
-    
-    datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-    
 
-    datePicker.datePickerMode =UIDatePickerModeDate;
+    datePicker.delegate = self;
+    datePicker.dataSource = self;
     
- 
-    datePicker.maximumDate= [NSDate date];
-  
-    datePicker.date = datePicker.maximumDate;
+    
+//
+//    datePicker.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+//
+//
+//    datePicker.datePickerMode =UIDatePickerModeDate;
+//
+//
+//    datePicker.maximumDate= [NSDate date];
+//
+//    datePicker.date = datePicker.maximumDate;
     
     [picker_backView addSubview:datePicker];
     
-    [datePicker addTarget:self action:@selector(dateChange:)forControlEvents:UIControlEventValueChanged];
+//    [datePicker addTarget:self action:@selector(dateChange:)forControlEvents:UIControlEventValueChanged];
     
 
-    NSDateFormatter *dateformatter = [[NSDateFormatter alloc]init];
-    [dateformatter setDateFormat:@"yyyy年-MM月-dd日"];
-    
-    select_date = [dateformatter stringFromDate:datePicker.date];
+//    NSDateFormatter *dateformatter = [[NSDateFormatter alloc]init];
+//    [dateformatter setDateFormat:@"MM月-dd日"];
+//
+//    select_date = [dateformatter stringFromDate:datePicker.date];
   
-    
+    select_date = @"1月-1日";
     
     
 }
 
-
--(void)dateChange:(UIDatePicker*)pick{
-    
-    NSDateFormatter *dateformatter = [[NSDateFormatter alloc]init];
-    [dateformatter setDateFormat:@"yyyy年-MM月-dd日"];
-    
-    select_date = [dateformatter stringFromDate:pick.date];
-    
-    NSLog(@"---%@", pick.date);
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 2;
 }
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    
+    if (component ==0) {
+        
+        return 12;
+    }else{
+        
+        
+        
+        return all_day;
+        
+    }
+    
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    if (component ==0) {
+        return [NSString stringWithFormat:@"%ld月",row+1];
+    }else{
+        return [NSString stringWithFormat:@"%ld日",row+1];
+
+    }
+    
+}
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+    
+   
+    
+    if (component ==0) {
+        lzd_mon= [NSString stringWithFormat:@"%ld月",row+1];
+        
+        switch (row+1) {
+            case 1:
+            case 3:
+             case 5:
+              case 7:
+                case 8:
+                case 10:
+                case 12:
+                
+                all_day = 31;
+                
+                break;
+                
+            case 6:
+            case 9:
+            case 11:
+            
+                all_day = 30;
+                
+                break;
+            case 2:
+                
+                all_day = 29;
+                
+                break;
+                
+            default:
+                break;
+        }
+       
+        
+        [pickerView reloadComponent:1];
+
+        
+    }else{
+        lzd_day= [NSString stringWithFormat:@"%ld日",row+1];
+        
+    }
+    select_date = [NSString stringWithFormat:@"%@-%@",lzd_mon,lzd_day];
+
+    
+}
+
+//-(void)dateChange:(UIDatePicker*)pick{
+//
+//    NSDateFormatter *dateformatter = [[NSDateFormatter alloc]init];
+//    [dateformatter setDateFormat:@"yyyy年-MM月-dd日"];
+//
+//    select_date = [dateformatter stringFromDate:pick.date];
+//
+//    NSLog(@"---%@", pick.date);
+//}
 
 -(NSInteger)numberOfColumnsInMenu:(DOPDropDownMenu *)menu{
     return self.dopMenuData_A.count;
@@ -992,7 +1152,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 }
 -(NSArray *)search_A{
     if (!_search_A) {
-        _search_A =@[@[@"男",@"女"],@[@"年",@"月",@"日"],@[@"请选择"],@[@"请选择"]];
+        _search_A =@[@[@"男",@"女"],@[@"月",@"日"],@[@"请选择"],@[@"请选择"]];
     }
     return _search_A;
 }
