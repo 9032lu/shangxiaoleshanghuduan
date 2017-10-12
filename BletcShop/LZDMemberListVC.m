@@ -816,7 +816,7 @@ typedef NS_ENUM(NSInteger,ScreenType) {
     
    
     
-    [paramer setValue:[NSString stringWithFormat:@"%ld",_pageIndex] forKey:@"page"];
+    [paramer setValue:[NSString stringWithFormat:@"%ld",_pageIndex] forKey:@"index"];
 
 
     NSLog(@"paramer===%@",paramer);

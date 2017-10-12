@@ -114,7 +114,12 @@
 
             [btn setTitle:@"编辑" forState:UIControlStateNormal];
 
-            [weakSelf showHint:[NSString stringWithFormat:@"删除选中的-%lu-项",(unsigned long)weakSelf.deleteArr.count]];
+           
+            [self postRequestDeleteMoreCoupon];
+            
+//            [weakSelf showHint:[NSString stringWithFormat:@"删除选中的-%lu-项",(unsigned long)weakSelf.deleteArr.count]];
+            
+            
             weakSelf.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:weakSelf.leftPopBtn];
             
             [weakSelf.deleteArr removeAllObjects];
@@ -239,7 +244,10 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.editing) {
-        [self.deleteArr addObject:[_dataArray objectAtIndex:indexPath.row]];
+        
+        NSDictionary *dic =[_dataArray objectAtIndex:indexPath.row];
+        
+        [self.deleteArr addObject:dic[@"coupon_id"]];
 
     }else{
         AddCouponDetailsVC *vc=[[AddCouponDetailsVC alloc]init];
@@ -368,6 +376,50 @@
     
 
 }
+
+//删除多张优惠券
+
+-(void)postRequestDeleteMoreCoupon{
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/coupon/multiDel",BASEURL];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
+    [params setObject:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
+    
+    NSString *coupon_ids = [NSString arrayToJSONString:_deleteArr];
+    
+    
+    [params setObject:coupon_ids forKey:@"coupon_ids"];
+    
+    NSLog(@"------%@",params);
+    
+    [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+        NSLog(@"result===%@",result);
+        
+        if ([result[@"result_code"]isEqualToString:@"access"])
+            
+        {
+            [self tishiSting:@"删除成功!"];
+            [self postGetCouponRequest];
+            
+        }else if([result[@"result_code"] intValue]==1062)
+        {
+            [self tishiSting:@"删除重复!"];
+            
+            
+        }else{
+            [self tishiSting:@"删除失败!"];
+            
+        }
+        
+    } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSLog(@"%@", error);
+        
+    }];
+    
+    
+}
+
 -(void)tishiSting:(NSString*)tishi{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeText;
