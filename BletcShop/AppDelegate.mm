@@ -1325,9 +1325,9 @@
              
              NSDictionary *userInfo = result[@"info"];
              
-             [[EMClient sharedClient]loginWithUsername:@"m_29d054ffe9" password:@"000000" completion:^(NSString *aUsername, EMError *aError) {
+//             [[EMClient sharedClient]loginWithUsername:@"m_29d054ffe9" password:@"000000" completion:^(NSString *aUsername, EMError *aError) {
 
-//             [[EMClient sharedClient]loginWithUsername:userInfo[@"muid"] password:@"000000" completion:^(NSString *aUsername, EMError *aError) {
+             [[EMClient sharedClient]loginWithUsername:userInfo[@"muid"] password:@"000000" completion:^(NSString *aUsername, EMError *aError) {
                  if (!aError) {
                      NSLog(@"商户登录成功");
                      
