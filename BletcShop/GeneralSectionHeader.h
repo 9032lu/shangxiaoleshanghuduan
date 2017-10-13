@@ -16,4 +16,7 @@
 @property (nonatomic , assign) BOOL fold;// 是否折叠
 
 
+@property (nonatomic , weak) UIButton *del_btn;// <#Description#>
+
+
 @end

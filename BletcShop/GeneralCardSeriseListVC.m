@@ -112,6 +112,19 @@
     
     [headerView.addBtn addTarget:self action:@selector(addCardClick:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    if (old_btn.tag==0) {
+        headerView.del_btn.hidden = NO;
+
+        headerView.del_btn.tag = section;
+        [headerView.del_btn addTarget:self action:@selector(deleteSeries:) forControlEvents:UIControlEventTouchUpInside];
+    }else{
+        headerView.del_btn.hidden = YES;
+    }
+   
+    
+    
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(headerClick:)];
     [headerView addGestureRecognizer:tap];
     
@@ -270,11 +283,14 @@
         
         return @[delete_Action,up_Down_Action,edit_Action];
         
-    }else {
+    }else  if (old_btn.tag==1){
        
         return @[up_Down_Action];
 
    
+    }else{
+        return @[delete_Action,up_Down_Action];
+
     }
 }
 
@@ -310,6 +326,71 @@
         [self getDataRequestWithState:_state_A[old_btn.tag]];
 
     };
+    
+}
+
+//删除系列;
+
+-(void)deleteSeries:(UIButton*)sender{
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定删除该系列?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction*sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        NSDictionary *dic = _data_A[sender.tag];
+        
+        
+        NSString *url = [NSString stringWithFormat:@"%@MerchantType/card/delSeries",BASEURL];
+        
+        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        
+        NSMutableDictionary*paramer = [NSMutableDictionary dictionary];
+        [paramer setValue:app.shopInfoDic[@"muid"] forKey:@"muid"];
+        [paramer setValue:dic[@"series_id"] forKey:@"code"];
+        NSLog(@"paramer---%@",paramer);
+        
+        [KKRequestDataService requestWithURL:url params:paramer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
+            
+            NSLog(@"result--%@",result);
+            
+            if ([result[@"result_code"] isEqualToString:@"access"]) {
+                [self showHint:@"删除成功!"];
+                [self getDataRequestWithState:_state_A[old_btn.tag]];
+            }else if ([result[@"result_code"] isEqualToString:@"not_empty"]){
+                [self showHint:@"用户已购买,无法删除!"];
+                
+            }else if ([result[@"result_code"] isEqualToString:@"fail"]){
+                [self showHint:@"操作失败!"];
+                
+            }else{
+                [self showHint:@"请重试!"];
+                
+            }
+            
+        } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            [self showHint:@"errorCode:404!"];
+            
+            NSLog(@"---%@",error);
+            
+        }];
+    
+    
+    }];
+    
+    [alertController addAction:cancel];
+    [alertController addAction:sure];
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+    
+    
+    
+  
+    
     
 }
 //收缩cell

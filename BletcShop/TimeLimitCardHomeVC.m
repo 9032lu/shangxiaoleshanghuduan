@@ -184,10 +184,13 @@
         
         return @[delete_Action,up_Down_Action,edit_Action];
         
-    }else {
+    }else  if (old_btn.tag==1){
         
         return @[up_Down_Action];
         
+        
+    }else{
+        return @[delete_Action,up_Down_Action];
         
     }
 }

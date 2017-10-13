@@ -145,13 +145,13 @@
 
     NSArray *arr = @[rowAction,rowActionThird/*,rowActionSec*/];
     NSArray *arr1=@[rowActionFourth];
-    NSArray *arr2=@[rowActionThird];
+//    NSArray *arr2=@[rowActionThird];
     if (_seletedState==0) {
          return arr;
     }else if (_seletedState==1){
          return arr1;
     }else if (_seletedState==2){
-         return arr2;
+         return @[rowAction,rowActionThird];
     }
     return arr;
 }
@@ -229,7 +229,14 @@
         
         NSLog(@"result===%@", result);
         if ([result[@"result_code"]integerValue]==1) {
-            [self postRequestGetCardList:@"null"];
+            
+            if (_seletedState ==0) {
+                [self postRequestGetCardList:@"null"];
+
+            }else if (_seletedState ==2){
+                [self postRequestGetCardList:@"off"];
+
+            }
             [self showTishi:@"会员卡删除成功" dele:nil cancel:nil operate:@"确认"];
         }
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -42,6 +42,13 @@
     [self addSubview:addImg];
     
     
+    UIButton *del_btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    del_btn.frame = CGRectMake(SCREENWIDTH-50-50, 0, 50, 44);
+    del_btn.backgroundColor = NavBackGroundColor;
+    [self addSubview:del_btn];
+    
+    self.del_btn= del_btn;
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(SCREENWIDTH-50, 0, 50, 44);
     [self addSubview:btn];
