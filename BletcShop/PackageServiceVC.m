@@ -117,7 +117,24 @@
                                                                          title:@"删除"
                                                                        handler:^(UITableViewRowAction * _Nonnull action, NSIndexPath * _Nonnull indexPath) {
                                                                            NSLog(@"删除");
-                                                                           [self postRequestDeleteCardList:_dataArray[indexPath.row][@"code"]];
+                                                                           
+                                                                           
+                                                                           UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定删除该会员卡?" preferredStyle:UIAlertControllerStyleAlert];
+                                                                           UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                                                                               
+                                                                           }];
+                                                                           
+                                                                           UIAlertAction*sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                                                               
+                                                                               [self postRequestDeleteCardList:_dataArray[indexPath.row][@"code"]];
+                                                                           }];
+                                                                           
+                                                                           [alertController addAction:cancel];
+                                                                           [alertController addAction:sure];
+                                                                           [self presentViewController:alertController animated:YES completion:^{
+                                                                               
+                                                                           }];
+                                                                           
                                                                        }];
     rowAction.backgroundColor=[UIColor redColor];
     
@@ -220,25 +237,40 @@
 //删除套餐卡
 -(void)postRequestDeleteCardList:(NSString *)code{
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/MealCard/del",BASEURL];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/MealCard/del_v2",BASEURL];
     NSMutableDictionary *parmer = [NSMutableDictionary dictionary];
     [parmer setValue:appdelegate.shopInfoDic[@"muid"] forKey:@"muid"];
     [parmer setValue:code forKey:@"code"];
     NSLog(@"0-----%@",parmer);
     [KKRequestDataService requestWithURL:url params:parmer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
-        
         NSLog(@"result===%@", result);
-        if ([result[@"result_code"]integerValue]==1) {
-            
+
+        if ([result[@"result_code"] isEqualToString:@"access"]) {
+            [self showHint:@"删除成功!"];
             if (_seletedState ==0) {
                 [self postRequestGetCardList:@"null"];
-
+                
             }else if (_seletedState ==2){
                 [self postRequestGetCardList:@"off"];
-
+                
             }
-            [self showTishi:@"会员卡删除成功" dele:nil cancel:nil operate:@"确认"];
+            
+            
+        }else if ([result[@"result_code"] isEqualToString:@"not_empty"]){
+            [self showHint:@"用户已购买,无法删除!"];
+            
+        }else if ([result[@"result_code"] isEqualToString:@"fail"]){
+            [self showHint:@"操作失败,请重试!"];
+
+        }else{
+            [self showHint:@"请重试!"];
+            
         }
+        
+        
+        
+       
+        
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         DebugLog(@"error-----%@",error.description);
         

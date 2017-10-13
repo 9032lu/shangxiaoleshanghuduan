@@ -420,10 +420,10 @@
     NSString *url ;
     
     if ([self.navigationItem.title isEqualToString:@"储值卡"]) {
-        url = [[NSString alloc]initWithFormat:@"%@MerchantType/ValueCard/del",BASEURL];
+        url = [[NSString alloc]initWithFormat:@"%@MerchantType/ValueCard/del_v2",BASEURL];
         
     }else{
-        url = [NSString stringWithFormat:@"%@MerchantType/CountCard/del",BASEURL];
+        url = [NSString stringWithFormat:@"%@MerchantType/CountCard/del_v2",BASEURL];
     }
 
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -435,13 +435,22 @@
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
         NSLog(@"result===%@", result);
-        if ([result[@"result_code"]integerValue]==1) {
-            [self showHint:@"删除成功"];
+        
+        
+        if ([result[@"result_code"] isEqualToString:@"access"]) {
+            [self showHint:@"删除成功!"];
             [self getDataRequestWithState:_state_A[old_btn.tag]];
+        }else if ([result[@"result_code"] isEqualToString:@"not_empty"]){
+            [self showHint:@"用户已购买,无法删除!"];
+            
+        }else if ([result[@"result_code"] isEqualToString:@"fail"]){
+            [self showHint:@"操作失败,请重试!"];
+            
         }else{
-            [self showHint:@"删除失败"];
-
+            [self showHint:@"请重试!"];
+            
         }
+       
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
         
