@@ -249,8 +249,10 @@
         cell.chooseCircle.hidden=NO;
         if ([_dataArray[indexPath.row][@"chooseState"] isEqualToString:@"none"]) {
             cell.chooseCircle.image=[UIImage imageNamed:@"选择nnnn"];
+            cell.coverView.hidden=NO;
         }else{
             cell.chooseCircle.image=[UIImage imageNamed:@"选择ssss"];
+            cell.coverView.hidden=YES;
         }
         
         if ([_dataArray[indexPath.row][@"validate"] isEqualToString:@"true"]) {

@@ -73,8 +73,16 @@
     view.layer.cornerRadius=5;
     view.clipsToBounds = YES;
     [self.contentView addSubview:view];
- 
+    
     self.bgView=view;
+    
+    UIView *coverView=[[UIView alloc]initWithFrame:CGRectMake(12, 10, SCREENWIDTH-24, 116)];
+    coverView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+    coverView.layer.cornerRadius=5;
+    coverView.clipsToBounds = YES;
+    [self.contentView addSubview:coverView];
+    coverView.hidden=YES;
+    self.coverView=coverView;
     
     UIView *topRedView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, view.width, 6)];
     topRedView.backgroundColor=RGB(243, 73, 78);
@@ -193,6 +201,7 @@
     UIImageView *expiredCoupon=[[UIImageView alloc]initWithFrame:CGRectMake(view.width-51, topRedView.bottom, 51, 45)];
     [view addSubview:expiredCoupon];
     self.expiredView=expiredCoupon;
+    
     
     
 }
