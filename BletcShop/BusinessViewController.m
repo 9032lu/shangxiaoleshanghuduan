@@ -377,7 +377,7 @@
                 }
 
             }else if ([stateStr isEqualToString:@"auditing"]){
-                UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"正在审核中" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+                UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您的店铺您的店铺正在审核中,需要3-5个工作日" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
                 
                 [altView show];
                 
@@ -452,7 +452,7 @@
 
                 
             }else if ([stateStr isEqualToString:@"auditing"]){
-                UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"正在审核中" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+                UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您的店铺您的店铺正在审核中,需要3-5个工作日" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
                 
                 [altView show];
                 
@@ -552,7 +552,7 @@
            
 
         }else if ([stateStr isEqualToString:@"auditing"]){
-            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"正在审核中" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+            UIAlertView *altView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"您的店铺正在审核中,需要3-5个工作日" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
             
             [altView show];
             

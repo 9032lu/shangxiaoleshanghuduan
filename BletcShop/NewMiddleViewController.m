@@ -647,13 +647,13 @@
     
     UILabel *labelnewjing=[[UILabel alloc]initWithFrame:CGRectMake(30, lineViewnew.bottom+5, 110, 40)];
     labelnewjing.font=[UIFont systemFontOfSize:15.0f];
-    labelnewjing.text=@"经纬度";
+    labelnewjing.text=@"当前位置";
     [_scrollView addSubview:labelnewjing];
     
     _location_log_lat=[[UITextField alloc]initWithFrame:CGRectMake(140, labelnewjing.top, SCREENWIDTH-140, 40)];
     _location_log_lat.font=[UIFont systemFontOfSize:13.0f];
     _location_log_lat.text=[NSString stringWithFormat:@"%@,%@",[NSString getTheNoNullStr:shopInfoDic[@"longtitude"] andRepalceStr:@""],[NSString getTheNoNullStr:shopInfoDic[@"latitude"] andRepalceStr:@""]];
-    _location_log_lat.placeholder=@"经纬度";
+    _location_log_lat.placeholder=@"当前位置经纬度";
     _location_log_lat.delegate=self;
     _location_log_lat.returnKeyType=UIReturnKeyDone;
     [_scrollView addSubview:_location_log_lat];
