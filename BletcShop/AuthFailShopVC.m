@@ -147,7 +147,15 @@
     NSDictionary *dic =[[NSUserDefaults standardUserDefaults]objectForKey:app.shopInfoDic[@"muid"]];
     
     shopInfoDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
-
+    
+    if ([shopInfoDic[@"add_info"] count]!=0) {
+        NSDictionary *add_info = shopInfoDic[@"add_info"][0];
+        
+        self.selectAddress_A= @[add_info[@"province"],add_info[@"city"],add_info[@"district"]];
+        
+    }
+    
+    
     NSLog(@"shopInfoDic-----%@",shopInfoDic);
     
     [self getIndustryArray];
@@ -400,7 +408,7 @@
     
     NSString *detail_s =shopInfoDic[@"address"];
 
-    NSString *jiedao , *shengshiqu;
+    NSString *jiedao , *shengshiqu ,*xingxidizhi;
     
     
     if ([detail_s containsString:@"区"]&&![detail_s containsString:@"地区"]) {
@@ -422,6 +430,19 @@
     }
     shengshiqu = [detail_s substringToIndex:(detail_s.length-jiedao.length)];
 
+    
+    if ([shopInfoDic[@"add_info"] count]!=0) {
+        
+        NSDictionary *add_info = shopInfoDic[@"add_info"][0];
+        
+        shengshiqu = [NSString stringWithFormat:@"%@%@%@",add_info[@"province"],add_info[@"city"],add_info[@"district"]];
+        jiedao = [NSString getTheNoNullStr:add_info[@"street"] andRepalceStr:@""] ;
+        
+        xingxidizhi =  [NSString getTheNoNullStr:add_info[@"location"] andRepalceStr:@""];
+        
+    }
+    
+    
     
     _locationLab.text = shengshiqu;
     
@@ -492,7 +513,7 @@
     
     _adddetailnewAddressTF=[[UITextField alloc]initWithFrame:CGRectMake(140, labelnew3.top, SCREENWIDTH-140, 40)];
     _adddetailnewAddressTF.font=[UIFont systemFontOfSize:13.0f];
-    _adddetailnewAddressTF.text=[NSString getTheNoNullStr:shopInfoDic[@"full_add"] andRepalceStr:@""];
+    _adddetailnewAddressTF.text=xingxidizhi;
     _adddetailnewAddressTF.placeholder=@"详细地点";
     _adddetailnewAddressTF.delegate=self;
     _adddetailnewAddressTF.returnKeyType=UIReturnKeyDone;
@@ -801,7 +822,7 @@
     
     
     
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/register/auth_quick",BASEURL];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/register/auth_quick_v2",BASEURL];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
@@ -849,47 +870,59 @@
     
     [params setObject:imgUrl forKey:@"image_url"];
     
-    
-    
+
+  
         [params setObject:self.store_textf.text forKey:@"store_number"];//联系方式
+    
+    [params setObject:self.selectAddress_A[0] forKey:@"province"];
+    [params setObject:self.selectAddress_A[1] forKey:@"city"];
+    [params setObject:self.selectAddress_A[2] forKey:@"district"];
+    [params setObject:_detailAddressTF.text forKey:@"street"];
+    [params setObject:_adddetailnewAddressTF.text forKey:@"location"];
+
+    
     
     
     DebugLog(@"url==%@ parame ==%@",url,params);
     
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
-        
+
         NSLog(@" KKRequestDataService ==%@", result);
-        if ([result[@"result_code"] intValue]==1 ||[result[@"result_code"] intValue]==0) {
-            UIAlertView *altView =[[UIAlertView alloc]initWithTitle:@"提示" message:@"您已提交成功,请重新登录!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
+
+
+
+
+        if ([result[@"result_code"] isEqualToString:@"access"]) {
+            UIAlertView *altView =[[UIAlertView alloc]initWithTitle:@"提示" message:@"您已提交成功,请重新登录!" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
             [altView show];
-        }else if([result[@"result_code"] intValue]==-1){
-            
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeText;
-            hud.label.text = [NSString stringWithFormat:@"%@",result[@"tip"]];
-            hud.label.font = [UIFont systemFontOfSize:13];
-            [hud hideAnimated:YES afterDelay:2.f];
+        }else if([result[@"result_code"] isEqualToString:@"check_fail"]){
 
-            
+            [self showHint:[NSString stringWithFormat:@"%@",result[@"tip"]]];
+
+
+
+
+
+         }else  if([result[@"result_code"] isEqualToString:@"fail"]){
+
+             [self showHint:@"操作失败,请重试"];
+
+
+
          }else{
-                      
-          MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-          hud.mode = MBProgressHUDModeText;
-          hud.label.text = @"请求失败...";
-          hud.label.font = [UIFont systemFontOfSize:13];
-          [hud hideAnimated:YES afterDelay:2.f];
 
-            
-        }
-        
-        
-       
+             [self showHint:@"请求失败..."];
+         }
 
-        
-        
+
+
+
+
+
+
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        
+
+
         NSLog(@"%@", error);
     }];
     
@@ -1473,9 +1506,9 @@
             
             weskSelf.locationLab.text = [NSString stringWithFormat:@"%@%@%@",[arr[0] containsString:arr[1]]?@"":arr[0],arr[1],arr[2]];
             
-            [[NSUserDefaults standardUserDefaults]setObject:arr forKey:SELECTADDRESS];
-            
-            [[NSUserDefaults standardUserDefaults]synchronize];
+//            [[NSUserDefaults standardUserDefaults]setObject:arr forKey:SELECTADDRESS];
+//
+//            [[NSUserDefaults standardUserDefaults]synchronize];
             
         }];
         
@@ -1495,7 +1528,19 @@
         
         
         if (self.selectAddress_A.count==0) {
-            self.selectAddress_A = [[NSUserDefaults standardUserDefaults]objectForKey:SELECTADDRESS];
+            
+            if ([shopInfoDic[@"add_info"] count]!=0) {
+                NSDictionary *add_info = shopInfoDic[@"add_info"][0];
+
+                self.selectAddress_A= @[add_info[@"province"],add_info[@"city"],add_info[@"district"]];
+
+            }
+//            else{
+//                self.selectAddress_A = [[NSUserDefaults standardUserDefaults]objectForKey:SELECTADDRESS];
+
+//            }
+            
+            
             NSLog(@"_selectAddress_A-----%@",_selectAddress_A);
             
             
@@ -1742,8 +1787,8 @@
             LZDButton *deletBtn = [LZDButton creatLZDButton];
             deletBtn.frame = CGRectMake(img_btn.width-40, 0, 40, 40);
             deletBtn.backgroundColor = [UIColor clearColor];
-            [deletBtn setImage:[UIImage imageNamed:@"shanchu.jpg"] forState:UIControlStateNormal];
-            [deletBtn setImage:[UIImage imageNamed:@"shanchu.jpg"] forState:UIControlStateHighlighted];
+            [deletBtn setImage:[UIImage imageNamed:@"删除图标LD"] forState:UIControlStateNormal];
+            [deletBtn setImage:[UIImage imageNamed:@"删除图标LD"] forState:UIControlStateHighlighted];
 
             deletBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 30, 30, 0);
             

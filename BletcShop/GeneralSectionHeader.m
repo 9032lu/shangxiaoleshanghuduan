@@ -36,25 +36,35 @@
     
     self.titleLab = titleLab;
     
-    UIImageView *addImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWIDTH-15-14, (44-15)/2, 15, 15)];
-    addImg.image = [UIImage imageNamed:@"lzdAddCardImg"];
-    
-    [self addSubview:addImg];
+   
     
     
     UIButton *del_btn = [UIButton buttonWithType:UIButtonTypeCustom];
     del_btn.frame = CGRectMake(SCREENWIDTH-50-50, 0, 50, 44);
-    del_btn.backgroundColor = NavBackGroundColor;
+   
+    [del_btn setImage:[UIImage imageNamed:@"gray-delete-button"] forState:0];
+    del_btn.imageEdgeInsets = UIEdgeInsetsMake(14.3, 35, 14.3, 0);
     [self addSubview:del_btn];
-    
     self.del_btn= del_btn;
+
+    
+ 
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(SCREENWIDTH-50, 0, 50, 44);
+    [btn setImage:[UIImage imageNamed:@"lzdAddCardImg"] forState:0];
+    
+    btn.imageEdgeInsets = UIEdgeInsetsMake(14.3, 17.2, 14.3, 17.2);
+
     [self addSubview:btn];
     
     self.addBtn = btn;
 
+    
+//    UIImageView *addImg = [[UIImageView alloc]initWithFrame:CGRectMake(SCREENWIDTH-15-14, (44-15)/2, 15, 15)];
+//    addImg.image = [UIImage imageNamed:@"lzdAddCardImg"];
+//
+//    [self addSubview:addImg];
     
     UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 44-1, SCREENWIDTH, 1)];
     line.backgroundColor = RGB(217,217,217);

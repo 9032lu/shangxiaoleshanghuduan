@@ -168,7 +168,12 @@
     
     shopInfoDic = [[NSMutableDictionary alloc]initWithDictionary:dic];
 
-    
+    if ([shopInfoDic[@"add_info"] count]!=0) {
+        NSDictionary *add_info = shopInfoDic[@"add_info"][0];
+        
+        self.selectAddress_A= @[add_info[@"province"],add_info[@"city"],add_info[@"district"]];
+        
+    }
     pickView= [[ValuePickerView alloc]init];
 
     [self getIndustryArray];
@@ -362,16 +367,11 @@
 
 -(void)saveRequest:(NSInteger)tag{
     
-//    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
 
-    //开始发起请求,请求成功，显示一下信息
-    //地点问题
-//    NSLog(@"%@",self.kindLab.text);
-    
     
     [self saveInfo];
     
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/register/auth_02",BASEURL];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/register/auth_02_v2",BASEURL];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     
@@ -379,18 +379,13 @@
     NSString *newStr=[[NSString alloc]initWithFormat:@"%@%@",self.locationLab.text,self.detailAddressTF.text];
     NSLog(@"%@",newStr);
     
-//    float lat = appdelegate.userLocation.location.coordinate.latitude;
     
     NSArray *log_lat_A = [_location_log_lat.text componentsSeparatedByString:@","];
     
     NSString *latitude = log_lat_A[1];
     NSString *longtitude = log_lat_A[0];
     
-//    NSString *latitude =[[NSString alloc]initWithFormat:@"%f",lat];
-//    
-//    float longti = appdelegate.userLocation.location.coordinate.longitude;
-//    NSString *longtitude =[[NSString alloc]initWithFormat:@"%f",longti];
-//    
+   
     
     [params setValue:newStr forKey:@"address"];//地点
     [params setValue:self.phoneStr forKey:@"phone"];
@@ -421,6 +416,12 @@
         [params setValue:@"save" forKey:@"operate"];
     }
 
+    
+    [params setObject:self.selectAddress_A[0] forKey:@"province"];
+    [params setObject:self.selectAddress_A[1] forKey:@"city"];
+    [params setObject:self.selectAddress_A[2] forKey:@"district"];
+    [params setObject:_detailAddressTF.text forKey:@"street"];
+    [params setObject:_adddetailnewAddressTF.text forKey:@"location"];
 
 
     DebugLog(@"url==%@ parame ==%@",url,params);
@@ -434,39 +435,23 @@
             [self tishi:@"保存成功"];
             
         }else{
-            if ([result[@"result_code"] intValue]==0||[result[@"result_code"] intValue]==1) {
+            if ([result[@"result_code"] isEqualToString:@"access"]) {
                 [self tishi:@"上传成功"];
 
                 
                 NewLastViewController *nextVC=[[NewLastViewController alloc]init];
                 nextVC.phoneStr=self.phoneStr;
-//                nextVC.pswStr=self.pswStr;
-//                nextVC.nibNameString=self.nibNameString;
-//                nextVC.tuijianStr=self.tuijianStr;
-//                nextVC.nameStr=self.nameStr;
-//                nextVC.addressStr=self.addressStr;
-//                nextVC.identyStr=self.identyStr;
-//                nextVC.kaihuStr=self.kaihuStr;
-//                nextVC.zhanghaoStr=self.zhanghaoStr;
-//                nextVC.searchStr=self.searchStr;
-//                nextVC.areaStr=self.locationLab.text;
-//                nextVC.detailAddressStr=self.detailAddressTF.text;
-//                nextVC.agencyNameStr=self.agencyNameTF.text;
-//                nextVC.kindStr=self.kindLab.text;
-//                nextVC.reasonStr=@"null";
-//                nextVC.licenceString=@"有";
-//                if (self.agreeBtn1.selected==YES) {
-//                    nextVC.propertyString=@"租赁合同";
-//                }else{
-//                    nextVC.propertyString=@"房产证明";
-//                }
+
                 //此处不再传情况说明字符串
                 [self presentViewController:nextVC animated:YES completion:nil];
 
                 
-            }else{
+            }else  if ([result[@"result_code"] isEqualToString:@"check_fail"]){
                 
                 [self tishi:[NSString stringWithFormat:@"%@",result[@"tip"]]];
+
+            }else{
+                [self tishi:@"操作失败,请重试"];
 
             }
 
@@ -515,21 +500,12 @@
     _locationLab.delegate = self;
     [_scrollView addSubview:_locationLab];
     
-//    AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
-//    if (appdelegate.province==nil||[appdelegate.province isEqualToString:@"(null)"]) {
-//        appdelegate.province = @"";
-//    }if (appdelegate.city==nil||[appdelegate.city isEqualToString:@"(null)"]) {
-//        appdelegate.city = @"";
-//    }if (appdelegate.addressDistrite==nil||[appdelegate.addressDistrite isEqualToString:@"(null)"]) {
-//        appdelegate.addressDistrite = @"";
-//    }
-//    _locationLab.text=[[NSString alloc] initWithFormat:@"%@%@%@",appdelegate.province,appdelegate.city,appdelegate.addressDistrite];
-    
+
     
     
     NSString *detail_s =shopInfoDic[@"address"];
     
-    NSString *jiedao , *shengshiqu;
+    NSString *jiedao , *shengshiqu , *xingxidizhi;
     
     
     if ([detail_s containsString:@"区"]&&![detail_s containsString:@"地区"]) {
@@ -552,8 +528,24 @@
     shengshiqu = [detail_s substringToIndex:(detail_s.length-jiedao.length)];
     
     
-    _locationLab.text = shengshiqu;
+    
+    if ([shopInfoDic[@"add_info"] count]!=0) {
+        
+        NSDictionary *add_info = shopInfoDic[@"add_info"][0];
 
+        shengshiqu = [NSString stringWithFormat:@"%@%@%@",add_info[@"province"],add_info[@"city"],add_info[@"district"]];
+        jiedao = [NSString getTheNoNullStr:add_info[@"street"] andRepalceStr:@""] ;
+        
+        xingxidizhi =  [NSString getTheNoNullStr:add_info[@"location"] andRepalceStr:@""];
+        
+    }
+    
+    
+    _locationLab.text = shengshiqu;
+    
+    
+
+    
     
     
     if ([_locationLab.text containsString:@"全城"]) {
@@ -589,19 +581,8 @@
     
     _detailAddressTF.text = jiedao;
     
-//    NSString *detail_s =shopInfoDic[@"address"];
-//    if ([detail_s containsString:@"全城"]) {
-//        detail_s =@"";
-//    }
-//    
-//    if (detail_s.length>_locationLab.text.length) {
-//        _detailAddressTF.text=[detail_s substringFromIndex:_locationLab.text.length];
-//
-//    }else{
-//        _detailAddressTF.text=detail_s;
-//
-//    }
 
+    
 
     [_scrollView addSubview:_detailAddressTF];
     
@@ -625,7 +606,7 @@
 
     _adddetailnewAddressTF=[[UITextField alloc]initWithFrame:CGRectMake(140, labelnew3.top, SCREENWIDTH-140, 40)];
     _adddetailnewAddressTF.font=[UIFont systemFontOfSize:13.0f];
-    _adddetailnewAddressTF.text=[NSString getTheNoNullStr:shopInfoDic[@"full_add"] andRepalceStr:@""];
+    _adddetailnewAddressTF.text= xingxidizhi;
     _adddetailnewAddressTF.placeholder=@"详细地点";
     _adddetailnewAddressTF.delegate=self;
     _adddetailnewAddressTF.returnKeyType=UIReturnKeyDone;
@@ -1154,80 +1135,11 @@
             
             [self saveRequest:0];
             
-            
-            //有营业执照，不须说明情况，去下个界面，不给下个页面传入说明情况
-//            NewLastViewController *nextVC=[[NewLastViewController alloc]init];
-//            nextVC.phoneStr=self.phoneStr;
-//            nextVC.pswStr=self.pswStr;
-//            nextVC.nibNameString=self.nibNameString;
-//            nextVC.tuijianStr=self.tuijianStr;
-//            nextVC.nameStr=self.nameStr;
-//            nextVC.addressStr=self.addressStr;
-//            nextVC.identyStr=self.identyStr;
-//            nextVC.kaihuStr=self.kaihuStr;
-//            nextVC.zhanghaoStr=self.zhanghaoStr;
-//            nextVC.searchStr=self.searchStr;
-//            nextVC.areaStr=self.locationLab.text;
-//            nextVC.detailAddressStr=self.detailAddressTF.text;
-//            nextVC.agencyNameStr=self.agencyNameTF.text;
-//            nextVC.kindStr=self.kindLab.text;
-//            nextVC.reasonStr=@"null";
-//            nextVC.licenceString=@"有";
-//            if (self.agreeBtn1.selected==YES) {
-//                nextVC.propertyString=@"租赁合同";
-//            }else{
-//                nextVC.propertyString=@"房产证明";
-//            }
-//            //此处不再传情况说明字符串
-//            [self presentViewController:nextVC animated:YES completion:nil];
+
         }
         
-//    }else{
-//
-//        if ([self.locationLab.text isEqualToString:@""]||[self.detailAddressTF.text isEqualToString:@""]||[self.store_textf.text isEqualToString:@""]||[self.agencyNameTF.text isEqualToString:@""]||[self.kindLab.text isEqualToString:@""]||[self.reasonTF.text isEqualToString:@""]||self.ifImageView4==NO||self.ifImageView5==NO||[_company_nameTF.text isEqualToString:@""]||[_company_styleTF.text isEqualToString:@""]) {
-//            //MBProgressHUD *hud判断如果有一项没填就出提示
-//            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//            hud.frame = CGRectMake(0, 64, 375, 667);
-//            // Set the annular determinate mode to show task progress.
-//            hud.mode = MBProgressHUDModeText;
-//            hud.label.text = NSLocalizedString(@"至少有一项信息填写不完成", @"HUD message title");
-//            hud.label.font = [UIFont systemFontOfSize:13];
-//            // Move to bottm center.
-//            //    hud.offset = CGPointMake(0.f, );
-//            hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-//            [hud hideAnimated:YES afterDelay:4.f];
-//        }else{
-//            //没有营业执照，给下个页面传入说明情况字段
-//            
-//            [self saveRequest:0];
-//            
-//            NewLastViewController *nextVC=[[NewLastViewController alloc]init];
-//            nextVC.phoneStr=self.phoneStr;
-//            nextVC.pswStr=self.pswStr;
-//            nextVC.nibNameString=self.nibNameString;
-//            nextVC.tuijianStr=self.tuijianStr;
-//            nextVC.nameStr=self.nameStr;
-//            nextVC.addressStr=self.addressStr;
-//            nextVC.identyStr=self.identyStr;
-//            nextVC.kaihuStr=self.kaihuStr;
-//            nextVC.zhanghaoStr=self.zhanghaoStr;
-//            nextVC.searchStr=self.searchStr;
-//            nextVC.areaStr=self.locationLab.text;
-//            nextVC.detailAddressStr=self.detailAddressTF.text;
-//            nextVC.agencyNameStr=self.agencyNameTF.text;
-//            nextVC.kindStr=self.kindLab.text;
-//            //此处需要传入具体－－营业执照情况说明字符串
-//            nextVC.reasonStr=self.reasonTF.text;
-//            nextVC.licenceString=@"无";
-//            if (self.agreeBtn1.selected==YES) {
-//                nextVC.propertyString=@"租赁合同";
-//            }else{
-//                nextVC.propertyString=@"房产证明";
-//            }
-//            [self presentViewController:nextVC animated:YES completion:nil];
-//        }
-//        
-//    }
+
+    
 }
 
 -(void)tapChooseClick:(UITapGestureRecognizer *)tap{
@@ -1824,9 +1736,9 @@
         
         [FYLCityPickView showPickViewWithComplete:^(NSArray *arr) {
             
-            [[NSUserDefaults standardUserDefaults]setObject:arr forKey:SELECTADDRESS];
-            
-            [[NSUserDefaults standardUserDefaults]synchronize];
+//            [[NSUserDefaults standardUserDefaults]setObject:arr forKey:SELECTADDRESS];
+//
+//            [[NSUserDefaults standardUserDefaults]synchronize];
             
             weskSelf.selectAddress_A = arr;
             
@@ -1857,8 +1769,13 @@
     
         if (self.selectAddress_A.count==0) {
 
-            
-            self.selectAddress_A = [[NSUserDefaults standardUserDefaults]objectForKey:SELECTADDRESS];
+            if ([shopInfoDic[@"add_info"] count]!=0) {
+                NSDictionary *add_info = shopInfoDic[@"add_info"][0];
+
+                self.selectAddress_A= @[add_info[@"province"],add_info[@"city"],add_info[@"district"]];
+                
+            }
+//            self.selectAddress_A = [[NSUserDefaults standardUserDefaults]objectForKey:SELECTADDRESS];
             NSLog(@"_selectAddress_A-----%@",_selectAddress_A);
             
             
@@ -2055,8 +1972,8 @@
             LZDButton *deletBtn = [LZDButton creatLZDButton];
             deletBtn.frame = CGRectMake(img_btn.width-40, 0, 40, 40);
             deletBtn.backgroundColor = [UIColor clearColor];
-            [deletBtn setImage:[UIImage imageNamed:@"shanchu.jpg"] forState:UIControlStateNormal];
-            [deletBtn setImage:[UIImage imageNamed:@"shanchu.jpg"] forState:UIControlStateHighlighted];
+            [deletBtn setImage:[UIImage imageNamed:@"删除图标LD"] forState:UIControlStateNormal];
+            [deletBtn setImage:[UIImage imageNamed:@"删除图标LD"] forState:UIControlStateHighlighted];
             
             deletBtn.contentEdgeInsets = UIEdgeInsetsMake(0, 30, 30, 0);
             deletBtn.block = ^(LZDButton *sender) {

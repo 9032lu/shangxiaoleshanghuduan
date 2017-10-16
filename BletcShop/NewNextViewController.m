@@ -888,7 +888,7 @@
 -(void)saveRequest:(NSInteger)tag{
     //开始发起请求,请求成功，显示一下信息
     
-    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/register/auth_01",BASEURL];
+    NSString *url =[[NSString alloc]initWithFormat:@"%@MerchantType/register/auth_01_v2",BASEURL];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     [params setValue:shopInfoDic[@"muid"] forKey:@"muid"];
@@ -916,35 +916,39 @@
         NSLog(@"NewNext==%@", result);
         
         if (tag ==999) {
-            if ([result[@"result_code"] intValue]==1){
-                [self tishi:@"已保存成功"];
+            if ([result[@"result_code"] isEqualToString:@"access"]){
+                [self tishi:@"操作成功"];
 
             }else{
-                [self tishi:@"保存失败"];
+                [self tishi:@"操作失败"];
 
             }
             
             
         }else if (tag==0){
-            if ([result[@"result_code"] intValue]==1 ||[result[@"result_code"] intValue]==0 ) {
+            if ([result[@"result_code"] isEqualToString:@"access"]) {
                 NewMiddleViewController *middleVC=[[NewMiddleViewController alloc]init];
                 middleVC.phoneStr=self.phoneString;
                 middleVC.nibNameString=self.nickTextTF.text;
                 [self presentViewController:middleVC animated:YES completion:nil];
-            }else if([result[@"result_code"] intValue]==-1){
+            }else if([result[@"result_code"] isEqualToString:@"check_fail"]){
                 
                 [self tishi:[NSString stringWithFormat:@"%@",result[@"tip"]]];
                 
                
-            }else{
-                [self tishi:@"提交失败"];
+            }else  if([result[@"result_code"] isEqualToString:@"fail"]){
+                [self tishi:@"操作失败,请重试"];
 
+            }else{
+                [self tishi:@"艹做失败!"];
             }
             
         }
         
         
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self tishi:@"接口出错,请联系后台程序猿!"];
+
         NSLog(@"%@", error);
     }];
     
