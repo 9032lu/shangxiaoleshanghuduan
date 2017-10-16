@@ -13,6 +13,7 @@
 #import "VipMoneyRecordRelationVC.h"//升级和续卡记录
 #import "CardBuyRecordVC.h"//办卡记录
 #import "ChargeRecVC.h"//记录-升级，续卡
+#import "VIPHostCardsVC.h"//会员持有的会员卡信息
 @interface VIPInfoVCS ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIView *tableHeadView;
@@ -30,8 +31,11 @@
 @end
 
 @implementation VIPInfoVCS
-- (IBAction)buyCardRecordClick:(id)sender {
-    PUSH(CardBuyRecordVC)
+- (IBAction)buyCardRecordClick:(id)sender {//VIPHostCardsVC
+//    PUSH(CardBuyRecordVC)
+//    vc.title = @"办卡明细";
+//    vc.dic=self.infoDic;
+    PUSH(VIPHostCardsVC)
     vc.title = @"办卡明细";
     vc.dic=self.infoDic;
 }
@@ -93,7 +97,7 @@
         float total=[costMoney floatValue];
         cell.money.text=[NSString stringWithFormat:@"%.2f",total];
     }else{
-        cell.title.text=@"充值总额(次)：";
+        cell.title.text=@"充值总额(元)：";
         cell.money.text=[NSString stringWithFormat:@"%@",[NSString getTheNoNullStr:self.resultDic[@"rec"][@"sum"] andRepalceStr:@"0"]];
     }
     return cell;

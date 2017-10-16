@@ -123,6 +123,10 @@
 		18B9BEAE1F4AABD500863CB1 /* 圆形logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B9BEAD1F4AABD500863CB1 /* 圆形logo.png */; };
 		18B9BEB01F4AABEC00863CB1 /* 主题背景.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */; };
 		18C0389B1E693C8B005F7AA9 /* HotNewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C0389A1E693C8B005F7AA9 /* HotNewsVC.m */; };
+		18C409641F948F5200DEF146 /* VIPHostCardsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C409621F948F5200DEF146 /* VIPHostCardsVC.m */; };
+		18C409651F948F5200DEF146 /* VIPHostCardsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C409631F948F5200DEF146 /* VIPHostCardsVC.xib */; };
+		18C409691F9495C900DEF146 /* VIPHostCardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C409671F9495C900DEF146 /* VIPHostCardsTableViewCell.m */; };
+		18C4096A1F9495C900DEF146 /* VIPHostCardsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C409681F9495C900DEF146 /* VIPHostCardsTableViewCell.xib */; };
 		18CA8AEF1F565C7200E1D84A /* AlertViewWithTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */; };
 		18CB32D61D6C2B2B005A9D64 /* HKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32C91D6C2B2B005A9D64 /* HKViewController.m */; };
 		18CB32D71D6C2B2B005A9D64 /* HKClipperVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32CB1D6C2B2B005A9D64 /* HKClipperVeiw.m */; };
@@ -963,6 +967,12 @@
 		18B9BEAF1F4AABEC00863CB1 /* 主题背景.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "主题背景.png"; sourceTree = "<group>"; };
 		18C038991E693C8B005F7AA9 /* HotNewsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotNewsVC.h; sourceTree = "<group>"; };
 		18C0389A1E693C8B005F7AA9 /* HotNewsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotNewsVC.m; sourceTree = "<group>"; };
+		18C409611F948F5200DEF146 /* VIPHostCardsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VIPHostCardsVC.h; sourceTree = "<group>"; };
+		18C409621F948F5200DEF146 /* VIPHostCardsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VIPHostCardsVC.m; sourceTree = "<group>"; };
+		18C409631F948F5200DEF146 /* VIPHostCardsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPHostCardsVC.xib; sourceTree = "<group>"; };
+		18C409661F9495C900DEF146 /* VIPHostCardsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VIPHostCardsTableViewCell.h; sourceTree = "<group>"; };
+		18C409671F9495C900DEF146 /* VIPHostCardsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VIPHostCardsTableViewCell.m; sourceTree = "<group>"; };
+		18C409681F9495C900DEF146 /* VIPHostCardsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPHostCardsTableViewCell.xib; sourceTree = "<group>"; };
 		18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewWithTableView.h; sourceTree = "<group>"; };
 		18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewWithTableView.m; sourceTree = "<group>"; };
 		18CB32C81D6C2B2B005A9D64 /* HKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewController.h; sourceTree = "<group>"; };
@@ -2922,6 +2932,19 @@
 			name = "商消乐风火轮";
 			sourceTree = "<group>";
 		};
+		18C409601F948EB800DEF146 /* 会员持有会员卡s */ = {
+			isa = PBXGroup;
+			children = (
+				18C409611F948F5200DEF146 /* VIPHostCardsVC.h */,
+				18C409621F948F5200DEF146 /* VIPHostCardsVC.m */,
+				18C409631F948F5200DEF146 /* VIPHostCardsVC.xib */,
+				18C409661F9495C900DEF146 /* VIPHostCardsTableViewCell.h */,
+				18C409671F9495C900DEF146 /* VIPHostCardsTableViewCell.m */,
+				18C409681F9495C900DEF146 /* VIPHostCardsTableViewCell.xib */,
+			);
+			name = "会员持有会员卡s";
+			sourceTree = "<group>";
+		};
 		18CB32C71D6C2B01005A9D64 /* 定义剪裁框 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4785,6 +4808,7 @@
 		D9C2EF2F1F70F12D007919C2 /* 新的会员管理s */ = {
 			isa = PBXGroup;
 			children = (
+				18C409601F948EB800DEF146 /* 会员持有会员卡s */,
 				18CF67C01F74B7F80004C573 /* 选优惠券推送s */,
 				1869919B1F72371E0084D3C8 /* 生日推送s */,
 				186991901F7204330084D3C8 /* 会员信息页面s */,
@@ -5185,6 +5209,7 @@
 				D93027E21CFEB641007447D2 /* star_default.png in Resources */,
 				D98FDF851E601C280057C206 /* AD_ad_is@3x.png in Resources */,
 				D96E1B731ECAD46200084453 /* AddSeriesViewController.xib in Resources */,
+				18C409651F948F5200DEF146 /* VIPHostCardsVC.xib in Resources */,
 				D9F1358A1DEE696700D2703D /* AddAdminCell.xib in Resources */,
 				18CF67F21F7BA1280004C573 /* RebackCouponsVC.xib in Resources */,
 				D932B2771ECC51BD0052CC37 /* AddFriendCell.xib in Resources */,
@@ -5380,6 +5405,7 @@
 				181F9C991ECBFF82003A62AE /* xilietishi.png in Resources */,
 				D92ACDCA1F0CD5B000858727 /* AddPakageServiceVC.xib in Resources */,
 				D9D315DB1E07C9E5009FB465 /* QQ20161219-0.png in Resources */,
+				18C4096A1F9495C900DEF146 /* VIPHostCardsTableViewCell.xib in Resources */,
 				D900719E1F4E761E003BD522 /* ScanMoreDataVC.xib in Resources */,
 				D94DF23C1CAE08F7000D5B69 /* share.png in Resources */,
 				D949C15B1CBF7E4D0091D8FC /* bankcard.png in Resources */,
@@ -5557,6 +5583,7 @@
 				D9E5C3DE1E5EC0E6006BA2B1 /* AdverListViewController.m in Sources */,
 				189CC5D11EFA113900A73BB6 /* JFCityCollectionFlowLayout.m in Sources */,
 				185ABD891D80227900BD8097 /* Item.m in Sources */,
+				18C409641F948F5200DEF146 /* VIPHostCardsVC.m in Sources */,
 				18543E351ECACA3E00E0A4DA /* ChooseCardTypeVC.m in Sources */,
 				1A4173CC1D787FF200A70601 /* BaseTableViewCell.m in Sources */,
 				D92ACDFC1F0CD68600858727 /* PictureDetailViewController.m in Sources */,
@@ -5653,6 +5680,7 @@
 				D9C3A3001E9642890062B17D /* ChouJiangVC.m in Sources */,
 				D9A8ABEC1E02954200D4597F /* CardShowViewController.m in Sources */,
 				D9DEED1B1CACED7C00ACDD00 /* NSData+ImageContentType.m in Sources */,
+				18C409691F9495C900DEF146 /* VIPHostCardsTableViewCell.m in Sources */,
 				D9B3A5B01D74255700F3F27E /* EMSDWebImageManager.m in Sources */,
 				D9A6E46F1D4F4C5C008A3C29 /* ChoiceCardPictureViewController.m in Sources */,
 				D9A06B631D8679C30037795B /* EMVoiceConverter.mm in Sources */,
