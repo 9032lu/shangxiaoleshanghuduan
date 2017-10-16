@@ -156,8 +156,11 @@
     
     if (self.dataSourse_A.count!=0) {
         NSDictionary *dic = _dataSourse_A[indexPath.row];
+        cell.cardContaint.text=@"冰封 X4\n凉皮 X5\n夹馍 X5\n酸梅汤 X1";
+        NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:cell.cardType.text];
         
-        
+        [AttributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:31.0] range:NSMakeRange(0, 3)];
+        cell.cardType.attributedText=AttributedStr;
         
     }
     
