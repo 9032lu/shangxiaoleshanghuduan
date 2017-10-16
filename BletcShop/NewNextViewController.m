@@ -931,13 +931,12 @@
                 middleVC.phoneStr=self.phoneString;
                 middleVC.nibNameString=self.nickTextTF.text;
                 [self presentViewController:middleVC animated:YES completion:nil];
-            }else if([result[@"result_code"] isEqualToString:@"check_fail"]){
+            }else if([result[@"result_code"] isEqualToString:@"check_fail"] || [result[@"result_code"] isEqualToString:@"fail"]){
                 
                 [self tishi:[NSString stringWithFormat:@"%@",result[@"tip"]]];
                 
                
-            }else  if([result[@"result_code"] isEqualToString:@"fail"]){
-                [self tishi:@"操作失败,请重试"];
+           
 
             }else{
                 [self tishi:@"艹做失败!"];

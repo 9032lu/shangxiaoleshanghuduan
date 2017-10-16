@@ -446,7 +446,7 @@
                 [self presentViewController:nextVC animated:YES completion:nil];
 
                 
-            }else  if ([result[@"result_code"] isEqualToString:@"check_fail"]){
+            }else  if ([result[@"result_code"] isEqualToString:@"check_fail"] || [result[@"result_code"] isEqualToString:@"fail"]){
                 
                 [self tishi:[NSString stringWithFormat:@"%@",result[@"tip"]]];
 
@@ -1970,7 +1970,7 @@
             [img_btn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ADDFILEIMAGES,self.add_more_img_A[i][@"image_url"]]] forState: UIControlStateHighlighted placeholderImage:[UIImage imageNamed:@"icon3.png"]];
             
             LZDButton *deletBtn = [LZDButton creatLZDButton];
-            deletBtn.frame = CGRectMake(img_btn.width-40, 0, 40, 40);
+            deletBtn.frame = CGRectMake(img_btn.width-50, 0, 50, 50);
             deletBtn.backgroundColor = [UIColor clearColor];
             [deletBtn setImage:[UIImage imageNamed:@"删除图标LD"] forState:UIControlStateNormal];
             [deletBtn setImage:[UIImage imageNamed:@"删除图标LD"] forState:UIControlStateHighlighted];

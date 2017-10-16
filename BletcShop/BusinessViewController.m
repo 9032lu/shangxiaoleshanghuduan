@@ -490,7 +490,7 @@
 
     
 #ifdef DEBUG
-    stateStr = @"incomplete";
+//    stateStr = @"incomplete";
 
 
 #else
