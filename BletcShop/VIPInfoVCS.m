@@ -32,12 +32,12 @@
 
 @implementation VIPInfoVCS
 - (IBAction)buyCardRecordClick:(id)sender {//VIPHostCardsVC
-//    PUSH(CardBuyRecordVC)
-//    vc.title = @"办卡明细";
-//    vc.dic=self.infoDic;
-    PUSH(VIPHostCardsVC)
+    PUSH(CardBuyRecordVC)
     vc.title = @"办卡明细";
     vc.dic=self.infoDic;
+//    PUSH(VIPHostCardsVC)
+//    vc.title = @"办卡明细";
+//    vc.dic=self.infoDic;
 }
 
 //发送消息

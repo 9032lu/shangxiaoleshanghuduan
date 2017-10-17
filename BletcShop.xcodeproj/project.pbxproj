@@ -127,6 +127,8 @@
 		18C409651F948F5200DEF146 /* VIPHostCardsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C409631F948F5200DEF146 /* VIPHostCardsVC.xib */; };
 		18C409691F9495C900DEF146 /* VIPHostCardsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C409671F9495C900DEF146 /* VIPHostCardsTableViewCell.m */; };
 		18C4096A1F9495C900DEF146 /* VIPHostCardsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C409681F9495C900DEF146 /* VIPHostCardsTableViewCell.xib */; };
+		18C4096F1F94B22E00DEF146 /* BuyMessagesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4096D1F94B22E00DEF146 /* BuyMessagesVC.m */; };
+		18C409701F94B22E00DEF146 /* BuyMessagesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C4096E1F94B22E00DEF146 /* BuyMessagesVC.xib */; };
 		18CA8AEF1F565C7200E1D84A /* AlertViewWithTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */; };
 		18CB32D61D6C2B2B005A9D64 /* HKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32C91D6C2B2B005A9D64 /* HKViewController.m */; };
 		18CB32D71D6C2B2B005A9D64 /* HKClipperVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32CB1D6C2B2B005A9D64 /* HKClipperVeiw.m */; };
@@ -973,6 +975,9 @@
 		18C409661F9495C900DEF146 /* VIPHostCardsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VIPHostCardsTableViewCell.h; sourceTree = "<group>"; };
 		18C409671F9495C900DEF146 /* VIPHostCardsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VIPHostCardsTableViewCell.m; sourceTree = "<group>"; };
 		18C409681F9495C900DEF146 /* VIPHostCardsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VIPHostCardsTableViewCell.xib; sourceTree = "<group>"; };
+		18C4096C1F94B22E00DEF146 /* BuyMessagesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMessagesVC.h; sourceTree = "<group>"; };
+		18C4096D1F94B22E00DEF146 /* BuyMessagesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMessagesVC.m; sourceTree = "<group>"; };
+		18C4096E1F94B22E00DEF146 /* BuyMessagesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyMessagesVC.xib; sourceTree = "<group>"; };
 		18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewWithTableView.h; sourceTree = "<group>"; };
 		18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewWithTableView.m; sourceTree = "<group>"; };
 		18CB32C81D6C2B2B005A9D64 /* HKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewController.h; sourceTree = "<group>"; };
@@ -2945,6 +2950,16 @@
 			name = "会员持有会员卡s";
 			sourceTree = "<group>";
 		};
+		18C4096B1F94B1F400DEF146 /* 购买信息 */ = {
+			isa = PBXGroup;
+			children = (
+				18C4096C1F94B22E00DEF146 /* BuyMessagesVC.h */,
+				18C4096D1F94B22E00DEF146 /* BuyMessagesVC.m */,
+				18C4096E1F94B22E00DEF146 /* BuyMessagesVC.xib */,
+			);
+			name = "购买信息";
+			sourceTree = "<group>";
+		};
 		18CB32C71D6C2B01005A9D64 /* 定义剪裁框 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4808,6 +4823,7 @@
 		D9C2EF2F1F70F12D007919C2 /* 新的会员管理s */ = {
 			isa = PBXGroup;
 			children = (
+				18C4096B1F94B1F400DEF146 /* 购买信息 */,
 				18C409601F948EB800DEF146 /* 会员持有会员卡s */,
 				18CF67C01F74B7F80004C573 /* 选优惠券推送s */,
 				1869919B1F72371E0084D3C8 /* 生日推送s */,
@@ -5260,6 +5276,7 @@
 				1A9B3AD41D77123D00919CDC /* MessageCell.xib in Resources */,
 				D9AB25341D88E4ED000E9288 /* VoiceSearchFeedback006@2x.png in Resources */,
 				D9E28FC71D2F75A9004514DF /* icon3.png in Resources */,
+				18C409701F94B22E00DEF146 /* BuyMessagesVC.xib in Resources */,
 				D9B894251F6A0EE600278B74 /* AddressEditVC.xib in Resources */,
 				D9D50D901D879CA800A5E469 /* chatBar_face@2x.png in Resources */,
 				0793868F1C55B5CA0021B385 /* LaunchScreen.storyboard in Resources */,
@@ -5544,6 +5561,7 @@
 				184D2F411F4E67D3008F8C55 /* NewBuyCardRecordsTableViewCell.m in Sources */,
 				D97227271F32FC02009D0E2A /* ShoperRegistVCTwo.m in Sources */,
 				D9A06B621D8679C30037795B /* wav.mm in Sources */,
+				18C4096F1F94B22E00DEF146 /* BuyMessagesVC.m in Sources */,
 				D98ECBDB1D9D1ECC00BEDD57 /* MJXAViewController.m in Sources */,
 				D949302B1CD1F58E00E4CBCB /* AddVipTableViewCell.m in Sources */,
 				D9DEED201CACED7C00ACDD00 /* SDWebImageDownloaderOperation.m in Sources */,

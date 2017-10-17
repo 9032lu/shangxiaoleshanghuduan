@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="376" height="383"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="376" height="382.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="376" height="383"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMk-Ad-gjk">
@@ -28,7 +28,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="B3j-4A-7HD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -81,7 +81,7 @@
                             <constraint firstAttribute="height" constant="1" id="EH9-bl-Nma"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="冰封 X4" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1G-e5-9IM">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="冰封 X4" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1G-e5-9IM">
                         <rect key="frame" x="40" y="240.5" width="296" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
@@ -109,6 +109,13 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="cardContaint" destination="G1G-e5-9IM" id="hgp-fa-ioe"/>
+                <outlet property="cardKind" destination="Dzf-qO-kKL" id="JaT-at-bwo"/>
+                <outlet property="cardPrice" destination="Dyo-Di-G9m" id="lcQ-wA-9Lj"/>
+                <outlet property="cardRemain" destination="gT1-zF-86d" id="DiX-Oh-0FF"/>
+                <outlet property="cardType" destination="fTF-B6-kOk" id="AKU-Fg-zhu"/>
+            </connections>
             <point key="canvasLocation" x="-26" y="168.5"/>
         </tableViewCell>
     </objects>
