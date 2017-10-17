@@ -24,7 +24,7 @@
 
 
 #import "UIImageView+WebCache.h"
-
+#import "AllMessageListViewVC.h"
 
 typedef NS_ENUM(NSInteger,ScreenType) {
     
@@ -212,6 +212,9 @@ typedef NS_ENUM(NSInteger,ScreenType) {
 //
 //
 //            }
+            if (sender.tag==0) {
+                PUSH(AllMessageListViewVC)
+            }
             
             if (sender.tag==1) {
                 PUSH(VIPBirthNoticeVC)
