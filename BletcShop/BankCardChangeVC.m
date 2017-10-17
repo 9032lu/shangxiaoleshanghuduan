@@ -48,6 +48,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title=@"修改银行卡号";
+    LEFTBACK
     self.confirmButton.layer.cornerRadius=10;
     self.confirmButton.clipsToBounds=YES;
 }
