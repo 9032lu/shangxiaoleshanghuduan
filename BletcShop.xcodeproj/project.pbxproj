@@ -129,6 +129,10 @@
 		18C4096A1F9495C900DEF146 /* VIPHostCardsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C409681F9495C900DEF146 /* VIPHostCardsTableViewCell.xib */; };
 		18C4096F1F94B22E00DEF146 /* BuyMessagesVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4096D1F94B22E00DEF146 /* BuyMessagesVC.m */; };
 		18C409701F94B22E00DEF146 /* BuyMessagesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C4096E1F94B22E00DEF146 /* BuyMessagesVC.xib */; };
+		18C409741F971D6800DEF146 /* MyFunsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C409721F971D6800DEF146 /* MyFunsVC.m */; };
+		18C409751F971D6800DEF146 /* MyFunsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C409731F971D6800DEF146 /* MyFunsVC.xib */; };
+		18C4097B1F9725BF00DEF146 /* FunsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C409791F9725BF00DEF146 /* FunsTableViewCell.m */; };
+		18C4097C1F9725BF00DEF146 /* FunsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C4097A1F9725BF00DEF146 /* FunsTableViewCell.xib */; };
 		18CA8AEF1F565C7200E1D84A /* AlertViewWithTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */; };
 		18CB32D61D6C2B2B005A9D64 /* HKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32C91D6C2B2B005A9D64 /* HKViewController.m */; };
 		18CB32D71D6C2B2B005A9D64 /* HKClipperVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32CB1D6C2B2B005A9D64 /* HKClipperVeiw.m */; };
@@ -978,6 +982,12 @@
 		18C4096C1F94B22E00DEF146 /* BuyMessagesVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BuyMessagesVC.h; sourceTree = "<group>"; };
 		18C4096D1F94B22E00DEF146 /* BuyMessagesVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BuyMessagesVC.m; sourceTree = "<group>"; };
 		18C4096E1F94B22E00DEF146 /* BuyMessagesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyMessagesVC.xib; sourceTree = "<group>"; };
+		18C409711F971D6800DEF146 /* MyFunsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyFunsVC.h; sourceTree = "<group>"; };
+		18C409721F971D6800DEF146 /* MyFunsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyFunsVC.m; sourceTree = "<group>"; };
+		18C409731F971D6800DEF146 /* MyFunsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyFunsVC.xib; sourceTree = "<group>"; };
+		18C409781F9725BF00DEF146 /* FunsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunsTableViewCell.h; sourceTree = "<group>"; };
+		18C409791F9725BF00DEF146 /* FunsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunsTableViewCell.m; sourceTree = "<group>"; };
+		18C4097A1F9725BF00DEF146 /* FunsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunsTableViewCell.xib; sourceTree = "<group>"; };
 		18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewWithTableView.h; sourceTree = "<group>"; };
 		18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewWithTableView.m; sourceTree = "<group>"; };
 		18CB32C81D6C2B2B005A9D64 /* HKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewController.h; sourceTree = "<group>"; };
@@ -2960,6 +2970,19 @@
 			name = "购买信息";
 			sourceTree = "<group>";
 		};
+		18C409761F97241700DEF146 /* 我的粉丝 */ = {
+			isa = PBXGroup;
+			children = (
+				18C409711F971D6800DEF146 /* MyFunsVC.h */,
+				18C409721F971D6800DEF146 /* MyFunsVC.m */,
+				18C409731F971D6800DEF146 /* MyFunsVC.xib */,
+				18C409781F9725BF00DEF146 /* FunsTableViewCell.h */,
+				18C409791F9725BF00DEF146 /* FunsTableViewCell.m */,
+				18C4097A1F9725BF00DEF146 /* FunsTableViewCell.xib */,
+			);
+			name = "我的粉丝";
+			sourceTree = "<group>";
+		};
 		18CB32C71D6C2B01005A9D64 /* 定义剪裁框 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4829,6 +4852,7 @@
 				1869919B1F72371E0084D3C8 /* 生日推送s */,
 				186991901F7204330084D3C8 /* 会员信息页面s */,
 				D9C2EF301F70F151007919C2 /* 会员列表s */,
+				18C409761F97241700DEF146 /* 我的粉丝 */,
 			);
 			name = "新的会员管理s";
 			sourceTree = "<group>";
@@ -5344,6 +5368,7 @@
 				D92ACDFD1F0CD68600858727 /* tupian(1).png in Resources */,
 				D96555451E33306B0096D815 /* 登陆-04(2).png in Resources */,
 				D9E28FC51D2F75A9004514DF /* icon2.png in Resources */,
+				18C4097C1F9725BF00DEF146 /* FunsTableViewCell.xib in Resources */,
 				18A72C5B1ED563E9005FDF87 /* 线上角标.png in Resources */,
 				D96E1B7D1ECAD9EF00084453 /* ChoseSeriesCellT.xib in Resources */,
 				D92ACDF81F0CD68600858727 /* jiaopian(1).png in Resources */,
@@ -5444,6 +5469,7 @@
 				D949EC351CE1C4A40023B6D6 /* area.plist in Resources */,
 				18CF67A11F739AF90004C573 /* VipMoneyRecordRelationVC.xib in Resources */,
 				18D89C671D51EF4900717B11 /* select_false.png in Resources */,
+				18C409751F971D6800DEF146 /* MyFunsVC.xib in Resources */,
 				186991831F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.xib in Resources */,
 				D9883A4F1ECD391800B06D24 /* 形状 1 拷贝.png in Resources */,
 				D947E4651D7D3BBA00F9FEE8 /* 聊天键盘-icon-选择照片@2x.png in Resources */,
@@ -5682,6 +5708,7 @@
 				18543E4B1ECADCDF00E0A4DA /* ChangeVipCardInfoVC.m in Sources */,
 				18D43E481ED6D4EC0077861A /* WYWebProgressLayer.m in Sources */,
 				D98ECBC91D9CC52200BEDD57 /* LZDAddVipCell.m in Sources */,
+				18C409741F971D6800DEF146 /* MyFunsVC.m in Sources */,
 				189ED0431E8CD53600A762C7 /* KeyChainStore.m in Sources */,
 				D9B3A5A11D74255700F3F27E /* AdView.m in Sources */,
 				0793870D1C561D5E0021B385 /* Myitem.m in Sources */,
@@ -5882,6 +5909,7 @@
 				18CF67CA1F74DECF0004C573 /* SendCouponCompleteVC.m in Sources */,
 				D9B3A5B21D74255700F3F27E /* MKAnnotationView+EMWebCache.m in Sources */,
 				189CC5D51EFA113900A73BB6 /* JFCityTableViewCell.m in Sources */,
+				18C4097B1F9725BF00DEF146 /* FunsTableViewCell.m in Sources */,
 				D941135D1CE9A3D7008E231F /* openssl_wrapper.m in Sources */,
 				D9B3A5BC1D74255700F3F27E /* PSTCollectionView.m in Sources */,
 				D96E1B721ECAD46200084453 /* AddSeriesViewController.m in Sources */,

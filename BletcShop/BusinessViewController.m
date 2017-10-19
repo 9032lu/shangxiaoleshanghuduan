@@ -44,6 +44,7 @@
 #import "AddressEditVC.h"
 #import "MyProtuctsController.h"
 #import "MSGNotificationVC.h"
+#import "MyFunsVC.h"
 @interface BusinessViewController ()<UIAlertViewDelegate>
 {
     NSArray *arr_imgS;
@@ -74,7 +75,7 @@
     intrueOrFast=@"";
     self.view.backgroundColor=[UIColor whiteColor];
 //    arr_imgS = @[@"广告推送",@"店铺管理",@"资金提现",@"管理员设置",@"商家介绍",@"会员延期",@"授信额度",@"预约处理",@"优惠券"];
-    arr_imgS = @[@"广告推送",@"店铺管理",@"资金管理",@"管理员设置",@"商家介绍",@"会员延期",@"预约处理",@"优惠券",@"我的商品"];//@"消息提醒"
+    arr_imgS = @[@"广告推送",@"店铺管理",@"资金管理",@"管理员设置",@"商家介绍",@"会员延期",@"预约处理",@"优惠券",@"我的商品",@"我的粉丝"];//@"消息提醒"//MyFunsVC
 
     
     UIView *topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
@@ -144,7 +145,7 @@
 
     
 //    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_card_icon",@"bu_time_icon",@"bu_discant_icon"];
-    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_time_icon",@"bu_discant_icon",@"商品ssss",@""];//提醒ssss//gdss
+    NSArray *imgS = @[@"bu_ad_icon",@"bu_st_icon",@"bu_carsh_icon",@"bu_setting_icon",@"bu_com_icon",@"bu_vip_icon",@"bu_time_icon",@"bu_discant_icon",@"商品ssss",@"fans"];//提醒ssss//gdss
 
     for (int i = 0; i <arr_imgS.count; i ++) {
         int X = i %4;
@@ -500,6 +501,7 @@
     
     if (sender.tag==9) {
 //        PUSH(MSGNotificationVC)
+        PUSH(MyFunsVC)
     }else
     
     

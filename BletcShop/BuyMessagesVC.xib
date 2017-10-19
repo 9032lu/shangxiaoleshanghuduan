@@ -28,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e9T-u9-hfD">
                     <rect key="frame" x="13" y="11" width="349" height="395"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon3.png" translatesAutoresizingMaskIntoConstraints="NO" id="ajY-O4-F0A">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message" translatesAutoresizingMaskIntoConstraints="NO" id="ajY-O4-F0A">
                             <rect key="frame" x="129" y="40" width="90" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="90" id="Fln-8g-S7D"/>
@@ -50,7 +50,9 @@
                                 <constraint firstAttribute="width" constant="135" id="KZy-p3-Ke6"/>
                                 <constraint firstAttribute="height" constant="45" id="Zoy-Gq-9gv"/>
                             </constraints>
-                            <state key="normal" title="100元 / 500条"/>
+                            <state key="normal" title="100元 / 500条">
+                                <color key="titleColor" red="0.22745098039215686" green="0.68235294117647061" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
                             </userDefinedRuntimeAttributes>
@@ -160,6 +162,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icon3.png" width="227" height="152"/>
+        <image name="message" width="90" height="79"/>
     </resources>
 </document>

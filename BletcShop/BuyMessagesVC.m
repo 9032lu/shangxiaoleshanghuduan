@@ -24,10 +24,13 @@
 - (IBAction)btnClick:(UIButton *)sender {
     for (UIView *view in sender.superview.subviews) {
         if ([view isKindOfClass:[UIButton class]]) {
-            if (view.tag==sender.tag) {
-                view.layer.borderColor=RGB(58,174,218).CGColor;
+            UIButton *button=(UIButton *)view;
+            if (button.tag==sender.tag) {
+                button.layer.borderColor=RGB(58,174,218).CGColor;
+                [button setTitleColor:RGB(58,174,218) forState:UIControlStateNormal];
             }else{
                 view.layer.borderColor=RGB(155,156,156).CGColor;
+                [button setTitleColor:RGB(155,156,156) forState:UIControlStateNormal];
             }
         }
     }
@@ -43,6 +46,15 @@
     self.btn2.layer.borderColor=RGB(155,156,156).CGColor;
     self.btn3.layer.borderColor=RGB(155,156,156).CGColor;
     self.btn4.layer.borderColor=RGB(155,156,156).CGColor;
+    LEFTBACK
+    self.navigationItem.title=@"购买群发";
+    NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc]initWithString:@"应付金额：¥100"];
+    
+    [AttributedStr addAttribute:NSForegroundColorAttributeName value:RGB(241,122,18) range:NSMakeRange(6, 3)];
+    
+    [AttributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:20.0] range:NSMakeRange(6, 3)];
+    self.payMoney.attributedText=AttributedStr;
+    
 }
 
 - (void)didReceiveMemoryWarning {
