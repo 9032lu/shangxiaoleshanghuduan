@@ -11,7 +11,7 @@
 #import "BuyMessagesVC.h"
 #import "ChooseGivenCouponsVC.h"
 #import "UIImageView+WebCache.h"
-#import "AllMessageListViewVC.h"
+#import "SendMessageToAllVC.h"
 @interface MyFunsVC ()<UITableViewDelegate,UITableViewDataSource>
 {
     UIView *bottom;
@@ -200,7 +200,25 @@
 }
 //发送优惠信息
 -(void)msgSendBtnClick{
-    PUSH(AllMessageListViewVC)
+    [self.selectedListData removeAllObjects];
+    //    NSMutableIndexSet *insets = [[NSMutableIndexSet alloc] init];
+    [[self.tableView indexPathsForSelectedRows] enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        //        [insets addIndex:obj.row];
+        [self.selectedListData addObject:self.listData[idx]];
+    }];
+    if (self.selectedListData.count>0) {
+        PUSH(SendMessageToAllVC)
+        NSMutableDictionary *dic=[NSMutableDictionary dictionaryWithCapacity:0];
+        for (int i = 0; i<self.selectedListData.count; i++) {
+            NSMutableDictionary *addDic=[NSMutableDictionary dictionaryWithDictionary:self.selectedListData[i]];
+            [addDic setObject:addDic[@"nickname"] forKey:@"user"];
+            [dic setObject:addDic forKey:[NSString stringWithFormat:@"%d",i]];
+            
+        }
+        vc.dic=dic;
+    }
+    
+    
 }
 //rightItemClick
 -(void)rightItemClick{

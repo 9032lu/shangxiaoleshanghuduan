@@ -133,6 +133,8 @@
 		18C409751F971D6800DEF146 /* MyFunsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C409731F971D6800DEF146 /* MyFunsVC.xib */; };
 		18C4097B1F9725BF00DEF146 /* FunsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C409791F9725BF00DEF146 /* FunsTableViewCell.m */; };
 		18C4097C1F9725BF00DEF146 /* FunsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C4097A1F9725BF00DEF146 /* FunsTableViewCell.xib */; };
+		18C409801F98480E00DEF146 /* SpecialVipsMsgSendVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4097E1F98480E00DEF146 /* SpecialVipsMsgSendVC.m */; };
+		18C409811F98480E00DEF146 /* SpecialVipsMsgSendVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C4097F1F98480E00DEF146 /* SpecialVipsMsgSendVC.xib */; };
 		18CA8AEF1F565C7200E1D84A /* AlertViewWithTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */; };
 		18CB32D61D6C2B2B005A9D64 /* HKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32C91D6C2B2B005A9D64 /* HKViewController.m */; };
 		18CB32D71D6C2B2B005A9D64 /* HKClipperVeiw.m in Sources */ = {isa = PBXBuildFile; fileRef = 18CB32CB1D6C2B2B005A9D64 /* HKClipperVeiw.m */; };
@@ -988,6 +990,9 @@
 		18C409781F9725BF00DEF146 /* FunsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FunsTableViewCell.h; sourceTree = "<group>"; };
 		18C409791F9725BF00DEF146 /* FunsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FunsTableViewCell.m; sourceTree = "<group>"; };
 		18C4097A1F9725BF00DEF146 /* FunsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FunsTableViewCell.xib; sourceTree = "<group>"; };
+		18C4097D1F98480E00DEF146 /* SpecialVipsMsgSendVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpecialVipsMsgSendVC.h; sourceTree = "<group>"; };
+		18C4097E1F98480E00DEF146 /* SpecialVipsMsgSendVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpecialVipsMsgSendVC.m; sourceTree = "<group>"; };
+		18C4097F1F98480E00DEF146 /* SpecialVipsMsgSendVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpecialVipsMsgSendVC.xib; sourceTree = "<group>"; };
 		18CA8AED1F565C7200E1D84A /* AlertViewWithTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertViewWithTableView.h; sourceTree = "<group>"; };
 		18CA8AEE1F565C7200E1D84A /* AlertViewWithTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertViewWithTableView.m; sourceTree = "<group>"; };
 		18CB32C81D6C2B2B005A9D64 /* HKViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKViewController.h; sourceTree = "<group>"; };
@@ -2979,8 +2984,19 @@
 				18C409781F9725BF00DEF146 /* FunsTableViewCell.h */,
 				18C409791F9725BF00DEF146 /* FunsTableViewCell.m */,
 				18C4097A1F9725BF00DEF146 /* FunsTableViewCell.xib */,
+				18C409821F9848E900DEF146 /* 临时消息---预留 */,
 			);
 			name = "我的粉丝";
+			sourceTree = "<group>";
+		};
+		18C409821F9848E900DEF146 /* 临时消息---预留 */ = {
+			isa = PBXGroup;
+			children = (
+				18C4097D1F98480E00DEF146 /* SpecialVipsMsgSendVC.h */,
+				18C4097E1F98480E00DEF146 /* SpecialVipsMsgSendVC.m */,
+				18C4097F1F98480E00DEF146 /* SpecialVipsMsgSendVC.xib */,
+			);
+			name = "临时消息---预留";
 			sourceTree = "<group>";
 		};
 		18CB32C71D6C2B01005A9D64 /* 定义剪裁框 */ = {
@@ -5412,6 +5428,7 @@
 				D9C2EF2A1F6F9178007919C2 /* FYLCity.plist in Resources */,
 				18B9BEAE1F4AABD500863CB1 /* 圆形logo.png in Resources */,
 				D9AB253B1D88E4ED000E9288 /* VoiceSearchFeedback013@2x.png in Resources */,
+				18C409811F98480E00DEF146 /* SpecialVipsMsgSendVC.xib in Resources */,
 				180DC3871EF26B0A00DF9474 /* abc_card@2x.png in Resources */,
 				D9AB25321D88E4ED000E9288 /* VoiceSearchFeedback004@2x.png in Resources */,
 				18543E381ECAD89200E0A4DA /* quan3.png in Resources */,
@@ -5783,6 +5800,7 @@
 				D99292661D8FF5E600103914 /* CashListCell.m in Sources */,
 				D97227181F32F600009D0E2A /* Base64.m in Sources */,
 				186991821F6FAC240084D3C8 /* ShopMoneyGetDetailsVC.m in Sources */,
+				18C409801F98480E00DEF146 /* SpecialVipsMsgSendVC.m in Sources */,
 				189CC5A51EF92EAA00A73BB6 /* LoginQuestionViewController.m in Sources */,
 				D941135F1CE9A3D7008E231F /* RSADataVerifier.m in Sources */,
 				D9210BBC1CC732AC00010DF7 /* RjgmViewController.m in Sources */,
