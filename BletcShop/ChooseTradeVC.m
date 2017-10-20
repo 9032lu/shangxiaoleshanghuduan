@@ -45,11 +45,13 @@
                 string=[NSString stringWithFormat:@"%@%@,",string,dic[@"text"]];
             }
         }
-        NSLog(@"%@",string);
+        NSLog(@"%ld",string.length);
+        NSLog(@"%@",[string substringToIndex:string.length-1]);
+       
         //调用block回传string
         if (string) {
             if (string.length>0) {
-                self.resultBlock(string);
+                self.resultBlock([string substringToIndex:string.length-1]);
                 [self dismissViewControllerAnimated:YES completion:nil];
             }
         }
