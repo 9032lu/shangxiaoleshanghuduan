@@ -198,10 +198,10 @@
     if (self.product_dic) {
         NSURL * nurl1=[[NSURL alloc] initWithString:[[SOURCE_PRODUCT stringByAppendingString:self.product_dic[@"image_url"]]stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
 
-        [imgButton sd_setImageWithURL:nurl1 forState:0 placeholderImage:[UIImage imageNamed:@"vip_pic_n"]];//add_yellow
+        [imgButton sd_setImageWithURL:nurl1 forState:0 placeholderImage:[UIImage imageNamed:@"上传照片ss"]];//add_yellow
         
     }else{
-        [imgButton setImage:[UIImage imageNamed:@"vip_pic_n"] forState:0];
+        [imgButton setImage:[UIImage imageNamed:@"上传照片ss"] forState:0];
   
     }
     [view2 addSubview:imgButton];
