@@ -198,10 +198,10 @@
     if (self.product_dic) {
         NSURL * nurl1=[[NSURL alloc] initWithString:[[SOURCE_PRODUCT stringByAppendingString:self.product_dic[@"image_url"]]stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
 
-        [imgButton sd_setImageWithURL:nurl1 forState:0 placeholderImage:[UIImage imageNamed:@"add_yellow"]];
+        [imgButton sd_setImageWithURL:nurl1 forState:0 placeholderImage:[UIImage imageNamed:@"vip_pic_n"]];//add_yellow
         
     }else{
-        [imgButton setImage:[UIImage imageNamed:@"add_yellow"] forState:0];
+        [imgButton setImage:[UIImage imageNamed:@"vip_pic_n"] forState:0];
   
     }
     [view2 addSubview:imgButton];
@@ -480,7 +480,7 @@
 
     [picker dismissViewControllerAnimated:YES completion:^{}];
     
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     // 保存图片至本地，方法见下文
     AppDelegate *appdelegate=(AppDelegate*)[[UIApplication sharedApplication]delegate];
