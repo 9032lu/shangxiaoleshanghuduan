@@ -24,7 +24,7 @@
     __block UITextField *timeTF;
     __block UITextView *serviceText;
     __block UITextView *noticeTextView;
-    __block UITextView *wnoticeTextView;
+//    __block UITextView *wnoticeTextView;
     
     UIView *textDetailView;
     UIView *noticeView;
@@ -185,25 +185,25 @@
     noticeLabel.text=@"购买须知：";
     [noticeView addSubview:noticeLabel];
     
-    noticeTextView=[[UITextView alloc]initWithFrame:CGRectMake(11, 30, SCREENWIDTH-22, 106)];
+    noticeTextView=[[UITextView alloc]initWithFrame:CGRectMake(11, 30, SCREENWIDTH-22, 106+75+8)];
     noticeTextView.backgroundColor=RGB(240, 240, 240);
     noticeTextView.font=[UIFont systemFontOfSize:15.0f];
     noticeTextView.delegate = self;
     [noticeView addSubview:noticeTextView];
     
-    UIView *lineView2=[[UIView alloc]initWithFrame:CGRectMake(0, 144, SCREENWIDTH, 1)];
-    lineView2.backgroundColor=RGB(240, 240, 240);
-    [noticeTextView addSubview:lineView2];
-    //温馨提示
-    UILabel *buyNote=[[UILabel alloc]initWithFrame:CGRectMake(19, 155, 100, 16)];
-    buyNote.text=@"温馨提示：";
-    [noticeView addSubview:buyNote];
-    
-    wnoticeTextView=[[UITextView alloc]initWithFrame:CGRectMake(11, 175, SCREENWIDTH-22, 45)];
-    wnoticeTextView.backgroundColor=RGB(240, 240, 240);
-    wnoticeTextView.font=[UIFont systemFontOfSize:15.0f];
-    [noticeView addSubview:wnoticeTextView];
-    wnoticeTextView.delegate = self;
+//    UIView *lineView2=[[UIView alloc]initWithFrame:CGRectMake(0, 144, SCREENWIDTH, 1)];
+//    lineView2.backgroundColor=RGB(240, 240, 240);
+//    [noticeTextView addSubview:lineView2];
+//    //温馨提示
+//    UILabel *buyNote=[[UILabel alloc]initWithFrame:CGRectMake(19, 155, 100, 16)];
+//    buyNote.text=@"温馨提示：";
+//    [noticeView addSubview:buyNote];
+//
+//    wnoticeTextView=[[UITextView alloc]initWithFrame:CGRectMake(11, 175, SCREENWIDTH-22, 45)];
+//    wnoticeTextView.backgroundColor=RGB(240, 240, 240);
+//    wnoticeTextView.font=[UIFont systemFontOfSize:15.0f];
+//    [noticeView addSubview:wnoticeTextView];
+//    wnoticeTextView.delegate = self;
 
     //imageAndText
        [self postRequestGetInfo];
@@ -216,7 +216,7 @@
     [timeTF resignFirstResponder];
     [serviceText resignFirstResponder];
     [noticeTextView resignFirstResponder];
-    [wnoticeTextView resignFirstResponder];
+    //[wnoticeTextView resignFirstResponder];
     
     [self postRequestSetInfo];
     
@@ -244,7 +244,7 @@
             intrTextView.text=tempSelf.data[0][@"intro"];
             serviceText.text=tempSelf.data[0][@"service"];
             noticeTextView.text=tempSelf.data[0][@"notice"];
-            wnoticeTextView.text=tempSelf.data[0][@"tip"];
+            //wnoticeTextView.text=tempSelf.data[0][@"tip"];
             timeTF.text=tempSelf.data[0][@"time"];
         }
     } failuerDidBlock:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -266,7 +266,7 @@
     [userInfos setObject:timeTF.text forKey:@"time"];
     [userInfos setObject:serviceText.text forKey:@"service"];
     [userInfos setObject:noticeTextView.text forKey:@"notice"];
-    [userInfos setObject:wnoticeTextView.text forKey:@"tip"];
+    [userInfos setObject:@"" forKey:@"tip"];
     
     [KKRequestDataService requestWithURL:urlStr params:userInfos httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
