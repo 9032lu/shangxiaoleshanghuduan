@@ -37,7 +37,6 @@
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xsB-lt-LKu">
                     <rect key="frame" x="37" y="30" width="300" height="240"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.8862745098" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jiaopian.png" translatesAutoresizingMaskIntoConstraints="NO" id="xeR-H5-3oV">
                     <rect key="frame" x="37" y="30" width="300" height="240"/>

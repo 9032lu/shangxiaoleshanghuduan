@@ -98,7 +98,7 @@
         
         picker.delegate=self;
         picker.allowsEditing = NO;
-        picker.sourceType=UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:picker animated:YES completion:nil];
     }else{
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -189,20 +189,20 @@
                                self.onUploadingItem.filePath = resultPath;
                                self.onUploadingItem.fileName = [NSString stringWithFormat:@"output-%@.mp4",dateString];
                                
-                               if (second<=30) {
+//                               if (second<=30) {
                                    [self prepareParamsBeforeUpload];
-                               }else{
-                                   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                                   hud.frame = CGRectMake(0, 64, 375, 667);
-                                   // Set the annular determinate mode to show task progress.
-                                   hud.mode = MBProgressHUDModeText;
-                                   hud.label.text = NSLocalizedString(@"视频时长不能大于30秒", @"HUD message title");
-                                   hud.label.font = [UIFont systemFontOfSize:13];
-                                   // Move to bottm center.
-                                   //    hud.offset = CGPointMake(0.f, );
-                                   hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
-                                   [hud hideAnimated:YES afterDelay:4.f];
-                               }
+//                               }else{
+//                                   MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//                                   hud.frame = CGRectMake(0, 64, 375, 667);
+//                                   // Set the annular determinate mode to show task progress.
+//                                   hud.mode = MBProgressHUDModeText;
+//                                   hud.label.text = NSLocalizedString(@"视频时长不能大于30秒", @"HUD message title");
+//                                   hud.label.font = [UIFont systemFontOfSize:13];
+//                                   // Move to bottm center.
+//                                   //    hud.offset = CGPointMake(0.f, );
+//                                   hud.frame = CGRectMake(25, SCREENHEIGHT/2, SCREENWIDTH-50, 100);
+//                                   [hud hideAnimated:YES afterDelay:4.f];
+//                               }
 
                                
                            });
