@@ -1626,8 +1626,10 @@
     
 //    NSLog(@"_indexTag=%ld=====%@",(long)_indexTag,parmer);
     
+    [self showHudInView:self.view hint:@""];
+
     [KKRequestDataService requestWithURL:url params:parmer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
-        
+        [self hideHud];
         [parmer setObject:@"file1" forKey:@"file1"];
 
         NSLog(@"parmer----%@",parmer);
@@ -2046,8 +2048,10 @@
     [params setObject:shopInfoDic[@"muid"] forKey:@"muid"];//file1
     [params setObject:file forKey:@"file1"];
     NSLog(@"%@",shopInfoDic[@"muid"]);
+    [self showHudInView:self.view hint:@""];
+
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
-        
+        [self hideHud];
         NSLog(@" KKRequestDataService ==%@", result);
         if (result) {
             if ([[NSString getTheNoNullStr:result[@"result_code"] andRepalceStr:@"123"] isEqualToString:@"access"]) {

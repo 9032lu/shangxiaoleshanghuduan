@@ -1371,12 +1371,15 @@
     
     [parmer setObject:img_Data forKey:@"file1"];
     
+    
+    [self showHudInView:self.view hint:@""];
+    
     [KKRequestDataService requestWithURL:url params:parmer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
         [parmer setObject:@"file1" forKey:@"file1"];
         
         NSLog(@"parmer----%@",parmer);
-
+        [self hideHud];
         
         if ([result[@"result_code"] isEqualToString:@"access"]) {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -1847,8 +1850,11 @@
     [params setObject:shopInfoDic[@"muid"] forKey:@"muid"];//file1
     [params setObject:file forKey:@"file1"];
     NSLog(@"%@",shopInfoDic[@"muid"]);
+    
+    [self showHudInView:self.view hint:@""];
+
     [KKRequestDataService requestWithURL:url params:params httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
-        
+        [self hideHud];
         NSLog(@" KKRequestDataService ==%@", result);
         if (result) {
             if ([[NSString getTheNoNullStr:result[@"result_code"] andRepalceStr:@"123"] isEqualToString:@"access"]) {
