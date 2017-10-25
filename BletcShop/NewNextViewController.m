@@ -644,7 +644,7 @@
         hud.frame = CGRectMake(0, 64, 375, 667);
         // Set the annular determinate mode to show task progress.
         hud.mode = MBProgressHUDModeText;
-        hud.label.text = NSLocalizedString(@"昵称不能为空", @"HUD message title");
+        hud.label.text = NSLocalizedString(@"姓名不能为空", @"HUD message title");
         hud.label.font = [UIFont systemFontOfSize:13];
         // Move to bottm center.
         //    hud.offset = CGPointMake(0.f, );
@@ -746,8 +746,11 @@
     
     [parmer setObject:img_Data forKey:@"file1"];
     
+    [self showHudInView:self.view hint:@""];
+
     [KKRequestDataService requestWithURL:url params:parmer httpMethod:@"POST" finishDidBlock:^(AFHTTPRequestOperation *operation, id result) {
         
+        [self hideHud];
         if ([result[@"result_code"] isEqualToString:@"access"]) {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             hud.mode = MBProgressHUDModeText;
