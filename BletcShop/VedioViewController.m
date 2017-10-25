@@ -38,6 +38,7 @@
     LEFTBACK
     self.view.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-64-43);
 
+    self.videoplayerView.frame =  CGRectMake(37, 30, SCREENWIDTH-37*2, (SCREENWIDTH-37*2)*4/5);
     _webView.scrollView.bounces = NO;
     [self ifExistsAFielID];
 

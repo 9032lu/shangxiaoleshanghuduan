@@ -73,7 +73,7 @@
                         <constraint firstAttribute="height" constant="11" id="0R0-JX-wYg"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQe-lr-8uk">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文字说明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQe-lr-8uk">
                     <rect key="frame" x="12" y="29" width="61.5" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="2tg-Ck-RHD"/>
@@ -96,8 +96,8 @@
                         <outlet property="delegate" destination="-1" id="p5z-et-O37"/>
                     </connections>
                 </textView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入会员卡的具体优惠内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIP-uk-wn4">
-                    <rect key="frame" x="17" y="55" width="186" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="会员卡说明和优惠内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIP-uk-wn4">
+                    <rect key="frame" x="17" y="55" width="143" height="21"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="21" id="HCu-Td-wuN"/>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="Y1j-eI-chv"/>
