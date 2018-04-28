@@ -5211,7 +5211,7 @@
 				TargetAttributes = {
 					0793867B1C55B5CA0021B385 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = NQK9Q69HHD;
+						DevelopmentTeam = EC74XZ6LJN;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -6170,7 +6170,7 @@
 				CODE_SIGN_ENTITLEMENTS = BletcShop/BletcShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NQK9Q69HHD;
+				DEVELOPMENT_TEAM = EC74XZ6LJN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6223,7 +6223,7 @@
 				CODE_SIGN_ENTITLEMENTS = BletcShop/BletcShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = NQK9Q69HHD;
+				DEVELOPMENT_TEAM = EC74XZ6LJN;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
